@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-const pageTitle = ref('Warframe订阅配置')
+const pageTitle = ref('Warframe订阅配置');
 </script>
 
 <template>

@@ -164,18 +164,18 @@ const local: App.I18n.Schema = {
     'iframe-page': 'Iframe',
     home: 'Home',
     config: 'Config',
-    'config_admin': 'Admin',
-    'config_blacklist_group': 'Blacklist Group',
-    'config_blacklist_personal': 'Blacklist Personal',
-    'config_blacklist': 'Black List',
-    'config_whitelist': 'White List',
+    config_admin: 'Admin',
+    config_blacklist_group: 'Blacklist Group',
+    config_blacklist_personal: 'Blacklist Personal',
+    config_blacklist: 'Black List',
+    config_whitelist: 'White List',
     'local-data': 'Local Data',
     'local-data_warframe': 'Data Warframe',
-    'log': 'Log',
-    'config_git': 'Git',
-    'config_service': 'Service',
-    'config_whitelist_group': 'Whitelist Group',
-    'config_whitelist_personal': 'Whitelist Personal',
+    log: 'Log',
+    config_git: 'Git',
+    config_service: 'Service',
+    config_whitelist_group: 'Whitelist Group',
+    config_whitelist_personal: 'Whitelist Personal',
     'local-data_warframe_alias': 'Warframe Alias',
     'local-data_warframe_market-riven': 'Warframe Market Riven',
     'local-data_warframe_market': 'Warframe Market',
@@ -184,7 +184,7 @@ const local: App.I18n.Schema = {
     'local-data_warframe_subscription': 'Warframe Subscription',
     'local-data_warframe_translation': 'Warframe Translation',
     'local-data_warframe_untranslated': 'Warframe Untranslated',
-    'log_command': 'Log Command',
+    log_command: 'Log Command',
     'log_real-time': 'Log Real-time'
   },
   page: {
@@ -456,7 +456,6 @@ const local: App.I18n.Schema = {
         urlPlaceholder: 'Please enter the DataSource repository URL'
       }
     }
-
   },
   form: {
     required: 'Cannot be empty',

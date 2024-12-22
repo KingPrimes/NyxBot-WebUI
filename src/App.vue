@@ -1,16 +1,16 @@
 <script setup lang="ts">
 // 引入Vue的computed函数，用于创建计算属性
-import {computed} from 'vue';
+import { computed } from 'vue';
 // 引入Naive UI的水印组件的属性类型
-import type {WatermarkProps} from 'naive-ui';
+import type { WatermarkProps } from 'naive-ui';
 // 引入Naive UI的配置提供者和暗黑主题
-import {darkTheme, NConfigProvider} from 'naive-ui';
+import { NConfigProvider, darkTheme } from 'naive-ui';
 // 引入应用状态管理
-import {useAppStore} from './store/modules/app';
+import { useAppStore } from './store/modules/app';
 // 引入主题状态管理
-import {useThemeStore} from './store/modules/theme';
+import { useThemeStore } from './store/modules/theme';
 // 引入Naive UI的本地化配置
-import {naiveDateLocales, naiveLocales} from './locales/naive';
+import { naiveDateLocales, naiveLocales } from './locales/naive';
 
 // 定义组件选项，设置组件名称为'App'
 defineOptions({

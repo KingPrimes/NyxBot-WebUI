@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
-import {h} from 'vue';
-import {NButton, NDataTable, NImage, NPopconfirm, NSpace} from 'naive-ui';
-import {$t} from '@/locales';
-import {useAppStore} from '@/store/modules/app';
-import {useTable, useTableOperate} from '@/hooks/common/table';
-import {fetchPostMarketList} from '@/service/api/local-data';
+import { h } from 'vue';
+import { NButton, NDataTable, NImage, NPopconfirm, NSpace } from 'naive-ui';
+import { $t } from '@/locales';
+import { useAppStore } from '@/store/modules/app';
+import { useTable, useTableOperate } from '@/hooks/common/table';
+import { fetchPostMarketList } from '@/service/api/local-data';
 import MarketSearch from './modules/market-search.vue';
 import MarketOperateDrawer from './modules/market-operate-drawer.vue';
 

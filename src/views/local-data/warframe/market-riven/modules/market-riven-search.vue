@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import {NButton, NCard, NCollapse, NCollapseItem, NForm, NFormItemGi, NGrid, NInput, NSpace} from 'naive-ui';
-import {$t} from '@/locales';
-import {useNaiveForm} from '@/hooks/common/form';
+import { NButton, NCard, NCollapse, NCollapseItem, NForm, NFormItemGi, NGrid, NInput, NSpace } from 'naive-ui';
+import { $t } from '@/locales';
+import { useNaiveForm } from '@/hooks/common/form';
 
 defineOptions({
   name: 'MarketRivenSearch'

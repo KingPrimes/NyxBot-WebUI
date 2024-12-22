@@ -1,5 +1,4 @@
 <script lang="tsx" setup>
-import { h } from 'vue';
 import { NButton, NCard, NDataTable, NPopconfirm, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';

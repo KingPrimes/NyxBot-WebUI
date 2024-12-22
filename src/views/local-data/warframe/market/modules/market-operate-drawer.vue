@@ -87,10 +87,16 @@ watch(visible, () => {
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
         <NFormItem :label="$t('page.local-data.warframe.market.itemName')" path="itemName">
-          <NInput v-model:value="model.itemName" :placeholder="$t('page.local-data.warframe.market.itemNamePlaceholder')" />
+          <NInput
+            v-model:value="model.itemName"
+            :placeholder="$t('page.local-data.warframe.market.itemNamePlaceholder')"
+          />
         </NFormItem>
         <NFormItem :label="$t('page.local-data.warframe.market.imageUrl')" path="imageUrl">
-          <NInput v-model:value="model.imageUrl" :placeholder="$t('page.local-data.warframe.market.imageUrlPlaceholder')" />
+          <NInput
+            v-model:value="model.imageUrl"
+            :placeholder="$t('page.local-data.warframe.market.imageUrlPlaceholder')"
+          />
         </NFormItem>
       </NForm>
       <template #footer>

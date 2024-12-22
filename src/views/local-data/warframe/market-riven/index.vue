@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
-import {h} from 'vue';
-import {NButton, NCard, NDataTable, NImage, NPopconfirm, NSpace} from 'naive-ui';
-import {$t} from '@/locales';
-import {useAppStore} from '@/store/modules/app';
-import {useTable, useTableOperate} from '@/hooks/common/table';
-import {fetchPostMarketRivenList} from '@/service/api/local-data';
+import { h } from 'vue';
+import { NButton, NCard, NDataTable, NImage, NPopconfirm, NSpace } from 'naive-ui';
+import { $t } from '@/locales';
+import { useAppStore } from '@/store/modules/app';
+import { useTable, useTableOperate } from '@/hooks/common/table';
+import { fetchPostMarketRivenList } from '@/service/api/local-data';
 import MarketRivenSearch from './modules/market-riven-search.vue';
 import MarketRivenOperateDrawer from './modules/market-riven-operate-drawer.vue';
 

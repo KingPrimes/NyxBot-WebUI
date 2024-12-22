@@ -1,8 +1,8 @@
 <script lang="tsx" setup>
-import {$t} from '@/locales';
-import {useAppStore} from '@/store/modules/app';
-import {useTable, useTableOperate} from '@/hooks/common/table';
-import {fetchPostPhantomList} from '@/service/api/local-data';
+import { $t } from '@/locales';
+import { useAppStore } from '@/store/modules/app';
+import { useTable, useTableOperate } from '@/hooks/common/table';
+import { fetchPostPhantomList } from '@/service/api/local-data';
 import PhantomSearch from './modules/phantom-search.vue';
 import PhantomOperateDrawer from './modules/phantom-operate-drawer.vue';
 

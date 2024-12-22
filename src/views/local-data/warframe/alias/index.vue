@@ -1,9 +1,9 @@
 <script lang="tsx" setup>
-import {NButton, NDataTable} from 'naive-ui';
-import {$t} from '@/locales';
-import {useAppStore} from '@/store/modules/app';
-import {useTable, useTableOperate} from '@/hooks/common/table';
-import {fetchPostAliasList} from '@/service/api/local-data';
+import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
+import { $t } from '@/locales';
+import { useAppStore } from '@/store/modules/app';
+import { useTable, useTableOperate } from '@/hooks/common/table';
+import { fetchPostAliasList } from '@/service/api/local-data';
 import AliasSearch from './modules/alias-search.vue';
 import AliasOperateDrawer from './modules/alias-operate-drawer.vue';
 
