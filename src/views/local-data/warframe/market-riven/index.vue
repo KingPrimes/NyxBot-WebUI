@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
-import { h } from 'vue';
-import { NButton, NCard, NDataTable, NImage, NPopconfirm, NSpace } from 'naive-ui';
-import { $t } from '@/locales';
-import { useAppStore } from '@/store/modules/app';
-import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetMarketRivenList } from '@/service/api/local-data';
+import {h} from 'vue';
+import {NButton, NCard, NDataTable, NImage, NPopconfirm, NSpace} from 'naive-ui';
+import {$t} from '@/locales';
+import {useAppStore} from '@/store/modules/app';
+import {useTable, useTableOperate} from '@/hooks/common/table';
+import {fetchPostMarketRivenList} from '@/service/api/local-data';
 import MarketRivenSearch from './modules/market-riven-search.vue';
 import MarketRivenOperateDrawer from './modules/market-riven-operate-drawer.vue';
 
@@ -21,12 +21,13 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetMarketRivenList,
+  apiFn: fetchPostMarketRivenList,
   showTotal: true,
   apiParams: {
     current: 1,
     size: 10,
-    itemName: null
+    item_name: '',
+    riven_type: ''
   },
   columns: () => [
     {
@@ -41,13 +42,13 @@ const {
       width: 64
     },
     {
-      key: 'itemName',
+      key: 'item_name',
       title: $t('page.local-data.warframe.market-riven.itemName'),
       align: 'center',
       minWidth: 100
     },
     {
-      key: 'rivenType',
+      key: 'riven_type',
       title: $t('page.local-data.warframe.market-riven.rivenType'),
       align: 'center',
       width: 100
@@ -59,13 +60,13 @@ const {
       width: 100
     },
     {
-      key: 'rankLimit',
+      key: 'rank_limit',
       title: $t('page.local-data.warframe.market-riven.rankLimit'),
       align: 'center',
       width: 100
     },
     {
-      key: 'imageUrl',
+      key: 'thumb',
       title: $t('page.local-data.warframe.market-riven.imageUrl'),
       align: 'center',
       width: 120,
