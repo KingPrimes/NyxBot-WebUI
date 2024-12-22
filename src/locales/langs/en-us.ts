@@ -162,7 +162,30 @@ const local: App.I18n.Schema = {
     404: 'Page Not Found',
     500: 'Server Error',
     'iframe-page': 'Iframe',
-    home: 'Home'
+    home: 'Home',
+    config: 'Config',
+    'config_admin': 'Admin',
+    'config_blacklist_group': 'Blacklist Group',
+    'config_blacklist_personal': 'Blacklist Personal',
+    'config_blacklist': 'Black List',
+    'config_whitelist': 'White List',
+    'local-data': 'Local Data',
+    'local-data_warframe': 'Data Warframe',
+    'log': 'Log',
+    'config_git': 'Git',
+    'config_service': 'Service',
+    'config_whitelist_group': 'Whitelist Group',
+    'config_whitelist_personal': 'Whitelist Personal',
+    'local-data_warframe_alias': 'Warframe Alias',
+    'local-data_warframe_market-riven': 'Warframe Market Riven',
+    'local-data_warframe_market': 'Warframe Market',
+    'local-data_warframe_phantom': 'Warframe Phantom',
+    'local-data_warframe_riven': 'Warframe Riven',
+    'local-data_warframe_subscription': 'Warframe Subscription',
+    'local-data_warframe_translation': 'Warframe Translation',
+    'local-data_warframe_untranslated': 'Warframe Untranslated',
+    'log_command': 'Log Command',
+    'log_real-time': 'Log Real-time'
   },
   page: {
     login: {
@@ -239,7 +262,201 @@ const local: App.I18n.Schema = {
         desc5: 'Soybean just wrote some of the workbench pages casually, and it was enough to see!'
       },
       creativity: 'Creativity'
+    },
+    log: {
+      command: {
+        title: 'Command Log',
+        id: 'Log ID',
+        moduleName: 'Module Name',
+        command: 'Command',
+        commandPlaceholder: 'Please enter the command',
+        botQQ: 'Bot QQ',
+        groupQQ: 'QQ Group',
+        groupQQPlaceholder: 'Please enter the QQ group',
+        triggerQQ: 'Trigger QQ',
+        operateTime: 'Operation Time'
+      }
+    },
+    config: {
+      title: 'System Configuration',
+      git: {
+        title: 'Configure Git Account',
+        form: {
+          account: 'Git Account',
+          accountPlaceholder: 'Please enter the Git account name',
+          token: 'Git Token',
+          tokenPlaceholder: 'Please enter the Git token',
+          url: 'DataSource Repository URL',
+          urlPlaceholder: 'Please enter the DataSource repository URL'
+        }
+      },
+      service: {
+        title: 'Configure Service',
+        restartTip: 'Changes need to restart the service to take effect',
+        form: {
+          port: 'Port',
+          portPlaceholder: 'Please enter the port number',
+          portError: 'Port number must be between 1-65535',
+          client: 'Client',
+          server: 'Server',
+          switchTo: 'Switch to {type}',
+          urlPlaceholder: 'Please enter the {type} URL'
+        }
+      },
+      admin: {
+        title: 'Administrator List',
+        botAccount: 'Bot Account',
+        adminAccount: 'Administrator Account',
+        status: 'Status',
+        role: 'Permissions',
+        addAdmin: 'Add Administrator',
+        editAdmin: 'Edit Administrator',
+        form: {
+          botAccount: 'Please enter the bot account',
+          adminAccount: 'Please enter the administrator account',
+          status: 'Please select the status',
+          role: 'Please select the permissions'
+        },
+        roles: {
+          superAdmin: 'Super Administrator',
+          admin: 'Administrator',
+          commonUser: 'Common User',
+          backendUser: 'Backend User',
+          other: 'Other User',
+          placeholder: 'Please select the role',
+          roleName: 'Role Name'
+        }
+      },
+      blacklist: {
+        group: {
+          title: 'Blacklist Group List',
+          groupAccount: 'Group Account',
+          addBlacklistGroup: 'Add Blacklist Group',
+          editBlacklistGroup: 'Edit Blacklist Group',
+          placeholder: 'Please select the group account'
+        },
+        personal: {
+          title: 'Blacklist Personal List',
+          personalAccount: 'Personal Account',
+          addBlacklistPersonal: 'Add Blacklist Personal',
+          editBlacklistPersonal: 'Edit Blacklist Personal',
+          placeholder: 'Please select the personal account'
+        }
+      },
+      whitelist: {
+        group: {
+          title: 'Whitelist Group List',
+          groupAccount: 'Group Account',
+          addWhitelistGroup: 'Add Whitelist Group',
+          editWhitelistGroup: 'Edit Whitelist Group',
+          placeholder: 'Please select the group account'
+        },
+        personal: {
+          title: 'Whitelist Personal List',
+          personalAccount: 'Personal Account',
+          addWhitelistPersonal: 'Add Whitelist Personal',
+          editWhitelistPersonal: 'Edit Whitelist Personal',
+          placeholder: 'Please select the personal account'
+        }
+      }
+    },
+    'local-data': {
+      warframe: {
+        alias: {
+          title: 'Alias List',
+          englishName: 'English Name',
+          chineseName: 'Chinese Name',
+          addAlias: 'Add Alias',
+          editAlias: 'Edit Alias',
+          englishNamePlaceholder: 'Please enter the English name',
+          chineseNamePlaceholder: 'Please enter the Chinese name'
+        },
+        market: {
+          title: 'Market',
+          itemName: 'Item Name',
+          addMarket: 'Add Market',
+          editMarket: 'Edit Market',
+          itemNamePlaceholder: 'Please enter the item name',
+          imageUrl: 'Image URL',
+          imageUrlPlaceholder: 'Please enter the image URL'
+        },
+        'market-riven': {
+          title: 'Market Riven',
+          itemName: 'Item Name',
+          itemNamePlaceholder: 'Please enter the item name',
+          rivenType: 'Riven Type',
+          rivenTypePlaceholder: 'Please enter the Riven type',
+          group: 'Group',
+          groupPlaceholder: 'Please enter the group',
+          rankLimit: 'Rank Limit',
+          rankLimitPlaceholder: 'Please enter the rank limit',
+          imageUrl: 'Image URL',
+          imageUrlPlaceholder: 'Please enter the image URL',
+          addMarketRiven: 'Add Riven Data',
+          editMarketRiven: 'Edit Riven Data'
+        },
+        phantom: {
+          title: 'Phantom',
+          itemName: 'Item Name',
+          itemNamePlaceholder: 'Please enter the item name',
+          urlName: 'URL Name',
+          urlNamePlaceholder: 'Please enter the URL name',
+          iconLink: 'Icon Link',
+          iconLinkPlaceholder: 'Please enter the icon link',
+          imageSource: 'Image Source',
+          imageSourcePlaceholder: 'Please enter the image source',
+          animation: 'Animation',
+          animationPlaceholder: 'Please enter the animation',
+          addPhantom: 'Add Phantom Data',
+          editPhantom: 'Edit Phantom Data'
+        },
+        riven: {
+          title: 'Riven',
+          itemName: 'Item Name',
+          itemNamePlaceholder: 'Please enter the item name',
+          itemEnName: 'Item English Name',
+          itemEnNamePlaceholder: 'Please enter the item English name',
+          newDisposition: 'New Disposition',
+          newDispositionPlaceholder: 'Please enter the new disposition',
+          oldDisposition: 'Old Disposition',
+          oldDispositionPlaceholder: 'Please enter the old disposition',
+          weaponType: 'Weapon Type',
+          weaponTypePlaceholder: 'Please enter the weapon type',
+          addRiven: 'Add Riven Data',
+          editRiven: 'Edit Riven Data'
+        },
+        translation: {
+          title: 'Warframe Translation Management',
+          english: 'English',
+          englishPlaceholder: 'Please enter English',
+          chinese: 'Chinese',
+          chinesePlaceholder: 'Please enter Chinese',
+          addTranslation: 'Add Translation',
+          editTranslation: 'Edit Translation'
+        },
+        untranslated: {
+          title: 'Warframe Untranslated Database',
+          text: 'Text',
+          textPlaceholder: 'Please enter the search text',
+          english: 'English',
+          englishPlaceholder: 'Please enter English',
+          addUntranslated: 'Add Untranslated Data',
+          editUntranslated: 'Edit Untranslated Data'
+        }
+      }
+    },
+    git: {
+      title: 'Configure Git Account',
+      form: {
+        account: 'Git Account',
+        accountPlaceholder: 'Please enter the Git account name',
+        token: 'Git Token',
+        tokenPlaceholder: 'Please enter the Git token',
+        url: 'DataSource Repository URL',
+        urlPlaceholder: 'Please enter the DataSource repository URL'
+      }
     }
+
   },
   form: {
     required: 'Cannot be empty',

@@ -1,14 +1,14 @@
 declare namespace Api {
   namespace LocalData {
     interface AliasSearchParams {
-      englishName?: string;
-      chineseName?: string;
+      en?: string;
+      cn?: string;
     }
 
     interface AliasModel {
       id?: string | number;
-      englishName: string;
-      chineseName: string;
+      en: string;
+      cn: string;
     }
 
     interface Alias extends Required<AliasModel> {
@@ -25,7 +25,7 @@ declare namespace Api {
     }
 
     interface MarketSearchParams {
-      itemName: string | null;
+      item_name: string | null;
     }
 
     type MarketList = App.PageData<Market>;
@@ -40,22 +40,23 @@ declare namespace Api {
     }
 
     interface MarketRivenSearchParams {
-      itemName: string | null;
+      item_name: string | null;
+      riven_type: string | null;
     }
 
     type MarketRivenList = App.PageData<MarketRiven>;
 
     interface Phantom {
       id: number;
-      itemName: string;
-      urlName: string;
-      iconLink: string;
-      imageSource: string;
+      item_name: string;
+      url_name: string;
+      icon: string;
+      thumb: string;
       animation: string;
     }
 
     interface PhantomSearchParams {
-      itemName: string | null;
+      item_name: string | null;
     }
 
     type PhantomList = App.PageData<Phantom>;

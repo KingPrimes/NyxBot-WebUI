@@ -1,10 +1,8 @@
 <script lang="tsx" setup>
-import { h } from 'vue';
-import { NButton, NCard, NDataTable, NPopconfirm, NSpace } from 'naive-ui';
-import { $t } from '@/locales';
-import { useAppStore } from '@/store/modules/app';
-import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetPhantomList } from '@/service/api/local-data';
+import {$t} from '@/locales';
+import {useAppStore} from '@/store/modules/app';
+import {useTable, useTableOperate} from '@/hooks/common/table';
+import {fetchPostPhantomList} from '@/service/api/local-data';
 import PhantomSearch from './modules/phantom-search.vue';
 import PhantomOperateDrawer from './modules/phantom-operate-drawer.vue';
 
@@ -21,12 +19,12 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetPhantomList,
+  apiFn: fetchPostPhantomList,
   showTotal: true,
   apiParams: {
     current: 1,
     size: 10,
-    itemName: null
+    item_name: null
   },
   columns: () => [
     {
@@ -41,25 +39,25 @@ const {
       width: 80
     },
     {
-      key: 'itemName',
+      key: 'item_name',
       title: $t('page.local-data.warframe.phantom.itemName'),
       align: 'center',
       minWidth: 120
     },
     {
-      key: 'urlName',
+      key: 'url_name',
       title: $t('page.local-data.warframe.phantom.urlName'),
       align: 'center',
       width: 150
     },
     {
-      key: 'iconLink',
+      key: 'icon',
       title: $t('page.local-data.warframe.phantom.iconLink'),
       align: 'center',
       width: 150
     },
     {
-      key: 'imageSource',
+      key: 'thumb',
       title: $t('page.local-data.warframe.phantom.imageSource'),
       align: 'center',
       width: 150
@@ -69,50 +67,18 @@ const {
       title: $t('page.local-data.warframe.phantom.animation'),
       align: 'center',
       width: 150
-    },
-    {
-      key: 'operate',
-      title: $t('common.operate'),
-      align: 'center',
-      width: 130,
-      render: row => (
-        <NSpace justify="center">
-          <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
-            {$t('common.edit')}
-          </NButton>
-          <NPopconfirm onPositiveClick={() => handleDelete(row.id)}>
-            {{
-              default: () => $t('common.confirmDelete'),
-              trigger: () => (
-                <NButton type="error" ghost size="small">
-                  {$t('common.delete')}
-                </NButton>
-              )
-            }}
-          </NPopconfirm>
-        </NSpace>
-      )
     }
   ]
 });
 
-const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedRowKeys, onBatchDeleted, onDeleted } =
-  useTableOperate(data, getData);
+const { drawerVisible, operateType, editingData, handleAdd, checkedRowKeys, onBatchDeleted } = useTableOperate(
+  data,
+  getData
+);
 
 async function handleBatchDelete() {
   // request
-  console.log(checkedRowKeys.value);
   onBatchDeleted();
-}
-
-function handleDelete(id: number) {
-  // request
-  console.log(id);
-  onDeleted();
-}
-
-function edit(id: number) {
-  handleEdit(id);
 }
 </script>
 

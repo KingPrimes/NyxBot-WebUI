@@ -317,7 +317,7 @@ const local: App.I18n.Schema = {
           status: '请选择状态',
           role: '请选择权限'
         },
-        role: {
+        roles: {
           superAdmin: '超级管理员',
           admin: '管理员',
           commonUser: '普通用户',

@@ -1,10 +1,9 @@
 <script lang="tsx" setup>
-import { h, ref } from 'vue';
-import { NButton, NDataTable, NTag } from 'naive-ui';
-import { $t } from '@/locales';
-import { useAppStore } from '@/store/modules/app';
-import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetAliasList } from '@/service/api/local-data';
+import {NButton, NDataTable} from 'naive-ui';
+import {$t} from '@/locales';
+import {useAppStore} from '@/store/modules/app';
+import {useTable, useTableOperate} from '@/hooks/common/table';
+import {fetchPostAliasList} from '@/service/api/local-data';
 import AliasSearch from './modules/alias-search.vue';
 import AliasOperateDrawer from './modules/alias-operate-drawer.vue';
 
@@ -21,14 +20,11 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetAliasList,
+  apiFn: fetchPostAliasList,
   showTotal: true,
   apiParams: {
     current: 1,
-    size: 10,
-    // if you want to use the searchParams in Form, you need to define the following properties, and the value is null
-    // the value can not be undefined, otherwise the property in Form will not be reactive
-    role: null
+    size: 10
   },
   columns: () => [
     {
@@ -43,13 +39,13 @@ const {
       width: 64
     },
     {
-      key: 'englishName',
+      key: 'en',
       title: $t('page.local-data.warframe.alias.englishName'),
       align: 'center',
       minWidth: 100
     },
     {
-      key: 'chineseName',
+      key: 'cn',
       title: $t('page.local-data.warframe.alias.chineseName'),
       align: 'center',
       width: 100
@@ -114,7 +110,12 @@ function edit(id: number) {
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
     <AliasSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
-    <NCard :title="$t('page.local-data.warframe.alias.title')" :bordered="false" size="small" class="sm:flex-1-hidden card-wrapper">
+    <NCard
+      :bordered="false"
+      :title="$t('page.local-data.warframe.alias.title')"
+      class="sm:flex-1-hidden card-wrapper"
+      size="small"
+    >
       <template #header-extra>
         <TableHeaderOperation
           v-model:columns="columnChecks"

@@ -1,38 +1,40 @@
-import { request } from '../request';
+import {request} from '../request';
+
+const baseUrl = '/data/warframe';
 
 /** 获取Warframe别名列表 */
-export function fetchGetAliasList(params?: Api.LocalData.AliasSearchParams) {
+export function fetchPostAliasList(params?: Api.LocalData.AliasSearchParams) {
   return request<Api.LocalData.AliasList>({
-    url: '/localData/getAliasList',
-    method: 'get',
-    params
+    url: `${baseUrl}/alias/list`,
+    method: 'post',
+    data: params
   });
 }
 
 /** 获取Warframe市场列表 */
-export function fetchGetMarketList(params?: Api.LocalData.MarketSearchParams) {
+export function fetchPostMarketList(params?: Api.LocalData.MarketSearchParams) {
   return request<Api.LocalData.MarketList>({
-    url: '/localData/getMarketList',
-    method: 'get',
-    params
+    url: `${baseUrl}/market/list`,
+    method: 'post',
+    data: params
   });
 }
 
 /** 获取Warframe市场Riven列表 */
-export function fetchGetMarketRivenList(params?: Api.LocalData.MarketRivenSearchParams) {
+export function fetchPostMarketRivenList(params?: Api.LocalData.MarketRivenSearchParams) {
   return request<Api.LocalData.MarketRivenList>({
-    url: '/localData/getMarketRivenList',
-    method: 'get',
-    params
+    url: `${baseUrl}/market/riven/list`,
+    method: 'post',
+    data: params
   });
 }
 
 /** 获取Warframe幻纹列表 */
-export function fetchGetPhantomList(params?: Api.LocalData.PhantomSearchParams) {
+export function fetchPostPhantomList(params?: Api.LocalData.PhantomSearchParams) {
   return request<Api.LocalData.PhantomList>({
-    url: '/localData/getPhantomList',
-    method: 'get',
-    params
+    url: `${baseUrl}/ephemeras/list`,
+    method: 'post',
+    data: params
   });
 }
 

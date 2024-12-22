@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
-import { h, ref } from 'vue';
-import { NButton, NDataTable, NImage, NPopconfirm, NSpace } from 'naive-ui';
-import { $t } from '@/locales';
-import { useAppStore } from '@/store/modules/app';
-import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetMarketList } from '@/service/api/local-data';
+import {h} from 'vue';
+import {NButton, NDataTable, NImage, NPopconfirm, NSpace} from 'naive-ui';
+import {$t} from '@/locales';
+import {useAppStore} from '@/store/modules/app';
+import {useTable, useTableOperate} from '@/hooks/common/table';
+import {fetchPostMarketList} from '@/service/api/local-data';
 import MarketSearch from './modules/market-search.vue';
 import MarketOperateDrawer from './modules/market-operate-drawer.vue';
 
@@ -21,7 +21,7 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetMarketList,
+  apiFn: fetchPostMarketList,
   showTotal: true,
   apiParams: {
     current: 1,
@@ -41,13 +41,13 @@ const {
       width: 64
     },
     {
-      key: 'itemName',
+      key: 'item_name',
       title: $t('page.local-data.warframe.market.itemName'),
       align: 'center',
       minWidth: 100
     },
     {
-      key: 'imageUrl',
+      key: 'thumb',
       title: $t('page.local-data.warframe.market.imageUrl'),
       align: 'center',
       width: 120,

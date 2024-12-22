@@ -1,10 +1,9 @@
 <script lang="tsx" setup>
-import { h, ref } from 'vue';
-import { NButton, NDataTable, NSpace, NTag, useMessage } from 'naive-ui';
-import { $t } from '@/locales';
-import { useAppStore } from '@/store/modules/app';
-import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchDeleteAdmin, fetchGetAdminList } from '@/service/api/system-config';
+import {NButton, NDataTable, NTag} from 'naive-ui';
+import {$t} from '@/locales';
+import {useAppStore} from '@/store/modules/app';
+import {useTable, useTableOperate} from '@/hooks/common/table';
+import {fetchGetAdminList} from '@/service/api/system-config';
 import AdminSearch from './modules/admin-search.vue';
 import AdminOperateDrawer from './modules/admin-operate-drawer.vue';
 
@@ -56,7 +55,7 @@ const {
     },
     {
       key: 'role',
-      title: $t('page.config.admin.role.roleName'),
+      title: $t('page.config.admin.roles.roleName'),
       align: 'center',
       width: 100,
       render: row => {

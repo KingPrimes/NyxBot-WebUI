@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { NButton, NCard, NCollapse, NCollapseItem, NForm, NFormItemGi, NGrid, NInput, NSpace } from 'naive-ui';
-import { $t } from '@/locales';
-import { useNaiveForm } from '@/hooks/common/form';
+import {NButton, NCard, NCollapse, NCollapseItem, NForm, NFormItemGi, NGrid, NInput, NSpace} from 'naive-ui';
+import {$t} from '@/locales';
+import {useNaiveForm} from '@/hooks/common/form';
 
 defineOptions({
   name: 'AliasSearch'
@@ -37,23 +37,12 @@ async function search() {
           <NGrid responsive="screen" item-responsive>
             <NFormItemGi
               span="24 s:12 m:6"
-              :label="$t('page.local-data.warframe.alias.englishName')"
-              path="englishName"
-              class="pr-24px"
-            >
-              <NInput
-                v-model:value="model.englishName"
-                :placeholder="$t('page.local-data.warframe.alias.englishNamePlaceholder')"
-              />
-            </NFormItemGi>
-            <NFormItemGi
-              span="24 s:12 m:6"
               :label="$t('page.local-data.warframe.alias.chineseName')"
-              path="chineseName"
+              path="cn"
               class="pr-24px"
             >
               <NInput
-                v-model:value="model.chineseName"
+                v-model:value="model.cn"
                 :placeholder="$t('page.local-data.warframe.alias.chineseNamePlaceholder')"
               />
             </NFormItemGi>

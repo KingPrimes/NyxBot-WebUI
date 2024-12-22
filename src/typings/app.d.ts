@@ -1,5 +1,8 @@
 /** The global namespace for the app */
 declare namespace App {
+  interface PageData<T> {
+    data: T;
+  }
   /** Theme namespace */
   namespace Theme {
     type ColorPaletteNumber = import('@sa/color').ColorPaletteNumber;
@@ -482,6 +485,199 @@ declare namespace App {
           };
           creativity: string;
         };
+        log: {
+          command:{
+            title: string;
+            id: string;
+            moduleName: string;
+            command: string;
+            commandPlaceholder: string;
+            botQQ: string;
+            groupQQ: string;
+            groupQQPlaceholder: string;
+            triggerQQ: string;
+            operateTime: string;
+          }
+        };
+        config: {
+          title: string,
+          git: {
+            title: string,
+            form: {
+              account: string,
+              accountPlaceholder: string,
+              token: string,
+              tokenPlaceholder: string,
+              url: string,
+              urlPlaceholder: string
+            }
+          },
+          service: {
+            title: string,
+            restartTip: string,
+            form: {
+              port: string,
+              portPlaceholder: string,
+              portError: string,
+              client: string,
+              server: string,
+              switchTo: string,
+              urlPlaceholder: string
+            }
+          },
+          admin: {
+            title: string,
+            botAccount: string,
+            adminAccount: string,
+            status: string,
+            role: string,
+            addAdmin: string,
+            editAdmin: string,
+            form: {
+              botAccount: string,
+              adminAccount: string,
+              status: string,
+              role: string
+            },
+            roles: {
+              superAdmin: string,
+              admin: string,
+              commonUser: string,
+              backendUser: string,
+              other: string,
+              placeholder: string,
+              roleName: string
+            }
+          },
+          blacklist: {
+            group: {
+              title: string,
+              groupAccount: string,
+              addBlacklistGroup: string,
+              editBlacklistGroup: string,
+              placeholder: string
+            },
+            personal: {
+              title: string,
+              personalAccount: string,
+              addBlacklistPersonal: string,
+              editBlacklistPersonal: string,
+              placeholder: string
+            }
+          },
+          whitelist: {
+            group: {
+              title: string,
+              groupAccount: string,
+              addWhitelistGroup: string,
+              editWhitelistGroup: string,
+              placeholder: string
+            },
+            personal: {
+              title: string,
+              personalAccount: string,
+              addWhitelistPersonal: string,
+              editWhitelistPersonal: string,
+              placeholder: string
+            }
+          }
+        },
+        'local-data': {
+          warframe: {
+            alias: {
+              title: string,
+              englishName: string,
+              chineseName: string,
+              addAlias: string,
+              editAlias: string,
+              englishNamePlaceholder: string,
+              chineseNamePlaceholder: string
+            },
+            market: {
+              title: string,
+              itemName: string,
+              addMarket: string,
+              editMarket: string,
+              itemNamePlaceholder: string,
+              imageUrl: string,
+              imageUrlPlaceholder: string
+            },
+            'market-riven': {
+              title: string,
+              itemName: string,
+              itemNamePlaceholder: string,
+              rivenType: string,
+              rivenTypePlaceholder: string,
+              group: string,
+              groupPlaceholder: string,
+              rankLimit: string,
+              rankLimitPlaceholder: string,
+              imageUrl: string,
+              imageUrlPlaceholder: string,
+              addMarketRiven: string,
+              editMarketRiven: string
+            },
+            phantom: {
+              title: string,
+              itemName: string,
+              itemNamePlaceholder: string,
+              urlName: string,
+              urlNamePlaceholder: string,
+              iconLink: string,
+              iconLinkPlaceholder: string,
+              imageSource: string,
+              imageSourcePlaceholder: string,
+              animation: string,
+              animationPlaceholder: string,
+              addPhantom: string,
+              editPhantom: string
+            },
+            riven: {
+              title: string,
+              itemName: string,
+              itemNamePlaceholder: string,
+              itemEnName: string,
+              itemEnNamePlaceholder: string,
+              newDisposition: string,
+              newDispositionPlaceholder: string,
+              oldDisposition: string,
+              oldDispositionPlaceholder: string,
+              weaponType: string,
+              weaponTypePlaceholder: string,
+              addRiven: string,
+              editRiven: string
+            },
+            translation: {
+              title: string,
+              english: string,
+              englishPlaceholder: string,
+              chinese: string,
+              chinesePlaceholder: string,
+              addTranslation: string,
+              editTranslation: string
+            },
+            untranslated: {
+              title: string,
+              text: string,
+              textPlaceholder: string,
+              english: string,
+              englishPlaceholder: string,
+              addUntranslated: string,
+              editUntranslated: string
+            }
+          }
+        },
+        git: {
+          title: string,
+          form: {
+            account: string,
+            accountPlaceholder: string,
+            token: string,
+            tokenPlaceholder: string,
+            url: string,
+            urlPlaceholder: string
+          }
+        }
       };
       form: {
         required: string;

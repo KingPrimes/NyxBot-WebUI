@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
-import { useFormRules, useNaiveForm } from '@/hooks/common/form';
-import { $t } from '@/locales';
+import {computed, ref, watch} from 'vue';
+import {useFormRules, useNaiveForm} from '@/hooks/common/form';
+import {$t} from '@/locales';
 
 defineOptions({
   name: 'AliasOperateDrawer'
@@ -36,21 +36,21 @@ const title = computed(() => {
   };
   return titles[props.operateType];
 });
-type Model = Pick<Api.LocalData.Alias, 'englishName' | 'chineseName'>;
+type Model = Pick<Api.LocalData.Alias, 'en' | 'cn'>;
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    englishName: '',
-    chineseName: ''
+    en: '',
+    cn: ''
   };
 }
 
-type RuleKey = Extract<keyof Model, 'englishName' | 'chineseName'>;
+type RuleKey = Extract<keyof Model, 'en' | 'cn'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
-  englishName: defaultRequiredRule,
-  chineseName: defaultRequiredRule
+  en: defaultRequiredRule,
+  cn: defaultRequiredRule
 };
 
 function handleInitModel() {
@@ -85,11 +85,11 @@ watch(visible, () => {
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
-        <NFormItem :label="$t('page.local-data.warframe.alias.englishName')" path="englishName">
-          <NInput v-model:value="model.englishName" :placeholder="$t('page.local-data.warframe.alias.englishNamePlaceholder')" />
+        <NFormItem :label="$t('page.local-data.warframe.alias.englishName')" path="en">
+          <NInput v-model:value="model.en" :placeholder="$t('page.local-data.warframe.alias.englishNamePlaceholder')" />
         </NFormItem>
-        <NFormItem :label="$t('page.local-data.warframe.alias.chineseName')" path="chineseName">
-          <NInput v-model:value="model.chineseName" :placeholder="$t('page.local-data.warframe.alias.chineseNamePlaceholder')" />
+        <NFormItem :label="$t('page.local-data.warframe.alias.chineseName')" path="cn">
+          <NInput v-model:value="model.cn" :placeholder="$t('page.local-data.warframe.alias.chineseNamePlaceholder')" />
         </NFormItem>
       </NForm>
       <template #footer>
