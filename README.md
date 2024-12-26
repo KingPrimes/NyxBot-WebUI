@@ -1,2 +1,2 @@
-# NyxBot-Front
+# NyxBot-WebUI
 NyxBot的WebUI界面
