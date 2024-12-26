@@ -32,8 +32,8 @@ const options = computed(() => {
       icon: SvgIconVNode({ icon: 'ph:sign-out', fontSize: 18 })
     },
     {
+      label: $t('route.rest-password'),
       key: 'rest-password',
-      label: $t('common.editPassword'),
       icon: SvgIconVNode({ icon: 'ph:gear', fontSize: 18 })
     }
   ];

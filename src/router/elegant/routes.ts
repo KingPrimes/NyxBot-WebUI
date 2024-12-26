@@ -323,7 +323,7 @@ export const generatedRoutes: GeneratedRoute[] = [
   },
   {
     name: 'login',
-    path: '/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?',
+    path: '/login/:module(pwd-login)?',
     component: 'layout.blank$view.login',
     props: true,
     meta: {
@@ -339,7 +339,8 @@ export const generatedRoutes: GeneratedRoute[] = [
     component: 'layout.base$view.rest-password',
     meta: {
       title: 'rest-password',
-      i18nKey: 'common.editPassword'
+      i18nKey: 'common.editPassword',
+      hidden: true
     }
   }
 ];

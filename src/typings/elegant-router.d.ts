@@ -45,7 +45,7 @@ declare module "@elegant-router/types" {
     "log": "/log";
     "log_command": "/log/command";
     "log_real-time": "/log/real-time";
-    "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?";
+    "login": "/login/:module(pwd-login)?";
     "rest-password": "/rest-password";
   };
 
