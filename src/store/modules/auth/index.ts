@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { computed, reactive, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { defineStore } from 'pinia';
 import { useLoading } from '@sa/hooks';
 import { SetupStoreId } from '@/enum';
 import { useRouterPush } from '@/hooks/common/router';
-import { fetchGetUserInfo, fetchLogin } from '@/service/api';
+import { fetchGetUserInfo, fetchLogin, restorePassword } from '@/service/api';
 import { localStg } from '@/utils/storage';
 import { $t } from '@/locales';
 import { useRouteStore } from '../route';
@@ -17,7 +18,6 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   const tabStore = useTabStore();
   const { toLogin, redirectFromLogin } = useRouterPush(false);
   const { loading: loginLoading, startLoading, endLoading } = useLoading();
-
   const token = ref(getToken());
 
   const userInfo: Api.Auth.UserInfo = reactive({
@@ -128,6 +128,31 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     }
   }
 
+  async function restPassword(oldPassword: string, newPassword: string, confirmPassword: string) {
+    startLoading();
+    try {
+      const { error } = await restorePassword(oldPassword, newPassword, confirmPassword);
+
+      if (!error) {
+        window.$notification?.success({
+          title: (error as any).msg,
+          content: (error as any).msg,
+          duration: 4500
+        });
+      } else {
+        window.$notification?.error({
+          title: (error as any).msg,
+          content: (error as any).msg,
+          duration: 4500
+        });
+      }
+    } catch (e) {
+      resetStore();
+    } finally {
+      endLoading();
+    }
+  }
+
   return {
     token,
     userInfo,
@@ -136,6 +161,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     loginLoading,
     resetStore,
     login,
-    initUserInfo
+    initUserInfo,
+    restPassword
   };
 });

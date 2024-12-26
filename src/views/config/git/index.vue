@@ -21,7 +21,7 @@ const formRef = ref<FormInst | null>(null);
 const formValue = ref<FormState>({
   account: '',
   token: '',
-  dataSourceUrl: 'https://github.com/KingPrimes/DataSource.git'
+  dataSourceUrl: ''
 });
 
 const formRules = {
@@ -41,7 +41,7 @@ const formRules = {
     trigger: ['blur', 'input'],
     validator: (_: any, value: string) => {
       if (!value.startsWith('https://github.com/')) {
-        return new Error($t('common.form.urlError'));
+        return new Error($t('common.from.urlError'));
       }
       return true;
     }

@@ -1,6 +1,5 @@
 <script lang="tsx" setup>
-import { h, ref } from 'vue';
-import { NButton, NDataTable, NSpace, NTag, useMessage } from 'naive-ui';
+import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';

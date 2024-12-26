@@ -1,6 +1,6 @@
 const local: App.I18n.Schema = {
   system: {
-    title: 'Soybean 管理系统',
+    title: 'NyxBot 管理系统',
     updateTitle: '系统版本更新通知',
     updateContent: '检测到系统有新版本发布，是否立即刷新页面？',
     updateConfirm: '立即刷新',
@@ -22,6 +22,7 @@ const local: App.I18n.Schema = {
     delete: '删除',
     deleteSuccess: '删除成功',
     confirmDelete: '确认删除吗？',
+    editPassword: '修改密码',
     edit: '编辑',
     warning: '警告',
     error: '错误',
@@ -47,6 +48,18 @@ const local: App.I18n.Schema = {
     yesOrNo: {
       yes: '是',
       no: '否'
+    },
+    restPassword: {
+      success: '重置密码成功',
+      successTip: '密码重置成功，请使用新密码登录',
+      error: '重置密码失败',
+      errorTip: '密码重置失败，请稍后重试',
+      oldPassword: '旧密码',
+      newPassword: '新密码',
+      confirmPassword: '确认密码'
+    },
+    from: {
+      urlError: 'URL格式不正确，请输入正确的URL'
     }
   },
   request: {
@@ -185,7 +198,8 @@ const local: App.I18n.Schema = {
     'log_real-time': '实时日志',
     config_whitelist: '白名单',
     config_whitelist_group: '群白名单',
-    config_whitelist_personal: '个人白名单'
+    config_whitelist_personal: '个人白名单',
+    'rest-password': '重置密码'
   },
   page: {
     login: {
@@ -505,6 +519,13 @@ const local: App.I18n.Schema = {
   },
   datatable: {
     itemCount: '共 {total} 条'
+  },
+  config: {
+    service: {
+      form: {
+        portError: '端口格式不正确，请输入1-65535之间的数字'
+      }
+    }
   }
 };
 

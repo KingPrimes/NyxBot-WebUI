@@ -13,7 +13,7 @@ interface Props {
   /** the type of operation */
   operateType: NaiveUI.TableOperateType;
   /** the edit row data */
-  rowData?: Api.SystemConfig.Admin | null;
+  rowData?: Api.SystemConfig.AdminModel | null;
 }
 
 const props = defineProps<Props>();

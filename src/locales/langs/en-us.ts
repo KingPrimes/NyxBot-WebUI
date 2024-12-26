@@ -1,6 +1,6 @@
 const local: App.I18n.Schema = {
   system: {
-    title: 'SoybeanAdmin',
+    title: 'NyxBotAdmin',
     updateTitle: 'System Version Update Notification',
     updateContent: 'A new version of the system has been detected. Do you want to refresh the page immediately?',
     updateConfirm: 'Refresh immediately',
@@ -22,6 +22,7 @@ const local: App.I18n.Schema = {
     delete: 'Delete',
     deleteSuccess: 'Delete Success',
     confirmDelete: 'Are you sure you want to delete?',
+    editPassword: 'Edit Password',
     edit: 'Edit',
     warning: 'Warning',
     error: 'Error',
@@ -47,6 +48,18 @@ const local: App.I18n.Schema = {
     yesOrNo: {
       yes: 'Yes',
       no: 'No'
+    },
+    restPassword: {
+      success: 'reset password success',
+      successTip: 'reset password success, please login again',
+      error: 'reset password failed',
+      errorTip: 'reset password failed, please try again later',
+      oldPassword: 'old password',
+      newPassword: 'new password',
+      confirmPassword: 'confirm password'
+    },
+    from: {
+      urlError: "url can't be empty"
     }
   },
   request: {
@@ -185,7 +198,8 @@ const local: App.I18n.Schema = {
     'local-data_warframe_translation': 'Warframe Translation',
     'local-data_warframe_untranslated': 'Warframe Untranslated',
     log_command: 'Log Command',
-    'log_real-time': 'Log Real-time'
+    'log_real-time': 'Log Real-time',
+    'rest-password': 'rest password'
   },
   page: {
     login: {
@@ -505,6 +519,13 @@ const local: App.I18n.Schema = {
   },
   datatable: {
     itemCount: 'Total {total} items'
+  },
+  config: {
+    service: {
+      form: {
+        portError: 'port must be a number between 1 and 65535'
+      }
+    }
   }
 };
 

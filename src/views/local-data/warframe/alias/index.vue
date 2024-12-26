@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
+import { NButton, NDataTable } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
@@ -60,16 +60,6 @@ const {
           <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
             {$t('common.edit')}
           </NButton>
-          <NPopconfirm onPositiveClick={() => handleDelete(row.id)}>
-            {{
-              default: () => $t('common.confirmDelete'),
-              trigger: () => (
-                <NButton type="error" ghost size="small">
-                  {$t('common.delete')}
-                </NButton>
-              )
-            }}
-          </NPopconfirm>
         </div>
       )
     }
@@ -83,9 +73,7 @@ const {
   handleAdd,
   handleEdit,
   checkedRowKeys,
-  onBatchDeleted,
-  onDeleted
-  // closeDrawer
+  onBatchDeleted // closeDrawer
 } = useTableOperate(data, getData);
 
 async function handleBatchDelete() {
@@ -93,13 +81,6 @@ async function handleBatchDelete() {
   console.log(checkedRowKeys.value);
 
   onBatchDeleted();
-}
-
-function handleDelete(id: number) {
-  // request
-  console.log(id);
-
-  onDeleted();
 }
 
 function edit(id: number) {

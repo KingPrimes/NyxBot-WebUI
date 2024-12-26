@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import { NButton, NDataTable, NTag } from 'naive-ui';
+import { NButton, NDataTable, NPopconfirm, NTag } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
@@ -27,7 +27,7 @@ const {
     size: 10,
     // if you want to use the searchParams in Form, you need to define the following properties, and the value is null
     // the value can not be undefined, otherwise the property in Form will not be reactive
-    role: null
+    role: undefined
   },
   columns: () => [
     {
@@ -65,12 +65,15 @@ const {
 
         const tagMap: Record<Api.SystemConfig.AdminRoleType, NaiveUI.ThemeColor> = {
           1: 'success',
-          2: 'warning'
+          2: 'warning',
+          3: 'default',
+          4: 'default',
+          5: 'default'
         };
 
-        const label = $t(roleRecord[row.role]);
+        // const label = $t(roleRecord[row.role]);
 
-        return <NTag type={tagMap[row.role]}>{label}</NTag>;
+        return <NTag type={tagMap[row.role]}>{'label'}</NTag>;
       }
     },
 

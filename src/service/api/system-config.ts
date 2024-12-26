@@ -53,7 +53,7 @@ export function fetchGetAllBotOptionList() {
 
 /** 获取黑名单群组列表 */
 export function fetchGetBlacklistGroupList(params?: Api.SystemConfig.BlacklistGroupSearchParams) {
-  return request<Api.SystemConfig.BlacklistGroup[]>({
+  return request<Api.SystemConfig.BlacklistGroupList>({
     url: '/systemConfig/getBlacklistGroupList',
     method: 'get',
     params
@@ -62,7 +62,7 @@ export function fetchGetBlacklistGroupList(params?: Api.SystemConfig.BlacklistGr
 
 /** 获取黑名单个人列表 */
 export function fetchGetBlacklistPersonalList(params?: Api.SystemConfig.BlacklistPersonalSearchParams) {
-  return request<Api.SystemConfig.BlacklistPersonal[]>({
+  return request<Api.SystemConfig.BlacklistPersonalList>({
     url: '/systemConfig/getBlacklistPersonalList',
     method: 'get',
     params
@@ -71,7 +71,7 @@ export function fetchGetBlacklistPersonalList(params?: Api.SystemConfig.Blacklis
 
 /** 获取白名单群组列表 */
 export function fetchGetWhitelistGroupList(params?: Api.SystemConfig.WhitelistGroupSearchParams) {
-  return request<Api.SystemConfig.WhitelistGroup[]>({
+  return request<Api.SystemConfig.WhitelistGroupList>({
     url: '/systemConfig/getWhitelistGroupList',
     method: 'get',
     params
@@ -80,7 +80,7 @@ export function fetchGetWhitelistGroupList(params?: Api.SystemConfig.WhitelistGr
 
 /** 获取白名单个人列表 */
 export function fetchGetWhitelistPersonalList(params?: Api.SystemConfig.WhitelistPersonalSearchParams) {
-  return request<Api.SystemConfig.WhitelistPersonal[]>({
+  return request<Api.SystemConfig.WhitelistPersonalList>({
     url: '/systemConfig/getWhitelistPersonalList',
     method: 'get',
     params

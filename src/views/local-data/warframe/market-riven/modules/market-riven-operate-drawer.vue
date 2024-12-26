@@ -37,27 +37,27 @@ const title = computed(() => {
   return titles[props.operateType];
 });
 
-type Model = Pick<Api.LocalData.MarketRiven, 'itemName' | 'rivenType' | 'group' | 'rankLimit' | 'imageUrl'>;
+type Model = Pick<Api.LocalData.MarketRiven, 'item_name' | 'riven_type' | 'group' | 'rank_limit' | 'thumb'>;
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    itemName: '',
-    rivenType: '',
+    item_name: '',
+    riven_type: '',
     group: '',
-    rankLimit: '',
-    imageUrl: ''
+    rank_limit: '',
+    thumb: ''
   };
 }
 
-type RuleKey = Extract<keyof Model, 'itemName' | 'rivenType' | 'group' | 'rankLimit' | 'imageUrl'>;
+type RuleKey = Extract<keyof Model, 'item_name' | 'riven_type' | 'group' | 'rank_limit' | 'thumb'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
-  itemName: defaultRequiredRule,
-  rivenType: defaultRequiredRule,
+  item_name: defaultRequiredRule,
+  riven_type: defaultRequiredRule,
   group: defaultRequiredRule,
-  rankLimit: defaultRequiredRule,
-  imageUrl: defaultRequiredRule
+  rank_limit: defaultRequiredRule,
+  thumb: defaultRequiredRule
 };
 
 function handleInitModel() {
@@ -92,20 +92,35 @@ watch(visible, () => {
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
-        <NFormItem :label="$t('page.local-data.warframe.market-riven.itemName')" path="itemName">
-          <NInput v-model:value="model.itemName" :placeholder="$t('page.local-data.warframe.market-riven.itemNamePlaceholder')" />
+        <NFormItem :label="$t('page.local-data.warframe.market-riven.itemName')" path="item_name">
+          <NInput
+            v-model:value="model.item_name"
+            :placeholder="$t('page.local-data.warframe.market-riven.itemNamePlaceholder')"
+          />
         </NFormItem>
-        <NFormItem :label="$t('page.local-data.warframe.market-riven.rivenType')" path="rivenType">
-          <NInput v-model:value="model.rivenType" :placeholder="$t('page.local-data.warframe.market-riven.rivenTypePlaceholder')" />
+        <NFormItem :label="$t('page.local-data.warframe.market-riven.rivenType')" path="riven_type">
+          <NInput
+            v-model:value="model.riven_type"
+            :placeholder="$t('page.local-data.warframe.market-riven.rivenTypePlaceholder')"
+          />
         </NFormItem>
         <NFormItem :label="$t('page.local-data.warframe.market-riven.group')" path="group">
-          <NInput v-model:value="model.group" :placeholder="$t('page.local-data.warframe.market-riven.groupPlaceholder')" />
+          <NInput
+            v-model:value="model.group"
+            :placeholder="$t('page.local-data.warframe.market-riven.groupPlaceholder')"
+          />
         </NFormItem>
-        <NFormItem :label="$t('page.local-data.warframe.market-riven.rankLimit')" path="rankLimit">
-          <NInput v-model:value="model.rankLimit" :placeholder="$t('page.local-data.warframe.market-riven.rankLimitPlaceholder')" />
+        <NFormItem :label="$t('page.local-data.warframe.market-riven.rankLimit')" path="rank_limit">
+          <NInput
+            v-model:value="model.rank_limit"
+            :placeholder="$t('page.local-data.warframe.market-riven.rankLimitPlaceholder')"
+          />
         </NFormItem>
-        <NFormItem :label="$t('page.local-data.warframe.market-riven.imageUrl')" path="imageUrl">
-          <NInput v-model:value="model.imageUrl" :placeholder="$t('page.local-data.warframe.market-riven.imageUrlPlaceholder')" />
+        <NFormItem :label="$t('page.local-data.warframe.market-riven.imageUrl')" path="thumb">
+          <NInput
+            v-model:value="model.thumb"
+            :placeholder="$t('page.local-data.warframe.market-riven.imageUrlPlaceholder')"
+          />
         </NFormItem>
       </NForm>
       <template #footer>

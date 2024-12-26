@@ -13,7 +13,6 @@ interface Props {
   /** the type of operation */
   operateType: NaiveUI.TableOperateType;
   /** the edit row data */
-  rowData?: Api.SystemConfig.Admin | null;
 }
 
 const props = defineProps<Props>();
@@ -73,8 +72,8 @@ async function getGroupAccountOptions() {
 function handleInitModel() {
   model.value = createDefaultModel();
 
-  if (props.operateType === 'edit' && props.rowData) {
-    Object.assign(model.value, props.rowData);
+  if (props.operateType === 'edit') {
+    Object.assign(model.value);
   }
 }
 

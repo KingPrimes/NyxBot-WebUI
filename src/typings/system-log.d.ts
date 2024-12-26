@@ -1,6 +1,6 @@
 declare namespace Api {
   namespace SystemLog {
-    interface LogSearchParams {
+    interface LogSearchParams extends Common.CommonSearchParams {
       page?: number;
       pageSize?: number;
     }

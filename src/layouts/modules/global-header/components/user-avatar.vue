@@ -18,18 +18,11 @@ function loginOrRegister() {
   toLogin();
 }
 
-type DropdownKey = 'logout';
-
-type DropdownOption =
-  | {
-      key: DropdownKey;
-      label: string;
-      icon?: () => VNode;
-    }
-  | {
-      type: 'divider';
-      key: string;
-    };
+type DropdownOption = {
+  key: string;
+  label: string;
+  icon?: () => VNode;
+};
 
 const options = computed(() => {
   const opts: DropdownOption[] = [
@@ -37,6 +30,11 @@ const options = computed(() => {
       label: $t('common.logout'),
       key: 'logout',
       icon: SvgIconVNode({ icon: 'ph:sign-out', fontSize: 18 })
+    },
+    {
+      key: 'rest-password',
+      label: $t('common.editPassword'),
+      icon: SvgIconVNode({ icon: 'ph:gear', fontSize: 18 })
     }
   ];
 
@@ -55,12 +53,16 @@ function logout() {
   });
 }
 
-function handleDropdown(key: DropdownKey) {
-  if (key === 'logout') {
-    logout();
-  } else {
-    // If your other options are jumps from other routes, they will be directly supported here
-    routerPushByKey(key);
+function handleDropdown(key: string) {
+  switch (key) {
+    case 'logout':
+      logout();
+      break;
+    case 'rest-password':
+      routerPushByKey(key);
+      break;
+    default:
+      break;
   }
 }
 </script>

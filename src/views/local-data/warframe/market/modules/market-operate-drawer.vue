@@ -37,21 +37,21 @@ const title = computed(() => {
   return titles[props.operateType];
 });
 
-type Model = Pick<Api.LocalData.Market, 'itemName' | 'imageUrl'>;
+type Model = Pick<Api.LocalData.Market, 'item_name' | 'thumb'>;
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    itemName: '',
-    imageUrl: ''
+    item_name: '',
+    thumb: ''
   };
 }
 
-type RuleKey = Extract<keyof Model, 'itemName' | 'imageUrl'>;
+type RuleKey = Extract<keyof Model, 'item_name' | 'thumb'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
-  itemName: defaultRequiredRule,
-  imageUrl: defaultRequiredRule
+  item_name: defaultRequiredRule,
+  thumb: defaultRequiredRule
 };
 
 function handleInitModel() {
@@ -88,13 +88,13 @@ watch(visible, () => {
       <NForm ref="formRef" :model="model" :rules="rules">
         <NFormItem :label="$t('page.local-data.warframe.market.itemName')" path="itemName">
           <NInput
-            v-model:value="model.itemName"
+            v-model:value="model.item_name"
             :placeholder="$t('page.local-data.warframe.market.itemNamePlaceholder')"
           />
         </NFormItem>
-        <NFormItem :label="$t('page.local-data.warframe.market.imageUrl')" path="imageUrl">
+        <NFormItem :label="$t('page.local-data.warframe.market.imageUrl')" path="thumb">
           <NInput
-            v-model:value="model.imageUrl"
+            v-model:value="model.thumb"
             :placeholder="$t('page.local-data.warframe.market.imageUrlPlaceholder')"
           />
         </NFormItem>

@@ -10,9 +10,9 @@ declare namespace Api {
       operateTime: string;
     }
 
-    interface CommandSearchParams {
-      command: string | null;
-      groupQQ: string | null;
+    interface CommandSearchParams extends Common.CommonSearchParams {
+      command?: string | null;
+      groupQQ?: string | null;
     }
 
     type CommandList = App.PageData<Command>;

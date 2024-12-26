@@ -332,5 +332,14 @@ export const generatedRoutes: GeneratedRoute[] = [
       constant: true,
       hideInMenu: true
     }
+  },
+  {
+    name: 'rest-password',
+    path: '/rest-password',
+    component: 'layout.base$view.rest-password',
+    meta: {
+      title: 'rest-password',
+      i18nKey: 'common.editPassword'
+    }
   }
 ];

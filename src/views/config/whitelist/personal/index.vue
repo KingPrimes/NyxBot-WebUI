@@ -1,6 +1,5 @@
 <script lang="tsx" setup>
-import { h, ref } from 'vue';
-import { NButton, NDataTable, NSpace, NTag, useMessage } from 'naive-ui';
+import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
@@ -76,7 +75,6 @@ const {
 const {
   drawerVisible,
   operateType,
-  editingData,
   handleAdd,
   handleEdit,
   checkedRowKeys,
@@ -136,12 +134,7 @@ function edit(id: number) {
         :pagination="mobilePagination"
         class="sm:h-full"
       />
-      <WhiteOperateDrawer
-        v-model:visible="drawerVisible"
-        :operate-type="operateType"
-        :row-data="editingData"
-        @submitted="getDataByPage"
-      />
+      <WhiteOperateDrawer v-model:visible="drawerVisible" :operate-type="operateType" @submitted="getDataByPage" />
     </NCard>
   </div>
 </template>

@@ -1,6 +1,6 @@
 declare namespace Api {
   namespace SystemConfig {
-    interface AdminSearchParams {
+    interface AdminSearchParams extends Api.Common.CommonSearchParams {
       role?: string;
     }
 
@@ -8,18 +8,13 @@ declare namespace Api {
     type AdminRoleType = '1' | '2' | '3' | '4' | '5';
 
     interface AdminModel {
-      id?: string | number;
+      id?: number;
       botAccount: string;
       adminAccount: string;
       role: AdminRoleType | null;
     }
 
-    interface Admin extends Required<AdminModel> {
-      createTime: string;
-      updateTime: string;
-    }
-
-    type AdminList = App.PageData<Admin>;
+    type AdminList = App.PageData<AdminModel>;
 
     /** 机器人 下拉选项 */
     interface BotOption {
@@ -35,8 +30,8 @@ declare namespace Api {
     type BotOptionList = App.PageData<BotOption>;
     type AdminOptionList = App.PageData<AdminOption>;
 
-    interface BlacklistGroupSearchParams {
-      groupAccount?: string;
+    interface BlacklistGroupSearchParams extends Common.CommonSearchParams {
+      groupAccount?: string | null;
     }
 
     /** 黑名单组类型 */
@@ -44,22 +39,26 @@ declare namespace Api {
 
     /** 黑名单组 */
     interface BlacklistGroup {
-      id?: string | number;
-      groupAccount: string;
+      id?: number;
+      groupAccount?: string;
     }
 
-    interface BlacklistPersonalSearchParams {
+    type BlacklistGroupList = App.PageData<BlacklistGroup>;
+
+    interface BlacklistPersonalSearchParams extends Common.CommonSearchParams {
       personalAccount?: string;
     }
 
     /** 黑名单个人 */
     interface BlacklistPersonal {
-      id?: string | number;
+      id?: number;
       personalAccount: string;
     }
 
-    interface WhitelistGroupSearchParams {
-      groupAccount?: string;
+    type BlacklistPersonalList = App.PageData<BlacklistPersonal>;
+
+    interface WhitelistGroupSearchParams extends Common.CommonSearchParams {
+      groupAccount?: string | null;
     }
 
     /** 白名单组类型 */
@@ -67,18 +66,22 @@ declare namespace Api {
 
     /** 白名单组 */
     interface WhitelistGroup {
-      id?: string | number;
+      id?: number;
       groupAccount: string;
     }
 
-    interface WhitelistPersonalSearchParams {
+    type WhitelistGroupList = App.PageData<WhitelistGroup>;
+
+    interface WhitelistPersonalSearchParams extends Common.CommonSearchParams {
       personalAccount?: string;
     }
 
     /** 白名单个人 */
     interface WhitelistPersonal {
-      id?: string | number;
+      id?: number;
       personalAccount: string;
     }
+
+    type WhitelistPersonalList = App.PageData<WhitelistPersonal>;
   }
 }

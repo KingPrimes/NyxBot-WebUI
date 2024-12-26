@@ -65,6 +65,11 @@ declare namespace Api {
       roles: string[];
       buttons: string[];
     }
+
+    interface RestorePasswordResponse {
+      oldPassword: string;
+      newPassword: string;
+    }
   }
 
   /**

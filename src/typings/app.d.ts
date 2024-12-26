@@ -1,6 +1,6 @@
 /** The global namespace for the app */
 declare namespace App {
-  interface PageData<T> {
+  interface PageData<T> extends Api.Common.PaginatingQueryRecord<Api.Common.CommonRecord<T>> {
     data: T;
   }
   /** Theme namespace */
@@ -313,6 +313,7 @@ declare namespace App {
         delete: string;
         deleteSuccess: string;
         confirmDelete: string;
+        editPassword: string;
         edit: string;
         warning: string;
         error: string;
@@ -338,6 +339,18 @@ declare namespace App {
         yesOrNo: {
           yes: string;
           no: string;
+        };
+        restPassword: {
+          success: string;
+          successTip: string;
+          error: string;
+          errorTip: string;
+          oldPassword: string;
+          newPassword: string;
+          confirmPassword: string;
+        };
+        from: {
+          urlError: string;
         };
       };
       request: {
@@ -703,6 +716,13 @@ declare namespace App {
       };
       datatable: {
         itemCount: string;
+      };
+      config: {
+        service: {
+          form: {
+            portError: string;
+          };
+        };
       };
     };
 

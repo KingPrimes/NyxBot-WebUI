@@ -43,7 +43,6 @@ async function search() {
             >
               <NSelect
                 v-model:value="model.groupAccount"
-                :options="groupAccountOptions"
                 :placeholder="$t('page.config.blacklist.group.placeholder')"
                 clearable
               />

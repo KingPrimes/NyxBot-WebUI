@@ -15,7 +15,7 @@ interface Props {
   /** the type of operation */
   operateType: NaiveUI.TableOperateType;
   /** the edit row data */
-  rowData?: Api.SystemConfig.Admin | null;
+  rowData?: Api.SystemConfig.AdminModel | null;
 }
 
 const props = defineProps<Props>();
@@ -40,7 +40,7 @@ const title = computed(() => {
   };
   return titles[props.operateType];
 });
-type Model = Pick<Api.SystemConfig.Admin, 'botAccount' | 'adminAccount' | 'role'>;
+type Model = Pick<Api.SystemConfig.AdminModel, 'botAccount' | 'adminAccount' | 'role'>;
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
@@ -51,7 +51,7 @@ function createDefaultModel(): Model {
   };
 }
 
-type RuleKey = Extract<keyof Model, 'botAccount' | 'adminAccount' | 'status'>;
+type RuleKey = Extract<keyof Model, 'botAccount' | 'adminAccount' | 'role'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
   botAccount: defaultRequiredRule,

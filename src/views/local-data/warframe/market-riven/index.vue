@@ -25,9 +25,7 @@ const {
   showTotal: true,
   apiParams: {
     current: 1,
-    size: 10,
-    item_name: '',
-    riven_type: ''
+    size: 10
   },
   columns: () => [
     {
@@ -72,7 +70,7 @@ const {
       width: 120,
       render: row => {
         return h(NImage, {
-          src: row.imageUrl,
+          src: row.thumb,
           width: 48,
           height: 48,
           objectFit: 'cover',

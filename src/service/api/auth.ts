@@ -1,4 +1,4 @@
-import {request} from '../request';
+import { request } from '../request';
 
 /**
  * Login
@@ -8,7 +8,7 @@ import {request} from '../request';
  */
 export function fetchLogin(userName: string, password: string) {
   return request<Api.Auth.LoginToken>({
-    url: '/login',
+    url: '/auth/login',
     method: 'post',
     data: {
       userName,
@@ -19,7 +19,7 @@ export function fetchLogin(userName: string, password: string) {
 
 /** Get user info */
 export function fetchGetUserInfo() {
-  return request<Api.Auth.UserInfo>({ url: '/info' });
+  return request<Api.Auth.UserInfo>({ url: '/auth/info' });
 }
 
 /**
@@ -45,4 +45,16 @@ export function fetchRefreshToken(refreshToken: string) {
  */
 export function fetchCustomBackendError(code: string, msg: string) {
   return request({ url: '/auth/error', params: { code, msg } });
+}
+
+export function restorePassword(oldPassword: string, newPassword: string, confirmPassword: string) {
+  return request<Api.Auth.RestorePasswordResponse>({
+    url: '/auth/restorePassword',
+    method: 'post',
+    data: {
+      oldPassword,
+      newPassword,
+      confirmPassword
+    }
+  });
 }

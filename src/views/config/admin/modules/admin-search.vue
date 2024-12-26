@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { NButton, NCard, NCollapse, NCollapseItem, NForm, NFormItemGi, NGrid, NInput, NSelect, NSpace } from 'naive-ui';
+import { NButton, NCard, NCollapse, NCollapseItem, NForm, NFormItemGi, NGrid, NSelect, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useNaiveForm } from '@/hooks/common/form';
 import { adminRoleOptions } from '@/constants/admin';

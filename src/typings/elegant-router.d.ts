@@ -46,6 +46,7 @@ declare module "@elegant-router/types" {
     "log_command": "/log/command";
     "log_real-time": "/log/real-time";
     "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?";
+    "rest-password": "/rest-password";
   };
 
   /**
@@ -86,6 +87,7 @@ declare module "@elegant-router/types" {
     | "local-data"
     | "log"
     | "login"
+    | "rest-password"
   >;
 
   /**
@@ -107,6 +109,7 @@ declare module "@elegant-router/types" {
     | "500"
     | "iframe-page"
     | "login"
+    | "rest-password"
     | "config_admin"
     | "config_blacklist_group"
     | "config_blacklist_personal"

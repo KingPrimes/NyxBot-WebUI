@@ -191,7 +191,8 @@ const routeMap: RouteMap = {
   "log": "/log",
   "log_command": "/log/command",
   "log_real-time": "/log/real-time",
-  "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?"
+  "login": "/login/:module(pwd-login|code-login|register|reset-pwd|bind-wechat)?",
+  "rest-password": "/rest-password"
 };
 
 /**

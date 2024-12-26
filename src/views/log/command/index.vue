@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import { NButton, NCard, NDataTable, NSpace } from 'naive-ui';
+import { NCard, NDataTable } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable } from '@/hooks/common/table';
@@ -27,9 +27,7 @@ const {
   showTotal: true,
   apiParams: {
     current: 1,
-    size: 10,
-    command: null,
-    groupQQ: null
+    size: 10
   },
   columns: () => [
     {
@@ -73,19 +71,6 @@ const {
       title: $t('page.log.command.operateTime'),
       align: 'center',
       width: 180
-    },
-    {
-      key: 'operate',
-      title: $t('common.operate'),
-      align: 'center',
-      width: 130,
-      render: row => (
-        <NSpace justify="center">
-          <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
-            {$t('common.edit')}
-          </NButton>
-        </NSpace>
-      )
     }
   ]
 });

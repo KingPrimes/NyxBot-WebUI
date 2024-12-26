@@ -13,7 +13,7 @@ interface Props {
   /** the type of operation */
   operateType: NaiveUI.TableOperateType;
   /** the edit row data */
-  rowData?: Api.SystemConfig.Admin | null;
+  rowData?: Api.SystemConfig.AdminModel | null;
 }
 
 const props = defineProps<Props>();
@@ -52,8 +52,6 @@ type RuleKey = Extract<keyof Model, 'personalAccount'>;
 const rules: Record<RuleKey, App.Global.FormRule> = {
   personalAccount: defaultRequiredRule
 };
-
-const groupAccountOptions = ref<CommonType.Option<string>[]>([]);
 
 async function getPersonalAccountOptions() {
   /* const { error, data } = await fetchGetAllBotOptionList();
@@ -104,7 +102,7 @@ watch(visible, () => {
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
         <NFormItem :label="$t('page.config.whitelist.personal.personalAccount')" path="personalAccount">
-          <NSelect v-model:value="model.personalAccount" :options="personalAccountOptions" />
+          <NSelect v-model:value="model.personalAccount" />
         </NFormItem>
       </NForm>
       <template #footer>

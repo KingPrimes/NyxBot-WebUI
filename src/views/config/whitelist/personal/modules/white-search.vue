@@ -43,7 +43,6 @@ async function search() {
             >
               <NSelect
                 v-model:value="model.personalAccount"
-                :options="personalAccountOptions"
                 :placeholder="$t('page.config.whitelist.personal.placeholder')"
                 clearable
               />

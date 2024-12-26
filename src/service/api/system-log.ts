@@ -10,8 +10,8 @@ export function fetchGetRealTimeLogList(params?: Api.SystemLog.LogSearchParams) 
 }
 
 /** 获取指令日志列表 */
-export function fetchGetCommandLogList(params?: Api.SystemLog.LogSearchParams) {
-  return request<Api.SystemLog.CommandLogList>({
+export function fetchGetCommandLogList(params?: Api.Log.CommandSearchParams) {
+  return request<Api.Log.CommandList>({
     url: '/systemLog/getCommandLogList',
     method: 'get',
     params

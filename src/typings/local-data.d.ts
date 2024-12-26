@@ -1,47 +1,41 @@
 declare namespace Api {
   namespace LocalData {
-    interface AliasSearchParams {
-      en?: string;
-      cn?: string;
+    interface AliasSearchParams extends Common.CommonSearchParams {
+      cn?: string | null;
     }
 
-    interface AliasModel {
-      id?: string | number;
+    interface Alias {
+      id?: number;
       en: string;
       cn: string;
-    }
-
-    interface Alias extends Required<AliasModel> {
-      createTime: string;
-      updateTime: string;
     }
 
     type AliasList = App.PageData<Alias>;
 
     interface Market {
       id: number;
-      itemName: string;
-      imageUrl: string;
+      item_name: string;
+      thumb: string;
     }
 
-    interface MarketSearchParams {
-      item_name: string | null;
+    interface MarketSearchParams extends Common.CommonSearchParams {
+      item_name?: string | null;
     }
 
     type MarketList = App.PageData<Market>;
 
     interface MarketRiven {
       id: number;
-      itemName: string;
-      rivenType: string;
+      item_name: string;
+      riven_type: string;
       group: string;
-      rankLimit: string;
-      imageUrl: string;
+      rank_limit: string;
+      thumb: string;
     }
 
-    interface MarketRivenSearchParams {
-      item_name: string | null;
-      riven_type: string | null;
+    interface MarketRivenSearchParams extends Common.CommonSearchParams {
+      item_name?: string | null;
+      riven_type?: string | null;
     }
 
     type MarketRivenList = App.PageData<MarketRiven>;
@@ -55,8 +49,8 @@ declare namespace Api {
       animation: string;
     }
 
-    interface PhantomSearchParams {
-      item_name: string | null;
+    interface PhantomSearchParams extends Common.CommonSearchParams {
+      item_name?: string | null;
     }
 
     type PhantomList = App.PageData<Phantom>;
@@ -70,8 +64,8 @@ declare namespace Api {
       weaponType: string;
     }
 
-    interface RivenSearchParams {
-      itemName: string | null;
+    interface RivenSearchParams extends Common.CommonSearchParams {
+      itemName?: string | null;
     }
 
     type RivenList = App.PageData<Riven>;
@@ -82,8 +76,8 @@ declare namespace Api {
       chinese: string;
     }
 
-    interface TranslationSearchParams {
-      chinese: string | null;
+    interface TranslationSearchParams extends Common.CommonSearchParams {
+      chinese?: string | null;
     }
 
     type TranslationList = App.PageData<Translation>;
@@ -93,8 +87,8 @@ declare namespace Api {
       english: string;
     }
 
-    interface UntranslatedSearchParams {
-      text: string | null;
+    interface UntranslatedSearchParams extends Common.CommonSearchParams {
+      text?: string | null;
     }
 
     type UntranslatedList = App.PageData<Untranslated>;
