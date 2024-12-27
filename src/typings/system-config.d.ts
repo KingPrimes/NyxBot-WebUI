@@ -1,17 +1,14 @@
 declare namespace Api {
   namespace SystemConfig {
     interface AdminSearchParams extends Api.Common.CommonSearchParams {
-      role?: string;
+      botUid?: string;
     }
-
-    /** 管理员权限类型 */
-    type AdminRoleType = '1' | '2' | '3' | '4' | '5';
 
     interface AdminModel {
       id?: number;
-      botAccount: string;
-      adminAccount: string;
-      role: AdminRoleType | null;
+      botUid: string;
+      adminUid: string;
+      permissions: string;
     }
 
     type AdminList = App.PageData<AdminModel>;
@@ -27,6 +24,17 @@ declare namespace Api {
       value: string;
     }
 
+    interface Permissions {
+      label: string;
+      value: string;
+    }
+
+    /** 好友信息 */
+    interface FriendInfoResp {
+      user_id?: number;
+      nickname?: string;
+      remark?: string;
+    }
     type BotOptionList = App.PageData<BotOption>;
     type AdminOptionList = App.PageData<AdminOption>;
 

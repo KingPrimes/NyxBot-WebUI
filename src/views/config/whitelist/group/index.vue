@@ -3,7 +3,7 @@ import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetWhitelistGroupList } from '@/service/api/system-config';
+import { fetchGetWhitelistGroupList } from '@/service/api/system-config-bot';
 import WhiteSearch from './modules/white-search.vue';
 import WhiteOperateDrawer from './modules/white-operate-drawer.vue';
 

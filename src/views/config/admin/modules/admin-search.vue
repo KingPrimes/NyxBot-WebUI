@@ -2,8 +2,6 @@
 import { NButton, NCard, NCollapse, NCollapseItem, NForm, NFormItemGi, NGrid, NSelect, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useNaiveForm } from '@/hooks/common/form';
-import { adminRoleOptions } from '@/constants/admin';
-import { translateOptions } from '@/utils/common';
 
 defineOptions({
   name: 'AdminSearch'
@@ -38,12 +36,7 @@ async function search() {
         <NForm ref="formRef" :model="model" label-placement="left" :label-width="80">
           <NGrid responsive="screen" item-responsive>
             <NFormItemGi span="24 s:12 m:6" :label="$t('page.config.admin.role.roleName')" path="role" class="pr-24px">
-              <NSelect
-                v-model:value="model.role"
-                :options="translateOptions(adminRoleOptions)"
-                :placeholder="$t('page.config.admin.role.placeholder')"
-                clearable
-              />
+              <NSelect v-model:value="model.botUid" :placeholder="$t('page.config.admin.role.placeholder')" clearable />
             </NFormItemGi>
             <NFormItemGi span="24 m:12" class="pr-24px">
               <NSpace class="w-full" justify="end">

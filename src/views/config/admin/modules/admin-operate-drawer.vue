@@ -2,10 +2,8 @@
 import { computed, ref, watch } from 'vue';
 import { NSelect } from 'naive-ui';
 import { useFormRules, useNaiveForm } from '@/hooks/common/form';
-import { fetchGetAllAdminOptionList, fetchGetAllBotOptionList } from '@/service/api/system-config';
+import { fetchGetAllBotOptionList } from '@/service/api/system-config-bot';
 import { $t } from '@/locales';
-import { adminRoleOptions } from '@/constants/admin';
-import { translateOptions } from '@/utils/common';
 
 defineOptions({
   name: 'AdminOperateDrawer'
@@ -40,42 +38,26 @@ const title = computed(() => {
   };
   return titles[props.operateType];
 });
-type Model = Pick<Api.SystemConfig.AdminModel, 'botAccount' | 'adminAccount' | 'role'>;
+type Model = Pick<Api.SystemConfig.AdminModel, 'botUid' | 'adminUid' | 'permissions'>;
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    botAccount: '',
-    adminAccount: '',
-    role: null
+    botUid: '',
+    adminUid: '',
+    permissions: ''
   };
 }
 
-type RuleKey = Extract<keyof Model, 'botAccount' | 'adminAccount' | 'role'>;
+type RuleKey = Extract<keyof Model, 'botUid' | 'adminUid' | 'permissions'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
-  botAccount: defaultRequiredRule,
-  adminAccount: defaultRequiredRule,
-  role: defaultRequiredRule
+  botUid: defaultRequiredRule,
+  adminUid: defaultRequiredRule,
+  permissions: defaultRequiredRule
 };
 
 const adminAccountOptions = ref<CommonType.Option<string>[]>([]);
-
-async function getAdminAccountOptions() {
-  const { error, data } = await fetchGetAllAdminOptionList();
-
-  if (!error) {
-    adminAccountOptions.value = data.map(item => ({
-      label: item.label,
-      value: item.value
-    }));
-  }
-
-  /* const userAdminOptions = model.value.adminAccount.map(item => ({
-    label: item,
-    value: item
-  })); */
-}
 
 const botAccountOptions = ref<CommonType.Option<string>[]>([]);
 
@@ -114,7 +96,7 @@ watch(visible, () => {
   if (visible.value) {
     handleInitModel();
     restoreValidation();
-    getAdminAccountOptions();
+
     getBotAccountOptions();
   }
 });
@@ -124,14 +106,14 @@ watch(visible, () => {
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
-        <NFormItem :label="$t('page.config.admin.botAccount')" path="botAccount">
-          <NSelect v-model:value="model.botAccount" :options="botAccountOptions" />
+        <NFormItem :label="$t('page.config.admin.botAccount')" path="botUid">
+          <NSelect v-model:value="model.botUid" :options="botAccountOptions" />
         </NFormItem>
-        <NFormItem :label="$t('page.config.admin.adminAccount')" path="adminAccount">
-          <NSelect v-model:value="model.adminAccount" :options="adminAccountOptions" />
+        <NFormItem :label="$t('page.config.admin.adminAccount')" path="adminUid">
+          <NSelect v-model:value="model.adminUid" :options="adminAccountOptions" />
         </NFormItem>
-        <NFormItem :label="$t('page.config.admin.role.roleName')" path="role">
-          <NSelect v-model:value="model.role" :options="translateOptions(adminRoleOptions)" />
+        <NFormItem :label="$t('page.config.admin.roles.roleName')" path="permissions">
+          <NSelect v-model:value="model.permissions" />
         </NFormItem>
       </NForm>
       <template #footer>

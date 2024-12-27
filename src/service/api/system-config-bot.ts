@@ -1,45 +1,48 @@
+import { computed } from 'vue';
 import { request } from '../request';
 
+const baseUrl = '/config/bot';
+
 /** 获取管理员列表 */
-export function fetchGetAdminList(params?: Api.SystemConfig.AdminSearchParams) {
+export function fetchPostAdminList(params?: Api.SystemConfig.AdminSearchParams) {
   return request<Api.SystemConfig.AdminList>({
-    url: '/systemConfig/getAdminList',
-    method: 'get',
-    params
-  });
-}
-
-/** 添加管理员 */
-export function fetchAddAdmin(data: Api.SystemConfig.AdminModel) {
-  return request<null>({
-    url: '/systemConfig/addAdmin',
+    url: `${baseUrl}/admin/list`,
     method: 'post',
-    data
+    data: params
   });
 }
 
-/** 编辑管理员 */
-export function fetchEditAdmin(data: Api.SystemConfig.AdminModel) {
+/** 添加与修改管理员 */
+export function fetchAddAndEditAdmin(params: Api.SystemConfig.AdminModel) {
   return request<null>({
-    url: '/systemConfig/editAdmin',
-    method: 'put',
-    data
+    url: `${baseUrl}/admin/save`,
+    method: 'post',
+    data: params
   });
 }
 
-/** 删除管理员 */
-export function fetchDeleteAdmin(adminId: string | number) {
-  return request<null>({
-    url: `/systemConfig/deleteAdmin/${adminId}`,
-    method: 'delete'
-  });
-}
-
-/** 获取所有管理员 */
-export function fetchGetAllAdminOptionList() {
-  return request<Api.SystemConfig.AdminOption[]>({
-    url: '/systemConfig/getAllAdmin',
+/** 获取机器人的好友列表 */
+export function fetchGetAllAdminOptionList(botUid: number) {
+  return request<Api.SystemConfig.FriendInfoResp[]>({
+    url: `${baseUrl}/admin/friend/${botUid}`,
     method: 'get'
+  });
+}
+
+/** 获取权限Map */
+export function fetchGetPermissionsMap() {
+  return request<any>({
+    url: `${baseUrl}/admin/permissions`,
+    method: 'get'
+  }).then(res => {
+    return computed(() => {
+      res.data.map((item: any) => {
+        return {
+          label: item.name,
+          value: item.id
+        };
+      });
+    });
   });
 }
 

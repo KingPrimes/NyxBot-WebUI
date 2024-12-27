@@ -1,9 +1,9 @@
 <script lang="tsx" setup>
-import { NButton, NDataTable, NPopconfirm, NTag } from 'naive-ui';
+import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetAdminList } from '@/service/api/system-config';
+import { fetchPostAdminList } from '@/service/api/system-config-bot';
 import AdminSearch from './modules/admin-search.vue';
 import AdminOperateDrawer from './modules/admin-operate-drawer.vue';
 
@@ -20,14 +20,11 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetAdminList,
+  apiFn: fetchPostAdminList,
   showTotal: true,
   apiParams: {
     current: 1,
-    size: 10,
-    // if you want to use the searchParams in Form, you need to define the following properties, and the value is null
-    // the value can not be undefined, otherwise the property in Form will not be reactive
-    role: undefined
+    size: 10
   },
   columns: () => [
     {
@@ -42,39 +39,22 @@ const {
       width: 64
     },
     {
-      key: 'botAccount',
+      key: 'botUid',
       title: $t('page.config.admin.botAccount'),
       align: 'center',
       minWidth: 100
     },
     {
-      key: 'adminAccount',
+      key: 'adminUid',
       title: $t('page.config.admin.adminAccount'),
       align: 'center',
       width: 100
     },
     {
-      key: 'role',
+      key: 'permissions',
       title: $t('page.config.admin.roles.roleName'),
       align: 'center',
-      width: 100,
-      render: row => {
-        if (row.role === null) {
-          return null;
-        }
-
-        const tagMap: Record<Api.SystemConfig.AdminRoleType, NaiveUI.ThemeColor> = {
-          1: 'success',
-          2: 'warning',
-          3: 'default',
-          4: 'default',
-          5: 'default'
-        };
-
-        // const label = $t(roleRecord[row.role]);
-
-        return <NTag type={tagMap[row.role]}>{'label'}</NTag>;
-      }
+      width: 100
     },
 
     {

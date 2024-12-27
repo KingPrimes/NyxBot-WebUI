@@ -3,7 +3,7 @@ import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetBlacklistPersonalList } from '@/service/api/system-config';
+import { fetchGetBlacklistPersonalList } from '@/service/api/system-config-bot';
 import BlackSearch from './modules/black-search.vue';
 import BlackOperateDrawer from './modules/black-operate-drawer.vue';
 
