@@ -14,7 +14,7 @@ const emit = defineEmits<Emits>();
 
 const { formRef, validate, restoreValidation } = useNaiveForm();
 
-const model = defineModel<Api.LocalData.RivenSearchParams>('model', { required: true });
+const model = defineModel<Api.LocalData.RivenTrendSearchParams>('model', { required: true });
 
 async function reset() {
   await restoreValidation();
@@ -35,13 +35,13 @@ async function search() {
           <NGrid responsive="screen" item-responsive>
             <NFormItemGi
               span="24 s:12 m:8"
-              :label="$t('page.local-data.warframe.riven.itemName')"
-              path="itemName"
+              :label="$t('page.local-data.warframe.riven-trend.itemName')"
+              path="trend_name"
               class="pr-24px"
             >
               <NInput
-                v-model:value="model.itemName"
-                :placeholder="$t('page.local-data.warframe.riven.itemNamePlaceholder')"
+                v-model:value="model.trend_name"
+                :placeholder="$t('page.local-data.warframe.riven-trend.itemNamePlaceholder')"
               />
             </NFormItemGi>
             <NFormItemGi span="24 m:16" class="pr-24px">

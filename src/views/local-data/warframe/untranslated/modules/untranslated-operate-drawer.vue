@@ -37,19 +37,19 @@ const title = computed(() => {
   return titles[props.operateType];
 });
 
-type Model = Pick<Api.LocalData.Untranslated, 'english'>;
+type Model = Pick<Api.LocalData.Untranslated, 'notTranslation'>;
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    english: ''
+    notTranslation: ''
   };
 }
 
-type RuleKey = Extract<keyof Model, 'english'>;
+type RuleKey = Extract<keyof Model, 'notTranslation'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
-  english: defaultRequiredRule
+  notTranslation: defaultRequiredRule
 };
 
 function handleInitModel() {
@@ -84,9 +84,9 @@ watch(visible, () => {
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
-        <NFormItem :label="$t('page.local-data.warframe.untranslated.english')" path="english">
+        <NFormItem :label="$t('page.local-data.warframe.untranslated.english')" path="notTranslation">
           <NInput
-            v-model:value="model.english"
+            v-model:value="model.notTranslation"
             :placeholder="$t('page.local-data.warframe.untranslated.englishPlaceholder')"
           />
         </NFormItem>

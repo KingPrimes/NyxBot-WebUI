@@ -41,10 +41,11 @@ declare namespace Api {
     type MarketRivenList = App.PageData<MarketRiven>;
 
     interface Phantom {
-      id: number;
+      id: string;
       item_name: string;
       url_name: string;
       icon: string;
+      icon_format: string;
       thumb: string;
       animation: string;
     }
@@ -55,40 +56,46 @@ declare namespace Api {
 
     type PhantomList = App.PageData<Phantom>;
 
-    interface Riven {
+    interface RivenTrend {
       id: number;
-      itemName: string;
-      itemEnName: string;
-      newDisposition: string;
-      oldDisposition: string;
-      weaponType: string;
+      trend_name: string;
+      new_dot: string;
+      new_num: number;
+      old_dot: string;
+      old_num: number;
+      type: string;
+      isDate: any;
+      traCh: string;
     }
 
-    interface RivenSearchParams extends Common.CommonSearchParams {
-      itemName?: string | null;
+    interface RivenTrendSearchParams extends Common.CommonSearchParams {
+      trend_name?: string | null;
     }
 
-    type RivenList = App.PageData<Riven>;
+    type RivenTrendList = App.PageData<RivenTrend>;
 
     interface Translation {
       id: number;
-      english: string;
-      chinese: string;
+      en: string;
+      cn: string;
+      is_prime: boolean;
+      is_set: boolean;
     }
 
     interface TranslationSearchParams extends Common.CommonSearchParams {
-      chinese?: string | null;
+      cn?: string | null;
+      en?: string | null;
     }
 
     type TranslationList = App.PageData<Translation>;
 
     interface Untranslated {
       id: number;
-      english: string;
+      notTranslation: string;
     }
 
     interface UntranslatedSearchParams extends Common.CommonSearchParams {
-      text?: string | null;
+      notTranslation?: string | null;
     }
 
     type UntranslatedList = App.PageData<Untranslated>;

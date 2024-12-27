@@ -70,7 +70,7 @@ const {
       width: 120,
       render: row => {
         return h(NImage, {
-          src: row.thumb,
+          src: `https://warframe.market/static/assets/${row.thumb}`,
           width: 48,
           height: 48,
           objectFit: 'cover',

@@ -37,21 +37,21 @@ const title = computed(() => {
   return titles[props.operateType];
 });
 
-type Model = Pick<Api.LocalData.Translation, 'english' | 'chinese'>;
+type Model = Pick<Api.LocalData.Translation, 'en' | 'cn'>;
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    english: '',
-    chinese: ''
+    en: '',
+    cn: ''
   };
 }
 
-type RuleKey = Extract<keyof Model, 'english' | 'chinese'>;
+type RuleKey = Extract<keyof Model, 'en' | 'cn'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
-  english: defaultRequiredRule,
-  chinese: defaultRequiredRule
+  en: defaultRequiredRule,
+  cn: defaultRequiredRule
 };
 
 function handleInitModel() {
@@ -86,15 +86,15 @@ watch(visible, () => {
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
-        <NFormItem :label="$t('page.local-data.warframe.translation.english')" path="english">
+        <NFormItem :label="$t('page.local-data.warframe.translation.english')" path="en">
           <NInput
-            v-model:value="model.english"
+            v-model:value="model.en"
             :placeholder="$t('page.local-data.warframe.translation.englishPlaceholder')"
           />
         </NFormItem>
-        <NFormItem :label="$t('page.local-data.warframe.translation.chinese')" path="chinese">
+        <NFormItem :label="$t('page.local-data.warframe.translation.chinese')" path="cn">
           <NInput
-            v-model:value="model.chinese"
+            v-model:value="model.cn"
             :placeholder="$t('page.local-data.warframe.translation.chinesePlaceholder')"
           />
         </NFormItem>

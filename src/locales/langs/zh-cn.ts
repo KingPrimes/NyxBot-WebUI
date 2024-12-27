@@ -424,8 +424,8 @@ const local: App.I18n.Schema = {
           addPhantom: '添加幻纹数据',
           editPhantom: '编辑幻纹数据'
         },
-        riven: {
-          title: 'Riven',
+        'riven-trend': {
+          title: 'Riven 倾向',
           itemName: '物品名称',
           itemNamePlaceholder: '请输入物品名称',
           itemEnName: '物品英文名称',
@@ -437,7 +437,8 @@ const local: App.I18n.Schema = {
           weaponType: '武器类型',
           weaponTypePlaceholder: '请输入武器类型',
           addRiven: '添加Riven数据',
-          editRiven: '编辑Riven数据'
+          editRiven: '编辑Riven数据',
+          updateTime: '更新时间'
         },
         translation: {
           title: 'Warframe翻译管理',

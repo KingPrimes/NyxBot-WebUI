@@ -424,8 +424,8 @@ const local: App.I18n.Schema = {
           addPhantom: 'Add Phantom Data',
           editPhantom: 'Edit Phantom Data'
         },
-        riven: {
-          title: 'Riven',
+        'riven-trend': {
+          title: 'Riven Trend',
           itemName: 'Item Name',
           itemNamePlaceholder: 'Please enter the item name',
           itemEnName: 'Item English Name',
@@ -437,7 +437,8 @@ const local: App.I18n.Schema = {
           weaponType: 'Weapon Type',
           weaponTypePlaceholder: 'Please enter the weapon type',
           addRiven: 'Add Riven Data',
-          editRiven: 'Edit Riven Data'
+          editRiven: 'Edit Riven Data',
+          updateTime: 'Update Time'
         },
         translation: {
           title: 'Warframe Translation Management',

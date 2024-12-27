@@ -38,29 +38,29 @@ export function fetchPostPhantomList(params?: Api.LocalData.PhantomSearchParams)
   });
 }
 
-/** 获取WarframeRiven列表 */
-export function fetchGetRivenList(params?: Api.LocalData.RivenSearchParams) {
-  return request<Api.LocalData.RivenList>({
-    url: '/localData/getRivenList',
-    method: 'get',
-    params
+/** 获取RivenTrend列表 */
+export function fetchPostRivenTrendList(params?: Api.LocalData.RivenTrendSearchParams) {
+  return request<Api.LocalData.RivenTrendList>({
+    url: `${baseUrl}/rivenTrend/list`,
+    method: 'post',
+    data: params
   });
 }
 
 /** 获取Warframe翻译列表 */
-export function fetchGetTranslationList(params?: Api.LocalData.TranslationSearchParams) {
+export function fetchPostTranslationList(params?: Api.LocalData.TranslationSearchParams) {
   return request<Api.LocalData.TranslationList>({
-    url: '/localData/getTranslationList',
-    method: 'get',
-    params
+    url: `${baseUrl}/translation/list`,
+    method: 'post',
+    data: params
   });
 }
 
 /** 获取Warframe未翻译列表 */
-export function fetchGetUntranslatedList(params?: Api.LocalData.UntranslatedSearchParams) {
+export function fetchPostUntranslatedList(params?: Api.LocalData.UntranslatedSearchParams) {
   return request<Api.LocalData.UntranslatedList>({
-    url: '/localData/getUntranslatedList',
-    method: 'get',
-    params
+    url: `${baseUrl}/notTranslation/list`,
+    method: 'post',
+    data: params
   });
 }

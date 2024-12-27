@@ -1,4 +1,6 @@
 <script lang="tsx" setup>
+import { h } from 'vue';
+import { NImage } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
@@ -54,10 +56,22 @@ const {
       key: 'icon',
       title: $t('page.local-data.warframe.phantom.iconLink'),
       align: 'center',
-      width: 150
+      width: 150,
+      render: row => {
+        return h(NImage, {
+          src: `https://warframe.market/static/assets/${row.icon}`,
+          width: 48,
+          height: 48,
+          objectFit: 'cover',
+          previewDisabled: false,
+          style: {
+            borderRadius: '4px'
+          }
+        });
+      }
     },
     {
-      key: 'thumb',
+      key: 'icon_format',
       title: $t('page.local-data.warframe.phantom.imageSource'),
       align: 'center',
       width: 150
@@ -66,7 +80,19 @@ const {
       key: 'animation',
       title: $t('page.local-data.warframe.phantom.animation'),
       align: 'center',
-      width: 150
+      width: 150,
+      render: row => {
+        return h(NImage, {
+          src: `https://warframe.market/static/assets/${row.animation}`,
+          width: 48,
+          height: 48,
+          objectFit: 'cover',
+          previewDisabled: false,
+          style: {
+            borderRadius: '4px'
+          }
+        });
+      }
     }
   ]
 });

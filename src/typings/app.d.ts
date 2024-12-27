@@ -645,7 +645,7 @@ declare namespace App {
               addPhantom: string;
               editPhantom: string;
             };
-            riven: {
+            'riven-trend': {
               title: string;
               itemName: string;
               itemNamePlaceholder: string;
@@ -659,6 +659,7 @@ declare namespace App {
               weaponTypePlaceholder: string;
               addRiven: string;
               editRiven: string;
+              updateTime: string;
             };
             translation: {
               title: string;

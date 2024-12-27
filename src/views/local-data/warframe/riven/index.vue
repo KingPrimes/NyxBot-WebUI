@@ -1,9 +1,10 @@
 <script lang="tsx" setup>
-import { NButton, NCard, NDataTable, NPopconfirm, NSpace } from 'naive-ui';
+import { NButton, NCard, NDataTable, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetRivenList } from '@/service/api/local-data';
+import { fetchPostRivenTrendList } from '@/service/api/local-data';
+import { RivenTrendType } from '@/enum';
 import RivenSearch from './modules/riven-search.vue';
 import RivenOperateDrawer from './modules/riven-operate-drawer.vue';
 
@@ -20,12 +21,11 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetRivenList,
+  apiFn: fetchPostRivenTrendList,
   showTotal: true,
   apiParams: {
     current: 1,
-    size: 10,
-    itemName: null
+    size: 10
   },
   columns: () => [
     {
@@ -40,74 +40,79 @@ const {
       width: 80
     },
     {
-      key: 'itemName',
-      title: $t('page.local-data.warframe.riven.itemName'),
+      key: 'traCh',
+      title: $t('page.local-data.warframe.riven-trend.itemName'),
       align: 'center',
-      minWidth: 120
+      minWidth: 100
     },
     {
-      key: 'itemEnName',
-      title: $t('page.local-data.warframe.riven.itemEnName'),
+      key: 'trend_name',
+      title: $t('page.local-data.warframe.riven-trend.itemEnName'),
       align: 'center',
-      width: 150
+      width: 100
     },
     {
-      key: 'newDisposition',
-      title: $t('page.local-data.warframe.riven.newDisposition'),
+      key: 'new_dot',
+      title: $t('page.local-data.warframe.riven-trend.newDisposition'),
       align: 'center',
-      width: 120
+      width: 80
     },
     {
-      key: 'oldDisposition',
-      title: $t('page.local-data.warframe.riven.oldDisposition'),
+      key: 'new_num',
+      title: $t('page.local-data.warframe.riven-trend.newDisposition'),
       align: 'center',
-      width: 120
+      width: 60
     },
     {
-      key: 'weaponType',
-      title: $t('page.local-data.warframe.riven.weaponType'),
+      key: 'old_dot',
+      title: $t('page.local-data.warframe.riven-trend.oldDisposition'),
       align: 'center',
-      width: 120
+      width: 80
+    },
+    {
+      key: 'old_num',
+      title: $t('page.local-data.warframe.riven-trend.oldDisposition'),
+      align: 'center',
+      width: 60
+    },
+    {
+      key: 'type',
+      title: $t('page.local-data.warframe.riven-trend.weaponType'),
+      align: 'center',
+      width: 120,
+      render: row => {
+        return <span>{RivenTrendType[row.type as keyof typeof RivenTrendType]}</span>;
+      }
+    },
+    {
+      key: 'isDate',
+      title: $t('page.local-data.warframe.riven-trend.updateTime'),
+      align: 'center',
+      width: 180
     },
     {
       key: 'operate',
       title: $t('common.operate'),
       align: 'center',
-      width: 130,
+      width: 100,
       render: row => (
         <NSpace justify="center">
           <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
             {$t('common.edit')}
           </NButton>
-          <NPopconfirm onPositiveClick={() => handleDelete(row.id)}>
-            {{
-              default: () => $t('common.confirmDelete'),
-              trigger: () => (
-                <NButton type="error" ghost size="small">
-                  {$t('common.delete')}
-                </NButton>
-              )
-            }}
-          </NPopconfirm>
         </NSpace>
       )
     }
   ]
 });
 
-const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedRowKeys, onBatchDeleted, onDeleted } =
+const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedRowKeys, onBatchDeleted } =
   useTableOperate(data, getData);
 
 async function handleBatchDelete() {
   // request
-  console.log(checkedRowKeys.value);
+  // console.log(checkedRowKeys.value);
   onBatchDeleted();
-}
-
-function handleDelete(id: number) {
-  // request
-  console.log(id);
-  onDeleted();
 }
 
 function edit(id: number) {
@@ -119,7 +124,7 @@ function edit(id: number) {
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
     <RivenSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
     <NCard
-      :title="$t('page.local-data.warframe.riven.title')"
+      :title="$t('page.local-data.warframe.riven-trend.title')"
       :bordered="false"
       size="small"
       class="sm:flex-1-hidden card-wrapper"

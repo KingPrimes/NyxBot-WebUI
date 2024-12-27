@@ -3,7 +3,7 @@ import { NButton, NCard, NDataTable, NPopconfirm, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetTranslationList } from '@/service/api/local-data';
+import { fetchPostTranslationList } from '@/service/api/local-data';
 import TranslationSearch from './modules/translation-search.vue';
 import TranslationOperateDrawer from './modules/translation-operate-drawer.vue';
 
@@ -20,12 +20,11 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetTranslationList,
+  apiFn: fetchPostTranslationList,
   showTotal: true,
   apiParams: {
     current: 1,
-    size: 10,
-    chinese: null
+    size: 10
   },
   columns: () => [
     {
@@ -40,13 +39,13 @@ const {
       width: 80
     },
     {
-      key: 'english',
+      key: 'en',
       title: $t('page.local-data.warframe.translation.english'),
       align: 'center',
       minWidth: 150
     },
     {
-      key: 'chinese',
+      key: 'cn',
       title: $t('page.local-data.warframe.translation.chinese'),
       align: 'center',
       minWidth: 150

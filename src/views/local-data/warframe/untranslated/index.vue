@@ -3,7 +3,7 @@ import { NButton, NCard, NDataTable, NPopconfirm, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetUntranslatedList } from '@/service/api/local-data';
+import { fetchPostUntranslatedList } from '@/service/api/local-data';
 import UntranslatedSearch from './modules/untranslated-search.vue';
 import UntranslatedOperateDrawer from './modules/untranslated-operate-drawer.vue';
 
@@ -20,12 +20,11 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetUntranslatedList,
+  apiFn: fetchPostUntranslatedList,
   showTotal: true,
   apiParams: {
     current: 1,
-    size: 10,
-    text: null
+    size: 10
   },
   columns: () => [
     {
@@ -40,7 +39,7 @@ const {
       width: 80
     },
     {
-      key: 'english',
+      key: 'notTranslation',
       title: $t('page.local-data.warframe.untranslated.english'),
       align: 'center',
       minWidth: 150

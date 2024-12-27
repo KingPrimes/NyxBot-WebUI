@@ -36,11 +36,11 @@ async function search() {
             <NFormItemGi
               span="24 s:12 m:8"
               :label="$t('page.local-data.warframe.untranslated.text')"
-              path="text"
+              path="notTranslation"
               class="pr-24px"
             >
               <NInput
-                v-model:value="model.text"
+                v-model:value="model.notTranslation"
                 :placeholder="$t('page.local-data.warframe.untranslated.textPlaceholder')"
               />
             </NFormItemGi>

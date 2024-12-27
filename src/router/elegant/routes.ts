@@ -340,7 +340,7 @@ export const generatedRoutes: GeneratedRoute[] = [
     meta: {
       title: 'rest-password',
       i18nKey: 'common.editPassword',
-      hidden: true
+      hideInMenu: true
     }
   }
 ];
