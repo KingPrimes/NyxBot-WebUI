@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/require-default-prop -->
 <script setup lang="ts">
 import { $t } from '@/locales';
 
@@ -9,14 +10,24 @@ interface Props {
   itemAlign?: NaiveUI.Align;
   disabledDelete?: boolean;
   loading?: boolean;
+  showDelete?: boolean;
+  showPush?: boolean;
+  showUpdate?: boolean;
+  showAdd?: boolean;
 }
 
-defineProps<Props>();
+// defineProps<Props>();
+
+withDefaults(defineProps<Props>(), {
+  showAdd: true // 设置默认值为 true
+});
 
 interface Emits {
   (e: 'add'): void;
   (e: 'delete'): void;
   (e: 'refresh'): void;
+  (e: 'update'): void;
+  (e: 'push'): void;
 }
 
 const emit = defineEmits<Emits>();
@@ -36,19 +47,39 @@ function batchDelete() {
 function refresh() {
   emit('refresh');
 }
+function update() {
+  emit('update');
+}
+
+function push() {
+  emit('push');
+}
 </script>
 
 <template>
   <NSpace :align="itemAlign" wrap justify="end" class="lt-sm:w-200px">
-    <slot name="prefix"></slot>
+    <slot name="prefix">
+      <NButton v-if="showPush" size="small" ghost type="warning" @click="push">
+        <template #icon>
+          <icon-ic-round-publish class="text-icon" />
+        </template>
+        {{ $t('common.push') }}
+      </NButton>
+      <NButton v-if="showUpdate" size="small" ghost type="success" @click="update">
+        <template #icon>
+          <icon-ic-sharp-update class="text-icon" />
+        </template>
+        {{ $t('common.update') }}
+      </NButton>
+    </slot>
     <slot name="default">
-      <NButton size="small" ghost type="primary" @click="add">
+      <NButton v-if="showAdd" size="small" ghost type="primary" @click="add">
         <template #icon>
           <icon-ic-round-plus class="text-icon" />
         </template>
         {{ $t('common.add') }}
       </NButton>
-      <NPopconfirm @positive-click="batchDelete">
+      <NPopconfirm v-if="showDelete" @positive-click="batchDelete">
         <template #trigger>
           <NButton size="small" ghost type="error" :disabled="disabledDelete">
             <template #icon>

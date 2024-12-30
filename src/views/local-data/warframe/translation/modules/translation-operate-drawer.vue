@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
+import { NFormItem } from 'naive-ui';
 import { useFormRules, useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
+import { fetchPostSaveTranslation } from '@/service/api/local-data';
 
 defineOptions({
   name: 'TranslationOperateDrawer'
@@ -37,21 +39,26 @@ const title = computed(() => {
   return titles[props.operateType];
 });
 
-type Model = Pick<Api.LocalData.Translation, 'en' | 'cn'>;
+type Model = Pick<Api.LocalData.Translation, 'id' | 'en' | 'cn' | 'is_prime' | 'is_set'>;
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
+    id: 0,
     en: '',
-    cn: ''
+    cn: '',
+    is_prime: false,
+    is_set: false
   };
 }
 
-type RuleKey = Extract<keyof Model, 'en' | 'cn'>;
+type RuleKey = Extract<keyof Model, 'en' | 'cn' | 'is_prime' | 'is_set'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
   en: defaultRequiredRule,
-  cn: defaultRequiredRule
+  cn: defaultRequiredRule,
+  is_prime: defaultRequiredRule,
+  is_set: defaultRequiredRule
 };
 
 function handleInitModel() {
@@ -68,8 +75,14 @@ function closeDrawer() {
 
 async function handleSubmit() {
   await validate();
-  // request
-  window.$message?.success($t('common.updateSuccess'));
+  await fetchPostSaveTranslation(model.value).then(res => {
+    if (Number(res.response.data.code) === 200) {
+      window.$message?.success(res.response.data.msg);
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
+
   closeDrawer();
   emit('submitted');
 }
@@ -97,6 +110,18 @@ watch(visible, () => {
             v-model:value="model.cn"
             :placeholder="$t('page.local-data.warframe.translation.chinesePlaceholder')"
           />
+        </NFormItem>
+        <NFormItem :label="$t('page.local-data.warframe.translation.isPrime')" path="is_prime">
+          <NRadioGroup v-model:value="model.is_prime">
+            <NRadio label="否" :value="false" />
+            <NRadio label="是" :value="true" />
+          </NRadioGroup>
+        </NFormItem>
+        <NFormItem :label="$t('page.local-data.warframe.translation.isSet')" path="is_set">
+          <NRadioGroup v-model:value="model.is_set">
+            <NRadio label="否" :value="false" />
+            <NRadio label="是" :value="true" />
+          </NRadioGroup>
         </NFormItem>
       </NForm>
       <template #footer>

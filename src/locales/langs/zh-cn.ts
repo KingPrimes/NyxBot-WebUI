@@ -60,7 +60,9 @@ const local: App.I18n.Schema = {
     },
     from: {
       urlError: 'URL格式不正确，请输入正确的URL'
-    }
+    },
+    push: '推送',
+    pushSuccess: '推送成功'
   },
   request: {
     logout: '请求失败后登出用户',
@@ -447,7 +449,9 @@ const local: App.I18n.Schema = {
           chinese: '中文',
           chinesePlaceholder: '请输入中文',
           addTranslation: '添加翻译',
-          editTranslation: '编辑翻译'
+          editTranslation: '编辑翻译',
+          isPrime: '是否为Prime',
+          isSet: '是否为套装'
         },
         untranslated: {
           title: 'Warframe未翻译数据库',

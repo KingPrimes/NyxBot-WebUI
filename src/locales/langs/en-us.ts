@@ -60,7 +60,9 @@ const local: App.I18n.Schema = {
     },
     from: {
       urlError: "url can't be empty"
-    }
+    },
+    push: 'push',
+    pushSuccess: 'push success'
   },
   request: {
     logout: 'Logout user after request failed',
@@ -447,7 +449,9 @@ const local: App.I18n.Schema = {
           chinese: 'Chinese',
           chinesePlaceholder: 'Please enter Chinese',
           addTranslation: 'Add Translation',
-          editTranslation: 'Edit Translation'
+          editTranslation: 'Edit Translation',
+          isPrime: 'is Prime',
+          isSet: 'is Set'
         },
         untranslated: {
           title: 'Warframe Untranslated Database',

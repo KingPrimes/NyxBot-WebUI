@@ -75,11 +75,16 @@ declare namespace Api {
     type RivenTrendList = App.PageData<RivenTrend>;
 
     interface Translation {
-      id: number;
+      id?: number;
       en: string;
       cn: string;
       is_prime: boolean;
       is_set: boolean;
+    }
+
+    interface TranslationSaveResult {
+      code: number;
+      msg: string;
     }
 
     interface TranslationSearchParams extends Common.CommonSearchParams {

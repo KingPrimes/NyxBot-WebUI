@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import { NButton, NCard, NDataTable, NPopconfirm, NSpace } from 'naive-ui';
+import { NButton, NCard, NDataTable, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
@@ -60,36 +60,16 @@ const {
           <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
             {$t('common.edit')}
           </NButton>
-          <NPopconfirm onPositiveClick={() => handleDelete(row.id)}>
-            {{
-              default: () => $t('common.confirmDelete'),
-              trigger: () => (
-                <NButton type="error" ghost size="small">
-                  {$t('common.delete')}
-                </NButton>
-              )
-            }}
-          </NPopconfirm>
         </NSpace>
       )
     }
   ]
 });
 
-const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedRowKeys, onBatchDeleted, onDeleted } =
-  useTableOperate(data, getData);
-
-async function handleBatchDelete() {
-  // request
-  console.log(checkedRowKeys.value);
-  onBatchDeleted();
-}
-
-function handleDelete(id: number) {
-  // request
-  console.log(id);
-  onDeleted();
-}
+const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedRowKeys } = useTableOperate(
+  data,
+  getData
+);
 
 function edit(id: number) {
   handleEdit(id);
@@ -110,9 +90,9 @@ function edit(id: number) {
           v-model:columns="columnChecks"
           :disabled-delete="checkedRowKeys.length === 0"
           :loading="loading"
-          :show-delete="false"
+          :show-update="true"
+          :show-push="true"
           @add="handleAdd"
-          @delete="handleBatchDelete"
           @refresh="getData"
         />
       </template>

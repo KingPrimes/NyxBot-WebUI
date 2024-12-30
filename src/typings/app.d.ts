@@ -336,6 +336,8 @@ declare namespace App {
         update: string;
         updateSuccess: string;
         userCenter: string;
+        push: string;
+        pushSuccess: string;
         yesOrNo: {
           yes: string;
           no: string;
@@ -669,6 +671,8 @@ declare namespace App {
               chinesePlaceholder: string;
               addTranslation: string;
               editTranslation: string;
+              isPrime: string;
+              isSet: string;
             };
             untranslated: {
               title: string;
