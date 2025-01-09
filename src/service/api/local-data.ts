@@ -38,6 +38,14 @@ export async function fetchPostPhantomList(params?: Api.LocalData.PhantomSearchP
   });
 }
 
+/** 更新幻纹 */
+export async function fetchPostUpdatePhantom() {
+  return request<Api.LocalData.Result>({
+    url: `${baseUrl}/ephemeras/update`,
+    method: 'post'
+  });
+}
+
 /** 获取RivenTrend列表 */
 export async function fetchPostRivenTrendList(params?: Api.LocalData.RivenTrendSearchParams) {
   return request<Api.LocalData.RivenTrendList>({

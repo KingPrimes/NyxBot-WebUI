@@ -4,7 +4,7 @@ import { NImage } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchPostPhantomList } from '@/service/api/local-data';
+import { fetchPostPhantomList, fetchPostUpdatePhantom } from '@/service/api/local-data';
 import PhantomSearch from './modules/phantom-search.vue';
 import PhantomOperateDrawer from './modules/phantom-operate-drawer.vue';
 
@@ -97,14 +97,15 @@ const {
   ]
 });
 
-const { drawerVisible, operateType, editingData, handleAdd, checkedRowKeys, onBatchDeleted } = useTableOperate(
-  data,
-  getData
-);
-
-async function handleBatchDelete() {
-  // request
-  onBatchDeleted();
+const { drawerVisible, operateType, editingData, handleAdd, checkedRowKeys } = useTableOperate(data, getData);
+async function updateData() {
+  await fetchPostUpdatePhantom().then(res => {
+    if (Number(res.response.data.code) === 200) {
+      window.$message?.success(res.response.data.msg);
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
 }
 </script>
 
@@ -124,9 +125,10 @@ async function handleBatchDelete() {
           :loading="loading"
           :show-add="false"
           :show-delete="false"
+          :show-update="true"
           @add="handleAdd"
-          @delete="handleBatchDelete"
           @refresh="getData"
+          @update="updateData"
         />
       </template>
       <NDataTable
