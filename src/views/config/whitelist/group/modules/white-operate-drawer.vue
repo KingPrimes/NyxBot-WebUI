@@ -33,7 +33,8 @@ const { defaultRequiredRule } = useFormRules();
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
     add: $t('page.config.whitelist.group.addWhitelistGroup'),
-    edit: $t('page.config.whitelist.group.editWhitelistGroup')
+    edit: $t('page.config.whitelist.group.editWhitelistGroup'),
+    push: $t('common.push')
   };
   return titles[props.operateType];
 });

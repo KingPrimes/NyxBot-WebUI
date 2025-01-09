@@ -3,7 +3,7 @@ import { NButton, NCard, NDataTable, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchPostTranslationList } from '@/service/api/local-data';
+import { fetchPostTranslationList, fetchPostUpdateTranslation } from '@/service/api/local-data';
 import TranslationSearch from './modules/translation-search.vue';
 import TranslationOperateDrawer from './modules/translation-operate-drawer.vue';
 
@@ -66,13 +66,22 @@ const {
   ]
 });
 
-const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedRowKeys } = useTableOperate(
+const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedRowKeys, handlePush } = useTableOperate(
   data,
   getData
 );
 
 function edit(id: number) {
   handleEdit(id);
+}
+async function updateData() {
+  await fetchPostUpdateTranslation().then(res => {
+    if (Number(res.response.data.code) === 200) {
+      window.$message?.success(res.response.data.msg);
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
 }
 </script>
 
@@ -94,6 +103,8 @@ function edit(id: number) {
           :show-push="true"
           @add="handleAdd"
           @refresh="getData"
+          @push="handlePush"
+          @update="updateData"
         />
       </template>
       <NDataTable

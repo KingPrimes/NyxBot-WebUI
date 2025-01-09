@@ -62,7 +62,8 @@ const local: App.I18n.Schema = {
       urlError: 'URL格式不正确，请输入正确的URL'
     },
     push: '推送',
-    pushSuccess: '推送成功'
+    pushSuccess: '推送成功',
+    commits: '提交信息'
   },
   request: {
     logout: '请求失败后登出用户',

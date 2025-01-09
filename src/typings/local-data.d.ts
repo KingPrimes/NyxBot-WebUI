@@ -104,5 +104,9 @@ declare namespace Api {
     }
 
     type UntranslatedList = App.PageData<Untranslated>;
+
+    interface PushCommit {
+      commit: string;
+    }
   }
 }

@@ -65,10 +65,36 @@ export async function fetchPostSaveTranslation(params: Api.LocalData.Translation
   });
 }
 
+/** 更新Warframe翻译 */
+export async function fetchPostUpdateTranslation() {
+  return request<Api.LocalData.TranslationSaveResult>({
+    url: `${baseUrl}/translation/update`,
+    method: 'post'
+  });
+}
+
+/** 推送Warframe翻译 */
+export async function fetchPostPushTranslation(params: Api.LocalData.PushCommit) {
+  return request<Api.LocalData.TranslationSaveResult>({
+    url: `${baseUrl}/translation/push`,
+    method: 'post',
+    data: params
+  });
+}
+
 /** 获取Warframe未翻译列表 */
 export async function fetchPostUntranslatedList(params?: Api.LocalData.UntranslatedSearchParams) {
   return request<Api.LocalData.UntranslatedList>({
     url: `${baseUrl}/notTranslation/list`,
+    method: 'post',
+    data: params
+  });
+}
+
+/** 添加未翻译的数据 */
+export async function fetchPostSaveNotTranslation(params: Api.LocalData.Translation) {
+  return request<Api.LocalData.TranslationSaveResult>({
+    url: `${baseUrl}/notTranslation/save`,
     method: 'post',
     data: params
   });

@@ -32,7 +32,8 @@ const { defaultRequiredRule } = useFormRules();
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
     add: $t('page.local-data.warframe.market.addMarket'),
-    edit: $t('page.local-data.warframe.market.editMarket')
+    edit: $t('page.local-data.warframe.market.editMarket'),
+    push: $t('common.push')
   };
   return titles[props.operateType];
 });

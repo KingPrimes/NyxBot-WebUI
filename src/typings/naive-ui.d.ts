@@ -36,7 +36,7 @@ declare namespace NaiveUI {
    * - add: add table item
    * - edit: edit table item
    */
-  type TableOperateType = 'add' | 'edit';
+  type TableOperateType = 'add' | 'edit' | 'push';
 
   type GetTableData<A extends TableApiFn> = A extends TableApiFn<infer T> ? T : never;
 

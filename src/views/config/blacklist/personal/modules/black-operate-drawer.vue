@@ -34,7 +34,8 @@ const { defaultRequiredRule } = useFormRules();
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
     add: $t('page.config.blacklist.personal.addBlacklistPersonal'),
-    edit: $t('page.config.blacklist.personal.editBlacklistPersonal')
+    edit: $t('page.config.blacklist.personal.editBlacklistPersonal'),
+    push: $t('common.push')
   };
   return titles[props.operateType];
 });

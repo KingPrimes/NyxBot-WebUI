@@ -62,7 +62,8 @@ const local: App.I18n.Schema = {
       urlError: "url can't be empty"
     },
     push: 'push',
-    pushSuccess: 'push success'
+    pushSuccess: 'push success',
+    commits: 'commits'
   },
   request: {
     logout: 'Logout user after request failed',

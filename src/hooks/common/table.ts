@@ -222,6 +222,11 @@ export function useTableOperate<T extends TableData = TableData>(data: Ref<T[]>,
     openDrawer();
   }
 
+  function handlePush() {
+    operateType.value = 'push';
+    openDrawer();
+  }
+
   /** the editing row data */
   const editingData: Ref<T | null> = ref(null);
 
@@ -262,7 +267,8 @@ export function useTableOperate<T extends TableData = TableData>(data: Ref<T[]>,
     handleEdit,
     checkedRowKeys,
     onBatchDeleted,
-    onDeleted
+    onDeleted,
+    handlePush
   };
 }
 

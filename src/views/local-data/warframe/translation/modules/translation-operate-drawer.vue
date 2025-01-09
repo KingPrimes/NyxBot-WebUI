@@ -3,7 +3,8 @@ import { computed, ref, watch } from 'vue';
 import { NFormItem } from 'naive-ui';
 import { useFormRules, useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
-import { fetchPostSaveTranslation } from '@/service/api/local-data';
+import { fetchPostPushTranslation, fetchPostSaveTranslation } from '@/service/api/local-data';
+import PushCommits from '@/components/custom/push-commits.vue';
 
 defineOptions({
   name: 'TranslationOperateDrawer'
@@ -34,12 +35,14 @@ const { defaultRequiredRule } = useFormRules();
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
     add: $t('page.local-data.warframe.translation.addTranslation'),
-    edit: $t('page.local-data.warframe.translation.editTranslation')
+    edit: $t('page.local-data.warframe.translation.editTranslation'),
+    push: $t('common.push')
   };
   return titles[props.operateType];
 });
 
 type Model = Pick<Api.LocalData.Translation, 'id' | 'en' | 'cn' | 'is_prime' | 'is_set'>;
+
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
@@ -61,6 +64,9 @@ const rules: Record<RuleKey, App.Global.FormRule> = {
   is_set: defaultRequiredRule
 };
 
+const pushCommitModel = ref({ commit: '' });
+const pushCommitsRef = ref<InstanceType<typeof PushCommits> | null>(null);
+
 function handleInitModel() {
   model.value = createDefaultModel();
 
@@ -75,13 +81,26 @@ function closeDrawer() {
 
 async function handleSubmit() {
   await validate();
-  await fetchPostSaveTranslation(model.value).then(res => {
-    if (Number(res.response.data.code) === 200) {
-      window.$message?.success(res.response.data.msg);
-    } else {
-      window.$message?.error(res.response.data.msg);
+  if (props.operateType !== 'push') {
+    await fetchPostSaveTranslation(model.value).then(res => {
+      if (Number(res.response.data.code) === 200) {
+        window.$message?.success(res.response.data.msg);
+      } else {
+        window.$message?.error(res.response.data.msg);
+      }
+    });
+  } else {
+    if (pushCommitsRef.value) {
+      await pushCommitsRef.value.validateForm();
     }
-  });
+    await fetchPostPushTranslation(pushCommitModel.value).then(res => {
+      if (Number(res.response.data.code) === 200) {
+        window.$message?.success(res.response.data.msg);
+      } else {
+        window.$message?.error(res.response.data.msg);
+      }
+    });
+  }
 
   closeDrawer();
   emit('submitted');
@@ -98,7 +117,7 @@ watch(visible, () => {
 <template>
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
-      <NForm ref="formRef" :model="model" :rules="rules">
+      <NForm v-if="operateType !== 'push'" ref="formRef" :model="model" :rules="rules">
         <NFormItem :label="$t('page.local-data.warframe.translation.english')" path="en">
           <NInput
             v-model:value="model.en"
@@ -124,6 +143,7 @@ watch(visible, () => {
           </NRadioGroup>
         </NFormItem>
       </NForm>
+      <PushCommits v-else ref="pushCommitsRef" v-model="pushCommitModel"></PushCommits>
       <template #footer>
         <NSpace :size="16">
           <NButton @click="closeDrawer">{{ $t('common.cancel') }}</NButton>

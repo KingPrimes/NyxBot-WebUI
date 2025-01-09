@@ -337,6 +337,7 @@ declare namespace App {
         updateSuccess: string;
         userCenter: string;
         push: string;
+        commits: string;
         pushSuccess: string;
         yesOrNo: {
           yes: string;

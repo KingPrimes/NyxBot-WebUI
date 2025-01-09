@@ -106,7 +106,7 @@ const {
   ]
 });
 
-const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedRowKeys, onBatchDeleted } =
+const { drawerVisible, operateType, editingData, handleAdd, handleEdit, handlePush, checkedRowKeys, onBatchDeleted } =
   useTableOperate(data, getData);
 
 async function handleBatchDelete() {
@@ -135,9 +135,12 @@ function edit(id: number) {
           :disabled-delete="checkedRowKeys.length === 0"
           :loading="loading"
           :show-delete="false"
+          :show-push="true"
+          :show-update="true"
           @add="handleAdd"
           @delete="handleBatchDelete"
           @refresh="getData"
+          @push="handlePush"
         />
       </template>
       <NDataTable
