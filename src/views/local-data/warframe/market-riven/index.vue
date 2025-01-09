@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
 import { h } from 'vue';
-import { NButton, NCard, NDataTable, NImage, NPopconfirm, NSpace } from 'naive-ui';
+import { NCard, NDataTable, NImage } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchPostMarketRivenList } from '@/service/api/local-data';
+import { fetchPostMarketRivenList, fetchPostUpdateMarketRiven } from '@/service/api/local-data';
 import MarketRivenSearch from './modules/market-riven-search.vue';
 import MarketRivenOperateDrawer from './modules/market-riven-operate-drawer.vue';
 
@@ -80,50 +80,20 @@ const {
           }
         });
       }
-    },
-    {
-      key: 'operate',
-      title: $t('common.operate'),
-      align: 'center',
-      width: 130,
-      render: row => (
-        <NSpace justify="center">
-          <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
-            {$t('common.edit')}
-          </NButton>
-          <NPopconfirm onPositiveClick={() => handleDelete(row.id)}>
-            {{
-              default: () => $t('common.confirmDelete'),
-              trigger: () => (
-                <NButton type="error" ghost size="small">
-                  {$t('common.delete')}
-                </NButton>
-              )
-            }}
-          </NPopconfirm>
-        </NSpace>
-      )
     }
   ]
 });
 
-const { drawerVisible, operateType, editingData, handleAdd, handleEdit, checkedRowKeys, onBatchDeleted, onDeleted } =
-  useTableOperate(data, getData);
+const { drawerVisible, operateType, editingData, handleAdd, checkedRowKeys } = useTableOperate(data, getData);
 
-async function handleBatchDelete() {
-  // request
-  console.log(checkedRowKeys.value);
-  onBatchDeleted();
-}
-
-function handleDelete(id: number) {
-  // request
-  console.log(id);
-  onDeleted();
-}
-
-function edit(id: number) {
-  handleEdit(id);
+async function updateData() {
+  await fetchPostUpdateMarketRiven().then(res => {
+    if (Number(res.response.data.code) === 200) {
+      window.$message?.success(res.response.data.msg);
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
 }
 </script>
 
@@ -143,8 +113,9 @@ function edit(id: number) {
           :loading="loading"
           :show-add="false"
           :show-delete="false"
+          :show-update="true"
           @add="handleAdd"
-          @delete="handleBatchDelete"
+          @update="updateData"
           @refresh="getData"
         />
       </template>

@@ -29,6 +29,14 @@ export async function fetchPostMarketRivenList(params?: Api.LocalData.MarketRive
   });
 }
 
+/** 更新Warframe市场Riven列表 */
+export async function fetchPostUpdateMarketRiven() {
+  return request<Api.LocalData.Result>({
+    url: `${baseUrl}/market/riven/update`,
+    method: 'post'
+  });
+}
+
 /** 获取Warframe幻纹列表 */
 export async function fetchPostPhantomList(params?: Api.LocalData.PhantomSearchParams) {
   return request<Api.LocalData.PhantomList>({
