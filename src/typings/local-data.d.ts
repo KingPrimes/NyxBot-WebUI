@@ -82,7 +82,7 @@ declare namespace Api {
       is_set: boolean;
     }
 
-    interface TranslationSaveResult {
+    interface Result {
       code: number;
       msg: string;
     }

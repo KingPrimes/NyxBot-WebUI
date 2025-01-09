@@ -4,6 +4,8 @@ import { NDatePicker } from 'naive-ui';
 import { useFormRules, useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
 import { RivenTrendType } from '@/enum';
+import PushCommits from '@/components/custom/push-commits.vue';
+import { fetchPostPushRivenTrend, fetchPostSaveRivenTrend } from '@/service/api/local-data';
 
 defineOptions({
   name: 'RivenOperateDrawer'
@@ -42,19 +44,23 @@ const title = computed(() => {
 
 type Model = Pick<
   Api.LocalData.RivenTrend,
-  'trend_name' | 'new_dot' | 'new_num' | 'old_dot' | 'old_num' | 'type' | 'isDate'
+  'id' | 'trend_name' | 'new_dot' | 'new_num' | 'old_dot' | 'old_num' | 'type' | 'isDate' | 'traCh'
 >;
 const model = ref(createDefaultModel());
+const pushCommitModel = ref({ commit: '' });
+const pushCommitsRef = ref<InstanceType<typeof PushCommits> | null>(null);
 
 function createDefaultModel(): Model {
   return {
+    id: 0,
     trend_name: '',
     new_dot: '',
     new_num: 0.5,
     old_dot: '',
     old_num: 0.5,
     type: '',
-    isDate: new Date()
+    isDate: new Date(),
+    traCh: ''
   };
 }
 
@@ -84,6 +90,26 @@ function closeDrawer() {
 
 async function handleSubmit() {
   await validate();
+  if (props.operateType !== 'push') {
+    await fetchPostSaveRivenTrend(model.value).then(res => {
+      if (Number(res.response.data.code) === 200) {
+        window.$message?.success(res.response.data.msg);
+      } else {
+        window.$message?.error(res.response.data.msg);
+      }
+    });
+  } else {
+    if (pushCommitsRef.value) {
+      await pushCommitsRef.value.validateForm();
+    }
+    await fetchPostPushRivenTrend(pushCommitModel.value).then(res => {
+      if (Number(res.response.data.code) === 200) {
+        window.$message?.success(res.response.data.msg);
+      } else {
+        window.$message?.error(res.response.data.msg);
+      }
+    });
+  }
   // request
   window.$message?.success($t('common.updateSuccess'));
   closeDrawer();
@@ -139,7 +165,7 @@ const options = computed(() => {
 <template>
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
-      <NForm ref="formRef" :model="model" :rules="rules">
+      <NForm v-if="operateType !== 'push'" ref="formRef" :model="model" :rules="rules">
         <NFormItem :label="$t('page.local-data.warframe.riven-trend.itemEnName')" path="trend_name">
           <NInput
             v-model:value="model.trend_name"
@@ -189,6 +215,7 @@ const options = computed(() => {
           />
         </NFormItem>
       </NForm>
+      <PushCommits v-else ref="pushCommitsRef" v-model="pushCommitModel"></PushCommits>
       <template #footer>
         <NSpace :size="16">
           <NButton @click="closeDrawer">{{ $t('common.cancel') }}</NButton>

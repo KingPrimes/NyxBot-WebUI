@@ -3,7 +3,7 @@ import { NButton, NCard, NDataTable, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchPostRivenTrendList } from '@/service/api/local-data';
+import { fetchPostRivenTrendList, fetchPostUpdateRivenTrend } from '@/service/api/local-data';
 import { RivenTrendType } from '@/enum';
 import RivenSearch from './modules/riven-search.vue';
 import RivenOperateDrawer from './modules/riven-operate-drawer.vue';
@@ -118,6 +118,15 @@ async function handleBatchDelete() {
 function edit(id: number) {
   handleEdit(id);
 }
+async function updateData() {
+  await fetchPostUpdateRivenTrend().then(res => {
+    if (Number(res.response.data.code) === 200) {
+      window.$message?.success(res.response.data.msg);
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
+}
 </script>
 
 <template>
@@ -141,6 +150,7 @@ function edit(id: number) {
           @delete="handleBatchDelete"
           @refresh="getData"
           @push="handlePush"
+          @update="updateData"
         />
       </template>
       <NDataTable

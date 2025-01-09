@@ -47,6 +47,32 @@ export async function fetchPostRivenTrendList(params?: Api.LocalData.RivenTrendS
   });
 }
 
+/** 保存RivenTrend */
+export async function fetchPostSaveRivenTrend(params?: Api.LocalData.RivenTrend) {
+  return request<Api.LocalData.Result>({
+    url: `${baseUrl}/rivenTrend/save`,
+    method: 'post',
+    data: params
+  });
+}
+
+/** 更新RivenTrend */
+export async function fetchPostUpdateRivenTrend() {
+  return request<Api.LocalData.Result>({
+    url: `${baseUrl}/rivenTrend/update`,
+    method: 'post'
+  });
+}
+
+/** 推送RivenTrend */
+export async function fetchPostPushRivenTrend(params: Api.LocalData.PushCommit) {
+  return request<Api.LocalData.Result>({
+    url: `${baseUrl}/rivenTrend/push`,
+    method: 'post',
+    data: params
+  });
+}
+
 /** 获取Warframe翻译列表 */
 export async function fetchPostTranslationList(params?: Api.LocalData.TranslationSearchParams) {
   return request<Api.LocalData.TranslationList>({
@@ -58,7 +84,7 @@ export async function fetchPostTranslationList(params?: Api.LocalData.Translatio
 
 /** 保存Warframe翻译 */
 export async function fetchPostSaveTranslation(params: Api.LocalData.Translation) {
-  return request<Api.LocalData.TranslationSaveResult>({
+  return request<Api.LocalData.Result>({
     url: `${baseUrl}/translation/save`,
     method: 'post',
     data: params
@@ -67,7 +93,7 @@ export async function fetchPostSaveTranslation(params: Api.LocalData.Translation
 
 /** 更新Warframe翻译 */
 export async function fetchPostUpdateTranslation() {
-  return request<Api.LocalData.TranslationSaveResult>({
+  return request<Api.LocalData.Result>({
     url: `${baseUrl}/translation/update`,
     method: 'post'
   });
@@ -75,7 +101,7 @@ export async function fetchPostUpdateTranslation() {
 
 /** 推送Warframe翻译 */
 export async function fetchPostPushTranslation(params: Api.LocalData.PushCommit) {
-  return request<Api.LocalData.TranslationSaveResult>({
+  return request<Api.LocalData.Result>({
     url: `${baseUrl}/translation/push`,
     method: 'post',
     data: params
@@ -93,7 +119,7 @@ export async function fetchPostUntranslatedList(params?: Api.LocalData.Untransla
 
 /** 添加未翻译的数据 */
 export async function fetchPostSaveNotTranslation(params: Api.LocalData.Translation) {
-  return request<Api.LocalData.TranslationSaveResult>({
+  return request<Api.LocalData.Result>({
     url: `${baseUrl}/notTranslation/save`,
     method: 'post',
     data: params
