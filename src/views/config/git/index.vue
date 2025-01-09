@@ -1,41 +1,37 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import type { FormInst } from 'naive-ui';
 import { NButton, NCard, NForm, NFormItem, NInput, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
+import { fetchGetGitUserPriovider, fetchPostGitUserPriovider } from '@/service/api/system-config-bot';
 
 defineOptions({ name: 'ConfigGit' });
 
 const appStore = useAppStore();
 
-interface FormState {
-  account: string;
-  token: string;
-  dataSourceUrl: string;
-}
-
 // 根据移动端状态调整标签宽度
 const labelWidth = computed(() => (appStore.isMobile ? 80 : 180));
 const formRef = ref<FormInst | null>(null);
-const formValue = ref<FormState>({
-  account: '',
-  token: '',
-  dataSourceUrl: ''
+const formValue = ref<Api.SystemConfig.GitHubUserProvider>({
+  id: 0,
+  userName: '',
+  passWord: '',
+  gitUrl: ''
 });
 
 const formRules = {
-  account: {
+  userName: {
     required: true,
     message: $t('form.required'),
     trigger: ['blur', 'input']
   },
-  token: {
+  passWord: {
     required: true,
     message: $t('form.required'),
     trigger: ['blur', 'input']
   },
-  dataSourceUrl: {
+  gitUrl: {
     required: true,
     message: $t('form.required'),
     trigger: ['blur', 'input'],
@@ -47,16 +43,26 @@ const formRules = {
     }
   }
 };
-
+// 提交数据
 async function handleSubmit() {
-  try {
-    await formRef.value?.validate();
-    console.log('提交表单', formValue.value);
-  } catch (errors) {
-    console.error('表单验证失败:', errors);
+  await formRef.value?.validate();
+  await fetchPostGitUserPriovider(formValue.value).then(res => {
+    if (Number(res.response.data.code) === 200) {
+      window.$message?.success(res.response.data.msg);
+      onLoad();
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
+}
+async function onLoad() {
+  const response = await fetchGetGitUserPriovider();
+  if (response && response.data) {
+    formValue.value = { ...response.data };
   }
 }
-
+// 初始化数据
+onMounted(async () => onLoad());
 function handleCancel() {
   formRef.value?.restoreValidation();
 }
@@ -74,12 +80,12 @@ function handleCancel() {
         require-mark-placement="right-hanging"
       >
         <NFormItem :label="$t('page.config.git.form.account')" path="account" required>
-          <NInput v-model:value="formValue.account" :placeholder="$t('page.config.git.form.accountPlaceholder')" />
+          <NInput v-model:value="formValue.userName" :placeholder="$t('page.config.git.form.accountPlaceholder')" />
         </NFormItem>
 
         <NFormItem :label="$t('page.config.git.form.token')" path="token" required>
           <NInput
-            v-model:value="formValue.token"
+            v-model:value="formValue.passWord"
             type="textarea"
             :placeholder="$t('page.config.git.form.tokenPlaceholder')"
             :rows="3"
@@ -87,7 +93,7 @@ function handleCancel() {
         </NFormItem>
 
         <NFormItem :label="$t('page.config.git.form.url')" path="dataSourceUrl" required>
-          <NInput v-model:value="formValue.dataSourceUrl" :placeholder="$t('page.config.git.form.urlPlaceholder')" />
+          <NInput v-model:value="formValue.gitUrl" :placeholder="$t('page.config.git.form.urlPlaceholder')" />
         </NFormItem>
 
         <div class="mt-6 flex justify-end">

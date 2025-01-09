@@ -89,3 +89,18 @@ export function fetchGetWhitelistPersonalList(params?: Api.SystemConfig.Whitelis
     params
   });
 }
+
+export function fetchGetGitUserPriovider() {
+  return request<Api.SystemConfig.GitHubUserProvider>({
+    url: '/config/git',
+    method: 'get'
+  });
+}
+
+export function fetchPostGitUserPriovider(params?: Api.SystemConfig.GitHubUserProvider) {
+  return request<Api.LocalData.Result>({
+    url: '/config/git',
+    method: 'post',
+    data: params
+  });
+}

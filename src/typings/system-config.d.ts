@@ -91,5 +91,12 @@ declare namespace Api {
     }
 
     type WhitelistPersonalList = App.PageData<WhitelistPersonal>;
+
+    interface GitHubUserProvider {
+      id?: number | undefined;
+      userName: string | undefined;
+      passWord: string | undefined;
+      gitUrl: string | undefined;
+    }
   }
 }
