@@ -6,7 +6,6 @@ import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
 import { fetchPostMarketRivenList, fetchPostUpdateMarketRiven } from '@/service/api/local-data';
 import MarketRivenSearch from './modules/market-riven-search.vue';
-import MarketRivenOperateDrawer from './modules/market-riven-operate-drawer.vue';
 
 const appStore = useAppStore();
 
@@ -84,7 +83,7 @@ const {
   ]
 });
 
-const { drawerVisible, operateType, editingData, handleAdd, checkedRowKeys } = useTableOperate(data, getData);
+const { handleAdd, checkedRowKeys } = useTableOperate(data, getData);
 
 async function updateData() {
   await fetchPostUpdateMarketRiven().then(res => {
@@ -131,12 +130,6 @@ async function updateData() {
         :row-key="row => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
-      />
-      <MarketRivenOperateDrawer
-        v-model:visible="drawerVisible"
-        :operate-type="operateType"
-        :row-data="editingData"
-        @submitted="getDataByPage"
       />
     </NCard>
   </div>

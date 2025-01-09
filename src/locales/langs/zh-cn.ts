@@ -186,7 +186,7 @@ const local: App.I18n.Schema = {
     'local-data_warframe_subscription': '订阅',
     'local-data_warframe_market': 'Market',
     'local-data_warframe_market-riven': 'Market Riven',
-    'local-data_warframe_riven': 'Riven',
+    'local-data_warframe_riven': '紫卡倾向',
     'local-data_warframe_translation': '翻译',
     'local-data_warframe_untranslated': '未翻译数据',
     config: '配置',
@@ -428,7 +428,7 @@ const local: App.I18n.Schema = {
           editPhantom: '编辑幻纹数据'
         },
         'riven-trend': {
-          title: 'Riven 倾向',
+          title: '紫卡倾向',
           itemName: '物品名称',
           itemNamePlaceholder: '请输入物品名称',
           itemEnName: '物品英文名称',

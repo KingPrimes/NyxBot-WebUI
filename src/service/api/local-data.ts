@@ -20,6 +20,14 @@ export async function fetchPostMarketList(params?: Api.LocalData.MarketSearchPar
   });
 }
 
+/** 更新Warframe市场 */
+export async function fetchPostUpdateMarket() {
+  return request<Api.LocalData.Result>({
+    url: `${baseUrl}/market/update`,
+    method: 'post'
+  });
+}
+
 /** 获取Warframe市场Riven列表 */
 export async function fetchPostMarketRivenList(params?: Api.LocalData.MarketRivenSearchParams) {
   return request<Api.LocalData.MarketRivenList>({

@@ -6,7 +6,6 @@ import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
 import { fetchPostPhantomList, fetchPostUpdatePhantom } from '@/service/api/local-data';
 import PhantomSearch from './modules/phantom-search.vue';
-import PhantomOperateDrawer from './modules/phantom-operate-drawer.vue';
 
 const appStore = useAppStore();
 
@@ -97,7 +96,7 @@ const {
   ]
 });
 
-const { drawerVisible, operateType, editingData, handleAdd, checkedRowKeys } = useTableOperate(data, getData);
+const { handleAdd, checkedRowKeys } = useTableOperate(data, getData);
 async function updateData() {
   await fetchPostUpdatePhantom().then(res => {
     if (Number(res.response.data.code) === 200) {
@@ -143,12 +142,6 @@ async function updateData() {
         :row-key="row => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
-      />
-      <PhantomOperateDrawer
-        v-model:visible="drawerVisible"
-        :operate-type="operateType"
-        :row-data="editingData"
-        @submitted="getDataByPage"
       />
     </NCard>
   </div>

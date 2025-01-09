@@ -107,29 +107,29 @@ function handleCancel() {
 
 <style scoped>
 :deep(.n-form-item-label) {
-  @apply font-500;
+  font-weight: 500;
 }
 
 :deep(.n-input) {
-  @apply max-w-full;
+  max-width: 100%;
 }
 
 :deep(.n-card-header) {
-  @apply break-words;
+  overflow-wrap: break-word;
 }
 
 /* 移动端适配 */
 @media (max-width: 640px) {
   :deep(.n-form) {
-    @apply w-full;
+    width: 100%;
   }
 
   :deep(.n-space) {
-    @apply w-full;
+    width: 100%;
   }
 
   :deep(.n-button) {
-    @apply w-full;
+    width: 100%;
   }
 }
 </style>
