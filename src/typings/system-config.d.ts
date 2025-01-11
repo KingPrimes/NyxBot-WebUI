@@ -98,5 +98,14 @@ declare namespace Api {
       passWord: string | undefined;
       gitUrl: string | undefined;
     }
+
+    /** 机器人链接配置 */
+    interface LoadingConfig {
+      serverPort: number;
+      isBlackOrWhite: boolean;
+      isServerOrClient: boolean;
+      wsClientUrl: string;
+      wsServerUrl: string;
+    }
   }
 }

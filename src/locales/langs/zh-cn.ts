@@ -322,15 +322,15 @@ const local: App.I18n.Schema = {
       },
       admin: {
         title: '管理员列表',
-        botAccount: '机器账号',
+        botAccount: '机器人账号',
         adminAccount: '管理员账号',
         status: '状态',
         role: '权限',
         addAdmin: '新增管理员',
         editAdmin: '编辑管理员',
         form: {
-          botAccount: '请输入机器账号',
-          adminAccount: '请输入管理员账号',
+          botAccount: '请选择机器账号',
+          adminAccount: '请选择管理员账号',
           status: '请选择状态',
           role: '请选择权限'
         },

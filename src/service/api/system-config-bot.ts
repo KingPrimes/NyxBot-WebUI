@@ -46,11 +46,36 @@ export function fetchGetPermissionsMap() {
   });
 }
 
-/** 获取所有角色 */
-export function fetchGetAllBotOptionList() {
-  return request<Api.SystemConfig.BotOption[]>({
-    url: '/systemConfig/getAllBot',
+/** 获取所有权限 */
+export function fetchGetAllPermissionOptionList() {
+  return request<Api.SystemConfig.Permissions[]>({
+    url: `${baseUrl}/admin/permissions`,
     method: 'get'
+  });
+}
+
+/** 获取机器人列表 */
+export function fetchGetAllBotsOptionList() {
+  return request<Api.SystemConfig.BotOption[]>({
+    url: `${baseUrl}/admin/bots`,
+    method: 'get'
+  });
+}
+
+/** 获取好友列表 */
+export function fetchGetAllBotsFriendsOptionList(botUid: string) {
+  return request<Api.SystemConfig.AdminOption[]>({
+    url: `${baseUrl}/admin/friend/${botUid}`,
+    method: 'get'
+  });
+}
+
+/** 添加管理员 */
+export function fetchPostBotAdmin(params?: Api.SystemConfig.AdminModel) {
+  return request<null>({
+    url: `${baseUrl}/admin/save`,
+    method: 'post',
+    data: params
   });
 }
 
@@ -87,20 +112,5 @@ export function fetchGetWhitelistPersonalList(params?: Api.SystemConfig.Whitelis
     url: '/systemConfig/getWhitelistPersonalList',
     method: 'get',
     params
-  });
-}
-
-export function fetchGetGitUserPriovider() {
-  return request<Api.SystemConfig.GitHubUserProvider>({
-    url: '/config/git',
-    method: 'get'
-  });
-}
-
-export function fetchPostGitUserPriovider(params?: Api.SystemConfig.GitHubUserProvider) {
-  return request<Api.LocalData.Result>({
-    url: '/config/git',
-    method: 'post',
-    data: params
   });
 }

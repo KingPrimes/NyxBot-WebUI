@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { NButton, NCard, NCollapse, NCollapseItem, NForm, NFormItemGi, NGrid, NSelect, NSpace } from 'naive-ui';
+import { onMounted, ref } from 'vue';
 import { $t } from '@/locales';
 import { useNaiveForm } from '@/hooks/common/form';
+import { fetchGetAllBotsOptionList } from '@/service/api/system-config-bot';
 
 defineOptions({
   name: 'AdminSearch'
@@ -27,6 +29,21 @@ async function search() {
   await validate();
   emit('search');
 }
+const botAccountOptions = ref<CommonType.Option<string>[]>([]);
+
+async function getBotAccountOptions() {
+  const { error, data } = await fetchGetAllBotsOptionList();
+
+  if (!error) {
+    botAccountOptions.value = data.map(item => ({
+      label: item.label,
+      value: item.value
+    }));
+  }
+}
+onMounted(() => {
+  getBotAccountOptions();
+});
 </script>
 
 <template>
@@ -35,8 +52,13 @@ async function search() {
       <NCollapseItem :title="$t('common.search')" name="admin-search">
         <NForm ref="formRef" :model="model" label-placement="left" :label-width="80">
           <NGrid responsive="screen" item-responsive>
-            <NFormItemGi span="24 s:12 m:6" :label="$t('page.config.admin.role.roleName')" path="role" class="pr-24px">
-              <NSelect v-model:value="model.botUid" :placeholder="$t('page.config.admin.role.placeholder')" clearable />
+            <NFormItemGi span="24 s:12 m:6" :label="$t('page.config.admin.botAccount')" path="role" class="pr-24px">
+              <NSelect
+                v-model:value="model.botUid"
+                :options="botAccountOptions"
+                :placeholder="$t('page.config.admin.botAccount')"
+                clearable
+              />
             </NFormItemGi>
             <NFormItemGi span="24 m:12" class="pr-24px">
               <NSpace class="w-full" justify="end">

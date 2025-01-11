@@ -4,7 +4,7 @@ import type { FormInst } from 'naive-ui';
 import { NButton, NCard, NForm, NFormItem, NInput, NSpace } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
-import { fetchGetGitUserPriovider, fetchPostGitUserPriovider } from '@/service/api/system-config-bot';
+import { fetchGetGitUserPriovider, fetchPostGitUserPriovider } from '@/service/api/system-config';
 
 defineOptions({ name: 'ConfigGit' });
 
