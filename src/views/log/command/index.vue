@@ -97,7 +97,10 @@ const {
       key: 'runTime',
       title: $t('page.log.command.operateTime'),
       align: 'center',
-      width: 180
+      width: 180,
+      render: row => {
+        return `${row.runTime} ms`;
+      }
     },
     {
       key: 'operate',
