@@ -11,8 +11,8 @@ declare namespace Api {
     }
 
     interface CommandSearchParams extends Common.CommonSearchParams {
-      command?: string | null;
-      groupQQ?: string | null;
+      codes?: string | undefined;
+      groupUid?: number | undefined;
     }
 
     type CommandList = App.PageData<Command>;

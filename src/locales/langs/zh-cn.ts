@@ -63,7 +63,8 @@ const local: App.I18n.Schema = {
     },
     push: '推送',
     pushSuccess: '推送成功',
-    commits: '提交信息'
+    commits: '提交信息',
+    detail: '详情'
   },
   request: {
     logout: '请求失败后登出用户',
@@ -292,6 +293,25 @@ const local: App.I18n.Schema = {
         groupQQPlaceholder: '请输入QQ群',
         triggerQQ: '触发者QQ',
         operateTime: '操作时间'
+      },
+      loginfo: {
+        title: '模块',
+        codes: '指令',
+        permissions: '权限',
+        businessType: '操作类型',
+        botUid: '机器人UID',
+        groupUid: '群UID',
+        userUid: '用户UID',
+        rawMsg: '原始消息',
+        url: 'URL',
+        method: '方法',
+        requestMethod: '请求方法',
+        runTime: '运行时间',
+        logTime: '日志时间',
+        param: '请求的参数',
+        result: '返回的结果',
+        status: '执行状态',
+        errorMsg: '错误信息'
       }
     },
     config: {

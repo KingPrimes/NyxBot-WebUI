@@ -300,6 +300,7 @@ declare namespace App {
       common: {
         action: string;
         add: string;
+        detail: string;
         addSuccess: string;
         backToHome: string;
         batchDelete: string;
@@ -513,6 +514,25 @@ declare namespace App {
             groupQQPlaceholder: string;
             triggerQQ: string;
             operateTime: string;
+          };
+          loginfo: {
+            title: string;
+            codes: string;
+            permissions: string;
+            businessType: string;
+            botUid: string;
+            groupUid: string;
+            userUid: string;
+            rawMsg: string;
+            url: string;
+            method: string;
+            requestMethod: string;
+            runTime: string;
+            param: string;
+            result: string;
+            status: string;
+            errorMsg: string;
+            logTime: string;
           };
         };
         config: {

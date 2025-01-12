@@ -2,12 +2,7 @@
 import { computed, ref, watch } from 'vue';
 import { NSelect } from 'naive-ui';
 import { useFormRules, useNaiveForm } from '@/hooks/common/form';
-import {
-  fetchGetAllBotsFriendsOptionList,
-  fetchGetAllBotsOptionList,
-  fetchGetAllPermissionOptionList,
-  fetchPostBotAdmin
-} from '@/service/api/system-config-bot';
+import { fetchGetAllBotsOptionList, fetchGetAllPermissionOptionList } from '@/service/api/system-config-bot';
 import { $t } from '@/locales';
 
 defineOptions({
@@ -80,17 +75,6 @@ async function getBotAccountOptions() {
   }
 }
 
-async function getAdminAccountOptions(botUid: string) {
-  const { error, data } = await fetchGetAllBotsFriendsOptionList(botUid);
-
-  if (!error) {
-    adminAccountOptions.value = data.map(item => ({
-      label: item.label,
-      value: item.value
-    }));
-  }
-}
-
 async function getPermissionOptions() {
   const { error, data } = await fetchGetAllPermissionOptionList();
 
@@ -116,15 +100,10 @@ function closeDrawer() {
 
 async function handleSubmit() {
   await validate();
-  await fetchPostBotAdmin(model.value).then(res => {
-    if (Number(res.response.data.code) === 200) {
-      window.$message?.success(res.response.data.msg);
-      emit('submitted');
-      closeDrawer();
-    } else {
-      window.$message?.error(res.response.data.msg);
-    }
-  });
+  // request
+  window.$message?.success($t('common.updateSuccess'));
+  closeDrawer();
+  emit('submitted');
 }
 
 watch(visible, () => {
@@ -135,41 +114,20 @@ watch(visible, () => {
     getBotAccountOptions();
   }
 });
-
-watch(
-  () => model.value.botUid,
-  async newVal => {
-    if (newVal) {
-      await getAdminAccountOptions(newVal);
-    }
-  }
-);
 </script>
 
 <template>
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
-        <NFormItem :label="$t('page.config.admin.form.botAccount')" path="botUid">
-          <NSelect
-            v-model:value="model.botUid"
-            :options="botAccountOptions"
-            :placeholder="$t('page.config.admin.form.botAccount')"
-          />
+        <NFormItem :label="$t('page.config.admin.botAccount')" path="botUid">
+          <NSelect v-model:value="model.botUid" :options="botAccountOptions" onclick="" />
         </NFormItem>
-        <NFormItem :label="$t('page.config.admin.form.adminAccount')" path="adminUid">
-          <NSelect
-            v-model:value="model.adminUid"
-            :options="adminAccountOptions"
-            :placeholder="$t('page.config.admin.form.adminAccount')"
-          />
+        <NFormItem :label="$t('page.config.admin.adminAccount')" path="adminUid">
+          <NSelect v-model:value="model.adminUid" :options="adminAccountOptions" />
         </NFormItem>
-        <NFormItem :label="$t('page.config.admin.form.role')" path="permissions">
-          <NSelect
-            v-model:value="model.permissions"
-            :options="permissionOptions"
-            :placeholder="$t('page.config.admin.form.role')"
-          />
+        <NFormItem :label="$t('page.config.admin.roles.roleName')" path="permissions">
+          <NSelect v-model:value="model.permissions" :options="permissionOptions" />
         </NFormItem>
       </NForm>
       <template #footer>

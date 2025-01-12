@@ -1,17 +1,34 @@
 <script lang="tsx" setup>
-import { NCard, NDataTable } from 'naive-ui';
+import { NButton, NCard, NDataTable } from 'naive-ui';
+import type { Ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { useBoolean } from '@sa/hooks';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
-import { useTable } from '@/hooks/common/table';
-import { fetchGetCommandLogList } from '@/service/api/system-log';
+import { useTable, useTableOperate } from '@/hooks/common/table';
+import { fetchGetCodesOption, fetchGetCommandLogList } from '@/service/api/system-log';
 import CommandSearch from './modules/command-search.vue';
+import DetailOperateModal, { type OperateType } from './modules/command-operate-modal.vue';
 
 defineOptions({
   name: 'LogCommand'
 });
+const { bool: visible, setTrue: openModal } = useBoolean();
+const codesOption = ref<CommonType.Option<string>[]>([]);
+async function getCodes() {
+  const { error, data } = await fetchGetCodesOption();
 
+  if (!error) {
+    codesOption.value = data.map(item => ({
+      label: item.label,
+      value: item.value
+    }));
+  }
+}
+onMounted(() => {
+  getCodes();
+});
 const appStore = useAppStore();
-
 const {
   columns,
   columnChecks,
@@ -37,43 +54,73 @@ const {
       width: 80
     },
     {
-      key: 'moduleName',
+      key: 'title',
       title: $t('page.log.command.moduleName'),
       align: 'center',
       width: 120
     },
     {
-      key: 'command',
+      key: 'codes',
       title: $t('page.log.command.command'),
       align: 'center',
-      minWidth: 150
+      minWidth: 150,
+      render: row => (
+        <div class="flex-center gap-8px">
+          {codesOption.value.map((item: { value: string; label: any }) => {
+            if (item.value === row.codes) {
+              return <span>{item.label}</span>;
+            }
+            return null;
+          })}
+        </div>
+      )
     },
     {
-      key: 'botQQ',
+      key: 'botUid',
       title: $t('page.log.command.botQQ'),
       align: 'center',
       width: 120
     },
     {
-      key: 'groupQQ',
+      key: 'groupUid',
       title: $t('page.log.command.groupQQ'),
       align: 'center',
       width: 120
     },
     {
-      key: 'triggerQQ',
+      key: 'userUid',
       title: $t('page.log.command.triggerQQ'),
       align: 'center',
       width: 120
     },
     {
-      key: 'operateTime',
+      key: 'runTime',
       title: $t('page.log.command.operateTime'),
       align: 'center',
       width: 180
+    },
+    {
+      key: 'operate',
+      title: $t('common.operate'),
+      align: 'center',
+      width: 130,
+      render: row => (
+        <div class="flex-center gap-8px">
+          <NButton type="primary" ghost size="small" onClick={() => detail(row.id, codesOption.value)}>
+            {$t('common.detail')}
+          </NButton>
+        </div>
+      )
     }
   ]
 });
+useTableOperate(data, getData);
+const editingData: Ref<{ id: number; codesOption: CommonType.Option<string>[] } | null> = ref(null);
+const operateType = ref<OperateType>('detail');
+function detail(id: number, options: CommonType.Option<string>[]) {
+  editingData.value = { id, codesOption: options };
+  openModal();
+}
 </script>
 
 <template>
@@ -101,6 +148,7 @@ const {
         :pagination="mobilePagination"
         class="sm:h-full"
       />
+      <DetailOperateModal v-model:visible="visible" :operate-type="operateType" :row-data="editingData" />
     </NCard>
   </div>
 </template>

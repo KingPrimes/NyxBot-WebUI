@@ -3,24 +3,46 @@ declare namespace Api {
     interface LogSearchParams extends Common.CommonSearchParams {
       page?: number;
       pageSize?: number;
+      codes?: string | undefined;
+      groupUid?: number | undefined;
     }
 
-    interface Log {
-      id: string | number;
-      content: string;
-      level: 'info' | 'warning' | 'error';
-      createTime: string;
+    interface LogInfoList {
+      id?: number | undefined;
+      title: string;
+      codes: string;
+      botUid: number;
+      groupUid: number;
+      userUid: number;
+      runTime: number;
     }
 
-    interface CommandLog {
-      id: string | number;
-      command: string;
+    interface CodesOption {
+      label: string;
+      value: string;
+    }
+
+    interface LogInfo {
+      id?: number | undefined;
+      title: string;
+      codes: string;
+      permissions: string;
+      businessType: string;
+      botUid: number;
+      groupUid: number;
+      userUid: number;
+      rawMsg: string;
+      url: string;
+      method: string;
+      requestMethod: string;
+      runTime: number;
+      param: string;
       result: string;
       status: number;
-      createTime: string;
+      errorMsg: string;
+      logTime: string;
     }
 
-    type LogList = App.PageData<Log>;
-    type CommandLogList = App.PageData<CommandLog>;
+    type LogList = App.PageData<LogInfoList>;
   }
 }

@@ -9,6 +9,7 @@ const local: App.I18n.Schema = {
   common: {
     action: 'Action',
     add: 'Add',
+    detail: 'Detail',
     addSuccess: 'Add Success',
     backToHome: 'Back to home',
     batchDelete: 'Batch Delete',
@@ -292,6 +293,25 @@ const local: App.I18n.Schema = {
         groupQQPlaceholder: 'Please enter the QQ group',
         triggerQQ: 'Trigger QQ',
         operateTime: 'Operation Time'
+      },
+      loginfo: {
+        title: 'Module',
+        codes: 'Codes',
+        permissions: 'Permissions',
+        businessType: 'Business Type',
+        botUid: 'Bot Uid',
+        groupUid: 'Group Uid',
+        userUid: 'User Uid',
+        rawMsg: 'Raw Msg',
+        url: 'Url',
+        method: 'Method',
+        requestMethod: 'Request Method',
+        runTime: 'Run Time',
+        param: 'Param',
+        result: 'Result',
+        status: 'Status',
+        errorMsg: 'Error Msg',
+        logTime: 'Log Time'
       }
     },
     config: {

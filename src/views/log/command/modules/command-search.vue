@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import { useNaiveForm } from '@/hooks/common/form';
+import { fetchGetCodesOption } from '@/service/api/system-log';
 
 defineOptions({
   name: 'CommandSearch'
@@ -25,6 +27,23 @@ async function search() {
   await validate();
   emit('search');
 }
+
+const codesOption = ref<CommonType.Option<string>[]>([]);
+
+async function getCodes() {
+  const { error, data } = await fetchGetCodesOption();
+
+  if (!error) {
+    codesOption.value = data.map(item => ({
+      label: item.label,
+      value: item.value
+    }));
+  }
+}
+
+onMounted(() => {
+  getCodes();
+});
 </script>
 
 <template>
@@ -33,11 +52,15 @@ async function search() {
       <NCollapseItem :title="$t('common.search')" name="command-search">
         <NForm ref="formRef" :model="model" label-placement="left" :label-width="80">
           <NGrid responsive="screen" item-responsive>
-            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.command')" path="command" class="pr-24px">
-              <NInput v-model:value="model.command" :placeholder="$t('page.log.command.commandPlaceholder')" />
+            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.command')" path="codes" class="pr-24px">
+              <NSelect
+                v-model:value="model.codes"
+                :placeholder="$t('page.log.command.commandPlaceholder')"
+                :options="codesOption"
+              />
             </NFormItemGi>
-            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.groupQQ')" path="groupQQ" class="pr-24px">
-              <NInput v-model:value="model.groupQQ" :placeholder="$t('page.log.command.groupQQPlaceholder')" />
+            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.groupQQ')" path="groupUid" class="pr-24px">
+              <NInputNumber v-model:value="model.groupUid" :placeholder="$t('page.log.command.groupQQPlaceholder')" />
             </NFormItemGi>
             <NFormItemGi span="24 m:8" class="pr-24px">
               <NSpace class="w-full" justify="end">
