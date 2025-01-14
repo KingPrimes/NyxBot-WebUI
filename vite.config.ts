@@ -45,6 +45,13 @@ export default defineConfig(configEnv => {
       sourcemap: viteEnv.VITE_SOURCE_MAP === 'Y',
       commonjsOptions: {
         ignoreTryCatch: false
+      },
+      rollupOptions: {
+        output: {
+          entryFileNames: `assets/js/[hash].js`,
+          chunkFileNames: `assets/js/[hash].js`,
+          assetFileNames: `assets/[ext]/[hash].[ext]`
+        }
       }
     }
   };

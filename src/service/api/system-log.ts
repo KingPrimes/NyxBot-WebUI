@@ -7,6 +7,8 @@ export function fetchGetCodesOption() {
     method: 'get'
   });
 }
+
+/** 获取日志详细信息 */
 export function fetchGetLogInfoDetail(id: number) {
   return request<Api.SystemLog.LogInfo>({
     url: `/log/detail/${id}`,
@@ -14,7 +16,7 @@ export function fetchGetLogInfoDetail(id: number) {
   });
 }
 
-/** 获取实时日志列表 */
+/** 获取日志列表 */
 export function fetchGetCommandLogList(params?: Api.SystemLog.LogSearchParams) {
   return request<Api.SystemLog.LogList>({
     url: '/log/list',

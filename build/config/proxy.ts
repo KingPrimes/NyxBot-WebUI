@@ -31,6 +31,5 @@ function createProxyItem(item: App.Service.ServiceConfigItem) {
     changeOrigin: true,
     rewrite: path => path.replace(new RegExp(`^${item.proxyPattern}`), '')
   };
-
   return proxy;
 }
