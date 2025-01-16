@@ -15,7 +15,6 @@ const labelWidth = computed(() => (appStore.isMobile ? 80 : 180));
 const formRef = ref<FormInst | null>(null);
 const formValue = ref<Api.SystemConfig.LoadingConfig>({
   serverPort: 8080,
-  isBlackOrWhite: true,
   isServerOrClient: true,
   wsClientUrl: 'ws://localhost:3001', // 默认客户端URL
   wsServerUrl: '/ws/shiro' // 默认服务端URL

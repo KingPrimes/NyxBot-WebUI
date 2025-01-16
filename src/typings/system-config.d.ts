@@ -102,7 +102,6 @@ declare namespace Api {
     /** 机器人链接配置 */
     interface LoadingConfig {
       serverPort: number;
-      isBlackOrWhite: boolean;
       isServerOrClient: boolean;
       wsClientUrl: string;
       wsServerUrl: string;

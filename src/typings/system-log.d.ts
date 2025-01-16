@@ -43,6 +43,14 @@ declare namespace Api {
       logTime: string;
     }
 
+    interface LogInfoNow {
+      live: string;
+      time: string;
+      pack: string;
+      thread: string;
+      log: string;
+    }
+
     type LogList = App.PageData<LogInfoList>;
   }
 }

@@ -24,3 +24,13 @@ export function fetchGetCommandLogList(params?: Api.SystemLog.LogSearchParams) {
     data: params
   });
 }
+
+export function fetchGetLogInfoNow() {
+  return request<Api.SystemLog.LogInfoNow[]>({
+    url: '/ws/log',
+    method: 'get',
+    headers: {
+      Upgrade: 'websocket'
+    }
+  });
+}

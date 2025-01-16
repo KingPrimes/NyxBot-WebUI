@@ -1,37 +1,63 @@
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, onMounted, ref } from 'vue';
-import { NCard, NTag } from 'naive-ui';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { localStg } from '@/utils/storage';
 
 defineOptions({
   name: 'LogRealTime'
 });
 
-interface Log {
-  live: string;
-  time: string;
-  pack: string;
-  thread: string;
-  log: string;
-}
-
-const logs = ref<Log[]>([]);
 const isConnected = ref(false);
 let ws: WebSocket | null = null;
 
 function connectWebSocketEx() {
-  ws = new WebSocket('/ws/log');
+  const token = localStg.get('token');
+  ws = new WebSocket('/ws/log-now', token || '');
   ws.onopen = (): void => {
     isConnected.value = true;
   };
 
   ws.onmessage = event => {
-    logs.value = JSON.parse(event.data);
-    nextTick(() => {
-      const logContainer = document.getElementById('log-container');
-      if (logContainer) {
-        logContainer.scrollTop = logContainer.scrollHeight;
+    const loggingText = document.getElementById('loggingText');
+    const datas = JSON.parse(event.data);
+    for (const data of datas) {
+      const ul = document.createElement('ul');
+      const live = document.createElement('li');
+      const time = document.createElement('li');
+      const thread = document.createElement('li');
+      const pack = document.createElement('li');
+      const log = document.createElement('li');
+      ul.setAttribute('name', 'ul-log');
+      live.setAttribute('name', 'li-live');
+      time.setAttribute('name', 'li-time');
+      thread.setAttribute('name', 'li-thread');
+      pack.setAttribute('name', 'li-pack');
+      log.setAttribute('name', 'li-log');
+      switch (data.live) {
+        case 'INFO':
+          live.style.color = 'green';
+          break;
+        case 'ERROR':
+          live.style.color = 'red';
+          break;
+        case 'WARN':
+          live.style.color = 'orange';
+          break;
+        case 'DEBUG':
+          live.style.color = 'blue';
+          break;
+        default:
+          live.style.color = 'black';
+          break;
       }
-    });
+      live.append(data.live);
+      time.append(data.time);
+      thread.append(data.thread);
+      pack.append(data.pack);
+      log.append(data.log);
+      ul.append(live, time, thread, pack, log);
+      loggingText?.append(ul);
+    }
+    loggingText?.scrollTo(0, loggingText.scrollHeight);
   };
 
   ws.onclose = () => {
@@ -51,65 +77,53 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div>
-    <NCard>
-      <div id="log-container" class="log-container">
-        <table class="log-table">
-          <thead>
-            <tr>
-              <th>Live</th>
-              <th>Time</th>
-              <th>Pack</th>
-              <th>Thread</th>
-              <th>Log</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(log, index) in logs" :key="index">
-              <td>
-                <NTag
-                  :type="
-                    log.live === 'DEBUG'
-                      ? 'default'
-                      : log.live === 'ERROR'
-                        ? 'error'
-                        : log.live === 'INFO'
-                          ? 'info'
-                          : 'warning'
-                  "
-                >
-                  {{ log.live }}
-                </NTag>
-              </td>
-              <td>{{ log.time }}</td>
-              <td>{{ log.pack }}</td>
-              <td>{{ log.thread }}</td>
-              <td>{{ log.log }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </NCard>
-  </div>
+  <div id="loggingText" name="loggingText" contenteditable="false"></div>
 </template>
 
-<style scoped>
-.log-container {
+<style>
+#loggingText {
+  scroll-behavior: smooth; /* 平滑滚动 */
+  overflow-y: auto; /* 添加垂直滚动条 */
+  height: 100vh; /* 设置高度为视口高度的100% */
+}
+
+#loggingText ul {
   display: flex;
-  flex-direction: column;
-  height: 100%; /* 设置容器高度 */
-  overflow-y: auto; /* 允许垂直滚动 */
+  align-items: center;
+  margin: 5px 0;
+  padding: 0;
+  list-style-type: none;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 
-.log-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: auto; /* 自动调整列宽 */
-  text-align: left; /* 内容左对齐 */
+#loggingText li {
+  margin: 0 10px;
+  padding: 5px;
+  border-right: 1px solid #ddd;
 }
 
-.log-table th,
-.log-table td {
-  padding: 10px;
+#loggingText li:last-child {
+  border-right: none;
+}
+
+#loggingText li[name='li-time'] {
+  color: black;
+}
+
+#loggingText li[name='li-thread'] {
+  color: purple;
+}
+
+#loggingText li[name='li-pack'] {
+  color: #118aa2;
+}
+
+#loggingText li[name='li-log'] {
+  color: black;
+  word-wrap: break-word; /* 自动换行 */
+  overflow-wrap: break-word; /* 自动换行 */
+  flex-grow: 1; /* 占据最大宽度 */
 }
 </style>
