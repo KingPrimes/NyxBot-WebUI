@@ -15,12 +15,6 @@ export function createViteProxy(env: Env.ImportMeta, enable: boolean) {
   const { baseURL, proxyPattern, other } = createServiceConfig(env);
 
   const proxy: Record<string, ProxyOptions> = createProxyItem({ baseURL, proxyPattern });
-  proxy['/ws'] = {
-    target: baseURL, // 替换为你的后端 WebSocket 服务地址
-    ws: true,
-    changeOrigin: true,
-    rewrite: path => path.replace(/^\/ws/, '')
-  };
   other.forEach(item => {
     Object.assign(proxy, createProxyItem(item));
   });
@@ -33,6 +27,7 @@ function createProxyItem(item: App.Service.ServiceConfigItem) {
 
   proxy[item.proxyPattern] = {
     target: item.baseURL,
+    ws: true,
     changeOrigin: true,
     rewrite: path => path.replace(new RegExp(`^${item.proxyPattern}`), '')
   };

@@ -11,7 +11,8 @@ let ws: WebSocket | null = null;
 
 function connectWebSocketEx() {
   const token = localStg.get('token');
-  ws = new WebSocket('/ws/log-now', token || '');
+  const wsUrl = import.meta.env.DEV ? '/proxy-default/ws/log-now' : '/ws/log-now';
+  ws = new WebSocket(wsUrl, token || '');
   ws.onopen = (): void => {
     isConnected.value = true;
   };
@@ -70,9 +71,7 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  if (isConnected.value) {
-    ws?.close();
-  }
+  ws?.close();
 });
 </script>
 
@@ -82,9 +81,12 @@ onBeforeUnmount(() => {
 
 <style>
 #loggingText {
-  scroll-behavior: smooth; /* 平滑滚动 */
-  overflow-y: auto; /* 添加垂直滚动条 */
-  height: 100vh; /* 设置高度为视口高度的100% */
+  scroll-behavior: smooth;
+  /* 平滑滚动 */
+  overflow-y: auto;
+  /* 添加垂直滚动条 */
+  height: 100vh;
+  /* 设置高度为视口高度的100% */
 }
 
 #loggingText ul {
@@ -122,8 +124,11 @@ onBeforeUnmount(() => {
 
 #loggingText li[name='li-log'] {
   color: black;
-  word-wrap: break-word; /* 自动换行 */
-  overflow-wrap: break-word; /* 自动换行 */
-  flex-grow: 1; /* 占据最大宽度 */
+  word-wrap: break-word;
+  /* 自动换行 */
+  overflow-wrap: break-word;
+  /* 自动换行 */
+  flex-grow: 1;
+  /* 占据最大宽度 */
 }
 </style>
