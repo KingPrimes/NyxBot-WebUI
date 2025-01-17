@@ -24,7 +24,7 @@ export function fetchAddAndEditAdmin(params: Api.SystemConfig.AdminModel) {
 /** 获取机器人的好友列表 */
 export function fetchGetAllAdminOptionList(botUid: number) {
   return request<Api.SystemConfig.FriendInfoResp[]>({
-    url: `${baseUrl}/admin/friend/${botUid}`,
+    url: `${baseUrl}/friend/${botUid}`,
     method: 'get'
   });
 }
@@ -57,7 +57,7 @@ export function fetchGetAllPermissionOptionList() {
 /** 获取机器人列表 */
 export function fetchGetAllBotsOptionList() {
   return request<Api.SystemConfig.BotOption[]>({
-    url: `${baseUrl}/admin/bots`,
+    url: `${baseUrl}/bots`,
     method: 'get'
   });
 }
@@ -65,7 +65,7 @@ export function fetchGetAllBotsOptionList() {
 /** 获取好友列表 */
 export function fetchGetAllBotsFriendsOptionList(botUid: string) {
   return request<Api.SystemConfig.AdminOption[]>({
-    url: `${baseUrl}/admin/friend/${botUid}`,
+    url: `${baseUrl}/friend/${botUid}`,
     method: 'get'
   });
 }

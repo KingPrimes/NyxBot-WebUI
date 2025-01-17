@@ -2,7 +2,12 @@
 import { computed, ref, watch } from 'vue';
 import { NSelect } from 'naive-ui';
 import { useFormRules, useNaiveForm } from '@/hooks/common/form';
-import { fetchGetAllBotsOptionList, fetchGetAllPermissionOptionList } from '@/service/api/system-config-bot';
+import {
+  fetchGetAllBotsFriendsOptionList,
+  fetchGetAllBotsOptionList,
+  fetchGetAllPermissionOptionList,
+  fetchPostBotAdmin
+} from '@/service/api/system-config-bot';
 import { $t } from '@/locales';
 
 defineOptions({
@@ -64,6 +69,16 @@ const botAccountOptions = ref<CommonType.Option<string>[]>([]);
 
 const permissionOptions = ref<CommonType.Option<string>[]>([]);
 
+async function getAdminAccountOptions(botUid: string) {
+  const { error, data } = await fetchGetAllBotsFriendsOptionList(botUid);
+  if (!error) {
+    adminAccountOptions.value = data.map(item => ({
+      label: item.label,
+      value: item.value
+    }));
+  }
+}
+
 async function getBotAccountOptions() {
   const { error, data } = await fetchGetAllBotsOptionList();
 
@@ -100,11 +115,25 @@ function closeDrawer() {
 
 async function handleSubmit() {
   await validate();
-  // request
-  window.$message?.success($t('common.updateSuccess'));
-  closeDrawer();
-  emit('submitted');
+  await fetchPostBotAdmin(model.value).then(res => {
+    if (Number(res.response.data.code) === 200) {
+      window.$message?.success(res.response.data.msg);
+      emit('submitted');
+      closeDrawer();
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
 }
+
+watch(
+  () => model.value.botUid,
+  async newVal => {
+    if (newVal) {
+      await getAdminAccountOptions(newVal);
+    }
+  }
+);
 
 watch(visible, () => {
   if (visible.value) {
@@ -121,7 +150,7 @@ watch(visible, () => {
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
         <NFormItem :label="$t('page.config.admin.botAccount')" path="botUid">
-          <NSelect v-model:value="model.botUid" :options="botAccountOptions" onclick="" />
+          <NSelect v-model:value="model.botUid" :options="botAccountOptions" />
         </NFormItem>
         <NFormItem :label="$t('page.config.admin.adminAccount')" path="adminUid">
           <NSelect v-model:value="model.adminUid" :options="adminAccountOptions" />
