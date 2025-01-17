@@ -12,7 +12,7 @@ export function fetchGetGitUserPriovider() {
 
 /** 修改Git配置 */
 export function fetchPostGitUserPriovider(params?: Api.SystemConfig.GitHubUserProvider) {
-  return request<Api.LocalData.Result>({
+  return request<Api.Result>({
     url: `${baseUrl}git`,
     method: 'post',
     data: params
@@ -29,7 +29,7 @@ export function fetchGetLoadingConfig() {
 
 /** 修改链接配置 */
 export function fetchPostLoadingConfig(params?: Api.SystemConfig.LoadingConfig) {
-  return request<Api.LocalData.Result>({
+  return request<Api.Result>({
     url: `${baseUrl}loading`,
     method: 'post',
     data: params

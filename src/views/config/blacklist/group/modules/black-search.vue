@@ -38,11 +38,11 @@ async function search() {
             <NFormItemGi
               span="24 s:12 m:6"
               :label="$t('page.config.blacklist.group.groupAccount')"
-              path="groupAccount"
+              path="groupUid"
               class="pr-24px"
             >
               <NSelect
-                v-model:value="model.groupAccount"
+                v-model:value="model.groupUid"
                 :placeholder="$t('page.config.blacklist.group.placeholder')"
                 clearable
               />

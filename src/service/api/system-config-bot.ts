@@ -1,25 +1,6 @@
-import { computed } from 'vue';
 import { request } from '../request';
 
 const baseUrl = '/config/bot';
-
-/** 获取管理员列表 */
-export function fetchPostAdminList(params?: Api.SystemConfig.AdminSearchParams) {
-  return request<Api.SystemConfig.AdminList>({
-    url: `${baseUrl}/admin/list`,
-    method: 'post',
-    data: params
-  });
-}
-
-/** 添加与修改管理员 */
-export function fetchAddAndEditAdmin(params: Api.SystemConfig.AdminModel) {
-  return request<null>({
-    url: `${baseUrl}/admin/save`,
-    method: 'post',
-    data: params
-  });
-}
 
 /** 获取机器人的好友列表 */
 export function fetchGetAllAdminOptionList(botUid: number) {
@@ -29,26 +10,9 @@ export function fetchGetAllAdminOptionList(botUid: number) {
   });
 }
 
-/** 获取权限Map */
-export function fetchGetPermissionsMap() {
-  return request<any>({
-    url: `${baseUrl}/admin/permissions`,
-    method: 'get'
-  }).then(res => {
-    return computed(() => {
-      res.data.map((item: any) => {
-        return {
-          label: item.name,
-          value: item.id
-        };
-      });
-    });
-  });
-}
-
 /** 获取所有权限 */
 export function fetchGetAllPermissionOptionList() {
-  return request<Api.SystemConfig.Permissions[]>({
+  return request<Api.SystemConfig.Option[]>({
     url: `${baseUrl}/admin/permissions`,
     method: 'get'
   });
@@ -56,7 +20,7 @@ export function fetchGetAllPermissionOptionList() {
 
 /** 获取机器人列表 */
 export function fetchGetAllBotsOptionList() {
-  return request<Api.SystemConfig.BotOption[]>({
+  return request<Api.SystemConfig.Option[]>({
     url: `${baseUrl}/bots`,
     method: 'get'
   });
@@ -64,53 +28,16 @@ export function fetchGetAllBotsOptionList() {
 
 /** 获取好友列表 */
 export function fetchGetAllBotsFriendsOptionList(botUid: string) {
-  return request<Api.SystemConfig.AdminOption[]>({
+  return request<Api.SystemConfig.Option[]>({
     url: `${baseUrl}/friend/${botUid}`,
     method: 'get'
   });
 }
 
-/** 添加管理员 */
-export function fetchPostBotAdmin(params?: Api.SystemConfig.AdminModel) {
-  return request<null>({
-    url: `${baseUrl}/admin/save`,
-    method: 'post',
-    data: params
-  });
-}
-
-/** 获取黑名单群组列表 */
-export function fetchGetBlacklistGroupList(params?: Api.SystemConfig.BlacklistGroupSearchParams) {
-  return request<Api.SystemConfig.BlacklistGroupList>({
-    url: '/systemConfig/getBlacklistGroupList',
-    method: 'get',
-    params
-  });
-}
-
-/** 获取黑名单个人列表 */
-export function fetchGetBlacklistPersonalList(params?: Api.SystemConfig.BlacklistPersonalSearchParams) {
-  return request<Api.SystemConfig.BlacklistPersonalList>({
-    url: '/systemConfig/getBlacklistPersonalList',
-    method: 'get',
-    params
-  });
-}
-
-/** 获取白名单群组列表 */
-export function fetchGetWhitelistGroupList(params?: Api.SystemConfig.WhitelistGroupSearchParams) {
-  return request<Api.SystemConfig.WhitelistGroupList>({
-    url: '/systemConfig/getWhitelistGroupList',
-    method: 'get',
-    params
-  });
-}
-
-/** 获取白名单个人列表 */
-export function fetchGetWhitelistPersonalList(params?: Api.SystemConfig.WhitelistPersonalSearchParams) {
-  return request<Api.SystemConfig.WhitelistPersonalList>({
-    url: '/systemConfig/getWhitelistPersonalList',
-    method: 'get',
-    params
+/** 获取群列表 */
+export function fetchGetAllGroupOptionList(botUid: string) {
+  return request<Api.SystemConfig.Option[]>({
+    url: `${baseUrl}/group/${botUid}`,
+    method: 'get'
   });
 }

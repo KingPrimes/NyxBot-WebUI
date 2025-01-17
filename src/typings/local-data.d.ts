@@ -82,11 +82,6 @@ declare namespace Api {
       is_set: boolean;
     }
 
-    interface Result {
-      code: number;
-      msg: string;
-    }
-
     interface TranslationSearchParams extends Common.CommonSearchParams {
       cn?: string | null;
       en?: string | null;

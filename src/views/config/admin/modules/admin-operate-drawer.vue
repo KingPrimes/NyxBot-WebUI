@@ -5,10 +5,10 @@ import { useFormRules, useNaiveForm } from '@/hooks/common/form';
 import {
   fetchGetAllBotsFriendsOptionList,
   fetchGetAllBotsOptionList,
-  fetchGetAllPermissionOptionList,
-  fetchPostBotAdmin
+  fetchGetAllPermissionOptionList
 } from '@/service/api/system-config-bot';
 import { $t } from '@/locales';
+import { fetchPostBotAdmin } from '@/service/api/sytem-config-bot-admin';
 
 defineOptions({
   name: 'AdminOperateDrawer'
@@ -129,7 +129,7 @@ async function handleSubmit() {
 watch(
   () => model.value.botUid,
   async newVal => {
-    if (newVal) {
+    if (newVal && visible.value) {
       await getAdminAccountOptions(newVal);
     }
   }

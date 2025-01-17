@@ -3,7 +3,7 @@ import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetWhitelistPersonalList } from '@/service/api/system-config-bot';
+import { fetchGetWhitelistProvelList, fetchRemoveWhiteProve } from '@/service/api/system-config-bot-white';
 import WhiteSearch from './modules/white-search.vue';
 import WhiteOperateDrawer from './modules/white-operate-drawer.vue';
 
@@ -20,7 +20,7 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetWhitelistPersonalList,
+  apiFn: fetchGetWhitelistProvelList,
   showTotal: true,
   apiParams: {
     current: 1,
@@ -41,7 +41,13 @@ const {
       width: 64
     },
     {
-      key: 'personalAccount',
+      key: 'botUid',
+      title: $t('page.config.admin.botAccount'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'proveUid',
       title: $t('page.config.whitelist.personal.personalAccount'),
       align: 'center',
       minWidth: 100
@@ -77,24 +83,20 @@ const {
   operateType,
   handleAdd,
   handleEdit,
+  editingData,
   checkedRowKeys,
-  onBatchDeleted,
   onDeleted
   // closeDrawer
 } = useTableOperate(data, getData);
 
-async function handleBatchDelete() {
-  // request
-  console.log(checkedRowKeys.value);
-
-  onBatchDeleted();
-}
-
-function handleDelete(id: number) {
-  // request
-  console.log(id);
-
-  onDeleted();
+async function handleDelete(id: number) {
+  await fetchRemoveWhiteProve(id).then(res => {
+    if (Number(res.response.data.code) === 200) {
+      onDeleted();
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
 }
 
 function edit(id: number) {
@@ -116,8 +118,8 @@ function edit(id: number) {
           v-model:columns="columnChecks"
           :disabled-delete="checkedRowKeys.length === 0"
           :loading="loading"
+          :show-delete="false"
           @add="handleAdd"
-          @delete="handleBatchDelete"
           @refresh="getData"
         />
       </template>
@@ -134,7 +136,12 @@ function edit(id: number) {
         :pagination="mobilePagination"
         class="sm:h-full"
       />
-      <WhiteOperateDrawer v-model:visible="drawerVisible" :operate-type="operateType" @submitted="getDataByPage" />
+      <WhiteOperateDrawer
+        v-model:visible="drawerVisible"
+        :row-data="editingData"
+        :operate-type="operateType"
+        @submitted="getDataByPage"
+      />
     </NCard>
   </div>
 </template>

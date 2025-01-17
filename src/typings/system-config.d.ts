@@ -14,17 +14,7 @@ declare namespace Api {
     type AdminList = App.PageData<AdminModel>;
 
     /** 机器人 下拉选项 */
-    interface BotOption {
-      label: string;
-      value: string;
-    }
-    /** 管理员 下拉选项 */
-    interface AdminOption {
-      label: string;
-      value: string;
-    }
-
-    interface Permissions {
+    interface Option {
       label: string;
       value: string;
     }
@@ -35,62 +25,60 @@ declare namespace Api {
       nickname?: string;
       remark?: string;
     }
-    type BotOptionList = App.PageData<BotOption>;
-    type AdminOptionList = App.PageData<AdminOption>;
+    type BotOptionList = App.PageData<Option>;
+    type AdminOptionList = App.PageData<Option>;
 
     interface BlacklistGroupSearchParams extends Common.CommonSearchParams {
-      groupAccount?: string | null;
+      groupUid?: string | null;
     }
-
-    /** 黑名单组类型 */
-    type BlacklistGroupType = '1' | '2';
 
     /** 黑名单组 */
     interface BlacklistGroup {
       id?: number;
-      groupAccount?: string;
+      botUid?: string;
+      groupUid?: string;
     }
 
     type BlacklistGroupList = App.PageData<BlacklistGroup>;
 
-    interface BlacklistPersonalSearchParams extends Common.CommonSearchParams {
-      personalAccount?: string;
+    interface BlacklistProveSearchParams extends Common.CommonSearchParams {
+      proveUid?: string;
     }
 
     /** 黑名单个人 */
-    interface BlacklistPersonal {
+    interface BlacklistProve {
       id?: number;
-      personalAccount: string;
+      botUid: string;
+      proveUid: string;
     }
 
-    type BlacklistPersonalList = App.PageData<BlacklistPersonal>;
+    type BlacklistProveList = App.PageData<BlacklistProve>;
 
     interface WhitelistGroupSearchParams extends Common.CommonSearchParams {
-      groupAccount?: string | null;
+      groupUid?: string | null;
     }
-
-    /** 白名单组类型 */
-    type WhitelistGroupType = '1' | '2';
 
     /** 白名单组 */
     interface WhitelistGroup {
       id?: number;
-      groupAccount: string;
+      botUid: string;
+      groupUid: string;
     }
 
     type WhitelistGroupList = App.PageData<WhitelistGroup>;
 
-    interface WhitelistPersonalSearchParams extends Common.CommonSearchParams {
-      personalAccount?: string;
+    interface WhitelistProveSearchParams extends Common.CommonSearchParams {
+      proveUid?: string;
     }
 
     /** 白名单个人 */
-    interface WhitelistPersonal {
+    interface WhitelistProve {
       id?: number;
-      personalAccount: string;
+      botUid: string;
+      proveUid: string;
     }
 
-    type WhitelistPersonalList = App.PageData<WhitelistPersonal>;
+    type WhitelistProveList = App.PageData<WhitelistProve>;
 
     interface GitHubUserProvider {
       id?: number | undefined;

@@ -4,6 +4,8 @@ import { NSelect } from 'naive-ui';
 import { useFormRules, useNaiveForm } from '@/hooks/common/form';
 // import { fetchGetAllAdminOptionList, fetchGetAllBotOptionList } from '@/service/api/system-config';
 import { $t } from '@/locales';
+import { fetchGetAllBotsFriendsOptionList, fetchGetAllBotsOptionList } from '@/service/api/system-config-bot';
+import { fetchSaveWhiteProve } from '@/service/api/system-config-bot-white';
 
 defineOptions({
   name: 'WhiteOperateDrawer'
@@ -13,7 +15,7 @@ interface Props {
   /** the type of operation */
   operateType: NaiveUI.TableOperateType;
   /** the edit row data */
-  rowData?: Api.SystemConfig.AdminModel | null;
+  rowData?: Api.SystemConfig.WhitelistProve | null;
 }
 
 const props = defineProps<Props>();
@@ -39,34 +41,45 @@ const title = computed(() => {
   };
   return titles[props.operateType];
 });
-type Model = Pick<Api.SystemConfig.WhitelistPersonal, 'personalAccount'>;
+type Model = Pick<Api.SystemConfig.WhitelistProve, 'proveUid' | 'botUid'>;
 const model = ref(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    personalAccount: ''
+    botUid: '',
+    proveUid: ''
   };
 }
 
-type RuleKey = Extract<keyof Model, 'personalAccount'>;
+type RuleKey = Extract<keyof Model, 'proveUid' | 'botUid'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
-  personalAccount: defaultRequiredRule
+  proveUid: defaultRequiredRule,
+  botUid: defaultRequiredRule
 };
 
-async function getPersonalAccountOptions() {
-  /* const { error, data } = await fetchGetAllBotOptionList();
+const proveOptions = ref<CommonType.Option<string>[]>([]);
+const botOptions = ref<CommonType.Option<string>[]>([]);
+async function getBotOptions() {
+  const { error, data } = await fetchGetAllBotsOptionList();
 
   if (!error) {
-    groupAccountOptions.value = data.map(item => ({
+    botOptions.value = data.map(item => ({
       label: item.label,
       value: item.value
     }));
-  } */
-  /* const userAdminOptions = model.value.adminAccount.map(item => ({
-    label: item,
-    value: item
-  })); */
+  }
+}
+
+async function getProveOptions(botUid: string) {
+  const { error, data } = await fetchGetAllBotsFriendsOptionList(botUid);
+
+  if (!error) {
+    proveOptions.value = data.map(item => ({
+      label: item.label,
+      value: item.value
+    }));
+  }
 }
 
 function handleInitModel() {
@@ -83,17 +96,29 @@ function closeDrawer() {
 
 async function handleSubmit() {
   await validate();
-  // request
-  window.$message?.success($t('common.updateSuccess'));
-  closeDrawer();
-  emit('submitted');
+  await fetchSaveWhiteProve(model.value).then(res => {
+    if (Number(res.response.data.code) === 200) {
+      window.$message?.success(res.response.data.msg);
+      emit('submitted');
+      closeDrawer();
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
 }
-
+watch(
+  () => model.value.botUid,
+  async newVal => {
+    if (newVal && visible.value) {
+      await getProveOptions(newVal);
+    }
+  }
+);
 watch(visible, () => {
   if (visible.value) {
     handleInitModel();
     restoreValidation();
-    getPersonalAccountOptions();
+    getBotOptions();
   }
 });
 </script>
@@ -102,8 +127,11 @@ watch(visible, () => {
   <NDrawer v-model:show="visible" display-directive="show" :width="360">
     <NDrawerContent :title="title" :native-scrollbar="false" closable>
       <NForm ref="formRef" :model="model" :rules="rules">
-        <NFormItem :label="$t('page.config.whitelist.personal.personalAccount')" path="personalAccount">
-          <NSelect v-model:value="model.personalAccount" />
+        <NFormItem :label="$t('page.config.admin.botAccount')" path="botUid">
+          <NSelect v-model:value="model.botUid" :options="botOptions" />
+        </NFormItem>
+        <NFormItem :label="$t('page.config.whitelist.personal.personalAccount')" path="proveUid">
+          <NSelect v-model:value="model.proveUid" :options="proveOptions" />
         </NFormItem>
       </NForm>
       <template #footer>

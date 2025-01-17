@@ -89,4 +89,9 @@ declare namespace Api {
       home: import('@elegant-router/types').LastLevelRouteKey;
     }
   }
+
+  interface Result {
+    code: number;
+    msg: string;
+  }
 }

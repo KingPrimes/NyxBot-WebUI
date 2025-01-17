@@ -16,7 +16,7 @@ const emit = defineEmits<Emits>();
 
 const { formRef, validate, restoreValidation } = useNaiveForm();
 
-const model = defineModel<Api.SystemConfig.WhitelistPersonalSearchParams>('model', { required: true });
+const model = defineModel<Api.SystemConfig.WhitelistProveSearchParams>('model', { required: true });
 
 async function reset() {
   await restoreValidation();
@@ -38,11 +38,11 @@ async function search() {
             <NFormItemGi
               span="24 s:12 m:6"
               :label="$t('page.config.whitelist.personal.personalAccount')"
-              path="personalAccount"
+              path="proveUid"
               class="pr-24px"
             >
               <NSelect
-                v-model:value="model.personalAccount"
+                v-model:value="model.proveUid"
                 :placeholder="$t('page.config.whitelist.personal.placeholder')"
                 clearable
               />

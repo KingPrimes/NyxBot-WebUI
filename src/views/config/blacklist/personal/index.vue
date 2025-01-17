@@ -3,7 +3,7 @@ import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchGetBlacklistPersonalList } from '@/service/api/system-config-bot';
+import { fetchGetBlacklistProveList, fetchRemoveBlackProve } from '@/service/api/system-config-bot-black';
 import BlackSearch from './modules/black-search.vue';
 import BlackOperateDrawer from './modules/black-operate-drawer.vue';
 
@@ -20,13 +20,11 @@ const {
   searchParams,
   resetSearchParams
 } = useTable({
-  apiFn: fetchGetBlacklistPersonalList,
+  apiFn: fetchGetBlacklistProveList,
   showTotal: true,
   apiParams: {
     current: 1,
     size: 10
-    // if you want to use the searchParams in Form, you need to define the following properties, and the value is null
-    // the value can not be undefined, otherwise the property in Form will not be reactive
   },
   columns: () => [
     {
@@ -41,7 +39,13 @@ const {
       width: 64
     },
     {
-      key: 'personalAccount',
+      key: 'botUid',
+      title: $t('page.config.admin.botAccount'),
+      align: 'center',
+      minWidth: 100
+    },
+    {
+      key: 'proveUid',
       title: $t('page.config.blacklist.personal.personalAccount'),
       align: 'center',
       minWidth: 100
@@ -79,23 +83,18 @@ const {
   handleAdd,
   handleEdit,
   checkedRowKeys,
-  onBatchDeleted,
   onDeleted
   // closeDrawer
 } = useTableOperate(data, getData);
 
-async function handleBatchDelete() {
-  // request
-  console.log(checkedRowKeys.value);
-
-  onBatchDeleted();
-}
-
-function handleDelete(id: number) {
-  // request
-  console.log(id);
-
-  onDeleted();
+async function handleDelete(id: number) {
+  await fetchRemoveBlackProve(id).then(res => {
+    if (Number(res.response.data.code) === 200) {
+      onDeleted();
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
 }
 
 function edit(id: number) {
@@ -117,8 +116,8 @@ function edit(id: number) {
           v-model:columns="columnChecks"
           :disabled-delete="checkedRowKeys.length === 0"
           :loading="loading"
+          :show-delete="false"
           @add="handleAdd"
-          @delete="handleBatchDelete"
           @refresh="getData"
         />
       </template>

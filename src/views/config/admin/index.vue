@@ -3,7 +3,7 @@ import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchPostAdminList } from '@/service/api/system-config-bot';
+import { fetchDeleteBotAdmin, fetchPostAdminList } from '@/service/api/sytem-config-bot-admin';
 import AdminSearch from './modules/admin-search.vue';
 import AdminOperateDrawer from './modules/admin-operate-drawer.vue';
 
@@ -90,23 +90,18 @@ const {
   handleAdd,
   handleEdit,
   checkedRowKeys,
-  onBatchDeleted,
   onDeleted
   // closeDrawer
 } = useTableOperate(data, getData);
 
-async function handleBatchDelete() {
-  // request
-  console.log(checkedRowKeys.value);
-
-  onBatchDeleted();
-}
-
-function handleDelete(id: number) {
-  // request
-  console.log(id);
-
-  onDeleted();
+async function handleDelete(id: number) {
+  await fetchDeleteBotAdmin(id).then(res => {
+    if (Number(res.response.data.code) === 200) {
+      onDeleted();
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
 }
 
 function edit(id: number) {
@@ -123,8 +118,8 @@ function edit(id: number) {
           v-model:columns="columnChecks"
           :disabled-delete="checkedRowKeys.length === 0"
           :loading="loading"
+          :show-delete="false"
           @add="handleAdd"
-          @delete="handleBatchDelete"
           @refresh="getData"
         />
       </template>
