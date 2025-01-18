@@ -25,11 +25,9 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install dependencies
-        working-directory: ./NyxBot-WebUI
         run: pnpm install
 
       - name: Build NyxBot-WebUI
-        working-directory: ./NyxBot-WebUI
         run: pnpm build
 
       - name: Upload WebUi Build Artifact
