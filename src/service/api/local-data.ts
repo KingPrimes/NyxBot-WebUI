@@ -11,6 +11,14 @@ export async function fetchPostAliasList(params?: Api.LocalData.AliasSearchParam
   });
 }
 
+export async function fetchPostSaveAlias(params: Api.LocalData.Alias) {
+  return request<Api.Result>({
+    url: `${baseUrl}/alias/save`,
+    method: 'post',
+    data: params
+  });
+}
+
 /** 获取Warframe市场列表 */
 export async function fetchPostMarketList(params?: Api.LocalData.MarketSearchParams) {
   return request<Api.LocalData.MarketList>({

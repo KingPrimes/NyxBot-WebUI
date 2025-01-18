@@ -2,6 +2,7 @@
 import { computed, ref, watch } from 'vue';
 import { useFormRules, useNaiveForm } from '@/hooks/common/form';
 import { $t } from '@/locales';
+import { fetchPostSaveAlias } from '@/service/api/local-data';
 
 defineOptions({
   name: 'AliasOperateDrawer'
@@ -68,10 +69,15 @@ function closeDrawer() {
 
 async function handleSubmit() {
   await validate();
-  // request
-  window.$message?.success($t('common.updateSuccess'));
-  closeDrawer();
-  emit('submitted');
+  await fetchPostSaveAlias(model.value).then(res => {
+    if (Number(res.response.data.code) === 200) {
+      window.$message?.success(res.response.data.msg);
+      emit('submitted');
+      closeDrawer();
+    } else {
+      window.$message?.error(res.response.data.msg);
+    }
+  });
 }
 
 watch(visible, () => {
