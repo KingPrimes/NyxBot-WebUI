@@ -52,9 +52,9 @@ export default defineConfig(configEnv => {
           main: resolve(__dirname, 'index.html')
         },
         output: {
-          entryFileNames: 'static/js/[hash].js',
-          chunkFileNames: 'static/js/[hash].js',
-          assetFileNames: 'static/[ext]/[hash].[ext]',
+          entryFileNames: 'js/[hash].js',
+          chunkFileNames: 'js/[hash].js',
+          assetFileNames: '[ext]/[hash].[ext]',
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return 'vendor';
