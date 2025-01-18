@@ -95,15 +95,14 @@ onBeforeUnmount(() => {
   margin: 5px 0;
   padding: 0;
   list-style-type: none;
-  border: 1px solid #ccc;
+  border: 1px solid #6464648e;
   border-radius: 5px;
-  background-color: #f9f9f9;
 }
 
 #loggingText li {
   margin: 0 10px;
   padding: 5px;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid #6464648e;
 }
 
 #loggingText li:last-child {
@@ -111,7 +110,7 @@ onBeforeUnmount(() => {
 }
 
 #loggingText li[name='li-time'] {
-  color: black;
+  color: rgb(127, 133, 127);
 }
 
 #loggingText li[name='li-thread'] {
@@ -123,7 +122,7 @@ onBeforeUnmount(() => {
 }
 
 #loggingText li[name='li-log'] {
-  color: black;
+  color: rgb(131, 126, 126);
   word-wrap: break-word;
   /* 自动换行 */
   overflow-wrap: break-word;
