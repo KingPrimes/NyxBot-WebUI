@@ -35,3 +35,18 @@ export function fetchPostLoadingConfig(params?: Api.SystemConfig.LoadingConfig) 
     data: params
   });
 }
+
+export function fetchGetTokenKeys() {
+  return request<Api.SystemConfig.TokenKeys>({
+    url: `${baseUrl}token`,
+    method: 'get'
+  });
+}
+
+export function fetchPostTokenKeys(params?: Api.SystemConfig.TokenKeys) {
+  return request<Api.Result>({
+    url: `${baseUrl}token`,
+    method: 'post',
+    data: params
+  });
+}

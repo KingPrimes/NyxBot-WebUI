@@ -17,7 +17,8 @@ const formValue = ref<Api.SystemConfig.LoadingConfig>({
   serverPort: 8080,
   isServerOrClient: true,
   wsClientUrl: 'ws://localhost:3001', // 默认客户端URL
-  wsServerUrl: '/ws/shiro' // 默认服务端URL
+  wsServerUrl: '/ws/shiro', // 默认服务端URL
+  token: ''
 });
 
 // 计算显示的服务类型文本

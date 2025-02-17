@@ -203,7 +203,8 @@ const local: App.I18n.Schema = {
     'local-data_warframe_untranslated': 'Warframe Untranslated',
     log_command: 'Log Command',
     'log_real-time': 'Log Real-time',
-    'rest-password': 'rest password'
+    'rest-password': 'rest password',
+    config_token: 'Token'
   },
   page: {
     login: {
@@ -395,6 +396,11 @@ const local: App.I18n.Schema = {
           editWhitelistPersonal: 'Edit Whitelist Personal',
           placeholder: 'Please select the personal account'
         }
+      },
+      token: {
+        title: 'Arbitration Token',
+        token: 'Token',
+        placeholder: 'please enter the token'
       }
     },
     'local-data': {

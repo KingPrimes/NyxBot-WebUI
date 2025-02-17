@@ -118,6 +118,15 @@ export const generatedRoutes: GeneratedRoute[] = [
         }
       },
       {
+        name: 'config_token',
+        path: '/config/token',
+        component: 'view.config_token',
+        meta: {
+          title: 'config_token',
+          i18nKey: 'route.config_token'
+        }
+      },
+      {
         name: 'config_whitelist',
         path: '/config/whitelist',
         meta: {

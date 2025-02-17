@@ -617,6 +617,11 @@ declare namespace App {
               placeholder: string;
             };
           };
+          token: {
+            title: string;
+            token: string;
+            placeholder: string;
+          };
         };
         'local-data': {
           warframe: {

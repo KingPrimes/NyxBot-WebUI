@@ -93,6 +93,12 @@ declare namespace Api {
       isServerOrClient: boolean;
       wsClientUrl: string;
       wsServerUrl: string;
+      token: string;
+    }
+
+    interface TokenKeys {
+      id?: number;
+      tks: string;
     }
   }
 }

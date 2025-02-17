@@ -203,7 +203,8 @@ const local: App.I18n.Schema = {
     config_whitelist: '白名单',
     config_whitelist_group: '群白名单',
     config_whitelist_personal: '个人白名单',
-    'rest-password': '重置密码'
+    'rest-password': '重置密码',
+    config_token: '密钥'
   },
   page: {
     login: {
@@ -395,6 +396,11 @@ const local: App.I18n.Schema = {
           editWhitelistPersonal: '编辑白名单个人',
           placeholder: '请选择个人账号'
         }
+      },
+      token: {
+        title: '仲裁密钥',
+        token: '密钥',
+        placeholder: '请输入密钥'
       }
     },
     'local-data': {
