@@ -103,5 +103,50 @@ declare namespace Api {
     interface PushCommit {
       commit: string;
     }
+
+    interface MissionSubscribe {
+      id: number;
+      subBotUid: number;
+      subGroup: number;
+      groupName: string;
+    }
+
+    interface MissionSubscribeUser {
+      id: number;
+      userId: number;
+      userName: string;
+    }
+
+    interface MissionSubscribeUserCheckType {
+      id: number;
+      subscribe: string;
+      missionTypeEnum: string;
+      tierNum: number;
+      subscribeType: string;
+    }
+
+    interface MissionSubscribeSearchParams extends Common.CommonSearchParams {
+      subBotUid?: number;
+      subGroup?: number;
+    }
+
+    interface MissionSubscribeUserSearchParams extends Common.CommonSearchParams {
+      id?: number;
+      subBotUid?: number;
+      subGroup?: number;
+      userId?: number;
+    }
+
+    interface MissionSubscribeUserCheckTypeSearchParams extends Common.CommonSearchParams {
+      id?: number;
+      subBotUid?: number;
+      subGroup?: number;
+      userId?: number;
+      subscribeType?: string;
+    }
+
+    type MissionSubscribeList = App.PageData<MissionSubscribe>;
+    type MissionSubscribeUserList = App.PageData<MissionSubscribeUser>;
+    type MissionSubscribeUserCheckTypeList = App.PageData<MissionSubscribeUserCheckType>;
   }
 }

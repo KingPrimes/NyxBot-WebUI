@@ -488,6 +488,22 @@ const local: App.I18n.Schema = {
           englishPlaceholder: '请输入英文',
           addUntranslated: '添加未翻译数据',
           editUntranslated: '编辑未翻译数据'
+        },
+        subscription: {
+          title: '订阅管理',
+          groupName: '订阅组名称',
+          userList: '订阅用户列表',
+          typeList: '订阅类型列表',
+          id: '编号',
+          subGroup: '订阅组',
+          subBotUid: '机器人 UID',
+          userDetail: '订阅用户详情',
+          userId: '用户 UID',
+          userName: '用户昵称',
+          typeDetail: '订阅类型详情',
+          subscribe: '订阅类型',
+          missionTypeEnum: '订阅任务类型',
+          tierNum: '订阅遗物等级'
         }
       }
     },

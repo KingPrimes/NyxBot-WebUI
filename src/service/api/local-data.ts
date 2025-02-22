@@ -157,3 +157,70 @@ export async function fetchPostSaveNotTranslation(params: Api.LocalData.Translat
     data: params
   });
 }
+
+export async function fetchGetSubscribeEnums() {
+  return request<Api.Result>({
+    url: `${baseUrl}/subscribe/sub`,
+    method: 'get'
+  });
+}
+
+export async function fetchGetSubscribeTypeEnums() {
+  return request<Api.Result>({
+    url: `${baseUrl}/subscribe/type`,
+    method: 'get'
+  });
+}
+
+/** 获取订阅组数据 */
+export async function fetchPostMissionSubscribeList(params?: Api.LocalData.MissionSubscribeSearchParams) {
+  return request<Api.LocalData.MissionSubscribeList>({
+    url: `${baseUrl}/subscribe/list`,
+    method: 'post',
+    data: params
+  });
+}
+
+/** 获取订阅组用户数据 */
+export async function fetchPostMissionSubscribeUserList(params?: Api.LocalData.MissionSubscribeUserSearchParams) {
+  return request<Api.LocalData.MissionSubscribeUserList>({
+    url: `${baseUrl}/subscribe/user/list`,
+    method: 'post',
+    data: params
+  });
+}
+
+/** 获取用户订阅类型数据 */
+export async function fetchPostMissionSubscribeUserTypeList(
+  params?: Api.LocalData.MissionSubscribeUserCheckTypeSearchParams
+) {
+  return request<Api.LocalData.MissionSubscribeUserCheckTypeList>({
+    url: `${baseUrl}/subscribe/type/list`,
+    method: 'post',
+    data: params
+  });
+}
+
+/** 移除订阅组 */
+export async function fetchDeleteMissionSubscribe(id?: number) {
+  return request<Api.Result>({
+    url: `${baseUrl}/subscribe/${id}`,
+    method: 'delete'
+  });
+}
+
+/** 移除订阅用户 */
+export async function fetchDeleteMissionSubscribeUser(id?: number) {
+  return request<Api.Result>({
+    url: `${baseUrl}/subscribe/user/${id}`,
+    method: 'delete'
+  });
+}
+
+/** 移除用户订阅类型 */
+export async function fetchDeleteMissionSubscribeCheckType(id?: number) {
+  return request<Api.Result>({
+    url: `${baseUrl}/subscribe/type/${id}`,
+    method: 'delete'
+  });
+}

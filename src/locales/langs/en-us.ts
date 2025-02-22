@@ -488,6 +488,22 @@ const local: App.I18n.Schema = {
           englishPlaceholder: 'Please enter English',
           addUntranslated: 'Add Untranslated Data',
           editUntranslated: 'Edit Untranslated Data'
+        },
+        subscription: {
+          title: 'Subscription',
+          groupName: 'group name',
+          userList: 'user list',
+          typeList: 'type list',
+          id: 'ID',
+          subGroup: 'sub group',
+          subBotUid: 'sub bot uid',
+          userDetail: 'sub user detail',
+          userId: 'user uid',
+          userName: 'user name',
+          typeDetail: 'sub type detail',
+          subscribe: 'sub type',
+          missionTypeEnum: 'sub mission type',
+          tierNum: 'relics tier'
         }
       }
     },

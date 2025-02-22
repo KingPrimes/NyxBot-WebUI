@@ -709,6 +709,22 @@ declare namespace App {
               addUntranslated: string;
               editUntranslated: string;
             };
+            subscription: {
+              id: string;
+              subGroup: string;
+              subBotUid: string;
+              userDetail: string;
+              userId: string;
+              userName: string;
+              typeDetail: string;
+              subscribe: string;
+              missionTypeEnum: string;
+              tierNum: string;
+              title: string;
+              groupName: string;
+              userList: string;
+              typeList: string;
+            };
           };
         };
         git: {
