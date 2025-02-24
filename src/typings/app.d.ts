@@ -747,6 +747,7 @@ declare namespace App {
         confirmPwd: FormMsg;
         code: FormMsg;
         email: FormMsg;
+        qq: FormMsg;
       };
       dropdown: Record<Global.DropdownKey, string>;
       icon: {

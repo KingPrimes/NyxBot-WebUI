@@ -4,7 +4,7 @@ import { NSelect } from 'naive-ui';
 import { useFormRules, useNaiveForm } from '@/hooks/common/form';
 // import { fetchGetAllAdminOptionList, fetchGetAllBotOptionList } from '@/service/api/system-config';
 import { $t } from '@/locales';
-import { fetchGetAllBotsFriendsOptionList, fetchGetAllBotsOptionList } from '@/service/api/system-config-bot';
+import { fetchGetAllBotsOptionList } from '@/service/api/system-config-bot';
 import { fetchSaveWhiteProve } from '@/service/api/system-config-bot-white';
 
 defineOptions({
@@ -47,35 +47,32 @@ const model = ref(createDefaultModel());
 function createDefaultModel(): Model {
   return {
     botUid: '',
-    proveUid: ''
+    proveUid: 0
   };
 }
 
 type RuleKey = Extract<keyof Model, 'proveUid' | 'botUid'>;
 
 const rules: Record<RuleKey, App.Global.FormRule> = {
-  proveUid: defaultRequiredRule,
+  proveUid: {
+    required: true,
+    validator: (_, value: number) => {
+      const qqRegex = /^[1-9]\d{4,10}$/;
+      if (!qqRegex.test(String(value))) {
+        return new Error($t('form.qq.invalid'));
+      }
+      return true;
+    }
+  },
   botUid: defaultRequiredRule
 };
-
-const proveOptions = ref<CommonType.Option<string>[]>([]);
+const onlyAllowNumber = (value: string) => /^\d+$/.test(value);
 const botOptions = ref<CommonType.Option<string>[]>([]);
 async function getBotOptions() {
   const { error, data } = await fetchGetAllBotsOptionList();
 
   if (!error) {
     botOptions.value = data.map(item => ({
-      label: item.label,
-      value: item.value
-    }));
-  }
-}
-
-async function getProveOptions(botUid: string) {
-  const { error, data } = await fetchGetAllBotsFriendsOptionList(botUid);
-
-  if (!error) {
-    proveOptions.value = data.map(item => ({
       label: item.label,
       value: item.value
     }));
@@ -106,14 +103,6 @@ async function handleSubmit() {
     }
   });
 }
-watch(
-  () => model.value.botUid,
-  async newVal => {
-    if (newVal && visible.value) {
-      await getProveOptions(newVal);
-    }
-  }
-);
 watch(visible, () => {
   if (visible.value) {
     handleInitModel();
@@ -131,7 +120,15 @@ watch(visible, () => {
           <NSelect v-model:value="model.botUid" :options="botOptions" />
         </NFormItem>
         <NFormItem :label="$t('page.config.whitelist.personal.personalAccount')" path="proveUid">
-          <NSelect v-model:value="model.proveUid" :options="proveOptions" />
+          <NInputNumber
+            v-model:value="model.proveUid"
+            :show-button="false"
+            :allow-input="onlyAllowNumber"
+            @keydown.prevent.arrow-up
+            @keydown.prevent.arrow-down
+            @keydown.prevent.page-up
+            @keydown.prevent.page-down
+          />
         </NFormItem>
       </NForm>
       <template #footer>

@@ -544,6 +544,10 @@ const local: App.I18n.Schema = {
     email: {
       required: '请输入邮箱',
       invalid: '邮箱格式不正确'
+    },
+    qq: {
+      required: '请输入QQ号',
+      invalid: 'QQ号格式不正确'
     }
   },
   dropdown: {

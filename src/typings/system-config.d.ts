@@ -49,7 +49,7 @@ declare namespace Api {
     interface BlacklistProve {
       id?: number;
       botUid: string;
-      proveUid: string;
+      proveUid: number;
     }
 
     type BlacklistProveList = App.PageData<BlacklistProve>;
@@ -75,7 +75,7 @@ declare namespace Api {
     interface WhitelistProve {
       id?: number;
       botUid: string;
-      proveUid: string;
+      proveUid: number;
     }
 
     type WhitelistProveList = App.PageData<WhitelistProve>;
