@@ -173,7 +173,6 @@ const routeMap: RouteMap = {
   "config_blacklist_personal": "/config/blacklist/personal",
   "config_git": "/config/git",
   "config_service": "/config/service",
-  "config_token": "/config/token",
   "config_whitelist": "/config/whitelist",
   "config_whitelist_group": "/config/whitelist/group",
   "config_whitelist_personal": "/config/whitelist/personal",

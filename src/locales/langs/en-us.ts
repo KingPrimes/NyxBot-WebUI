@@ -203,8 +203,7 @@ const local: App.I18n.Schema = {
     'local-data_warframe_untranslated': 'Warframe Untranslated',
     log_command: 'Log Command',
     'log_real-time': 'Log Real-time',
-    'rest-password': 'rest password',
-    config_token: 'Token'
+    'rest-password': 'rest password'
   },
   page: {
     login: {

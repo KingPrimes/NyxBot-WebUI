@@ -203,8 +203,7 @@ const local: App.I18n.Schema = {
     config_whitelist: '白名单',
     config_whitelist_group: '群白名单',
     config_whitelist_personal: '个人白名单',
-    'rest-password': '重置密码',
-    config_token: '密钥'
+    'rest-password': '重置密码'
   },
   page: {
     login: {

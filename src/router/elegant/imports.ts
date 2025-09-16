@@ -26,7 +26,6 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   config_blacklist_personal: () => import("@/views/config/blacklist/personal/index.vue"),
   config_git: () => import("@/views/config/git/index.vue"),
   config_service: () => import("@/views/config/service/index.vue"),
-  config_token: () => import("@/views/config/token/index.vue"),
   config_whitelist_group: () => import("@/views/config/whitelist/group/index.vue"),
   config_whitelist_personal: () => import("@/views/config/whitelist/personal/index.vue"),
   home: () => import("@/views/home/index.vue"),
