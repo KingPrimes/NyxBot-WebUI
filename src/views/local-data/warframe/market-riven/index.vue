@@ -39,13 +39,13 @@ const {
       width: 64
     },
     {
-      key: 'item_name',
+      key: 'name',
       title: $t('page.local-data.warframe.market-riven.itemName'),
       align: 'center',
       minWidth: 100
     },
     {
-      key: 'riven_type',
+      key: 'rivenType',
       title: $t('page.local-data.warframe.market-riven.rivenType'),
       align: 'center',
       width: 100
@@ -57,7 +57,7 @@ const {
       width: 100
     },
     {
-      key: 'rank_limit',
+      key: 'reqMasteryRank',
       title: $t('page.local-data.warframe.market-riven.rankLimit'),
       align: 'center',
       width: 100

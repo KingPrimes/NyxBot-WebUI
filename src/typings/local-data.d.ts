@@ -14,44 +14,43 @@ declare namespace Api {
 
     interface Market {
       id: number;
-      item_name: string;
+      name: string;
       thumb: string;
     }
 
     interface MarketSearchParams extends Common.CommonSearchParams {
-      item_name?: string | null;
+      name?: string | null;
     }
 
     type MarketList = App.PageData<Market>;
 
     interface MarketRiven {
       id: number;
-      item_name: string;
-      riven_type: string;
+      name: string;
+      rivenType: string;
       group: string;
-      rank_limit: string;
+      reqMasteryRank: string;
       thumb: string;
     }
 
     interface MarketRivenSearchParams extends Common.CommonSearchParams {
-      item_name?: string | null;
-      riven_type?: string | null;
+      name?: string | null;
+      rivenType?: string | null;
     }
 
     type MarketRivenList = App.PageData<MarketRiven>;
 
     interface Phantom {
       id: string;
-      item_name: string;
-      url_name: string;
+      name: string;
+      slug: string;
       icon: string;
-      icon_format: string;
       thumb: string;
       animation: string;
     }
 
     interface PhantomSearchParams extends Common.CommonSearchParams {
-      item_name?: string | null;
+      name?: string | null;
     }
 
     type PhantomList = App.PageData<Phantom>;

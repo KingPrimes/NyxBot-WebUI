@@ -38,11 +38,11 @@ async function search() {
             <NFormItemGi
               span="24 s:12 m:8"
               :label="$t('page.local-data.warframe.market-riven.itemName')"
-              path="item_name"
+              path="name"
               class="pr-24px"
             >
               <NInput
-                v-model:value="model.item_name"
+                v-model:value="model.name"
                 :placeholder="$t('page.local-data.warframe.market-riven.itemNamePlaceholder')"
               />
             </NFormItemGi>

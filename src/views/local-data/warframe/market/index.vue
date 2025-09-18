@@ -39,7 +39,7 @@ const {
       width: 64
     },
     {
-      key: 'item_name',
+      key: 'name',
       title: $t('page.local-data.warframe.market.itemName'),
       align: 'center',
       minWidth: 100

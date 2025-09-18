@@ -25,7 +25,7 @@ const {
   apiParams: {
     current: 1,
     size: 10,
-    item_name: null
+    name: null
   },
   columns: () => [
     {
@@ -40,13 +40,13 @@ const {
       width: 80
     },
     {
-      key: 'item_name',
+      key: 'name',
       title: $t('page.local-data.warframe.phantom.itemName'),
       align: 'center',
       minWidth: 120
     },
     {
-      key: 'url_name',
+      key: 'slug',
       title: $t('page.local-data.warframe.phantom.urlName'),
       align: 'center',
       width: 150
@@ -68,12 +68,6 @@ const {
           }
         });
       }
-    },
-    {
-      key: 'icon_format',
-      title: $t('page.local-data.warframe.phantom.imageSource'),
-      align: 'center',
-      width: 150
     },
     {
       key: 'animation',
