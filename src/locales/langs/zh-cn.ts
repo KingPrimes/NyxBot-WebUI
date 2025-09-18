@@ -348,6 +348,8 @@ const local: App.I18n.Schema = {
         role: '权限',
         addAdmin: '新增管理员',
         editAdmin: '编辑管理员',
+        inputAdminQQ: '输入管理员QQ',
+        optionsOrinput: '选择或输入管理员QQ',
         form: {
           botAccount: '请选择机器账号',
           adminAccount: '请选择管理员账号',
@@ -396,10 +398,9 @@ const local: App.I18n.Schema = {
           placeholder: '请选择个人账号'
         }
       },
-      token: {
-        title: '仲裁密钥',
-        token: '密钥',
-        placeholder: '请输入密钥'
+      group: {
+        inputGroupId: '输入群ID',
+        optionsOrinput: '选择或输入群ID'
       }
     },
     'local-data': {
@@ -547,6 +548,10 @@ const local: App.I18n.Schema = {
     qq: {
       required: '请输入QQ号',
       invalid: 'QQ号格式不正确'
+    },
+    groupUid: {
+      required: '请输入群UID',
+      invalid: '群UID格式不正确'
     }
   },
   dropdown: {

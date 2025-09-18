@@ -569,6 +569,8 @@ declare namespace App {
             role: string;
             addAdmin: string;
             editAdmin: string;
+            inputAdminQQ: string;
+            optionsOrinput: string;
             form: {
               botAccount: string;
               adminAccount: string;
@@ -601,6 +603,10 @@ declare namespace App {
               placeholder: string;
             };
           };
+          group: {
+            inputGroupId: string;
+            optionsOrinput: string;
+          };
           whitelist: {
             group: {
               title: string;
@@ -616,11 +622,6 @@ declare namespace App {
               editWhitelistPersonal: string;
               placeholder: string;
             };
-          };
-          token: {
-            title: string;
-            token: string;
-            placeholder: string;
           };
         };
         'local-data': {
@@ -748,6 +749,7 @@ declare namespace App {
         code: FormMsg;
         email: FormMsg;
         qq: FormMsg;
+        groupUid: FormMsg;
       };
       dropdown: Record<Global.DropdownKey, string>;
       icon: {

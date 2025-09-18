@@ -1,7 +1,7 @@
 import { ref, toValue } from 'vue';
 import type { ComputedRef, Ref } from 'vue';
 import type { FormInst } from 'naive-ui';
-import { REG_CODE_SIX, REG_EMAIL, REG_PHONE, REG_PWD, REG_USER_NAME } from '@/constants/reg';
+import { REG_CODE_SIX, REG_EMAIL, REG_GROUP_ID, REG_PHONE, REG_PWD, REG_QQ, REG_USER_NAME } from '@/constants/reg';
 import { $t } from '@/locales';
 
 export function useFormRules() {
@@ -29,6 +29,16 @@ export function useFormRules() {
     email: {
       pattern: REG_EMAIL,
       message: $t('form.email.invalid'),
+      trigger: 'change'
+    },
+    groupUid: {
+      pattern: REG_GROUP_ID,
+      message: $t('form.groupUid.invalid'),
+      trigger: 'change'
+    },
+    qq: {
+      pattern: REG_QQ,
+      message: $t('form.qq.invalid'),
       trigger: 'change'
     }
   } satisfies Record<string, App.Global.FormRule>;

@@ -348,6 +348,8 @@ const local: App.I18n.Schema = {
         role: 'Permissions',
         addAdmin: 'Add Administrator',
         editAdmin: 'Edit Administrator',
+        inputAdminQQ: 'Input Administrator QQ',
+        optionsOrinput: 'Options or input administrator QQ',
         form: {
           botAccount: 'Please enter the bot account',
           adminAccount: 'Please enter the administrator account',
@@ -396,10 +398,9 @@ const local: App.I18n.Schema = {
           placeholder: 'Please select the personal account'
         }
       },
-      token: {
-        title: 'Arbitration Token',
-        token: 'Token',
-        placeholder: 'please enter the token'
+      group: {
+        inputGroupId: 'Input Group ID',
+        optionsOrinput: 'Options or input group account'
       }
     },
     'local-data': {
@@ -547,6 +548,10 @@ const local: App.I18n.Schema = {
     qq: {
       required: 'please enter qq',
       invalid: 'qq format is incorrect'
+    },
+    groupUid: {
+      required: 'Please enter group UID',
+      invalid: 'Group UID format is incorrect'
     }
   },
   dropdown: {
