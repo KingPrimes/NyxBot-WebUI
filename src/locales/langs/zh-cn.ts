@@ -292,7 +292,9 @@ const local: App.I18n.Schema = {
         groupQQ: 'QQ群',
         groupQQPlaceholder: '请输入QQ群',
         triggerQQ: '触发者QQ',
-        operateTime: '操作时间'
+        operateTime: '操作时间',
+        titles: '模块名称',
+        titlesPlaceholder: '请输入模块名称'
       },
       loginfo: {
         title: '模块',

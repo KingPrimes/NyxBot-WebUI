@@ -292,7 +292,9 @@ const local: App.I18n.Schema = {
         groupQQ: 'QQ Group',
         groupQQPlaceholder: 'Please enter the QQ group',
         triggerQQ: 'Trigger QQ',
-        operateTime: 'Operation Time'
+        operateTime: 'Operation Time',
+        titles: 'Module Name',
+        titlesPlaceholder: 'Please enter the module name'
       },
       loginfo: {
         title: 'Module',

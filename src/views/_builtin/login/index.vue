@@ -56,7 +56,7 @@ const activeModule = computed(() => moduleMap[props.module || 'pwd-login']);
             <ThemeSchemaSwitch
               :theme-schema="themeStore.themeScheme"
               :show-tooltip="false"
-              class="text-20px lt-sm:text-18px"
+              class="text-20px text-pink-500 lt-sm:text-18px"
               @switch="themeStore.toggleThemeScheme"
             />
             <!-- 语言切换组件 -->
@@ -85,4 +85,5 @@ const activeModule = computed(() => moduleMap[props.module || 'pwd-login']);
   </div>
 </template>
 
+<!-- 完全移除内联样式块 -->
 <style scoped></style>

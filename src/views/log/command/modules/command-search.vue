@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useNaiveForm } from '@/hooks/common/form';
-import { fetchGetCodesOption } from '@/service/api/system-log';
+import { fetchGetCodesOption, fetchGetTitleOption } from '@/service/api/system-log';
 
 defineOptions({
   name: 'CommandSearch'
@@ -19,8 +19,15 @@ const { formRef, validate, restoreValidation } = useNaiveForm();
 const model = defineModel<Api.Log.CommandSearchParams>('model', { required: true });
 
 async function reset() {
-  await restoreValidation();
+  Object.assign(model.value, {
+    title: null,
+    code: null,
+    groupUid: null
+  });
+
   emit('reset');
+
+  await restoreValidation();
 }
 
 async function search() {
@@ -29,6 +36,7 @@ async function search() {
 }
 
 const codesOption = ref<CommonType.Option<string>[]>([]);
+const titlesOption = ref<CommonType.Option<string>[]>([]);
 
 async function getCodes() {
   const { error, data } = await fetchGetCodesOption();
@@ -41,8 +49,20 @@ async function getCodes() {
   }
 }
 
+async function getTitles() {
+  const { error, data } = await fetchGetTitleOption();
+
+  if (!error) {
+    titlesOption.value = data.map(item => ({
+      label: item.label,
+      value: item.value
+    }));
+  }
+}
+
 onMounted(() => {
   getCodes();
+  getTitles();
 });
 </script>
 
@@ -52,9 +72,16 @@ onMounted(() => {
       <NCollapseItem :title="$t('common.search')" name="command-search">
         <NForm ref="formRef" :model="model" label-placement="left" :label-width="80">
           <NGrid responsive="screen" item-responsive>
-            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.command')" path="codes" class="pr-24px">
+            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.titles')" path="title" class="pr-24px">
               <NSelect
-                v-model:value="model.codes"
+                v-model:value="model.title"
+                :placeholder="$t('page.log.command.titlesPlaceholder')"
+                :options="titlesOption"
+              />
+            </NFormItemGi>
+            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.command')" path="code" class="pr-24px">
+              <NSelect
+                v-model:value="model.code"
                 :placeholder="$t('page.log.command.commandPlaceholder')"
                 :options="codesOption"
               />

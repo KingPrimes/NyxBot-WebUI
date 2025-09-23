@@ -8,111 +8,112 @@ declare namespace App {
     type ColorPaletteNumber = import('@sa/color').ColorPaletteNumber;
 
     /** Theme setting */
+    /** 主题设置接口定义 该接口包含应用程序中所有与主题相关的配置选项 */
     interface ThemeSetting {
-      /** Theme scheme */
+      /** 主题方案 (亮色/暗色/跟随系统) */
       themeScheme: UnionKey.ThemeScheme;
-      /** grayscale mode */
+      /** 灰度模式开关 */
       grayscale: boolean;
-      /** colour weakness mode */
+      /** 色弱模式开关 */
       colourWeakness: boolean;
-      /** Whether to recommend color */
+      /** 是否使用推荐颜色 */
       recommendColor: boolean;
-      /** Theme color */
+      /** 主题主色 */
       themeColor: string;
-      /** Other color */
+      /** 其他辅助颜色配置 */
       otherColor: OtherColor;
-      /** Whether info color is followed by the primary color */
+      /** 信息颜色是否跟随主色 */
       isInfoFollowPrimary: boolean;
-      /** Reset cache strategy */
+      /** 重置缓存策略 */
       resetCacheStrategy: UnionKey.ResetCacheStrategy;
-      /** Layout */
+      /** 布局相关配置 */
       layout: {
-        /** Layout mode */
+        /** 布局模式 */
         mode: UnionKey.ThemeLayoutMode;
-        /** Scroll mode */
+        /** 滚动模式 */
         scrollMode: UnionKey.ThemeScrollMode;
         /**
-         * Whether to reverse the horizontal mix
+         * 是否反转水平混合布局
          *
-         * if true, the vertical child level menus in left and horizontal first level menus in top
+         * 如果为true，则左侧显示垂直子级菜单，顶部显示水平一级菜单
          */
         reverseHorizontalMix: boolean;
       };
-      /** Page */
+      /** 页面相关配置 */
       page: {
-        /** Whether to show the page transition */
+        /** 是否显示页面过渡动画 */
         animate: boolean;
-        /** Page animate mode */
+        /** 页面动画模式 */
         animateMode: UnionKey.ThemePageAnimateMode;
       };
-      /** Header */
+      /** 头部相关配置 */
       header: {
-        /** Header height */
+        /** 头部高度 */
         height: number;
-        /** Header breadcrumb */
+        /** 头部面包屑配置 */
         breadcrumb: {
-          /** Whether to show the breadcrumb */
+          /** 是否显示面包屑 */
           visible: boolean;
-          /** Whether to show the breadcrumb icon */
+          /** 是否显示面包屑图标 */
           showIcon: boolean;
         };
-        /** Multilingual */
+        /** 多语言配置 */
         multilingual: {
-          /** Whether to show the multilingual */
+          /** 是否显示多语言切换 */
           visible: boolean;
         };
       };
-      /** Tab */
+      /** 标签页相关配置 */
       tab: {
-        /** Whether to show the tab */
+        /** 是否显示标签页 */
         visible: boolean;
         /**
-         * Whether to cache the tab
+         * 是否缓存标签页
          *
-         * If cache, the tabs will get from the local storage when the page is refreshed
+         * 如果缓存，页面刷新时会从本地存储中恢复标签页状态
          */
         cache: boolean;
-        /** Tab height */
+        /** 标签页高度 */
         height: number;
-        /** Tab mode */
+        /** 标签页模式 */
         mode: UnionKey.ThemeTabMode;
       };
-      /** Fixed header and tab */
+      /** 是否固定头部和标签页 */
       fixedHeaderAndTab: boolean;
-      /** Sider */
+      /** 侧边栏相关配置 */
       sider: {
-        /** Inverted sider */
+        /** 反转侧边栏样式 */
         inverted: boolean;
-        /** Sider width */
+        /** 侧边栏宽度 */
         width: number;
-        /** Collapsed sider width */
+        /** 折叠后的侧边栏宽度 */
         collapsedWidth: number;
-        /** Sider width when the layout is 'vertical-mix' or 'horizontal-mix' */
+        /** 当布局为 'vertical-mix' 或 'horizontal-mix' 时的侧边栏宽度 */
         mixWidth: number;
-        /** Collapsed sider width when the layout is 'vertical-mix' or 'horizontal-mix' */
+        /** 当布局为 'vertical-mix' 或 'horizontal-mix' 时折叠后的侧边栏宽度 */
         mixCollapsedWidth: number;
-        /** Child menu width when the layout is 'vertical-mix' or 'horizontal-mix' */
+        /** 当布局为 'vertical-mix' 或 'horizontal-mix' 时的子菜单宽度 */
         mixChildMenuWidth: number;
       };
-      /** Footer */
+      /** 页脚相关配置 */
       footer: {
-        /** Whether to show the footer */
+        /** 是否显示页脚 */
         visible: boolean;
-        /** Whether fixed the footer */
+        /** 是否固定页脚 */
         fixed: boolean;
-        /** Footer height */
+        /** 页脚高度 */
         height: number;
-        /** Whether float the footer to the right when the layout is 'horizontal-mix' */
+        /** 当布局为 'horizontal-mix' 时是否将页脚右浮动 */
         right: boolean;
       };
-      /** Watermark */
+      /** 水印相关配置 */
       watermark: {
-        /** Whether to show the watermark */
+        /** 是否显示水印 */
         visible: boolean;
-        /** Watermark text */
+        /** 水印文本 */
         text: string;
       };
-      /** define some theme settings tokens, will transform to css variables */
+      /** 主题设置令牌定义，将转换为CSS变量 */
       tokens: {
         light: ThemeSettingToken;
         dark?: {
@@ -507,6 +508,8 @@ declare namespace App {
             title: string;
             id: string;
             moduleName: string;
+            titles: string;
+            titlesPlaceholder: string;
             command: string;
             commandPlaceholder: string;
             botQQ: string;

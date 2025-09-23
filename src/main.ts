@@ -5,7 +5,6 @@ import { setupStore } from './store';
 import { setupRouter } from './router';
 import { setupI18n } from './locales';
 import App from './App.vue';
-
 /** 应用初始化函数 该函数负责按照特定顺序初始化应用的各个核心模块 使用异步函数以便支持路由等需要异步初始化的模块 */
 async function setupApp() {
   // 1. 设置全局加载状态管理

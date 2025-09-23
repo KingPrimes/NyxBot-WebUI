@@ -1,0 +1,24 @@
+/* 自定义输入框样式 */
+.custom-input {
+  border-bottom: 2px solid rgba(255, 122, 198, 0.3);
+  transition: all 0.3s ease;
+  background: rgb(255, 250, 205); /* 浅黄色背景 */
+  color: rgb(255, 105, 180); /* 粉色文字 */
+
+  &:focus-within {
+    border-bottom-color: #ff7ac6;
+    box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.3); /* 粉色阴影 */
+  }
+
+  /* 深色模式下的输入框样式 */
+  .dark & {
+    border-bottom-color: rgba(255, 122, 198, 0.2);
+    background: rgb(45, 45, 45); /* 深色背景 */
+    color: rgb(255, 182, 193); /* 粉色文字（深色模式） */
+
+    &:focus-within {
+      border-bottom-color: #ff7ac6;
+      box-shadow: 0 0 0 2px rgba(255, 182, 193, 0.3); /* 粉色阴影（深色模式） */
+    }
+  }
+}

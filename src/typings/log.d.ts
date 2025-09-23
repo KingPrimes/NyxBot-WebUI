@@ -11,7 +11,8 @@ declare namespace Api {
     }
 
     interface CommandSearchParams extends Common.CommonSearchParams {
-      codes?: string | undefined;
+      code?: string | undefined;
+      title?: string | undefined;
       groupUid?: number | undefined;
     }
 

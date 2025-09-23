@@ -46,7 +46,7 @@ type Model = Pick<
   Api.SystemLog.LogInfo,
   | 'id'
   | 'title'
-  | 'codes'
+  | 'code'
   | 'permissions'
   | 'businessType'
   | 'botUid'
@@ -70,7 +70,7 @@ function createDefaultModel(): Model {
   return {
     id: 0,
     title: '',
-    codes: '',
+    code: '',
     permissions: '',
     businessType: '',
     botUid: 0,
@@ -135,13 +135,6 @@ const errorMsg = computed(() => {
   return model.value && model.value.errorMsg ? model.value.errorMsg : 'null';
 });
 
-const code = computed(() => {
-  return props.rowData?.codesOption
-    .filter((item: { value: string; label: string }) => item.value === model.value.codes)
-    .map((item: { value: string; label: string }) => item.label)
-    .join(', ');
-});
-
 watch(visible, () => {
   if (visible.value) {
     handleInitModel();
@@ -159,7 +152,7 @@ watch(visible, () => {
             <NInput v-model:value="model.title" disabled />
           </NFormItemGi>
           <NFormItemGi span="24 m:12" :label="$t('page.log.loginfo.codes')">
-            <NInput v-model:value="code" disabled />
+            <NInput v-model:value="model.code" disabled />
           </NFormItemGi>
           <NFormItemGi span="24 m:12" :label="$t('page.log.loginfo.permissions')">
             <NInput v-model:value="model.permissions" disabled />

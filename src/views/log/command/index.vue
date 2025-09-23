@@ -60,20 +60,10 @@ const {
       width: 120
     },
     {
-      key: 'codes',
+      key: 'code',
       title: $t('page.log.command.command'),
       align: 'center',
-      minWidth: 150,
-      render: row => (
-        <div class="flex-center gap-8px">
-          {codesOption.value.map((item: { value: string; label: any }) => {
-            if (item.value === row.codes) {
-              return <span>{item.label}</span>;
-            }
-            return null;
-          })}
-        </div>
-      )
+      minWidth: 150
     },
     {
       key: 'botUid',

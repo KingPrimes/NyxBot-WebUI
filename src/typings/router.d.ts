@@ -44,6 +44,8 @@ declare module 'vue-router' {
     localIcon?: string;
     /** Icon size. width and height are the same. */
     iconFontSize?: number;
+    /** Icon color */
+    iconColor?: string;
     /** Router order */
     order?: number | null;
     /** The outer link of the route */

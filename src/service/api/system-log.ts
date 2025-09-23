@@ -2,8 +2,16 @@ import { request } from '../request';
 
 /** 获取指令列表 */
 export function fetchGetCodesOption() {
-  return request<Api.SystemLog.CodesOption[]>({
+  return request<Api.SystemLog.Option[]>({
     url: '/log/codes',
+    method: 'get'
+  });
+}
+
+/** 获取日志标题列表 */
+export function fetchGetTitleOption() {
+  return request<Api.SystemLog.Option[]>({
+    url: '/log/titles',
     method: 'get'
   });
 }

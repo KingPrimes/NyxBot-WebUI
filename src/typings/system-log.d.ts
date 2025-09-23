@@ -10,14 +10,14 @@ declare namespace Api {
     interface LogInfoList {
       id?: number | undefined;
       title: string;
-      codes: string;
+      code: string;
       botUid: number;
       groupUid: number;
       userUid: number;
       runTime: number;
     }
 
-    interface CodesOption {
+    interface Option {
       label: string;
       value: string;
     }
@@ -25,7 +25,7 @@ declare namespace Api {
     interface LogInfo {
       id?: number | undefined;
       title: string;
-      codes: string;
+      code: string;
       permissions: string;
       businessType: string;
       botUid: number;

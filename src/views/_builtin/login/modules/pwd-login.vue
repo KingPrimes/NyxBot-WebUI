@@ -60,7 +60,11 @@ async function handleSubmit() {
   <NForm ref="formRef" :model="model" :rules="rules" size="large" :show-label="false" @keyup.enter="handleSubmit">
     <!-- 用户名输入框 -->
     <NFormItem path="userName">
-      <NInput v-model:value="model.userName" :placeholder="$t('page.login.common.userNamePlaceholder')" />
+      <NInput
+        v-model:value="model.userName"
+        :placeholder="$t('page.login.common.userNamePlaceholder')"
+        class="custom-input"
+      />
     </NFormItem>
     <!-- 密码输入框，支持点击显示密码 -->
     <NFormItem path="password">
@@ -69,6 +73,7 @@ async function handleSubmit() {
         type="password"
         show-password-on="click"
         :placeholder="$t('page.login.common.passwordPlaceholder')"
+        class="custom-input"
       />
     </NFormItem>
     <!-- 表单操作区域 -->
@@ -85,6 +90,4 @@ async function handleSubmit() {
   </NForm>
 </template>
 
-<style scoped>
-/* 组件样式 - 目前为空，使用全局样式 */
-</style>
+<style scoped></style>

@@ -5,6 +5,8 @@
 
 import type { GeneratedRoute } from '@elegant-router/types';
 
+const color = '#ff6bf3ff';
+
 export const generatedRoutes: GeneratedRoute[] = [
   {
     name: '403',
@@ -47,6 +49,7 @@ export const generatedRoutes: GeneratedRoute[] = [
       title: 'config',
       i18nKey: 'route.config',
       icon: 'mdi:cog',
+      iconColor: color,
       order: 3
     },
     children: [
@@ -58,6 +61,7 @@ export const generatedRoutes: GeneratedRoute[] = [
           title: 'config_admin',
           i18nKey: 'route.config_admin',
           icon: 'mdi:account',
+          iconColor: color,
           order: 3
         }
       },
@@ -68,6 +72,7 @@ export const generatedRoutes: GeneratedRoute[] = [
           title: 'config_blacklist',
           i18nKey: 'route.config_blacklist',
           icon: 'mdi:account-group',
+          iconColor: color,
           order: 4
         },
         children: [
@@ -79,6 +84,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'config_blacklist_group',
               i18nKey: 'route.config_blacklist_group',
               icon: 'mdi:account-group',
+              iconColor: color,
               order: 1
             }
           },
@@ -90,6 +96,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'config_blacklist_personal',
               i18nKey: 'route.config_blacklist_personal',
               icon: 'mdi:account-group',
+              iconColor: color,
               order: 2
             }
           }
@@ -103,6 +110,7 @@ export const generatedRoutes: GeneratedRoute[] = [
           title: 'config_git',
           i18nKey: 'route.config_git',
           icon: 'mdi:github',
+          iconColor: color,
           order: 1
         }
       },
@@ -114,6 +122,7 @@ export const generatedRoutes: GeneratedRoute[] = [
           title: 'config_service',
           i18nKey: 'route.config_service',
           icon: 'mdi:server',
+          iconColor: color,
           order: 2
         }
       },
@@ -124,6 +133,7 @@ export const generatedRoutes: GeneratedRoute[] = [
           title: 'config_whitelist',
           i18nKey: 'route.config_whitelist',
           icon: 'mdi:account-group-outline',
+          iconColor: color,
           order: 5
         },
         children: [
@@ -135,6 +145,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'config_whitelist_group',
               i18nKey: 'route.config_whitelist_group',
               icon: 'mdi:account-group-outline',
+              iconColor: color,
               order: 1
             }
           },
@@ -146,6 +157,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'config_whitelist_personal',
               i18nKey: 'route.config_whitelist_personal',
               icon: 'mdi:account-group-outline',
+              iconColor: color,
               order: 2
             }
           }
@@ -161,6 +173,7 @@ export const generatedRoutes: GeneratedRoute[] = [
       title: 'home',
       i18nKey: 'route.home',
       icon: 'mdi:monitor-dashboard',
+      iconColor: color,
       order: 1
     }
   },
@@ -185,6 +198,7 @@ export const generatedRoutes: GeneratedRoute[] = [
       title: 'local-data',
       i18nKey: 'route.local-data',
       icon: 'mdi:database',
+      iconColor: color,
       order: 5
     },
     children: [
@@ -195,6 +209,7 @@ export const generatedRoutes: GeneratedRoute[] = [
           title: 'local-data_warframe',
           i18nKey: 'route.local-data_warframe',
           icon: 'mdi:gamepad-variant',
+          iconColor: color,
           order: 1
         },
         children: [
@@ -206,6 +221,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'local-data_warframe_alias',
               i18nKey: 'route.local-data_warframe_alias',
               icon: 'mdi:gamepad-variant',
+              iconColor: color,
               order: 1
             }
           },
@@ -217,6 +233,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'local-data_warframe_market',
               i18nKey: 'route.local-data_warframe_market',
               icon: 'mdi:gamepad-variant',
+              iconColor: color,
               order: 2
             }
           },
@@ -228,6 +245,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'local-data_warframe_market-riven',
               i18nKey: 'route.local-data_warframe_market-riven',
               icon: 'mdi:gamepad-variant',
+              iconColor: color,
               order: 3
             }
           },
@@ -239,6 +257,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'local-data_warframe_phantom',
               i18nKey: 'route.local-data_warframe_phantom',
               icon: 'mdi:gamepad-variant',
+              iconColor: color,
               order: 4
             }
           },
@@ -250,6 +269,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'local-data_warframe_riven',
               i18nKey: 'route.local-data_warframe_riven',
               icon: 'mdi:gamepad-variant',
+              iconColor: color,
               order: 5
             }
           },
@@ -261,6 +281,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'local-data_warframe_subscription',
               i18nKey: 'route.local-data_warframe_subscription',
               icon: 'mdi:gamepad-variant',
+              iconColor: color,
               order: 6
             }
           },
@@ -272,6 +293,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'local-data_warframe_translation',
               i18nKey: 'route.local-data_warframe_translation',
               icon: 'mdi:gamepad-variant',
+              iconColor: color,
               order: 7
             }
           },
@@ -283,6 +305,7 @@ export const generatedRoutes: GeneratedRoute[] = [
               title: 'local-data_warframe_untranslated',
               i18nKey: 'route.local-data_warframe_untranslated',
               icon: 'mdi:gamepad-variant',
+              iconColor: color,
               order: 8
             }
           }
@@ -298,6 +321,7 @@ export const generatedRoutes: GeneratedRoute[] = [
       title: 'log',
       i18nKey: 'route.log',
       icon: 'mdi:file-document-outline',
+      iconColor: color,
       order: 2
     },
     children: [
