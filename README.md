@@ -1,6 +1,6 @@
 # NyxBot-WebUI
 
-NyxBot-WebUI 是一个用于 Warframe 游戏的机器人管理界面。该项目使用 Vue 3 和 Naive UI 构建，提供了丰富的功能和友好的用户界面。
+NyxBot-WebUI 是一个用于 Warframe 游戏的机器人管理界面。该项目使用 [soybean-admin](https://github.com/soybeanjs/soybean-admin) 框架构建，提供了丰富的功能和友好的用户界面。
 
 ## 功能
 
@@ -10,7 +10,7 @@ NyxBot-WebUI 是一个用于 Warframe 游戏的机器人管理界面。该项目
 - 支持多种操作类型
 
 ## 目录结构
-
+```
 NyxBot-WebUI/
 ├── public/                     # 公共资源
 ├── src/                        # 源代码
@@ -38,6 +38,7 @@ NyxBot-WebUI/
 ├── index.html                  # 入口 HTML 文件
 ├── LICENSE                     # 许可证
 └── README.md                   # 项目介绍文档
+```
 
 ## 安装和使用
 
