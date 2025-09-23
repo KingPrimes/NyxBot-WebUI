@@ -1,7 +1,7 @@
 import type { RouteMeta } from 'vue-router';
 import ElegantVueRouter from '@elegant-router/vue/vite';
 import type { RouteKey } from '@elegant-router/types';
-
+const color = '#ff6bf3ff';
 export function setupElegantRouter() {
   return ElegantVueRouter({
     layouts: {
@@ -28,7 +28,8 @@ export function setupElegantRouter() {
 
       const meta: Partial<RouteMeta> = {
         title: key,
-        i18nKey: `route.${key}` as App.I18n.I18nKey
+        i18nKey: `route.${key}` as App.I18n.I18nKey,
+        iconColor: color as string
       };
 
       if (constantRoutes.includes(key)) {
