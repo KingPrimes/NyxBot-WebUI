@@ -173,7 +173,7 @@ export const generatedRoutes: GeneratedRoute[] = [
     meta: {
       title: 'home',
       i18nKey: 'route.home',
-      icon: 'mdi:monitor-dashboard',
+      icon: 'mdi:home',
       iconColor: '#ff6bf3ff',
       order: 1
     }
@@ -222,7 +222,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: 'local-data_warframe_alias',
               i18nKey: 'route.local-data_warframe_alias',
-              icon: 'mdi:gamepad-variant',
+              icon: 'mdi:rename',
               iconColor: '#ff6bf3ff',
               order: 1
             }
@@ -234,7 +234,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: 'local-data_warframe_market',
               i18nKey: 'route.local-data_warframe_market',
-              icon: 'mdi:gamepad-variant',
+              icon: 'mdi:shopping',
               iconColor: '#ff6bf3ff',
               order: 2
             }
@@ -246,7 +246,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: 'local-data_warframe_market-riven',
               i18nKey: 'route.local-data_warframe_market-riven',
-              icon: 'mdi:gamepad-variant',
+              icon: 'mdi:shopping',
               iconColor: '#ff6bf3ff',
               order: 3
             }
@@ -270,7 +270,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: 'local-data_warframe_riven',
               i18nKey: 'route.local-data_warframe_riven',
-              icon: 'mdi:gamepad-variant',
+              icon: 'mdi:cards',
               iconColor: '#ff6bf3ff',
               order: 5
             }
@@ -282,7 +282,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: 'local-data_warframe_subscription',
               i18nKey: 'route.local-data_warframe_subscription',
-              icon: 'mdi:gamepad-variant',
+              icon: 'mdi:face-agent',
               iconColor: '#ff6bf3ff',
               order: 6
             }
@@ -294,7 +294,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: 'local-data_warframe_translation',
               i18nKey: 'route.local-data_warframe_translation',
-              icon: 'mdi:gamepad-variant',
+              icon: 'mdi:translate',
               iconColor: '#ff6bf3ff',
               order: 7
             }
@@ -306,7 +306,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: 'local-data_warframe_untranslated',
               i18nKey: 'route.local-data_warframe_untranslated',
-              icon: 'mdi:gamepad-variant',
+              icon: 'mdi:translate',
               iconColor: '#ff6bf3ff',
               order: 8
             }
@@ -334,6 +334,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: 'log_command',
           i18nKey: 'route.log_command',
+          icon: 'mdi:order-alphabetical-ascending',
           iconColor: '#ff6bf3ff'
         }
       },
@@ -344,6 +345,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: 'log_real-time',
           i18nKey: 'route.log_real-time',
+          icon: 'mdi:clipboard-text-clock',
           iconColor: '#ff6bf3ff'
         }
       }

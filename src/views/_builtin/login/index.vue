@@ -39,7 +39,7 @@ const activeModule = computed(() => moduleMap[props.module || 'pwd-login']);
 <template>
   <!-- 登录页面主容器，使用flex布局居中内容 -->
   <div class="relative size-full flex-center overflow-hidden">
-    <!-- 波浪背景组件 -->
+    <!-- 背景组件 -->
     <WaveBg />
     <!-- 登录卡片容器，使用NCard组件 -->
     <NCard :bordered="false" class="relative z-4 w-auto rd-12px">

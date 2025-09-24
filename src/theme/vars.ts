@@ -37,7 +37,26 @@ export const themeVars: App.Theme.ThemeTokenCSSVars = {
     layout: 'rgb(var(--layout-bg-color))',
     // 反转背景颜色
     inverted: 'rgb(var(--inverted-bg-color))',
-    'base-text': 'rgb(var(--base-text-color))'
+    'base-text': 'rgb(var(--base-text-color))',
+    card: 'rgb(var(--card-bg-color))',
+    // 添加从SCSS导入的亮色主题专用变量
+    'light-bg-primary': 'rgb(var(--light-bg-primary-color))',
+    'light-bg-secondary': 'rgb(var(--light-bg-secondary-color))',
+    'light-bg-tertiary': 'rgb(var(--light-bg-tertiary-color))',
+    'light-primary': 'rgb(var(--light-primary-color))',
+    'light-primary-dark': 'rgb(var(--light-primary-dark-color))',
+    'light-accent': 'rgb(var(--light-accent-color))',
+    'light-text-primary': 'rgb(var(--light-text-primary-color))',
+
+    // 添加从SCSS导入的暗色主题专用变量
+    'dark-bg-primary': 'rgb(var(--dark-bg-primary-color))',
+    'dark-bg-secondary': 'rgb(var(--dark-bg-secondary-color))',
+    'dark-bg-tertiary': 'rgb(var(--dark-bg-tertiary-color))',
+    'dark-primary': 'rgb(var(--dark-primary-color))',
+    'dark-primary-light': 'rgb(var(--dark-primary-light-color))',
+    'dark-accent': 'rgb(var(--dark-accent-color))',
+    'dark-accent-light': 'rgb(var(--dark-accent-light-color))',
+    'dark-text-primary': 'rgb(var(--dark-text-primary-color))'
   },
   boxShadow: {
     // 头部阴影样式

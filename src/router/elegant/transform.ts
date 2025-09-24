@@ -163,6 +163,8 @@ function transformElegantRouteToVueRoute(
 const routeMap: RouteMap = {
   "root": "/",
   "not-found": "/:pathMatch(.*)*",
+  "document": "/document",
+  "reward": "/reward",
   "403": "/403",
   "404": "/404",
   "500": "/500",
@@ -192,7 +194,7 @@ const routeMap: RouteMap = {
   "log_command": "/log/command",
   "log_real-time": "/log/real-time",
   "login": "/login/:module(pwd-login)?",
-  "rest-password": "/rest-password"
+  "rest-password": "/rest-password",
 };
 
 /**

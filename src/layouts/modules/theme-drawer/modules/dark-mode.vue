@@ -13,8 +13,7 @@ const themeStore = useThemeStore();
 
 const icons: Record<UnionKey.ThemeScheme, string> = {
   light: 'material-symbols:sunny',
-  dark: 'material-symbols:nightlight-rounded',
-  auto: 'material-symbols:hdr-auto'
+  dark: 'material-symbols:nightlight-rounded'
 };
 
 function handleSegmentChange(value: string | number) {

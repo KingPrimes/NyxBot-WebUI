@@ -8,7 +8,38 @@ import { transformElegantRoutesToVueRoutes } from '../elegant/transform';
  *
  * @link https://github.com/soybeanjs/elegant-router?tab=readme-ov-file#custom-route
  */
-const customRoutes: CustomRoute[] = [];
+const customRoutes: CustomRoute[] = [
+  {
+    name: 'document',
+    path: '/document',
+    component: 'layout.base$view.iframe-page',
+    meta: {
+      title: 'Document',
+      i18nKey: 'route.document',
+      icon: 'mdi:file-document-outline',
+      iconColor: '#ff6bf3ff',
+      constant: true,
+      showInMenu: true,
+      href: 'https://kingprimes.top/posts/1bb16eb/',
+      order: 998
+    }
+  },
+  {
+    name: 'reward',
+    path: '/reward',
+    component: 'layout.base$view.iframe-page',
+    meta: {
+      title: 'Appreciation',
+      i18nKey: 'route.reward',
+      icon: 'mdi:currency-twd',
+      iconColor: '#ff6bf3ff',
+      constant: true,
+      showInMenu: true,
+      href: 'https://kingprimes.top/reward/',
+      order: 999
+    }
+  }
+];
 
 /** create routes when the auth route mode is static */
 export function createStaticRoutes() {

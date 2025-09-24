@@ -78,8 +78,7 @@ const local: App.I18n.Schema = {
     themeSchema: {
       title: 'Theme Schema',
       light: 'Light',
-      dark: 'Dark',
-      auto: 'Follow System'
+      dark: 'Dark'
     },
     grayscale: 'Grayscale',
     colourWeakness: 'Colour Weakness',
@@ -203,7 +202,9 @@ const local: App.I18n.Schema = {
     'local-data_warframe_untranslated': 'Warframe Untranslated',
     log_command: 'Log Command',
     'log_real-time': 'Log Real-time',
-    'rest-password': 'rest password'
+    'rest-password': 'rest password',
+    document: 'Document',
+    reward: 'Appreciation'
   },
   page: {
     login: {

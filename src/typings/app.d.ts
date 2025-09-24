@@ -147,6 +147,7 @@ declare namespace App {
       container: string;
       layout: string;
       inverted: string;
+      card: string;
       'base-text': string;
     }
 

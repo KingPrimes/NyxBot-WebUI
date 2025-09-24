@@ -111,31 +111,4 @@ function handleCancel() {
   </NSpace>
 </template>
 
-<style scoped>
-:deep(.n-form-item-label) {
-  font-weight: 500;
-}
-
-:deep(.n-input) {
-  max-width: 100%;
-}
-
-:deep(.n-card-header) {
-  overflow-wrap: break-word;
-}
-
-/* 移动端适配 */
-@media (max-width: 640px) {
-  :deep(.n-form) {
-    width: 100%;
-  }
-
-  :deep(.n-space) {
-    width: 100%;
-  }
-
-  :deep(.n-button) {
-    width: 100%;
-  }
-}
-</style>
+<style scoped></style>

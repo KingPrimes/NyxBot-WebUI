@@ -8,18 +8,18 @@ export const themeSettings: App.Theme.ThemeSetting = {
   colourWeakness: false,
   /** 是否使用推荐颜色方案 */
   recommendColor: true,
-  /** 主题主色调：采用樱花粉作为主色调 */
-  themeColor: '#FF9ED6',
+  /** 主题主色调 */
+  themeColor: '#fe7199',
   /** 其他辅助颜色配置 */
   otherColor: {
-    /** 信息提示色：采用天蓝色 */
-    info: '#7FC7FF',
-    /** 成功提示色：采用薄荷绿 */
-    success: '#C4FFEB',
-    /** 警告提示色：采用奶油黄 */
-    warning: '#FFD166',
-    /** 错误提示色：采用玫红色 */
-    error: '#FF6B9E'
+    /** 信息提示色 */
+    info: '#7e9aff',
+    /** 成功提示色 */
+    success: '#9aff7e',
+    /** 警告提示色 */
+    warning: '#fffd7e',
+    /** 错误提示色 */
+    error: '#ec696b'
   },
   /** 信息颜色是否跟随主色变化 */
   isInfoFollowPrimary: false,
@@ -48,9 +48,9 @@ export const themeSettings: App.Theme.ThemeSetting = {
     /** 面包屑配置 */
     breadcrumb: {
       /** 是否显示面包屑 */
-      visible: true,
+      visible: false,
       /** 是否显示面包屑图标 */
-      showIcon: true
+      showIcon: false
     },
     /** 多语言配置 */
     multilingual: {
@@ -61,16 +61,16 @@ export const themeSettings: App.Theme.ThemeSetting = {
   /** 标签页相关配置 */
   tab: {
     /** 是否显示标签页 */
-    visible: true,
+    visible: false,
     /** 是否缓存标签页状态 */
-    cache: true,
+    cache: false,
     /** 标签页高度 */
     height: 44,
     /** 标签页模式：Chrome风格 */
     mode: 'chrome'
   },
   /** 是否固定头部和标签页 */
-  fixedHeaderAndTab: true,
+  fixedHeaderAndTab: false,
   /** 侧边栏相关配置 */
   sider: {
     /** 是否反转侧边栏样式 */
@@ -111,45 +111,47 @@ export const themeSettings: App.Theme.ThemeSetting = {
       /** 颜色变量 */
       colors: {
         /** 容器背景色 */
-        container: 'rgba(255, 239, 245, 1)',
+        container: 'rgb(255, 255, 255)',
         /** 布局背景色 */
-        layout: 'rgba(255, 239, 245, 1)',
+        layout: '#fbf8f9',
         /** 反转背景色 */
-        inverted: 'rgb(0, 20, 40)',
+        inverted: 'rgb(174, 154, 153)',
         /** 基础文本颜色 */
-        'base-text': 'rgb(255, 107, 158)'
+        'base-text': 'rgb(254, 113, 152)',
+        card: '#f7f1f3'
       },
       /** 阴影变量 */
       boxShadow: {
-        /** 头部阴影：樱花粉色调阴影 */
-        header: '0 1px 2px rgba(255, 158, 214, 0.2)',
-        /** 侧边栏阴影：樱花粉色调阴影 */
-        sider: '2px 0 8px 0 rgba(255, 158, 214, 0.15)',
-        /** 标签页阴影：樱花粉色调阴影 */
-        tab: '0 1px 2px rgba(255, 158, 214, 0.2)'
+        /** 头部阴影 */
+        header: '0 1px 2px rgba(241, 153, 182, 0.29)',
+        /** 侧边栏阴影 */
+        sider: '2px 0 8px 0 rgba(241, 153, 182, 0.29)',
+        /** 标签页阴影 */
+        tab: '0 1px 2px rgba(241, 153, 182, 0.29)'
       }
     },
-    /** 暗色主题变量配置 - 赛博幻想向 */
+    /** 暗色主题变量配置 */
     dark: {
       /** 暗色主题颜色变量 */
       colors: {
-        /** 容器背景色：深灰蓝 */
-        container: 'rgb(42, 42, 58)',
-        /** 布局背景色：深灰蓝 */
-        layout: 'rgb(42, 42, 58)',
+        /** 容器背景色 */
+        container: '#151d2b',
+        /** 布局背景色 */
+        layout: '#201d31',
         /** 反转背景色 */
-        inverted: 'rgb(107, 77, 255)',
+        inverted: '#f4bf96',
         /** 基础文本颜色：淡紫白 */
-        'base-text': 'rgb(224, 224, 255)'
+        'base-text': '#fCf5ed',
+        card: '#0c1224'
       },
       /** 暗色主题阴影变量 */
       boxShadow: {
-        /** 头部阴影：霓虹紫调阴影 */
-        header: '0 2px 12px 0 rgba(199, 125, 255, 0.3)',
-        /** 侧边栏阴影：霓虹紫调阴影 */
-        sider: '2px 0 16px 0 rgba(199, 125, 255, 0.25)',
-        /** 标签页阴影：霓虹紫调阴影 */
-        tab: '0 2px 12px 0 rgba(199, 125, 255, 0.3)'
+        /** 头部阴影 */
+        header: '0 2px 12px 0 rgba(45, 46, 96, 0.3)',
+        /** 侧边栏阴影 */
+        sider: '2px 0 16px 0 rgba(45, 46, 96, 0.25)',
+        /** 标签页阴影 */
+        tab: '0 2px 12px 0 rgba(45, 46, 96, 0.3)'
       }
     }
   }

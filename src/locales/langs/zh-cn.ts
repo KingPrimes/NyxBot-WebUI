@@ -78,8 +78,7 @@ const local: App.I18n.Schema = {
     themeSchema: {
       title: '主题模式',
       light: '亮色模式',
-      dark: '暗黑模式',
-      auto: '跟随系统'
+      dark: '暗黑模式'
     },
     grayscale: '灰色模式',
     colourWeakness: '色弱模式',
@@ -203,7 +202,9 @@ const local: App.I18n.Schema = {
     config_whitelist: '白名单',
     config_whitelist_group: '群白名单',
     config_whitelist_personal: '个人白名单',
-    'rest-password': '重置密码'
+    'rest-password': '重置密码',
+    document: '文档',
+    reward: '赞赏'
   },
   page: {
     login: {

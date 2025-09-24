@@ -6,8 +6,7 @@ export const GLOBAL_SIDER_MENU_ID = '__GLOBAL_SIDER_MENU__';
 
 export const themeSchemaRecord: Record<UnionKey.ThemeScheme, App.I18n.I18nKey> = {
   light: 'theme.themeSchema.light',
-  dark: 'theme.themeSchema.dark',
-  auto: 'theme.themeSchema.auto'
+  dark: 'theme.themeSchema.dark'
 };
 
 export const themeSchemaOptions = transformRecordToOption(themeSchemaRecord);

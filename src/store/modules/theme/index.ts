@@ -1,7 +1,7 @@
 import { computed, effectScope, onScopeDispose, ref, toRefs, watch } from 'vue';
 import type { Ref } from 'vue';
 import { defineStore } from 'pinia';
-import { useEventListener, usePreferredColorScheme } from '@vueuse/core';
+import { useEventListener } from '@vueuse/core';
 import { getPaletteColorByNumber } from '@sa/color';
 import { SetupStoreId } from '@/enum';
 import { localStg } from '@/utils/storage';
@@ -18,18 +18,12 @@ import {
 export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
   // 创建响应式作用域
   const scope = effectScope();
-  // 获取操作系统主题偏好
-  const osTheme = usePreferredColorScheme();
 
   /** Theme settings - 主题设置对象 */
   const settings: Ref<App.Theme.ThemeSetting> = ref(initThemeSettings());
 
   /** Dark mode - 计算当前是否为暗色模式 */
   const darkMode = computed(() => {
-    if (settings.value.themeScheme === 'auto') {
-      // 自动模式下，跟随操作系统主题
-      return osTheme.value === 'dark';
-    }
     // 否则根据设置的主题方案判断
     return settings.value.themeScheme === 'dark';
   });
