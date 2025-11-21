@@ -194,7 +194,7 @@ const routeMap: RouteMap = {
   "log_command": "/log/command",
   "log_real-time": "/log/real-time",
   "login": "/login/:module(pwd-login)?",
-  "rest-password": "/rest-password",
+  "rest-password": "/rest-password"
 };
 
 /**

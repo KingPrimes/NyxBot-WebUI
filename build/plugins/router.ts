@@ -1,12 +1,17 @@
 import type { RouteMeta } from 'vue-router';
 import ElegantVueRouter from '@elegant-router/vue/vite';
 import type { RouteKey } from '@elegant-router/types';
+
 const color = '#ff6bf3ff';
+
 export function setupElegantRouter() {
   return ElegantVueRouter({
     layouts: {
       base: 'src/layouts/base-layout/index.vue',
       blank: 'src/layouts/blank-layout/index.vue'
+    },
+    customRoutes: {
+      names: ['document', 'reward']
     },
     routePathTransformer(routeName, routePath) {
       const key = routeName as RouteKey;
