@@ -527,6 +527,45 @@ declare namespace App {
             triggerQQ: string;
             operateTime: string;
           };
+          realtime: {
+            title: string;
+            connected: string;
+            disconnected: string;
+            connecting: string;
+            connectionError: string;
+            level: string;
+            search: string;
+            searchPlaceholder: string;
+            filterBtn: string;
+            shareBtn: string;
+            export: string;
+            clear: string;
+            stats: string;
+            total: string;
+            displayed: string;
+            cacheSize: string;
+            noLogs: string;
+            copySuccess: string;
+            copyFailed: string;
+            exportSuccess: string;
+            clearConfirm: string;
+            filterPanel: {
+              title: string;
+              enable: string;
+              minLevel: string;
+              includeKeywords: string;
+              excludeKeywords: string;
+              includePackages: string;
+              excludePackages: string;
+              includeThreads: string;
+              useRegex: string;
+              keywordPlaceholder: string;
+              packagePlaceholder: string;
+              threadPlaceholder: string;
+              reset: string;
+              apply: string;
+            };
+          };
           loginfo: {
             title: string;
             codes: string;
