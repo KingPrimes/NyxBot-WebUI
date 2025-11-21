@@ -20,7 +20,6 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   500: () => import("@/views/_builtin/500/index.vue"),
   "iframe-page": () => import("@/views/_builtin/iframe-page/[url].vue"),
   login: () => import("@/views/_builtin/login/index.vue"),
-  "rest-password": () => import("@/views/_builtin/rest-password/index.vue"),
   config_admin: () => import("@/views/config/admin/index.vue"),
   config_blacklist_group: () => import("@/views/config/blacklist/group/index.vue"),
   config_blacklist_personal: () => import("@/views/config/blacklist/personal/index.vue"),

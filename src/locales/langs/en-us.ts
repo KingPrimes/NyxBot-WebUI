@@ -197,7 +197,6 @@ const local: App.I18n.Schema = {
     'local-data_warframe_subscription': 'Warframe Subscription',
     log_command: 'Log Command',
     'log_real-time': 'Log Real-time',
-    'rest-password': 'rest password',
     document: 'Document',
     reward: 'Appreciation'
   },

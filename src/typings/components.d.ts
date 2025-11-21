@@ -79,6 +79,7 @@ declare module 'vue' {
     PinToggler: typeof import('./../components/common/pin-toggler.vue')['default']
     PushCommits: typeof import('./../components/custom/push-commits.vue')['default']
     ReloadButton: typeof import('./../components/common/reload-button.vue')['default']
+    ResetPasswordModal: typeof import('./../components/common/reset-password-modal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SoybeanAvatar: typeof import('./../components/custom/soybean-avatar.vue')['default']

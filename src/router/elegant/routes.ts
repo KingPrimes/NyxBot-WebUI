@@ -303,16 +303,5 @@ export const generatedRoutes: GeneratedRoute[] = [
       hideInMenu: true,
       iconColor: '#ff6bf3ff'
     }
-  },
-  {
-    name: 'rest-password',
-    path: '/rest-password',
-    component: 'layout.base$view.rest-password',
-    meta: {
-      title: 'rest-password',
-      i18nKey: 'common.editPassword',
-      hideInMenu: true,
-      iconColor: '#ff6bf3ff'
-    }
   }
 ];

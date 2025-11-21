@@ -1,18 +1,22 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import type { VNode } from 'vue';
 import { useAuthStore } from '@/store/modules/auth';
 import { useRouterPush } from '@/hooks/common/router';
 import { useSvgIcon } from '@/hooks/common/icon';
 import { $t } from '@/locales';
+import ResetPasswordModal from '@/components/common/reset-password-modal.vue';
 
 defineOptions({
   name: 'UserAvatar'
 });
 
 const authStore = useAuthStore();
-const { routerPushByKey, toLogin } = useRouterPush();
+const { toLogin } = useRouterPush();
 const { SvgIconVNode } = useSvgIcon();
+
+// 控制重置密码弹窗显示
+const showResetPasswordModal = ref(false);
 
 function loginOrRegister() {
   toLogin();
@@ -32,7 +36,7 @@ const options = computed(() => {
       icon: SvgIconVNode({ icon: 'ph:sign-out', fontSize: 18 })
     },
     {
-      label: $t('route.rest-password'),
+      label: $t('common.editPassword'),
       key: 'rest-password',
       icon: SvgIconVNode({ icon: 'ph:gear', fontSize: 18 })
     }
@@ -59,7 +63,7 @@ function handleDropdown(key: string) {
       logout();
       break;
     case 'rest-password':
-      routerPushByKey(key);
+      showResetPasswordModal.value = true;
       break;
     default:
       break;
@@ -79,6 +83,9 @@ function handleDropdown(key: string) {
       </ButtonIcon>
     </div>
   </NDropdown>
+
+  <!-- 重置密码弹窗 -->
+  <ResetPasswordModal v-model:visible="showResetPasswordModal" />
 </template>
 
 <style scoped></style>
