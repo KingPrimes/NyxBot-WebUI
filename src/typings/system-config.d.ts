@@ -80,13 +80,6 @@ declare namespace Api {
 
     type WhitelistProveList = App.PageData<WhitelistProve>;
 
-    interface GitHubUserProvider {
-      id?: number | undefined;
-      userName: string | undefined;
-      passWord: string | undefined;
-      gitUrl: string | undefined;
-    }
-
     /** 机器人链接配置 */
     interface LoadingConfig {
       serverPort: number;

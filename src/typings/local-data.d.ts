@@ -55,54 +55,6 @@ declare namespace Api {
 
     type PhantomList = App.PageData<Phantom>;
 
-    interface RivenTrend {
-      id: number;
-      trend_name: string;
-      new_dot: string;
-      new_num: number;
-      old_dot: string;
-      old_num: number;
-      type: string;
-      isDate: any;
-      traCh: string;
-    }
-
-    interface RivenTrendSearchParams extends Common.CommonSearchParams {
-      trend_name?: string | null;
-    }
-
-    type RivenTrendList = App.PageData<RivenTrend>;
-
-    interface Translation {
-      id?: number;
-      en: string;
-      cn: string;
-      is_prime: boolean;
-      is_set: boolean;
-    }
-
-    interface TranslationSearchParams extends Common.CommonSearchParams {
-      cn?: string | null;
-      en?: string | null;
-    }
-
-    type TranslationList = App.PageData<Translation>;
-
-    interface Untranslated {
-      id: number;
-      notTranslation: string;
-    }
-
-    interface UntranslatedSearchParams extends Common.CommonSearchParams {
-      notTranslation?: string | null;
-    }
-
-    type UntranslatedList = App.PageData<Untranslated>;
-
-    interface PushCommit {
-      commit: string;
-    }
-
     interface MissionSubscribe {
       id: number;
       subBotUid: number;

@@ -104,18 +104,6 @@ export const generatedRoutes: GeneratedRoute[] = [
         ]
       },
       {
-        name: 'config_git',
-        path: '/config/git',
-        component: 'view.config_git',
-        meta: {
-          title: 'config_git',
-          i18nKey: 'route.config_git',
-          icon: 'mdi:github',
-          iconColor: '#ff6bf3ff',
-          order: 1
-        }
-      },
-      {
         name: 'config_service',
         path: '/config/service',
         component: 'view.config_service',
@@ -252,30 +240,6 @@ export const generatedRoutes: GeneratedRoute[] = [
             }
           },
           {
-            name: 'local-data_warframe_phantom',
-            path: '/local-data/warframe/phantom',
-            component: 'view.local-data_warframe_phantom',
-            meta: {
-              title: 'local-data_warframe_phantom',
-              i18nKey: 'route.local-data_warframe_phantom',
-              icon: 'mdi:gamepad-variant',
-              iconColor: '#ff6bf3ff',
-              order: 4
-            }
-          },
-          {
-            name: 'local-data_warframe_riven',
-            path: '/local-data/warframe/riven',
-            component: 'view.local-data_warframe_riven',
-            meta: {
-              title: 'local-data_warframe_riven',
-              i18nKey: 'route.local-data_warframe_riven',
-              icon: 'mdi:cards',
-              iconColor: '#ff6bf3ff',
-              order: 5
-            }
-          },
-          {
             name: 'local-data_warframe_subscription',
             path: '/local-data/warframe/subscription',
             component: 'view.local-data_warframe_subscription',
@@ -285,30 +249,6 @@ export const generatedRoutes: GeneratedRoute[] = [
               icon: 'mdi:face-agent',
               iconColor: '#ff6bf3ff',
               order: 6
-            }
-          },
-          {
-            name: 'local-data_warframe_translation',
-            path: '/local-data/warframe/translation',
-            component: 'view.local-data_warframe_translation',
-            meta: {
-              title: 'local-data_warframe_translation',
-              i18nKey: 'route.local-data_warframe_translation',
-              icon: 'mdi:translate',
-              iconColor: '#ff6bf3ff',
-              order: 7
-            }
-          },
-          {
-            name: 'local-data_warframe_untranslated',
-            path: '/local-data/warframe/untranslated',
-            component: 'view.local-data_warframe_untranslated',
-            meta: {
-              title: 'local-data_warframe_untranslated',
-              i18nKey: 'route.local-data_warframe_untranslated',
-              icon: 'mdi:translate',
-              iconColor: '#ff6bf3ff',
-              order: 8
             }
           }
         ]

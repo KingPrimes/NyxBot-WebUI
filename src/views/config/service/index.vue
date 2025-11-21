@@ -122,6 +122,10 @@ function handleCancel() {
           <NInput v-model:value="formValue.wsServerUrl" :placeholder="serviceUrlPlaceholder" />
         </NFormItem>
 
+        <NFormItem v-if="formValue.isServerOrClient" label="Token" path="Token">
+          <NInput v-model:value="formValue.token" />
+        </NFormItem>
+
         <div class="mt-4 flex justify-end gap-4" :class="{ 'flex-col w-full': appStore.isMobile }">
           <NButton :block="appStore.isMobile" type="primary" @click="handleSubmit">
             {{ $t('common.confirm') }}

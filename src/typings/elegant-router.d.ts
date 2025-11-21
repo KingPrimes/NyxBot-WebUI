@@ -27,7 +27,6 @@ declare module "@elegant-router/types" {
     "config_blacklist": "/config/blacklist";
     "config_blacklist_group": "/config/blacklist/group";
     "config_blacklist_personal": "/config/blacklist/personal";
-    "config_git": "/config/git";
     "config_service": "/config/service";
     "config_whitelist": "/config/whitelist";
     "config_whitelist_group": "/config/whitelist/group";
@@ -39,11 +38,7 @@ declare module "@elegant-router/types" {
     "local-data_warframe_alias": "/local-data/warframe/alias";
     "local-data_warframe_market": "/local-data/warframe/market";
     "local-data_warframe_market-riven": "/local-data/warframe/market-riven";
-    "local-data_warframe_phantom": "/local-data/warframe/phantom";
-    "local-data_warframe_riven": "/local-data/warframe/riven";
     "local-data_warframe_subscription": "/local-data/warframe/subscription";
-    "local-data_warframe_translation": "/local-data/warframe/translation";
-    "local-data_warframe_untranslated": "/local-data/warframe/untranslated";
     "log": "/log";
     "log_command": "/log/command";
     "log_real-time": "/log/real-time";
@@ -119,7 +114,6 @@ declare module "@elegant-router/types" {
     | "config_admin"
     | "config_blacklist_group"
     | "config_blacklist_personal"
-    | "config_git"
     | "config_service"
     | "config_whitelist_group"
     | "config_whitelist_personal"
@@ -127,11 +121,7 @@ declare module "@elegant-router/types" {
     | "local-data_warframe_alias"
     | "local-data_warframe_market-riven"
     | "local-data_warframe_market"
-    | "local-data_warframe_phantom"
-    | "local-data_warframe_riven"
     | "local-data_warframe_subscription"
-    | "local-data_warframe_translation"
-    | "local-data_warframe_untranslated"
     | "log_command"
     | "log_real-time"
   >;
