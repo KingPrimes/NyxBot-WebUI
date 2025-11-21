@@ -317,6 +317,7 @@ declare namespace App {
         deleteSuccess: string;
         confirmDelete: string;
         editPassword: string;
+        editUsername: string;
         edit: string;
         warning: string;
         error: string;
@@ -354,6 +355,13 @@ declare namespace App {
           oldPassword: string;
           newPassword: string;
           confirmPassword: string;
+        };
+        changeUsername: {
+          title: string;
+          newUsername: string;
+          currentPassword: string;
+          success: string;
+          error: string;
         };
         from: {
           urlError: string;

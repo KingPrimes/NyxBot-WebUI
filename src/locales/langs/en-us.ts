@@ -24,6 +24,7 @@ const local: App.I18n.Schema = {
     deleteSuccess: 'Delete Success',
     confirmDelete: 'Are you sure you want to delete?',
     editPassword: 'Edit Password',
+    editUsername: 'Edit Username',
     edit: 'Edit',
     warning: 'Warning',
     error: 'Error',
@@ -58,6 +59,13 @@ const local: App.I18n.Schema = {
       oldPassword: 'old password',
       newPassword: 'new password',
       confirmPassword: 'confirm password'
+    },
+    changeUsername: {
+      title: 'Change Username',
+      newUsername: 'New Username',
+      currentPassword: 'Current Password',
+      success: 'Username changed successfully',
+      error: 'Failed to change username'
     },
     from: {
       urlError: "url can't be empty"

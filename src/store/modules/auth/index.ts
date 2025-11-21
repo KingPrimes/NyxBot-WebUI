@@ -5,7 +5,7 @@ import { defineStore } from 'pinia';
 import { useLoading } from '@sa/hooks';
 import { SetupStoreId } from '@/enum';
 import { useRouterPush } from '@/hooks/common/router';
-import { fetchGetUserInfo, fetchLogin, restorePassword } from '@/service/api';
+import { changeUsername, fetchGetUserInfo, fetchLogin, restorePassword } from '@/service/api';
 import { localStg } from '@/utils/storage';
 import { $t } from '@/locales';
 import { useRouteStore } from '../route';
@@ -243,6 +243,53 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     }
   }
 
+  /**
+   * 修改用户名
+   *
+   * 此函数用于用户修改用户名，需要提供新用户名和当前密码进行验证
+   *
+   * @param newUsername 新用户名
+   * @param password 当前密码，用于验证用户身份
+   */
+  async function updateUsername(newUsername: string, password: string) {
+    // 开始加载状态
+    startLoading();
+    try {
+      // 调用修改用户名API
+      const { error } = await changeUsername(newUsername, password);
+
+      // 根据API返回结果显示相应通知
+      if (!error) {
+        // 修改成功，更新store中的用户名
+        userInfo.userName = newUsername;
+
+        // 显示成功通知
+        window.$notification?.success({
+          title: $t('common.changeUsername.success'),
+          content: $t('common.changeUsername.success'),
+          duration: 4500
+        });
+      } else {
+        // 显示错误通知
+        window.$notification?.error({
+          title: $t('common.changeUsername.error'),
+          content: (error as any).msg || $t('common.changeUsername.error'),
+          duration: 4500
+        });
+      }
+    } catch (e) {
+      // 发生异常时显示错误通知
+      window.$notification?.error({
+        title: $t('common.changeUsername.error'),
+        content: $t('common.changeUsername.error'),
+        duration: 4500
+      });
+    } finally {
+      // 无论成功失败都结束加载状态
+      endLoading();
+    }
+  }
+
   return {
     token,
     userInfo,
@@ -252,6 +299,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     resetStore,
     login,
     initUserInfo,
-    restPassword
+    restPassword,
+    updateUsername
   };
 });

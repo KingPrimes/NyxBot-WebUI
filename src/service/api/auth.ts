@@ -58,3 +58,20 @@ export function restorePassword(oldPassword: string, newPassword: string, confir
     }
   });
 }
+
+/**
+ * Change username
+ *
+ * @param newUsername New username
+ * @param password Current password for verification
+ */
+export function changeUsername(newUsername: string, password: string) {
+  return request({
+    url: '/auth/changeUsername',
+    method: 'post',
+    data: {
+      newUsername,
+      password
+    }
+  });
+}

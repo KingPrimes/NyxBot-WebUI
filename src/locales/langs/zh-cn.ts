@@ -23,6 +23,7 @@ const local: App.I18n.Schema = {
     deleteSuccess: '删除成功',
     confirmDelete: '确认删除吗？',
     editPassword: '修改密码',
+    editUsername: '修改用户名',
     edit: '编辑',
     warning: '警告',
     error: '错误',
@@ -57,6 +58,13 @@ const local: App.I18n.Schema = {
       oldPassword: '旧密码',
       newPassword: '新密码',
       confirmPassword: '确认密码'
+    },
+    changeUsername: {
+      title: '修改用户名',
+      newUsername: '新用户名',
+      currentPassword: '当前密码',
+      success: '用户名修改成功',
+      error: '用户名修改失败'
     },
     from: {
       urlError: 'URL格式不正确，请输入正确的URL'

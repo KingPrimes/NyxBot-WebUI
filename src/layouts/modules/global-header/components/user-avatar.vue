@@ -6,6 +6,7 @@ import { useRouterPush } from '@/hooks/common/router';
 import { useSvgIcon } from '@/hooks/common/icon';
 import { $t } from '@/locales';
 import ResetPasswordModal from '@/components/common/reset-password-modal.vue';
+import ChangeUsernameModal from '@/components/common/change-username-modal.vue';
 
 defineOptions({
   name: 'UserAvatar'
@@ -17,6 +18,8 @@ const { SvgIconVNode } = useSvgIcon();
 
 // 控制重置密码弹窗显示
 const showResetPasswordModal = ref(false);
+// 控制修改用户名弹窗显示
+const showChangeUsernameModal = ref(false);
 
 function loginOrRegister() {
   toLogin();
@@ -39,6 +42,11 @@ const options = computed(() => {
       label: $t('common.editPassword'),
       key: 'rest-password',
       icon: SvgIconVNode({ icon: 'ph:gear', fontSize: 18 })
+    },
+    {
+      label: $t('common.editUsername'),
+      key: 'change-username',
+      icon: SvgIconVNode({ icon: 'ph:user', fontSize: 18 })
     }
   ];
 
@@ -65,6 +73,9 @@ function handleDropdown(key: string) {
     case 'rest-password':
       showResetPasswordModal.value = true;
       break;
+    case 'change-username':
+      showChangeUsernameModal.value = true;
+      break;
     default:
       break;
   }
@@ -86,6 +97,9 @@ function handleDropdown(key: string) {
 
   <!-- 重置密码弹窗 -->
   <ResetPasswordModal v-model:visible="showResetPasswordModal" />
+
+  <!-- 修改用户名弹窗 -->
+  <ChangeUsernameModal v-model:visible="showChangeUsernameModal" />
 </template>
 
 <style scoped></style>
