@@ -381,7 +381,8 @@ const local: App.I18n.Schema = {
           client: '客户端',
           server: '服务端',
           switchTo: '切换到{type}',
-          urlPlaceholder: '请输入{type}URL'
+          urlPlaceholder: '请输入{type}URL',
+          pluginPrefix: '艾特前缀'
         }
       },
       admin: {

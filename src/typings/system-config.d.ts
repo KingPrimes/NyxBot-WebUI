@@ -87,6 +87,7 @@ declare namespace Api {
       wsClientUrl: string;
       wsServerUrl: string;
       token: string;
+      pluginPrefix: boolean;
     }
 
     interface TokenKeys {

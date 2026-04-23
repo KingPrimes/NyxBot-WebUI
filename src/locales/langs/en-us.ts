@@ -381,7 +381,8 @@ const local: App.I18n.Schema = {
           client: 'Client',
           server: 'Server',
           switchTo: 'Switch to {type}',
-          urlPlaceholder: 'Please enter the {type} URL'
+          urlPlaceholder: 'Please enter the {type} URL',
+          pluginPrefix: '@ Prefix'
         }
       },
       admin: {

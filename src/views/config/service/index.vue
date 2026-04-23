@@ -18,7 +18,8 @@ const formValue = ref<Api.SystemConfig.LoadingConfig>({
   isServerOrClient: true,
   wsClientUrl: 'ws://localhost:3001', // 默认客户端URL
   wsServerUrl: '/ws/shiro', // 默认服务端URL
-  token: ''
+  token: '',
+  pluginPrefix: false // 是否使用艾特前缀
 });
 
 // 计算显示的服务类型文本
@@ -84,6 +85,7 @@ async function onLoad() {
     formValue.value = { ...response.data };
   }
 }
+
 onMounted(async () => onLoad());
 
 function handleCancel() {
@@ -103,6 +105,9 @@ function handleCancel() {
         :label-placement="appStore.isMobile ? 'top' : 'left'"
         require-mark-placement="right-hanging"
       >
+        <NFormItem :label="$t('page.config.service.form.pluginPrefix', { type: serviceText })" path="pluginPrefix">
+          <NSwitch v-model:value="formValue.pluginPrefix" />
+        </NFormItem>
         <NFormItem :label="$t('page.config.service.form.port')" path="serverPort" required>
           <NInputNumber
             v-model:value="formValue.serverPort"
@@ -144,16 +149,5 @@ function handleCancel() {
 
 /* 移动端适配 */
 @media (max-width: 640px) {
-  :deep(.n-form) {
-    width: 100%;
-  }
-
-  :deep(.n-space) {
-    width: 100%;
-  }
-
-  :deep(.n-button) {
-    width: 100%;
-  }
 }
 </style>

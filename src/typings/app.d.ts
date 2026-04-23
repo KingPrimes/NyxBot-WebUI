@@ -610,6 +610,7 @@ declare namespace App {
               server: string;
               switchTo: string;
               urlPlaceholder: string;
+              pluginPrefix: string;
             };
           };
           admin: {
