@@ -118,7 +118,11 @@ function remove(id: number) {
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
     <!-- 搜索组件 -->
-    <CommandSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
+    <CommandSearch
+      v-model:model="searchParams"
+      @reset="resetSearchParams"
+      @search="getDataByPage"
+    />
 
     <!-- 表格卡片 -->
     <NCard
@@ -147,7 +151,7 @@ function remove(id: number) {
         :scroll-x="962"
         :loading="loading"
         remote
-        :row-key="row => row.id"
+        :row-key="(row) => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
       />

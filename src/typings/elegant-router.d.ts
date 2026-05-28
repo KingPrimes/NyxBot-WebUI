@@ -17,8 +17,6 @@ declare module "@elegant-router/types" {
   export type RouteMap = {
     "root": "/";
     "not-found": "/:pathMatch(.*)*";
-    "document": "/document";
-    "reward": "/reward";
     "403": "/403";
     "404": "/404";
     "500": "/500";
@@ -31,6 +29,7 @@ declare module "@elegant-router/types" {
     "config_whitelist": "/config/whitelist";
     "config_whitelist_group": "/config/whitelist/group";
     "config_whitelist_personal": "/config/whitelist/personal";
+    "document": "/document";
     "home": "/home";
     "iframe-page": "/iframe-page/:url";
     "local-data": "/local-data";
@@ -38,11 +37,13 @@ declare module "@elegant-router/types" {
     "local-data_warframe_alias": "/local-data/warframe/alias";
     "local-data_warframe_market": "/local-data/warframe/market";
     "local-data_warframe_market-riven": "/local-data/warframe/market-riven";
+    "local-data_warframe_phantom": "/local-data/warframe/phantom";
     "local-data_warframe_subscription": "/local-data/warframe/subscription";
     "log": "/log";
     "log_command": "/log/command";
     "log_real-time": "/log/real-time";
-    "login": "/login/:module(pwd-login)?";
+    "login": "/login";
+    "reward": "/reward";
   };
 
   /**
@@ -62,8 +63,6 @@ declare module "@elegant-router/types" {
     RouteKey,
     | "root"
     | "not-found"
-    | "document"
-    | "reward"
   >;
 
   /**
@@ -80,11 +79,13 @@ declare module "@elegant-router/types" {
     | "404"
     | "500"
     | "config"
+    | "document"
     | "home"
     | "iframe-page"
     | "local-data"
     | "log"
     | "login"
+    | "reward"
   >;
 
   /**
@@ -94,8 +95,6 @@ declare module "@elegant-router/types" {
     CustomRouteKey,
     | "root"
     | "not-found"
-    | "document"
-    | "reward"
   >;
 
   /**
@@ -114,13 +113,16 @@ declare module "@elegant-router/types" {
     | "config_service"
     | "config_whitelist_group"
     | "config_whitelist_personal"
+    | "document"
     | "home"
     | "local-data_warframe_alias"
     | "local-data_warframe_market-riven"
     | "local-data_warframe_market"
+    | "local-data_warframe_phantom"
     | "local-data_warframe_subscription"
     | "log_command"
     | "log_real-time"
+    | "reward"
   >;
 
   /**
@@ -130,8 +132,6 @@ declare module "@elegant-router/types" {
     CustomRouteKey,
     | "root"
     | "not-found"
-    | "document"
-    | "reward"
   >;
 
   /**

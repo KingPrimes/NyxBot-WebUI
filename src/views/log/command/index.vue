@@ -118,8 +118,17 @@ function detail(id: number, options: CommonType.Option<string>[]) {
 
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
-    <CommandSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
-    <NCard :title="$t('page.log.command.title')" :bordered="false" size="small" class="sm:flex-1-hidden card-wrapper">
+    <CommandSearch
+      v-model:model="searchParams"
+      @reset="resetSearchParams"
+      @search="getDataByPage"
+    />
+    <NCard
+      :title="$t('page.log.command.title')"
+      :bordered="false"
+      size="small"
+      class="sm:flex-1-hidden card-wrapper"
+    >
       <template #header-extra>
         <TableHeaderOperation
           v-model:columns="columnChecks"
@@ -137,11 +146,15 @@ function detail(id: number, options: CommonType.Option<string>[]) {
         :scroll-x="962"
         :loading="loading"
         remote
-        :row-key="row => row.id"
+        :row-key="(row) => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
       />
-      <DetailOperateModal v-model:visible="visible" :operate-type="operateType" :row-data="editingData" />
+      <DetailOperateModal
+        v-model:visible="visible"
+        :operate-type="operateType"
+        :row-data="editingData"
+      />
     </NCard>
   </div>
 </template>

@@ -1,4 +1,4 @@
-import { request } from '../request';
+import { request } from "../request";
 
 /**
  * Login
@@ -8,18 +8,18 @@ import { request } from '../request';
  */
 export function fetchLogin(userName: string, password: string) {
   return request<Api.Auth.LoginToken>({
-    url: '/auth/login',
-    method: 'post',
+    url: "/auth/login",
+    method: "post",
     data: {
       userName,
-      password
-    }
+      password,
+    },
   });
 }
 
 /** Get user info */
 export function fetchGetUserInfo() {
-  return request<Api.Auth.UserInfo>({ url: '/auth/info' });
+  return request<Api.Auth.UserInfo>({ url: "/auth/info" });
 }
 
 /**
@@ -29,11 +29,11 @@ export function fetchGetUserInfo() {
  */
 export function fetchRefreshToken(refreshToken: string) {
   return request<Api.Auth.LoginToken>({
-    url: '/auth/refreshToken',
-    method: 'post',
+    url: "/auth/refreshToken",
+    method: "post",
     data: {
-      refreshToken
-    }
+      refreshToken,
+    },
   });
 }
 
@@ -44,34 +44,41 @@ export function fetchRefreshToken(refreshToken: string) {
  * @param msg error message
  */
 export function fetchCustomBackendError(code: string, msg: string) {
-  return request({ url: '/auth/error', params: { code, msg } });
+  return request({ url: "/auth/error", params: { code, msg } });
 }
 
+/**
+ * Restore password
+ *
+ * @param oldPassword Old password
+ * @param newPassword New password
+ * @param confirmPassword Confirm new password
+ */
 export function restorePassword(oldPassword: string, newPassword: string, confirmPassword: string) {
-  return request<Api.Auth.RestorePasswordResponse>({
-    url: '/auth/restorePassword',
-    method: 'post',
+  return request({
+    url: "/auth/restPassword",
+    method: "post",
     data: {
       oldPassword,
       newPassword,
-      confirmPassword
-    }
+      confirmPassword,
+    },
   });
 }
 
 /**
  * Change username
  *
- * @param newUsername New username
- * @param password Current password for verification
+ * @param username New username
+ * @param password Current password
  */
-export function changeUsername(newUsername: string, password: string) {
+export function changeUsername(username: string, password: string) {
   return request({
-    url: '/auth/changeUsername',
-    method: 'post',
+    url: "/auth/changeUsername",
+    method: "post",
     data: {
-      newUsername,
-      password
-    }
+      username,
+      password,
+    },
   });
 }

@@ -1,38 +1,38 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { useNaiveForm } from '@/hooks/common/form';
-import { fetchGetCodesOption, fetchGetTitleOption } from '@/service/api/system-log';
+import { onMounted, ref } from "vue";
+import { useNaiveForm } from "@/hooks/common/form";
+import { fetchGetCodesOption, fetchGetTitleOption } from "@/service/api/system-log";
 
 defineOptions({
-  name: 'CommandSearch'
+  name: "CommandSearch",
 });
 
 interface Emits {
-  (e: 'reset'): void;
-  (e: 'search'): void;
+  (e: "reset"): void;
+  (e: "search"): void;
 }
 
 const emit = defineEmits<Emits>();
 
 const { formRef, validate, restoreValidation } = useNaiveForm();
 
-const model = defineModel<Api.Log.CommandSearchParams>('model', { required: true });
+const model = defineModel<Api.Log.CommandSearchParams>("model", { required: true });
 
 async function reset() {
   Object.assign(model.value, {
     title: null,
     code: null,
-    groupUid: null
+    groupUid: null,
   });
 
-  emit('reset');
+  emit("reset");
 
   await restoreValidation();
 }
 
 async function search() {
   await validate();
-  emit('search');
+  emit("search");
 }
 
 const codesOption = ref<CommonType.Option<string>[]>([]);
@@ -42,9 +42,9 @@ async function getCodes() {
   const { error, data } = await fetchGetCodesOption();
 
   if (!error) {
-    codesOption.value = data.map(item => ({
+    codesOption.value = data.map((item) => ({
       label: item.label,
-      value: item.value
+      value: item.value,
     }));
   }
 }
@@ -53,9 +53,9 @@ async function getTitles() {
   const { error, data } = await fetchGetTitleOption();
 
   if (!error) {
-    titlesOption.value = data.map(item => ({
+    titlesOption.value = data.map((item) => ({
       label: item.label,
-      value: item.value
+      value: item.value,
     }));
   }
 }
@@ -72,22 +72,40 @@ onMounted(() => {
       <NCollapseItem :title="$t('common.search')" name="command-search">
         <NForm ref="formRef" :model="model" label-placement="left" :label-width="80">
           <NGrid responsive="screen" item-responsive>
-            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.titles')" path="title" class="pr-24px">
+            <NFormItemGi
+              span="24 s:12 m:8"
+              :label="$t('page.log.command.titles')"
+              path="title"
+              class="pr-24px"
+            >
               <NSelect
                 v-model:value="model.title"
                 :placeholder="$t('page.log.command.titlesPlaceholder')"
                 :options="titlesOption"
               />
             </NFormItemGi>
-            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.command')" path="code" class="pr-24px">
+            <NFormItemGi
+              span="24 s:12 m:8"
+              :label="$t('page.log.command.command')"
+              path="code"
+              class="pr-24px"
+            >
               <NSelect
                 v-model:value="model.code"
                 :placeholder="$t('page.log.command.commandPlaceholder')"
                 :options="codesOption"
               />
             </NFormItemGi>
-            <NFormItemGi span="24 s:12 m:8" :label="$t('page.log.command.groupQQ')" path="groupUid" class="pr-24px">
-              <NInputNumber v-model:value="model.groupUid" :placeholder="$t('page.log.command.groupQQPlaceholder')" />
+            <NFormItemGi
+              span="24 s:12 m:8"
+              :label="$t('page.log.command.groupQQ')"
+              path="groupUid"
+              class="pr-24px"
+            >
+              <NInputNumber
+                v-model:value="model.groupUid"
+                :placeholder="$t('page.log.command.groupQQPlaceholder')"
+              />
             </NFormItemGi>
             <NFormItemGi span="24 m:8" class="pr-24px">
               <NSpace class="w-full" justify="end">
@@ -95,13 +113,13 @@ onMounted(() => {
                   <template #icon>
                     <icon-ic-round-refresh class="text-icon" />
                   </template>
-                  {{ $t('common.reset') }}
+                  {{ $t("common.reset") }}
                 </NButton>
                 <NButton type="primary" ghost @click="search">
                   <template #icon>
                     <icon-ic-round-search class="text-icon" />
                   </template>
-                  {{ $t('common.search') }}
+                  {{ $t("common.search") }}
                 </NButton>
               </NSpace>
             </NFormItemGi>

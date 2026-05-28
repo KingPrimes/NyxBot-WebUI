@@ -36,3 +36,6 @@ yarn.lock
 
 .history/
 /resources
+.playwright
+.playwright-cli
+CLAUDE.md

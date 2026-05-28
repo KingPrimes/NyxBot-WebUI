@@ -26,11 +26,16 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   config_service: () => import("@/views/config/service/index.vue"),
   config_whitelist_group: () => import("@/views/config/whitelist/group/index.vue"),
   config_whitelist_personal: () => import("@/views/config/whitelist/personal/index.vue"),
+  document: () => import("@/views/document/index.vue"),
   home: () => import("@/views/home/index.vue"),
   "local-data_warframe_alias": () => import("@/views/local-data/warframe/alias/index.vue"),
-  "local-data_warframe_market-riven": () => import("@/views/local-data/warframe/market-riven/index.vue"),
+  "local-data_warframe_market-riven": () =>
+    import("@/views/local-data/warframe/market-riven/index.vue"),
   "local-data_warframe_market": () => import("@/views/local-data/warframe/market/index.vue"),
-  "local-data_warframe_subscription": () => import("@/views/local-data/warframe/subscription/index.vue"),
+  "local-data_warframe_phantom": () => import("@/views/local-data/warframe/phantom/index.vue"),
+  "local-data_warframe_subscription": () =>
+    import("@/views/local-data/warframe/subscription/index.vue"),
   log_command: () => import("@/views/log/command/index.vue"),
   "log_real-time": () => import("@/views/log/real-time/index.vue"),
+  reward: () => import("@/views/reward/index.vue"),
 };

@@ -1,7 +1,7 @@
 declare namespace Api {
   namespace Log {
     /** 日志级别 */
-    type Level = 'TRACE' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR';
+    type Level = "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR";
 
     /** 日志数据 */
     interface Data {
@@ -34,28 +34,6 @@ declare namespace Api {
       error: number;
       displayed: number;
       cacheSize: string;
-    }
-
-    /** 分享配置 */
-    interface ShareConfig {
-      logs: Data[];
-      password: string;
-      expiresAt: string;
-      maxAccessCount: number;
-    }
-
-    /** 分享响应 */
-    interface ShareResponse {
-      success: boolean;
-      shareId?: string;
-      message?: string;
-    }
-
-    /** WebSocket 消息 */
-    interface WSMessage {
-      type: 'filter' | 'ping' | 'request';
-      action?: 'update' | 'reset' | 'get';
-      config?: FilterConfig;
     }
 
     /** 命令日志 */

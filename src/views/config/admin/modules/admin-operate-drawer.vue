@@ -1,24 +1,24 @@
 <script setup lang="ts">
 // 导入 Vue 相关工具函数
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch } from "vue";
 // 导入 Naive UI 组件
-import { NSelect } from 'naive-ui';
+import { NSelect } from "naive-ui";
 // 导入表单相关 hooks
-import { useFormRules, useNaiveForm } from '@/hooks/common/form';
+import { useFormRules, useNaiveForm } from "@/hooks/common/form";
 // 导入获取下拉选项数据的 API
 import {
   fetchGetAllBotsFriendsOptionList,
   fetchGetAllBotsOptionList,
-  fetchGetAllPermissionOptionList
-} from '@/service/api/system-config-bot';
+  fetchGetAllPermissionOptionList,
+} from "@/service/api/system-config-bot";
 // 导入国际化翻译函数
-import { $t } from '@/locales';
+import { $t } from "@/locales";
 // 导入管理员操作相关 API
-import { fetchPostBotAdmin } from '@/service/api/sytem-config-bot-admin';
+import { fetchPostBotAdmin } from "@/service/api/system-config-bot-admin";
 
 // 定义组件名称
 defineOptions({
-  name: 'AdminOperateDrawer'
+  name: "AdminOperateDrawer",
 });
 
 // 定义组件 Props 接口
@@ -34,15 +34,15 @@ const props = defineProps<Props>();
 
 // 定义组件 Emits 接口
 interface Emits {
-  (e: 'submitted'): void;
+  (e: "submitted"): void;
 }
 
 // 定义组件 Emits
 const emit = defineEmits<Emits>();
 
 // 定义双向绑定的可见性状态
-const visible = defineModel<boolean>('visible', {
-  default: false
+const visible = defineModel<boolean>("visible", {
+  default: false,
 });
 
 // 使用表单 hooks
@@ -52,15 +52,15 @@ const { defaultRequiredRule } = useFormRules();
 // 计算组件标题，根据操作类型动态显示
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
-    add: $t('page.config.admin.addAdmin'), // 添加管理员
-    edit: $t('page.config.admin.editAdmin'), // 编辑管理员
-    push: $t('common.push') // 推送
+    add: $t("page.config.admin.addAdmin"), // 添加管理员
+    edit: $t("page.config.admin.editAdmin"), // 编辑管理员
+    push: $t("common.push"), // 推送
   };
   return titles[props.operateType];
 });
 
 // 定义表单数据模型类型
-type Model = Pick<Api.SystemConfig.AdminModel, 'botUid' | 'adminUid' | 'permissions'>;
+type Model = Pick<Api.SystemConfig.AdminModel, "botUid" | "adminUid" | "permissions">;
 
 // 初始化表单数据
 const model = ref(createDefaultModel());
@@ -72,20 +72,20 @@ const model = ref(createDefaultModel());
  */
 function createDefaultModel(): Model {
   return {
-    botUid: '', // 机器人 UID
-    adminUid: '', // 管理员 UID
-    permissions: '' // 权限角色
+    botUid: "", // 机器人 UID
+    adminUid: "", // 管理员 UID
+    permissions: "", // 权限角色
   };
 }
 
 // 定义表单验证规则键类型
-type RuleKey = Extract<keyof Model, 'botUid' | 'adminUid' | 'permissions'>;
+type RuleKey = Extract<keyof Model, "botUid" | "adminUid" | "permissions">;
 
 // 定义表单验证规则
 const rules: Record<RuleKey, App.Global.FormRule> = {
   botUid: defaultRequiredRule, // 机器人账号为必填项
   adminUid: defaultRequiredRule, // 管理员账号为必填项
-  permissions: defaultRequiredRule // 权限角色为必填项
+  permissions: defaultRequiredRule, // 权限角色为必填项
 };
 
 // 管理员账号下拉选项
@@ -105,9 +105,9 @@ const permissionOptions = ref<CommonType.Option<string>[]>([]);
 async function getAdminAccountOptions(botUid: string) {
   const { error, data } = await fetchGetAllBotsFriendsOptionList(botUid);
   if (!error) {
-    adminAccountOptions.value = data.map(item => ({
+    adminAccountOptions.value = data.map((item) => ({
       label: item.label, // 显示文本
-      value: item.value // 实际值
+      value: item.value, // 实际值
     }));
   }
 }
@@ -117,9 +117,9 @@ async function getBotAccountOptions() {
   const { error, data } = await fetchGetAllBotsOptionList();
 
   if (!error) {
-    botAccountOptions.value = data.map(item => ({
+    botAccountOptions.value = data.map((item) => ({
       label: item.label, // 显示文本
-      value: item.value // 实际值
+      value: item.value, // 实际值
     }));
   }
 }
@@ -129,9 +129,9 @@ async function getPermissionOptions() {
   const { error, data } = await fetchGetAllPermissionOptionList();
 
   if (!error) {
-    permissionOptions.value = data.map(item => ({
+    permissionOptions.value = data.map((item) => ({
       label: item.label, // 显示文本
-      value: item.value // 实际值
+      value: item.value, // 实际值
     }));
   }
 }
@@ -140,7 +140,7 @@ async function getPermissionOptions() {
 function handleInitModel() {
   model.value = createDefaultModel();
 
-  if (props.operateType === 'edit' && props.rowData) {
+  if (props.operateType === "edit" && props.rowData) {
     Object.assign(model.value, props.rowData);
   }
 }
@@ -159,10 +159,10 @@ function closeDrawer() {
  */
 async function handleSubmit() {
   await validate();
-  await fetchPostBotAdmin(model.value).then(res => {
+  await fetchPostBotAdmin(model.value).then((res) => {
     if (Number(res.response.data.code) === 200) {
       window.$message?.success(res.response.data.msg);
-      emit('submitted'); // 触发提交成功事件
+      emit("submitted"); // 触发提交成功事件
       closeDrawer(); // 关闭抽屉
     } else {
       window.$message?.error(res.response.data.msg);
@@ -173,11 +173,11 @@ async function handleSubmit() {
 // 监听机器人 UID 变化，动态加载对应机器人的好友列表
 watch(
   () => model.value.botUid,
-  async newVal => {
+  async (newVal) => {
     if (newVal && visible.value) {
       await getAdminAccountOptions(newVal);
     }
-  }
+  },
 );
 
 // 监听抽屉可见性变化
@@ -219,8 +219,8 @@ watch(visible, () => {
       <!-- 抽屉底部操作按钮 -->
       <template #footer>
         <NSpace :size="16">
-          <NButton @click="closeDrawer">{{ $t('common.cancel') }}</NButton>
-          <NButton type="primary" @click="handleSubmit">{{ $t('common.confirm') }}</NButton>
+          <NButton @click="closeDrawer">{{ $t("common.cancel") }}</NButton>
+          <NButton type="primary" @click="handleSubmit">{{ $t("common.confirm") }}</NButton>
         </NSpace>
       </template>
     </NDrawerContent>

@@ -1,166 +1,208 @@
-<script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue';
-import { useThemeStore } from '@/store/modules/theme';
+<script lang="ts" setup>
+import { computed, ref, onMounted, watch } from "vue";
+import { getPaletteColorByNumber, addColorAlpha } from "@sa/color";
+import { useThemeStore } from "@/store/modules/theme";
 
-defineOptions({ name: 'WaveBg' });
+defineOptions({ name: "WaveBg" });
 
-const themeStore = useThemeStore();
-const patterns = ref<Array<{ type: string; x: number; y: number; size: number; rotation: number; delay: number }>>([]);
-
-// 定义图案类型
-const patternTypes = ['star', 'heart', 'circle', 'triangle', 'diamond'];
-
-// 根据主题设置背景样式
-const backgroundStyle = computed(() => {
-  // 纯色背景替代斜向条纹
-  return {
-    backgroundColor: themeStore.darkMode ? 'rgba(49, 43, 60, 0.95)' : 'rgba(242, 235, 231, 0.95)',
-    boxShadow: 'inset 0 0 50px rgba(0, 0, 0, 0.05)'
-  };
-});
-
-// 生成随机图案
-function generateRandomPatterns() {
-  patterns.value = [];
-  const patternCount = themeStore.darkMode ? 80 : 60; // 暗色主题可以有更多图案
-
-  for (let i = 0; i < patternCount; i += 1) {
-    patterns.value.push({
-      type: patternTypes[Math.floor(Math.random() * patternTypes.length)],
-      x: Math.random() * 100, // 百分比位置
-      y: Math.random() * 100, // 百分比位置
-      size: Math.random() * 10 + 5, // 5-15px的大小范围
-      rotation: Math.random() * 360, // 0-360度的旋转
-      delay: Math.random() * 5 // 0-5秒的动画延迟
-    });
-  }
+interface Props {
+  /** Theme color */
+  themeColor?: string;
+  /** Number of shapes */
+  count?: number;
 }
 
-// 监听主题变化，重新生成图案
-watch(
-  () => themeStore.darkMode,
-  () => {
-    generateRandomPatterns();
+const props = withDefaults(defineProps<Props>(), {
+  themeColor: "#fe7199",
+  count: 30,
+});
+
+const themeStore = useThemeStore();
+const isDark = computed(() => themeStore.darkMode);
+
+type ShapeType = "star" | "heart" | "circle" | "triangle" | "diamond";
+
+interface ShapeItem {
+  id: number;
+  type: ShapeType;
+  x: number;
+  y: number;
+  size: number;
+  color: string;
+  rotate: number;
+  rotateSpeed: number;
+  duration: number;
+  delay: number;
+  floatX: number;
+  floatY: number;
+}
+
+const seed = ref(0);
+
+function seededRandom(s: number) {
+  s = Math.sin(s * 9301 + 49297) * 233280;
+  return s - Math.floor(s);
+}
+
+function generateShapes(): ShapeItem[] {
+  const primary = props.themeColor;
+  const colors = isDark.value
+    ? [
+        addColorAlpha(primary, 0.15),
+        addColorAlpha(primary, 0.1),
+        addColorAlpha(primary, 0.2),
+        getPaletteColorByNumber(primary, 600),
+        addColorAlpha(primary, 0.08),
+        addColorAlpha(primary, 0.12),
+        getPaletteColorByNumber(primary, 700),
+        addColorAlpha(primary, 0.05),
+        addColorAlpha(primary, 0.18),
+        addColorAlpha(primary, 0.25),
+      ]
+    : [
+        addColorAlpha(primary, 0.1),
+        addColorAlpha(primary, 0.06),
+        addColorAlpha(primary, 0.15),
+        getPaletteColorByNumber(primary, 200),
+        getPaletteColorByNumber(primary, 100),
+        addColorAlpha(primary, 0.08),
+        addColorAlpha(primary, 0.12),
+        addColorAlpha(primary, 0.04),
+        addColorAlpha(primary, 0.18),
+        addColorAlpha(primary, 0.2),
+      ];
+
+  const types: ShapeType[] = ["star", "heart", "circle", "triangle", "diamond"];
+  const shapes: ShapeItem[] = [];
+  const s = seed.value;
+
+  for (let i = 0; i < props.count; i++) {
+    shapes.push({
+      id: i,
+      type: types[Math.floor(seededRandom(s + i * 7) * types.length)],
+      x: seededRandom(s + i * 13) * 100,
+      y: seededRandom(s + i * 17) * 100,
+      size: 12 + seededRandom(s + i * 19) * 48,
+      color: colors[Math.floor(seededRandom(s + i * 23) * colors.length)],
+      rotate: seededRandom(s + i * 29) * 360,
+      rotateSpeed: (seededRandom(s + i * 53) - 0.5) * 360,
+      duration: 8 + seededRandom(s + i * 31) * 16,
+      delay: seededRandom(s + i * 37) * -20,
+      floatX: (seededRandom(s + i * 41) - 0.5) * 80,
+      floatY: (seededRandom(s + i * 43) - 0.5) * 80,
+    });
   }
-);
+
+  return shapes;
+}
+
+const shapes = ref<ShapeItem[]>([]);
+
+function refreshShapes() {
+  shapes.value = generateShapes();
+}
 
 onMounted(() => {
-  generateRandomPatterns();
+  refreshShapes();
+});
+
+// Regenerate when theme changes
+watch(isDark, () => {
+  seed.value = Date.now() % 10000;
+  refreshShapes();
 });
 </script>
 
 <template>
-  <div class="absolute-lt z-1 size-full overflow-hidden" :style="backgroundStyle">
-    <!-- 额外的图案装饰元素 -->
-    <div class="pointer-events-none absolute inset-0 opacity-10">
-      <div
-        class="absolute left-0 top-0 h-full w-full bg-[radial-gradient(circle_at_20%_30%,rgba(124,104,153,0.3)_0%,transparent_20%)]"
-      ></div>
-      <div
-        class="absolute bottom-0 right-0 h-full w-full bg-[radial-gradient(circle_at_80%_70%,rgba(226,196,207,0.3)_0%,transparent_20%)]"
-      ></div>
-    </div>
+  <div class="absolute-lt z-1 size-full overflow-hidden">
+    <div
+      v-for="shape in shapes"
+      :key="shape.id"
+      class="absolute animate-float"
+      :style="{
+        left: `${shape.x}%`,
+        top: `${shape.y}%`,
+        width: `${shape.size}px`,
+        height: `${shape.size}px`,
+        color: shape.color,
+        animationDuration: `${shape.duration}s`,
+        animationDelay: `${shape.delay}s`,
+        '--float-x': `${shape.floatX}px`,
+        '--float-y': `${shape.floatY}px`,
+        '--start-rotate': `${shape.rotate}deg`,
+        '--end-rotate': `${shape.rotate + shape.rotateSpeed}deg`,
+      }"
+    >
+      <!-- Star -->
+      <svg v-if="shape.type === 'star'" viewBox="0 0 24 24" fill="currentColor" class="size-full">
+        <path
+          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+        />
+      </svg>
 
-    <!-- 随机分布的星星、爱心等图案 -->
-    <div class="pointer-events-none absolute inset-0">
+      <!-- Heart -->
+      <svg v-if="shape.type === 'heart'" viewBox="0 0 24 24" fill="currentColor" class="size-full">
+        <path
+          d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+        />
+      </svg>
+
+      <!-- Circle -->
       <div
-        v-for="(pattern, index) in patterns"
-        :key="index"
-        class="absolute"
-        :style="{
-          left: `${pattern.x}%`,
-          top: `${pattern.y}%`,
-          width: `${pattern.size}px`,
-          height: `${pattern.size}px`,
-          transform: `translate(-50%, -50%) rotate(${pattern.rotation}deg)`,
-          animationDelay: `${pattern.delay}s`
-        }"
+        v-if="shape.type === 'circle'"
+        class="size-full rounded-full"
+        :style="{ backgroundColor: shape.color }"
+      />
+
+      <!-- Triangle -->
+      <svg
+        v-if="shape.type === 'triangle'"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-full"
       >
-        <div :class="[`pattern-${pattern.type}`, themeStore.darkMode ? 'dark-pattern' : 'light-pattern']"></div>
-      </div>
+        <path d="M12 2L2 22h20L12 2z" />
+      </svg>
+
+      <!-- Diamond -->
+      <svg
+        v-if="shape.type === 'diamond'"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        class="size-full"
+      >
+        <path d="M12 2l10 10-10 10L2 12 12 2z" />
+      </svg>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* 为图案添加动画效果 */
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.15;
-  }
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(0px);
-  }
-  50% {
-    transform: translate(-50%, -50%) rotate(var(--rotation)) translateY(-10px);
-  }
-}
-
-.absolute-lt .opacity-10 {
-  animation: pulse 8s ease-in-out infinite;
-}
-
-/* 确保背景图案在不同屏幕尺寸下都能良好显示 */
-@media (max-width: 768px) {
-  .absolute-lt {
-    background-size: 15px 15px !important;
-  }
-}
-
-/* 图案样式 */
-.pattern-star,
-.pattern-heart,
-.pattern-circle,
-.pattern-triangle,
-.pattern-diamond {
-  width: 100%;
-  height: 100%;
+.animate-float {
+  animation-name: float-move;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
   opacity: 0.6;
-  animation: float 8s ease-in-out infinite;
-  --rotation: 0deg;
+  pointer-events: none;
+  will-change: transform;
 }
 
-/* 星星图案 */
-.pattern-star {
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-}
-
-/* 爱心图案 */
-.pattern-heart {
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  transform: rotate(45deg);
-}
-
-/* 圆形图案 */
-.pattern-circle {
-  border-radius: 50%;
-}
-
-/* 三角形图案 */
-.pattern-triangle {
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-}
-
-/* 菱形图案 */
-.pattern-diamond {
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-}
-
-/* 亮色主题下的图案颜色 */
-.light-pattern {
-  background-color: rgba(124, 104, 153, 0.6);
-}
-
-/* 暗色主题下的图案颜色 */
-.dark-pattern {
-  background-color: rgba(226, 196, 207, 0.6);
+@keyframes float-move {
+  0% {
+    transform: translate(0, 0) rotate(var(--start-rotate, 0deg));
+  }
+  33% {
+    transform: translate(var(--float-x, 30px), var(--float-y, 20px))
+      rotate(calc((var(--start-rotate, 0deg) + var(--end-rotate, 0deg)) * 0.33));
+  }
+  66% {
+    transform: translate(calc(var(--float-x, 20px) * -0.5), calc(var(--float-y, -20px) * 0.7))
+      rotate(calc((var(--start-rotate, 0deg) + var(--end-rotate, 0deg)) * 0.66));
+  }
+  100% {
+    transform: translate(calc(var(--float-x, 30px) * -0.3), calc(var(--float-y, -20px) * -0.4))
+      rotate(var(--end-rotate, 360deg));
+  }
 }
 </style>

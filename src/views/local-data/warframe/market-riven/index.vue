@@ -1,11 +1,11 @@
 <script lang="tsx" setup>
-import { h } from 'vue';
-import { NCard, NDataTable, NImage } from 'naive-ui';
-import { $t } from '@/locales';
-import { useAppStore } from '@/store/modules/app';
-import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchPostMarketRivenList, fetchPostUpdateMarketRiven } from '@/service/api/local-data';
-import MarketRivenSearch from './modules/market-riven-search.vue';
+import { h } from "vue";
+import { NCard, NDataTable, NImage } from "naive-ui";
+import { $t } from "@/locales";
+import { useAppStore } from "@/store/modules/app";
+import { useTable, useTableOperate } from "@/hooks/common/table";
+import { fetchPostMarketRivenList, fetchPostUpdateMarketRiven } from "@/service/api/local-data";
+import MarketRivenSearch from "./modules/market-riven-search.vue";
 
 const appStore = useAppStore();
 
@@ -18,75 +18,75 @@ const {
   loading,
   mobilePagination,
   searchParams,
-  resetSearchParams
+  resetSearchParams,
 } = useTable({
   apiFn: fetchPostMarketRivenList,
   showTotal: true,
   apiParams: {
     current: 1,
-    size: 10
+    size: 10,
   },
   columns: () => [
     {
-      type: 'selection',
-      align: 'center',
-      width: 48
+      type: "selection",
+      align: "center",
+      width: 48,
     },
     {
-      key: 'index',
-      title: $t('common.index'),
-      align: 'center',
-      width: 64
+      key: "index",
+      title: $t("common.index"),
+      align: "center",
+      width: 64,
     },
     {
-      key: 'name',
-      title: $t('page.local-data.warframe.market-riven.itemName'),
-      align: 'center',
-      minWidth: 100
+      key: "name",
+      title: $t("page.local-data.warframe.market-riven.itemName"),
+      align: "center",
+      minWidth: 100,
     },
     {
-      key: 'rivenType',
-      title: $t('page.local-data.warframe.market-riven.rivenType'),
-      align: 'center',
-      width: 100
+      key: "rivenType",
+      title: $t("page.local-data.warframe.market-riven.rivenType"),
+      align: "center",
+      width: 100,
     },
     {
-      key: 'group',
-      title: $t('page.local-data.warframe.market-riven.group'),
-      align: 'center',
-      width: 100
+      key: "group",
+      title: $t("page.local-data.warframe.market-riven.group"),
+      align: "center",
+      width: 100,
     },
     {
-      key: 'reqMasteryRank',
-      title: $t('page.local-data.warframe.market-riven.rankLimit'),
-      align: 'center',
-      width: 100
+      key: "reqMasteryRank",
+      title: $t("page.local-data.warframe.market-riven.rankLimit"),
+      align: "center",
+      width: 100,
     },
     {
-      key: 'thumb',
-      title: $t('page.local-data.warframe.market-riven.imageUrl'),
-      align: 'center',
+      key: "thumb",
+      title: $t("page.local-data.warframe.market-riven.imageUrl"),
+      align: "center",
       width: 120,
-      render: row => {
+      render: (row) => {
         return h(NImage, {
           src: `https://warframe.market/static/assets/${row.thumb}`,
           width: 48,
           height: 48,
-          objectFit: 'cover',
+          objectFit: "cover",
           previewDisabled: false,
           style: {
-            borderRadius: '4px'
-          }
+            borderRadius: "4px",
+          },
         });
-      }
-    }
-  ]
+      },
+    },
+  ],
 });
 
 const { handleAdd, checkedRowKeys } = useTableOperate(data, getData);
 
 async function updateData() {
-  await fetchPostUpdateMarketRiven().then(res => {
+  await fetchPostUpdateMarketRiven().then((res) => {
     if (Number(res.response.data.code) === 200) {
       window.$message?.success(res.response.data.msg);
     } else {
@@ -98,7 +98,11 @@ async function updateData() {
 
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
-    <MarketRivenSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
+    <MarketRivenSearch
+      v-model:model="searchParams"
+      @reset="resetSearchParams"
+      @search="getDataByPage"
+    />
     <NCard
       :title="$t('page.local-data.warframe.market-riven.title')"
       :bordered="false"
@@ -127,7 +131,7 @@ async function updateData() {
         :scroll-x="962"
         :loading="loading"
         remote
-        :row-key="row => row.id"
+        :row-key="(row) => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
       />

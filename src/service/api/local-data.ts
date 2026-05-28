@@ -1,21 +1,21 @@
-import { request } from '../request';
+import { request } from "../request";
 
-const baseUrl = '/data/warframe';
+const baseUrl = "/data/warframe";
 
 /** 获取Warframe别名列表 */
 export async function fetchPostAliasList(params?: Api.LocalData.AliasSearchParams) {
   return request<Api.LocalData.AliasList>({
     url: `${baseUrl}/alias/list`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
 export async function fetchPostSaveAlias(params: Api.LocalData.Alias) {
   return request<Api.Result>({
     url: `${baseUrl}/alias/save`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
@@ -23,8 +23,8 @@ export async function fetchPostSaveAlias(params: Api.LocalData.Alias) {
 export async function fetchPostMarketList(params?: Api.LocalData.MarketSearchParams) {
   return request<Api.LocalData.MarketList>({
     url: `${baseUrl}/market/list`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
@@ -32,7 +32,7 @@ export async function fetchPostMarketList(params?: Api.LocalData.MarketSearchPar
 export async function fetchPostUpdateMarket() {
   return request<Api.Result>({
     url: `${baseUrl}/market/update`,
-    method: 'post'
+    method: "post",
   });
 }
 
@@ -40,8 +40,8 @@ export async function fetchPostUpdateMarket() {
 export async function fetchPostMarketRivenList(params?: Api.LocalData.MarketRivenSearchParams) {
   return request<Api.LocalData.MarketRivenList>({
     url: `${baseUrl}/market/riven/list`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
@@ -49,7 +49,7 @@ export async function fetchPostMarketRivenList(params?: Api.LocalData.MarketRive
 export async function fetchPostUpdateMarketRiven() {
   return request<Api.Result>({
     url: `${baseUrl}/market/riven/update`,
-    method: 'post'
+    method: "post",
   });
 }
 
@@ -57,8 +57,8 @@ export async function fetchPostUpdateMarketRiven() {
 export async function fetchPostPhantomList(params?: Api.LocalData.PhantomSearchParams) {
   return request<Api.LocalData.PhantomList>({
     url: `${baseUrl}/ephemeras/list`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
@@ -66,50 +66,54 @@ export async function fetchPostPhantomList(params?: Api.LocalData.PhantomSearchP
 export async function fetchPostUpdatePhantom() {
   return request<Api.Result>({
     url: `${baseUrl}/ephemeras/update`,
-    method: 'post'
+    method: "post",
   });
 }
 
 export async function fetchGetSubscribeEnums() {
   return request<Api.Result>({
     url: `${baseUrl}/subscribe/sub`,
-    method: 'get'
+    method: "get",
   });
 }
 
 export async function fetchGetSubscribeTypeEnums() {
   return request<Api.Result>({
     url: `${baseUrl}/subscribe/type`,
-    method: 'get'
+    method: "get",
   });
 }
 
 /** 获取订阅组数据 */
-export async function fetchPostMissionSubscribeList(params?: Api.LocalData.MissionSubscribeSearchParams) {
+export async function fetchPostMissionSubscribeList(
+  params?: Api.LocalData.MissionSubscribeSearchParams,
+) {
   return request<Api.LocalData.MissionSubscribeList>({
     url: `${baseUrl}/subscribe/list`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
 /** 获取订阅组用户数据 */
-export async function fetchPostMissionSubscribeUserList(params?: Api.LocalData.MissionSubscribeUserSearchParams) {
+export async function fetchPostMissionSubscribeUserList(
+  params?: Api.LocalData.MissionSubscribeUserSearchParams,
+) {
   return request<Api.LocalData.MissionSubscribeUserList>({
     url: `${baseUrl}/subscribe/user/list`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
 /** 获取用户订阅类型数据 */
 export async function fetchPostMissionSubscribeUserTypeList(
-  params?: Api.LocalData.MissionSubscribeUserCheckTypeSearchParams
+  params?: Api.LocalData.MissionSubscribeUserCheckTypeSearchParams,
 ) {
   return request<Api.LocalData.MissionSubscribeUserCheckTypeList>({
     url: `${baseUrl}/subscribe/type/list`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
@@ -117,7 +121,7 @@ export async function fetchPostMissionSubscribeUserTypeList(
 export async function fetchDeleteMissionSubscribe(id?: number) {
   return request<Api.Result>({
     url: `${baseUrl}/subscribe/${id}`,
-    method: 'delete'
+    method: "delete",
   });
 }
 
@@ -125,7 +129,7 @@ export async function fetchDeleteMissionSubscribe(id?: number) {
 export async function fetchDeleteMissionSubscribeUser(id?: number) {
   return request<Api.Result>({
     url: `${baseUrl}/subscribe/user/${id}`,
-    method: 'delete'
+    method: "delete",
   });
 }
 
@@ -133,6 +137,6 @@ export async function fetchDeleteMissionSubscribeUser(id?: number) {
 export async function fetchDeleteMissionSubscribeCheckType(id?: number) {
   return request<Api.Result>({
     url: `${baseUrl}/subscribe/type/${id}`,
-    method: 'delete'
+    method: "delete",
   });
 }

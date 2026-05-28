@@ -1,6 +1,6 @@
-import 'vue-router';
+import "vue-router";
 
-declare module 'vue-router' {
+declare module "vue-router" {
   interface RouteMeta {
     /**
      * Title of the route
@@ -44,8 +44,6 @@ declare module 'vue-router' {
     localIcon?: string;
     /** Icon size. width and height are the same. */
     iconFontSize?: number;
-    /** Icon color */
-    iconColor?: string;
     /** Router order */
     order?: number | null;
     /** The outer link of the route */
@@ -60,7 +58,7 @@ declare module 'vue-router' {
      * @example
      *   the route is "user_detail", if it is set to "user_list", the menu "user_list" will be activated
      */
-    activeMenu?: import('@elegant-router/types').RouteKey | null;
+    activeMenu?: import("@elegant-router/types").RouteKey | null;
     /**
      * By default, the same route path will use one tab, even with different query, if set true, the route with
      * different query will use different tabs

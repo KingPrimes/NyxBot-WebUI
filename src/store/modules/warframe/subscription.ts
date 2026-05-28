@@ -1,10 +1,10 @@
-import { defineStore } from 'pinia';
+import { defineStore } from "pinia";
 import {
   fetchGetSubscribeEnums,
   fetchGetSubscribeTypeEnums,
   fetchPostMissionSubscribeUserList,
-  fetchPostMissionSubscribeUserTypeList
-} from '@/service/api/local-data';
+  fetchPostMissionSubscribeUserTypeList,
+} from "@/service/api/local-data";
 
 /** 订阅状态管理接口定义 */
 interface SubscriptionState {
@@ -13,9 +13,9 @@ interface SubscriptionState {
   // 类型模态框可见性状态
   typeModalVisible: boolean;
   // 当前操作的模态框类型
-  currentType: 'user' | 'type' | null;
+  currentType: "user" | "type" | null;
   // 当前操作类型
-  operateType: 'add' | 'edit' | 'push' | 'detail';
+  operateType: "add" | "edit" | "push" | "detail";
   // 选中的行数据
   selectedRow: { id: number } | null;
   // 数据列表
@@ -33,12 +33,12 @@ interface SubscriptionState {
 }
 
 /** Warframe订阅管理存储模块 负责处理Warframe游戏相关的订阅数据管理，包括用户订阅和类型订阅的CRUD操作 */
-export const useSubscriptionStore = defineStore('subscription', {
+export const useSubscriptionStore = defineStore("subscription", {
   state: (): SubscriptionState => ({
     userModalVisible: false,
     typeModalVisible: false,
     currentType: null,
-    operateType: 'detail',
+    operateType: "detail",
     selectedRow: null,
     data: [],
     loading: false,
@@ -47,12 +47,12 @@ export const useSubscriptionStore = defineStore('subscription', {
       pageSize: 10,
       total: 0,
       itemCount: 0,
-      pageSizes: [10, 15, 20]
-    }
+      pageSizes: [10, 15, 20],
+    },
   }),
   getters: {
     /** 获取当前选中行的ID */
-    currentId: state => state.selectedRow?.id || null
+    currentId: (state) => state.selectedRow?.id || null,
   },
   actions: {
     /**
@@ -62,20 +62,24 @@ export const useSubscriptionStore = defineStore('subscription', {
      * @param operateType 操作类型 ('add' | 'edit' | 'push' | 'detail')
      * @param rowData 行数据（可选）
      */
-    async openModal(type: 'user' | 'type', operateType: 'add' | 'edit' | 'push' | 'detail', rowData?: { id: number }) {
+    async openModal(
+      type: "user" | "type",
+      operateType: "add" | "edit" | "push" | "detail",
+      rowData?: { id: number },
+    ) {
       this.currentType = type;
       this.operateType = operateType;
       this.selectedRow = rowData || null;
-      if (type === 'user') {
+      if (type === "user") {
         this.userModalVisible = true;
       } else {
         this.typeModalVisible = true;
       }
       // 根据模态框类型和行ID加载对应数据
-      if (type === 'user' && rowData?.id) {
+      if (type === "user" && rowData?.id) {
         await this.loadUserData(rowData.id);
       }
-      if (type === 'type' && rowData?.id) {
+      if (type === "type" && rowData?.id) {
         await this.loadTypeData(rowData.id);
       }
     },
@@ -91,7 +95,7 @@ export const useSubscriptionStore = defineStore('subscription', {
         const response = await fetchPostMissionSubscribeUserList({
           current: this.pagination.page,
           size: this.pagination.pageSize,
-          id
+          id,
         });
 
         // 更新分页信息
@@ -99,7 +103,7 @@ export const useSubscriptionStore = defineStore('subscription', {
           ...this.pagination,
           page: response.data?.current || 1,
           total: response.data?.total || 0,
-          itemCount: response.data?.total
+          itemCount: response.data?.total,
         };
 
         // 更新数据列表
@@ -122,9 +126,9 @@ export const useSubscriptionStore = defineStore('subscription', {
       this.pagination.pageSize = pageSize;
 
       // 根据当前模态框类型重新加载数据
-      if (this.currentType === 'user' && this.selectedRow?.id) {
+      if (this.currentType === "user" && this.selectedRow?.id) {
         await this.loadUserData(this.selectedRow.id);
-      } else if (this.currentType === 'type' && this.selectedRow?.id) {
+      } else if (this.currentType === "type" && this.selectedRow?.id) {
         await this.loadTypeData(this.selectedRow.id);
       }
     },
@@ -152,14 +156,14 @@ export const useSubscriptionStore = defineStore('subscription', {
         const response = await fetchPostMissionSubscribeUserTypeList({
           current: this.pagination.page,
           size: this.pagination.pageSize,
-          id
+          id,
         });
         // 更新分页信息
         this.pagination = {
           ...this.pagination,
           page: response.data?.current || 1,
           total: response.data?.total || 0,
-          itemCount: response.data?.total
+          itemCount: response.data?.total,
         };
         // 获取枚举数据用于数据转换
         const e = await fetchGetSubscribeEnums();
@@ -170,12 +174,12 @@ export const useSubscriptionStore = defineStore('subscription', {
         // 转换subscribe字段的枚举值为中文显示
         if (e.data) {
           const enums = e.data;
-          this.data.forEach(d => {
-            if (!d.subscribe || typeof d.subscribe !== 'string') return;
+          this.data.forEach((d) => {
+            if (!d.subscribe || typeof d.subscribe !== "string") return;
             const subscribeKey = d.subscribe.trim().toUpperCase();
             const enumValue = enums[subscribeKey as keyof typeof enums];
             if (enumValue) {
-              d.subscribe = subscribeKey === 'ERROR' ? '不限' : enumValue;
+              d.subscribe = subscribeKey === "ERROR" ? "不限" : enumValue;
             }
           });
         }
@@ -183,12 +187,12 @@ export const useSubscriptionStore = defineStore('subscription', {
         // 转换missionTypeEnum字段的枚举值为中文显示
         if (t.data) {
           const typeEnums = t.data;
-          this.data.forEach(d => {
-            if (!d.missionTypeEnum || typeof d.missionTypeEnum !== 'string') return;
+          this.data.forEach((d) => {
+            if (!d.missionTypeEnum || typeof d.missionTypeEnum !== "string") return;
             const typeKey = d.missionTypeEnum.trim().toUpperCase();
             const typeValue = typeEnums[typeKey as keyof typeof typeEnums];
             if (typeValue) {
-              d.missionTypeEnum = typeKey === 'ERROR' ? '不限' : typeValue;
+              d.missionTypeEnum = typeKey === "ERROR" ? "不限" : typeValue;
             }
           });
         }
@@ -199,7 +203,7 @@ export const useSubscriptionStore = defineStore('subscription', {
 
     /** 关闭模态框并重置相关状态 */
     closeModal() {
-      if (this.currentType === 'user') {
+      if (this.currentType === "user") {
         this.userModalVisible = false;
       } else {
         this.typeModalVisible = false;
@@ -207,6 +211,6 @@ export const useSubscriptionStore = defineStore('subscription', {
       this.currentType = null;
       this.selectedRow = null;
       this.data = [];
-    }
-  }
+    },
+  },
 });

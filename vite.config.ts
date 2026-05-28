@@ -1,72 +1,84 @@
-import process from 'node:process';
-import { URL, fileURLToPath } from 'node:url';
-import { resolve } from 'node:path';
-import { defineConfig, loadEnv } from 'vite';
-import { setupVitePlugins } from './build/plugins';
-import { createViteProxy, getBuildTime } from './build/config';
+import process from "node:process";
+import { resolve } from "node:path";
+import { URL, fileURLToPath } from "node:url";
+import { defineConfig, loadEnv } from "vite";
+import { setupVitePlugins } from "./build/plugins";
+import { createViteProxy, getBuildTime } from "./build/config";
 
-export default defineConfig(configEnv => {
+export default defineConfig((configEnv) => {
   const viteEnv = loadEnv(configEnv.mode, process.cwd()) as unknown as Env.ImportMeta;
 
   const buildTime = getBuildTime();
 
-  const enableProxy = configEnv.command === 'serve' && !configEnv.isPreview;
+  const enableProxy = configEnv.command === "serve" && !configEnv.isPreview;
 
   return {
     base: viteEnv.VITE_BASE_URL,
     resolve: {
       alias: {
-        '~': fileURLToPath(new URL('./', import.meta.url)),
-        '@': fileURLToPath(new URL('./src', import.meta.url))
-      }
+        "~": fileURLToPath(new URL("./", import.meta.url)),
+        "@": fileURLToPath(new URL("./src", import.meta.url)),
+      },
     },
     css: {
+      preprocessorMaxWorkers: true,
       preprocessorOptions: {
         scss: {
-          api: 'modern-compiler',
-          additionalData: `@use "@/styles/scss/global.scss" as *;`
-        }
-      }
+          api: "modern-compiler",
+          additionalData: `@use "@/styles/scss/global.scss" as *;`,
+        },
+      },
     },
     plugins: setupVitePlugins(viteEnv, buildTime),
     define: {
-      BUILD_TIME: JSON.stringify(buildTime)
+      BUILD_TIME: JSON.stringify(buildTime),
     },
     server: {
-      host: '0.0.0.0',
+      host: "0.0.0.0",
       port: 9527,
       open: true,
-      proxy: createViteProxy(viteEnv, enableProxy)
+      proxy: createViteProxy(viteEnv, enableProxy),
     },
     preview: {
-      port: 9725
+      port: 9725,
     },
     build: {
       reportCompressedSize: false,
-      sourcemap: viteEnv.VITE_SOURCE_MAP === 'Y',
+      sourcemap: viteEnv.VITE_SOURCE_MAP === "Y",
       commonjsOptions: {
-        ignoreTryCatch: false
+        ignoreTryCatch: false,
       },
       rollupOptions: {
         input: {
-          main: resolve(__dirname, 'index.html')
+          main: resolve(__dirname, "index.html"),
         },
         output: {
-          entryFileNames: 'static/js/[hash].js',
-          chunkFileNames: 'static/js/[hash].js',
-          assetFileNames: 'static/[ext]/[hash].[ext]',
+          entryFileNames: "static/js/[hash].js",
+          chunkFileNames: "static/js/[hash].js",
+          assetFileNames: "static/[ext]/[hash].[ext]",
           manualChunks(id) {
-            if (id.includes('node_modules')) {
-              return 'vendor';
+            if (id.includes("node_modules")) {
+              if (
+                id.includes("vue") ||
+                id.includes("pinia") ||
+                id.includes("vue-router") ||
+                id.includes("@vue")
+              ) {
+                return "vue-vendor";
+              }
+              if (id.includes("naive-ui")) {
+                return "naive-vendor";
+              }
+              return "vendor";
             }
             return null;
-          }
-        }
+          },
+        },
       },
-      outDir: 'resources/static',
-      assetsDir: 'static',
+      outDir: "resources/static",
+      assetsDir: "static",
       emptyOutDir: true,
-      manifest: true
-    }
+      manifest: true,
+    },
   };
 });

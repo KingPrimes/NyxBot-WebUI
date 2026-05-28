@@ -10,6 +10,7 @@ NyxBot-WebUI 是一个用于 Warframe 游戏的机器人管理界面。该项目
 - 支持多种操作类型
 
 ## 目录结构
+
 ```
 NyxBot-WebUI/
 ├── public/                     # 公共资源

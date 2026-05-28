@@ -1,4 +1,4 @@
-import { $t } from '@/locales';
+import { $t } from "@/locales";
 
 /**
  * Transform record to option
@@ -21,8 +21,8 @@ import { $t } from '@/locales';
 export function transformRecordToOption<T extends Record<string, string>>(record: T) {
   return Object.entries(record).map(([value, label]) => ({
     value,
-    label
-  })) as CommonType.Option<keyof T>[];
+    label,
+  })) as CommonType.Option<keyof T, T[keyof T]>[];
 }
 
 /**
@@ -30,10 +30,10 @@ export function transformRecordToOption<T extends Record<string, string>>(record
  *
  * @param options
  */
-export function translateOptions(options: CommonType.Option<string>[]) {
-  return options.map(option => ({
+export function translateOptions(options: CommonType.Option<string, App.I18n.I18nKey>[]) {
+  return options.map((option) => ({
     ...option,
-    label: $t(option.label as App.I18n.I18nKey)
+    label: $t(option.label),
   }));
 }
 
@@ -53,6 +53,6 @@ export function toggleHtmlClass(className: string) {
 
   return {
     add,
-    remove
+    remove,
   };
 }

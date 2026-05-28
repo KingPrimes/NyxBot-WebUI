@@ -3,7 +3,7 @@ import { NButton, NDataTable, NPopconfirm } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchDeleteBotAdmin, fetchPostAdminList } from '@/service/api/sytem-config-bot-admin';
+import { fetchDeleteBotAdmin, fetchPostAdminList } from '@/service/api/system-config-bot-admin';
 import AdminSearch from './modules/admin-search.vue';
 import AdminOperateDrawer from './modules/admin-operate-drawer.vue';
 
@@ -62,7 +62,7 @@ const {
       title: $t('common.operate'),
       align: 'center',
       width: 130,
-      render: row => (
+      render: (row: any) => (
         <div class="flex-center gap-8px">
           <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
             {$t('common.edit')}
@@ -112,7 +112,12 @@ function edit(id: number) {
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
     <AdminSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
-    <NCard :title="$t('page.config.admin.title')" :bordered="false" size="small" class="sm:flex-1-hidden card-wrapper">
+    <NCard
+      :title="$t('page.config.admin.title')"
+      :bordered="false"
+      size="small"
+      class="sm:flex-1-hidden card-wrapper"
+    >
       <template #header-extra>
         <TableHeaderOperation
           v-model:columns="columnChecks"
@@ -132,7 +137,7 @@ function edit(id: number) {
         :scroll-x="962"
         :loading="loading"
         remote
-        :row-key="row => row.id"
+        :row-key="(row) => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
       />

@@ -7,301 +7,309 @@ import type { GeneratedRoute } from '@elegant-router/types';
 
 export const generatedRoutes: GeneratedRoute[] = [
   {
-    name: '403',
-    path: '/403',
-    component: 'layout.blank$view.403',
+    name: "403",
+    path: "/403",
+    component: "layout.blank$view.403",
     meta: {
-      title: '403',
-      i18nKey: 'route.403',
+      title: "403",
+      i18nKey: "route.403",
       constant: true,
       hideInMenu: true,
-      iconColor: '#ff6bf3ff'
-    }
+    },
   },
   {
-    name: '404',
-    path: '/404',
-    component: 'layout.blank$view.404',
+    name: "404",
+    path: "/404",
+    component: "layout.blank$view.404",
     meta: {
-      title: '404',
-      i18nKey: 'route.404',
+      title: "404",
+      i18nKey: "route.404",
       constant: true,
       hideInMenu: true,
-      iconColor: '#ff6bf3ff'
-    }
+    },
   },
   {
-    name: '500',
-    path: '/500',
-    component: 'layout.blank$view.500',
+    name: "500",
+    path: "/500",
+    component: "layout.blank$view.500",
     meta: {
-      title: '500',
-      i18nKey: 'route.500',
+      title: "500",
+      i18nKey: "route.500",
       constant: true,
       hideInMenu: true,
-      iconColor: '#ff6bf3ff'
-    }
+    },
   },
   {
-    name: 'config',
-    path: '/config',
-    component: 'layout.base',
+    name: "config",
+    path: "/config",
+    component: "layout.base",
     meta: {
-      title: 'config',
-      i18nKey: 'route.config',
-      icon: 'mdi:cog',
-      iconColor: '#ff6bf3ff',
-      order: 3
+      title: "config",
+      i18nKey: "route.config",
+      icon: "mdi:cog",
+      order: 3,
     },
     children: [
       {
-        name: 'config_admin',
-        path: '/config/admin',
-        component: 'view.config_admin',
+        name: "config_admin",
+        path: "/config/admin",
+        component: "view.config_admin",
         meta: {
-          title: 'config_admin',
-          i18nKey: 'route.config_admin',
-          icon: 'mdi:account',
-          iconColor: '#ff6bf3ff',
-          order: 3
-        }
+          title: "config_admin",
+          i18nKey: "route.config_admin",
+          icon: "mdi:account",
+          order: 3,
+        },
       },
       {
-        name: 'config_blacklist',
-        path: '/config/blacklist',
+        name: "config_blacklist",
+        path: "/config/blacklist",
         meta: {
-          title: 'config_blacklist',
-          i18nKey: 'route.config_blacklist',
-          icon: 'mdi:account-group',
-          iconColor: '#ff6bf3ff',
-          order: 4
+          title: "config_blacklist",
+          i18nKey: "route.config_blacklist",
+          icon: "mdi:account-group",
+          order: 4,
         },
         children: [
           {
-            name: 'config_blacklist_group',
-            path: '/config/blacklist/group',
-            component: 'view.config_blacklist_group',
+            name: "config_blacklist_group",
+            path: "/config/blacklist/group",
+            component: "view.config_blacklist_group",
             meta: {
-              title: 'config_blacklist_group',
-              i18nKey: 'route.config_blacklist_group',
-              icon: 'mdi:account-group',
-              iconColor: '#ff6bf3ff',
-              order: 1
-            }
+              title: "config_blacklist_group",
+              i18nKey: "route.config_blacklist_group",
+              icon: "mdi:account-group",
+              order: 1,
+            },
           },
           {
-            name: 'config_blacklist_personal',
-            path: '/config/blacklist/personal',
-            component: 'view.config_blacklist_personal',
+            name: "config_blacklist_personal",
+            path: "/config/blacklist/personal",
+            component: "view.config_blacklist_personal",
             meta: {
-              title: 'config_blacklist_personal',
-              i18nKey: 'route.config_blacklist_personal',
-              icon: 'mdi:account-group',
-              iconColor: '#ff6bf3ff',
-              order: 2
-            }
-          }
-        ]
+              title: "config_blacklist_personal",
+              i18nKey: "route.config_blacklist_personal",
+              icon: "mdi:account-group",
+              order: 2,
+            },
+          },
+        ],
       },
       {
-        name: 'config_service',
-        path: '/config/service',
-        component: 'view.config_service',
+        name: "config_service",
+        path: "/config/service",
+        component: "view.config_service",
         meta: {
-          title: 'config_service',
-          i18nKey: 'route.config_service',
-          icon: 'mdi:server',
-          iconColor: '#ff6bf3ff',
-          order: 2
-        }
+          title: "config_service",
+          i18nKey: "route.config_service",
+          icon: "mdi:server",
+          order: 2,
+        },
       },
       {
-        name: 'config_whitelist',
-        path: '/config/whitelist',
+        name: "config_whitelist",
+        path: "/config/whitelist",
         meta: {
-          title: 'config_whitelist',
-          i18nKey: 'route.config_whitelist',
-          icon: 'mdi:account-group-outline',
-          iconColor: '#ff6bf3ff',
-          order: 5
+          title: "config_whitelist",
+          i18nKey: "route.config_whitelist",
+          icon: "mdi:account-group-outline",
+          order: 5,
         },
         children: [
           {
-            name: 'config_whitelist_group',
-            path: '/config/whitelist/group',
-            component: 'view.config_whitelist_group',
+            name: "config_whitelist_group",
+            path: "/config/whitelist/group",
+            component: "view.config_whitelist_group",
             meta: {
-              title: 'config_whitelist_group',
-              i18nKey: 'route.config_whitelist_group',
-              icon: 'mdi:account-group-outline',
-              iconColor: '#ff6bf3ff',
-              order: 1
-            }
+              title: "config_whitelist_group",
+              i18nKey: "route.config_whitelist_group",
+              icon: "mdi:account-group-outline",
+              order: 1,
+            },
           },
           {
-            name: 'config_whitelist_personal',
-            path: '/config/whitelist/personal',
-            component: 'view.config_whitelist_personal',
+            name: "config_whitelist_personal",
+            path: "/config/whitelist/personal",
+            component: "view.config_whitelist_personal",
             meta: {
-              title: 'config_whitelist_personal',
-              i18nKey: 'route.config_whitelist_personal',
-              icon: 'mdi:account-group-outline',
-              iconColor: '#ff6bf3ff',
-              order: 2
-            }
-          }
-        ]
-      }
-    ]
+              title: "config_whitelist_personal",
+              i18nKey: "route.config_whitelist_personal",
+              icon: "mdi:account-group-outline",
+              order: 2,
+            },
+          },
+        ],
+      },
+    ],
   },
   {
-    name: 'home',
-    path: '/home',
-    component: 'layout.base$view.home',
+    name: "document",
+    path: "/document",
+    component: "layout.base$view.document",
     meta: {
-      title: 'home',
-      i18nKey: 'route.home',
-      icon: 'mdi:home',
-      iconColor: '#ff6bf3ff',
-      order: 1
-    }
+      title: "document",
+      i18nKey: "route.document",
+      icon: "mdi:file-document-outline",
+      order: 998,
+    },
   },
   {
-    name: 'iframe-page',
-    path: '/iframe-page/:url',
-    component: 'layout.base$view.iframe-page',
+    name: "home",
+    path: "/home",
+    component: "layout.base$view.home",
+    meta: {
+      title: "home",
+      i18nKey: "route.home",
+      icon: "mdi:monitor-dashboard",
+      order: 1,
+    },
+  },
+  {
+    name: "iframe-page",
+    path: "/iframe-page/:url",
+    component: "layout.base$view.iframe-page",
     props: true,
     meta: {
-      title: 'iframe-page',
-      i18nKey: 'route.iframe-page',
+      title: "iframe-page",
+      i18nKey: "route.iframe-page",
       constant: true,
       hideInMenu: true,
       keepAlive: true,
-      iconColor: '#ff6bf3ff'
-    }
+    },
   },
   {
-    name: 'local-data',
-    path: '/local-data',
-    component: 'layout.base',
+    name: "local-data",
+    path: "/local-data",
+    component: "layout.base",
     meta: {
-      title: 'local-data',
-      i18nKey: 'route.local-data',
-      icon: 'mdi:database',
-      iconColor: '#ff6bf3ff',
-      order: 5
+      title: "local-data",
+      i18nKey: "route.local-data",
+      icon: "mdi:database",
+      order: 5,
     },
     children: [
       {
-        name: 'local-data_warframe',
-        path: '/local-data/warframe',
+        name: "local-data_warframe",
+        path: "/local-data/warframe",
         meta: {
-          title: 'local-data_warframe',
-          i18nKey: 'route.local-data_warframe',
-          icon: 'mdi:gamepad-variant',
-          iconColor: '#ff6bf3ff',
-          order: 1
+          title: "local-data_warframe",
+          i18nKey: "route.local-data_warframe",
+          icon: "mdi:gamepad-variant",
+          order: 1,
         },
         children: [
           {
-            name: 'local-data_warframe_alias',
-            path: '/local-data/warframe/alias',
-            component: 'view.local-data_warframe_alias',
+            name: "local-data_warframe_alias",
+            path: "/local-data/warframe/alias",
+            component: "view.local-data_warframe_alias",
             meta: {
-              title: 'local-data_warframe_alias',
-              i18nKey: 'route.local-data_warframe_alias',
-              icon: 'mdi:rename',
-              iconColor: '#ff6bf3ff',
-              order: 1
-            }
+              title: "local-data_warframe_alias",
+              i18nKey: "route.local-data_warframe_alias",
+              icon: "mdi:gamepad-variant",
+              order: 1,
+            },
           },
           {
-            name: 'local-data_warframe_market',
-            path: '/local-data/warframe/market',
-            component: 'view.local-data_warframe_market',
+            name: "local-data_warframe_market",
+            path: "/local-data/warframe/market",
+            component: "view.local-data_warframe_market",
             meta: {
-              title: 'local-data_warframe_market',
-              i18nKey: 'route.local-data_warframe_market',
-              icon: 'mdi:shopping',
-              iconColor: '#ff6bf3ff',
-              order: 2
-            }
+              title: "local-data_warframe_market",
+              i18nKey: "route.local-data_warframe_market",
+              icon: "mdi:gamepad-variant",
+              order: 2,
+            },
           },
           {
-            name: 'local-data_warframe_market-riven',
-            path: '/local-data/warframe/market-riven',
-            component: 'view.local-data_warframe_market-riven',
+            name: "local-data_warframe_market-riven",
+            path: "/local-data/warframe/market-riven",
+            component: "view.local-data_warframe_market-riven",
             meta: {
-              title: 'local-data_warframe_market-riven',
-              i18nKey: 'route.local-data_warframe_market-riven',
-              icon: 'mdi:shopping',
-              iconColor: '#ff6bf3ff',
-              order: 3
-            }
+              title: "local-data_warframe_market-riven",
+              i18nKey: "route.local-data_warframe_market-riven",
+              icon: "mdi:gamepad-variant",
+              order: 3,
+            },
           },
           {
-            name: 'local-data_warframe_subscription',
-            path: '/local-data/warframe/subscription',
-            component: 'view.local-data_warframe_subscription',
+            name: "local-data_warframe_phantom",
+            path: "/local-data/warframe/phantom",
+            component: "view.local-data_warframe_phantom",
             meta: {
-              title: 'local-data_warframe_subscription',
-              i18nKey: 'route.local-data_warframe_subscription',
-              icon: 'mdi:face-agent',
-              iconColor: '#ff6bf3ff',
-              order: 6
-            }
-          }
-        ]
-      }
-    ]
+              title: "local-data_warframe_phantom",
+              i18nKey: "route.local-data_warframe_phantom",
+              icon: "mdi:gamepad-variant",
+              order: 4,
+            },
+          },
+          {
+            name: "local-data_warframe_subscription",
+            path: "/local-data/warframe/subscription",
+            component: "view.local-data_warframe_subscription",
+            meta: {
+              title: "local-data_warframe_subscription",
+              i18nKey: "route.local-data_warframe_subscription",
+              icon: "mdi:gamepad-variant",
+              order: 6,
+            },
+          },
+        ],
+      },
+    ],
   },
   {
-    name: 'log',
-    path: '/log',
-    component: 'layout.base',
+    name: "log",
+    path: "/log",
+    component: "layout.base",
     meta: {
-      title: 'log',
-      i18nKey: 'route.log',
-      icon: 'mdi:file-document-outline',
-      iconColor: '#ff6bf3ff',
-      order: 2
+      title: "log",
+      i18nKey: "route.log",
+      icon: "mdi:file-document-outline",
+      order: 2,
     },
     children: [
       {
-        name: 'log_command',
-        path: '/log/command',
-        component: 'view.log_command',
+        name: "log_command",
+        path: "/log/command",
+        component: "view.log_command",
         meta: {
-          title: 'log_command',
-          i18nKey: 'route.log_command',
-          icon: 'mdi:order-alphabetical-ascending',
-          iconColor: '#ff6bf3ff'
-        }
+          title: "log_command",
+          i18nKey: "route.log_command",
+          order: 1,
+        },
       },
       {
-        name: 'log_real-time',
-        path: '/log/real-time',
-        component: 'view.log_real-time',
+        name: "log_real-time",
+        path: "/log/real-time",
+        component: "view.log_real-time",
         meta: {
-          title: 'log_real-time',
-          i18nKey: 'route.log_real-time',
-          icon: 'mdi:clipboard-text-clock',
-          iconColor: '#ff6bf3ff'
-        }
-      }
-    ]
+          title: "log_real-time",
+          i18nKey: "route.log_real-time",
+          order: 2,
+        },
+      },
+    ],
   },
   {
-    name: 'login',
-    path: '/login/:module(pwd-login)?',
-    component: 'layout.blank$view.login',
-    props: true,
+    name: "login",
+    path: "/login",
+    component: "layout.blank$view.login",
     meta: {
-      title: 'login',
-      i18nKey: 'route.login',
+      title: "login",
+      i18nKey: "route.login",
       constant: true,
       hideInMenu: true,
-      iconColor: '#ff6bf3ff'
-    }
-  }
+    },
+  },
+  {
+    name: "reward",
+    path: "/reward",
+    component: "layout.base$view.reward",
+    meta: {
+      title: "reward",
+      i18nKey: "route.reward",
+      icon: "mdi:currency-twd",
+      order: 999,
+    },
+  },
 ];
