@@ -61,33 +61,39 @@ const { columns, getData, mobilePagination } = useTable({
       key: 'id',
       title: $t('page.local-data.warframe.subscription.id'),
       align: 'center',
-      width: 80
+
     },
     {
       key: 'subscribe',
       title: $t('page.local-data.warframe.subscription.subscribe'),
       align: 'center',
-      width: 120
+
     },
     {
       key: 'missionTypeEnum',
       title: $t('page.local-data.warframe.subscription.missionTypeEnum'),
       align: 'center',
-      width: 120
+
     },
     {
       key: 'tierNum',
       title: $t('page.local-data.warframe.subscription.tierNum'),
       align: 'center',
-      width: 120,
+
       // 自定义渲染层级，0表示不限
       render: row => <div class="flex-center gap-8px">{row.tierNum === 0 ? '不限' : row.tierNum}</div>
+    },
+    {
+      key: 'invasionReward',
+      title: $t('page.local-data.warframe.subscription.invasionReward'),
+      align: 'center',
+
     },
     {
       key: 'operate',
       title: $t('common.operate'),
       align: 'center',
-      width: 130,
+
       // 自定义操作列渲染
       render: row => (
         <div class="flex-center gap-8px">
@@ -141,7 +147,6 @@ watch(
       :columns="columns"
       :data="data"
       size="small"
-      :scroll-x="962"
       :loading="loading"
       remote
       :row-key="(row) => row.id"

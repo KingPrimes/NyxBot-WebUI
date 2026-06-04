@@ -53,25 +53,25 @@ const { columns, getData, mobilePagination } = useTable({
       key: 'id',
       title: $t('page.local-data.warframe.subscription.id'),
       align: 'center',
-      width: 80
+
     },
     {
       key: 'userId',
       title: $t('page.local-data.warframe.subscription.userId'),
       align: 'center',
-      width: 120
+
     },
     {
       key: 'userName',
       title: $t('page.local-data.warframe.subscription.userName'),
       align: 'center',
-      width: 120
+
     },
     {
       key: 'operate',
       title: $t('common.operate'),
       align: 'center',
-      width: 130,
+
       // 自定义操作列渲染
       render: row => (
         <div class="flex-center gap-8px">
@@ -128,7 +128,6 @@ watch(
       :columns="columns"
       :data="data"
       size="small"
-      :scroll-x="962"
       :loading="loading"
       remote
       :row-key="(row) => row.id"

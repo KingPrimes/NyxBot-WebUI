@@ -24,17 +24,34 @@ export const views: Record<LastLevelRouteKey, RouteComponent | (() => Promise<Ro
   config_blacklist_group: () => import("@/views/config/blacklist/group/index.vue"),
   config_blacklist_personal: () => import("@/views/config/blacklist/personal/index.vue"),
   config_service: () => import("@/views/config/service/index.vue"),
+  config_subscription: () => import("@/views/config/subscription/index.vue"),
   config_whitelist_group: () => import("@/views/config/whitelist/group/index.vue"),
   config_whitelist_personal: () => import("@/views/config/whitelist/personal/index.vue"),
   document: () => import("@/views/document/index.vue"),
   home: () => import("@/views/home/index.vue"),
   "local-data_warframe_alias": () => import("@/views/local-data/warframe/alias/index.vue"),
+  "local-data_warframe_lich-sister": () =>
+    import("@/views/local-data/warframe/lich-sister/index.vue"),
   "local-data_warframe_market-riven": () =>
     import("@/views/local-data/warframe/market-riven/index.vue"),
   "local-data_warframe_market": () => import("@/views/local-data/warframe/market/index.vue"),
+  "local-data_warframe_night-wave": () =>
+    import("@/views/local-data/warframe/night-wave/index.vue"),
+  "local-data_warframe_nodes": () => import("@/views/local-data/warframe/nodes/index.vue"),
   "local-data_warframe_phantom": () => import("@/views/local-data/warframe/phantom/index.vue"),
-  "local-data_warframe_subscription": () =>
-    import("@/views/local-data/warframe/subscription/index.vue"),
+  "local-data_warframe_relics": () => import("@/views/local-data/warframe/relics/index.vue"),
+  "local-data_warframe_reward-pool": () =>
+    import("@/views/local-data/warframe/reward-pool/index.vue"),
+  "local-data_warframe_riven-analyse": () =>
+    import("@/views/local-data/warframe/riven-analyse/index.vue"),
+  "local-data_warframe_riven-tion-alias": () =>
+    import("@/views/local-data/warframe/riven-tion-alias/index.vue"),
+  "local-data_warframe_riven-tion": () =>
+    import("@/views/local-data/warframe/riven-tion/index.vue"),
+  "local-data_warframe_state-translation": () =>
+    import("@/views/local-data/warframe/state-translation/index.vue"),
+  "local-data_warframe_warframes": () => import("@/views/local-data/warframe/warframes/index.vue"),
+  "local-data_warframe_weapons": () => import("@/views/local-data/warframe/weapons/index.vue"),
   log_command: () => import("@/views/log/command/index.vue"),
   "log_real-time": () => import("@/views/log/real-time/index.vue"),
   reward: () => import("@/views/reward/index.vue"),

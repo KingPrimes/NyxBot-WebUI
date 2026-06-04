@@ -394,6 +394,11 @@ declare namespace App {
           yes: string;
           no: string;
         };
+        dataUpdate: {
+          connecting: string;
+          sseError: string;
+          requestError: string;
+        };
       };
       request: {
         logout: string;
@@ -744,9 +749,41 @@ declare namespace App {
               englishNamePlaceholder: string;
               chineseNamePlaceholder: string;
             };
+            "lich-sister": {
+              title: string;
+              name: string;
+              slug: string;
+              reqMasteryRank: string;
+              gameRef: string;
+            };
+            "night-wave": {
+              title: string;
+              uniqueName: string;
+              name: string;
+              description: string;
+              standing: string;
+              required: string;
+            };
+            nodes: {
+              title: string;
+              uniqueName: string;
+              name: string;
+              systemName: string;
+              masteryReq: string;
+              missionIndex: string;
+              factionIndex: string;
+              minEnemyLevel: string;
+              maxEnemyLevel: string;
+              addNodes: string;
+              editNodes: string;
+            };
             market: {
               title: string;
               itemName: string;
+              slug: string;
+              ducats: string;
+              maxRank: string;
+              vaulted: string;
               addMarket: string;
               editMarket: string;
               itemNamePlaceholder: string;
@@ -776,12 +813,91 @@ declare namespace App {
               urlNamePlaceholder: string;
               iconLink: string;
               iconLinkPlaceholder: string;
+              imageThumb: string;
               imageSource: string;
               imageSourcePlaceholder: string;
               animation: string;
               animationPlaceholder: string;
               addPhantom: string;
               editPhantom: string;
+            };
+            "riven-analyse": {
+              title: string;
+              name: string;
+              prefix: string;
+              suffix: string;
+              rifle: string;
+              shotgun: string;
+              pistol: string;
+              melle: string;
+              archwing: string;
+            };
+            "riven-tion": {
+              title: string;
+              effect: string;
+              group: string;
+              prefix: string;
+              suffix: string;
+              units: string;
+              urlName: string;
+              exclusiveTo: string;
+              addRivenTion: string;
+              editRivenTion: string;
+            };
+            "riven-tion-alias": {
+              title: string;
+              en: string;
+              cn: string;
+              addRivenTionAlias: string;
+              editRivenTionAlias: string;
+            };
+            "state-translation": {
+              title: string;
+              uniqueName: string;
+              name: string;
+              description: string;
+              type: string;
+              parentName: string;
+              addStateTranslation: string;
+              editStateTranslation: string;
+            };
+            relics: {
+              title: string;
+              uniqueName: string;
+              name: string;
+              rewards: string;
+            };
+            warframes: {
+              title: string;
+              uniqueName: string;
+              name: string;
+              health: string;
+              shield: string;
+              armor: string;
+              power: string;
+              masteryReq: string;
+              sprintSpeed: string;
+              description: string;
+              abilityName: string;
+              abilityDesc: string;
+            };
+            weapons: {
+              title: string;
+              name: string;
+              uniqueName: string;
+              totalDamage: string;
+              criticalChance: string;
+              procChance: string;
+              fireRate: string;
+              masteryReq: string;
+              productCategory: string;
+            };
+            "reward-pool": {
+              title: string;
+              uniqueName: string;
+              rewards: string;
+              addRewardPool: string;
+              editRewardPool: string;
             };
             subscription: {
               title: string;
@@ -798,6 +914,7 @@ declare namespace App {
               subscribe: string;
               missionTypeEnum: string;
               tierNum: string;
+              invasionReward: string;
             };
           };
         };

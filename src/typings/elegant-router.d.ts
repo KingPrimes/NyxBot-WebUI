@@ -26,6 +26,7 @@ declare module "@elegant-router/types" {
     "config_blacklist_group": "/config/blacklist/group";
     "config_blacklist_personal": "/config/blacklist/personal";
     "config_service": "/config/service";
+    "config_subscription": "/config/subscription";
     "config_whitelist": "/config/whitelist";
     "config_whitelist_group": "/config/whitelist/group";
     "config_whitelist_personal": "/config/whitelist/personal";
@@ -35,10 +36,20 @@ declare module "@elegant-router/types" {
     "local-data": "/local-data";
     "local-data_warframe": "/local-data/warframe";
     "local-data_warframe_alias": "/local-data/warframe/alias";
+    "local-data_warframe_lich-sister": "/local-data/warframe/lich-sister";
     "local-data_warframe_market": "/local-data/warframe/market";
     "local-data_warframe_market-riven": "/local-data/warframe/market-riven";
+    "local-data_warframe_night-wave": "/local-data/warframe/night-wave";
+    "local-data_warframe_nodes": "/local-data/warframe/nodes";
     "local-data_warframe_phantom": "/local-data/warframe/phantom";
-    "local-data_warframe_subscription": "/local-data/warframe/subscription";
+    "local-data_warframe_relics": "/local-data/warframe/relics";
+    "local-data_warframe_reward-pool": "/local-data/warframe/reward-pool";
+    "local-data_warframe_riven-analyse": "/local-data/warframe/riven-analyse";
+    "local-data_warframe_riven-tion": "/local-data/warframe/riven-tion";
+    "local-data_warframe_riven-tion-alias": "/local-data/warframe/riven-tion-alias";
+    "local-data_warframe_state-translation": "/local-data/warframe/state-translation";
+    "local-data_warframe_warframes": "/local-data/warframe/warframes";
+    "local-data_warframe_weapons": "/local-data/warframe/weapons";
     "log": "/log";
     "log_command": "/log/command";
     "log_real-time": "/log/real-time";
@@ -111,15 +122,26 @@ declare module "@elegant-router/types" {
     | "config_blacklist_group"
     | "config_blacklist_personal"
     | "config_service"
+    | "config_subscription"
     | "config_whitelist_group"
     | "config_whitelist_personal"
     | "document"
     | "home"
     | "local-data_warframe_alias"
+    | "local-data_warframe_lich-sister"
     | "local-data_warframe_market-riven"
     | "local-data_warframe_market"
+    | "local-data_warframe_night-wave"
+    | "local-data_warframe_nodes"
     | "local-data_warframe_phantom"
-    | "local-data_warframe_subscription"
+    | "local-data_warframe_relics"
+    | "local-data_warframe_reward-pool"
+    | "local-data_warframe_riven-analyse"
+    | "local-data_warframe_riven-tion-alias"
+    | "local-data_warframe_riven-tion"
+    | "local-data_warframe_state-translation"
+    | "local-data_warframe_warframes"
+    | "local-data_warframe_weapons"
     | "log_command"
     | "log_real-time"
     | "reward"

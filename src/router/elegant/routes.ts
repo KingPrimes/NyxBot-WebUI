@@ -57,7 +57,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "config_admin",
           i18nKey: "route.config_admin",
-          icon: "mdi:account",
+          icon: "mdi:shield-account",
           order: 3,
         },
       },
@@ -67,7 +67,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "config_blacklist",
           i18nKey: "route.config_blacklist",
-          icon: "mdi:account-group",
+          icon: "mdi:account-multiple-remove",
           order: 4,
         },
         children: [
@@ -78,7 +78,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: "config_blacklist_group",
               i18nKey: "route.config_blacklist_group",
-              icon: "mdi:account-group",
+              icon: "mdi:account-multiple-remove",
               order: 1,
             },
           },
@@ -89,7 +89,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: "config_blacklist_personal",
               i18nKey: "route.config_blacklist_personal",
-              icon: "mdi:account-group",
+              icon: "mdi:account-remove",
               order: 2,
             },
           },
@@ -107,12 +107,23 @@ export const generatedRoutes: GeneratedRoute[] = [
         },
       },
       {
+        name: "config_subscription",
+        path: "/config/subscription",
+        component: "view.config_subscription",
+        meta: {
+          title: "config_subscription",
+          i18nKey: "route.config_subscription",
+          icon: "mdi:bell-ring-outline",
+          order: 6,
+        },
+      },
+      {
         name: "config_whitelist",
         path: "/config/whitelist",
         meta: {
           title: "config_whitelist",
           i18nKey: "route.config_whitelist",
-          icon: "mdi:account-group-outline",
+          icon: "mdi:account-multiple-check",
           order: 5,
         },
         children: [
@@ -123,7 +134,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: "config_whitelist_group",
               i18nKey: "route.config_whitelist_group",
-              icon: "mdi:account-group-outline",
+              icon: "mdi:account-multiple-check",
               order: 1,
             },
           },
@@ -134,7 +145,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: "config_whitelist_personal",
               i18nKey: "route.config_whitelist_personal",
-              icon: "mdi:account-group-outline",
+              icon: "mdi:account-check",
               order: 2,
             },
           },
@@ -167,7 +178,7 @@ export const generatedRoutes: GeneratedRoute[] = [
   {
     name: "iframe-page",
     path: "/iframe-page/:url",
-    component: "layout.base$view.iframe-page",
+    component: "layout.blank$view.iframe-page",
     props: true,
     meta: {
       title: "iframe-page",
@@ -205,8 +216,19 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: "local-data_warframe_alias",
               i18nKey: "route.local-data_warframe_alias",
-              icon: "mdi:gamepad-variant",
+              icon: "mdi:tag-text-outline",
               order: 1,
+            },
+          },
+          {
+            name: "local-data_warframe_lich-sister",
+            path: "/local-data/warframe/lich-sister",
+            component: "view.local-data_warframe_lich-sister",
+            meta: {
+              title: "local-data_warframe_lich-sister",
+              i18nKey: "route.local-data_warframe_lich-sister",
+              icon: "mdi:skull-crossbones",
+              order: 5,
             },
           },
           {
@@ -216,7 +238,7 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: "local-data_warframe_market",
               i18nKey: "route.local-data_warframe_market",
-              icon: "mdi:gamepad-variant",
+              icon: "mdi:store-outline",
               order: 2,
             },
           },
@@ -227,8 +249,30 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: "local-data_warframe_market-riven",
               i18nKey: "route.local-data_warframe_market-riven",
-              icon: "mdi:gamepad-variant",
+              icon: "mdi:diamond-stone",
               order: 3,
+            },
+          },
+          {
+            name: "local-data_warframe_night-wave",
+            path: "/local-data/warframe/night-wave",
+            component: "view.local-data_warframe_night-wave",
+            meta: {
+              title: "local-data_warframe_night-wave",
+              i18nKey: "route.local-data_warframe_night-wave",
+              icon: "mdi:signal",
+              order: 6,
+            },
+          },
+          {
+            name: "local-data_warframe_nodes",
+            path: "/local-data/warframe/nodes",
+            component: "view.local-data_warframe_nodes",
+            meta: {
+              title: "local-data_warframe_nodes",
+              i18nKey: "route.local-data_warframe_nodes",
+              icon: "mdi:vector-arrange-below",
+              order: 7,
             },
           },
           {
@@ -238,19 +282,96 @@ export const generatedRoutes: GeneratedRoute[] = [
             meta: {
               title: "local-data_warframe_phantom",
               i18nKey: "route.local-data_warframe_phantom",
-              icon: "mdi:gamepad-variant",
+              icon: "mdi:ghost",
               order: 4,
             },
           },
           {
-            name: "local-data_warframe_subscription",
-            path: "/local-data/warframe/subscription",
-            component: "view.local-data_warframe_subscription",
+            name: "local-data_warframe_relics",
+            path: "/local-data/warframe/relics",
+            component: "view.local-data_warframe_relics",
             meta: {
-              title: "local-data_warframe_subscription",
-              i18nKey: "route.local-data_warframe_subscription",
-              icon: "mdi:gamepad-variant",
-              order: 6,
+              title: "local-data_warframe_relics",
+              i18nKey: "route.local-data_warframe_relics",
+              icon: "mdi:treasure-chest",
+              order: 8,
+            },
+          },
+          {
+            name: "local-data_warframe_reward-pool",
+            path: "/local-data/warframe/reward-pool",
+            component: "view.local-data_warframe_reward-pool",
+            meta: {
+              title: "local-data_warframe_reward-pool",
+              i18nKey: "route.local-data_warframe_reward-pool",
+              icon: "mdi:gift-outline",
+              order: 9,
+            },
+          },
+          {
+            name: "local-data_warframe_riven-analyse",
+            path: "/local-data/warframe/riven-analyse",
+            component: "view.local-data_warframe_riven-analyse",
+            meta: {
+              title: "local-data_warframe_riven-analyse",
+              i18nKey: "route.local-data_warframe_riven-analyse",
+              icon: "mdi:chart-timeline-variant",
+              order: 10,
+            },
+          },
+          {
+            name: "local-data_warframe_riven-tion",
+            path: "/local-data/warframe/riven-tion",
+            component: "view.local-data_warframe_riven-tion",
+            meta: {
+              title: "local-data_warframe_riven-tion",
+              i18nKey: "route.local-data_warframe_riven-tion",
+              icon: "mdi:format-list-text",
+              order: 11,
+            },
+          },
+          {
+            name: "local-data_warframe_riven-tion-alias",
+            path: "/local-data/warframe/riven-tion-alias",
+            component: "view.local-data_warframe_riven-tion-alias",
+            meta: {
+              title: "local-data_warframe_riven-tion-alias",
+              i18nKey: "route.local-data_warframe_riven-tion-alias",
+              icon: "mdi:tag-multiple-outline",
+              order: 12,
+            },
+          },
+          {
+            name: "local-data_warframe_state-translation",
+            path: "/local-data/warframe/state-translation",
+            component: "view.local-data_warframe_state-translation",
+            meta: {
+              title: "local-data_warframe_state-translation",
+              i18nKey: "route.local-data_warframe_state-translation",
+              icon: "mdi:translate",
+              order: 13,
+            },
+          },
+          {
+            name: "local-data_warframe_warframes",
+            path: "/local-data/warframe/warframes",
+            component: "view.local-data_warframe_warframes",
+            meta: {
+              title: "local-data_warframe_warframes",
+              i18nKey: "route.local-data_warframe_warframes",
+              icon: "mdi:shield",
+              order: 14,
+            },
+          },
+          {
+            name: "local-data_warframe_weapons",
+            path: "/local-data/warframe/weapons",
+            component: "view.local-data_warframe_weapons",
+            meta: {
+              title: "local-data_warframe_weapons",
+              i18nKey: "route.local-data_warframe_weapons",
+              icon: "mdi:sword-cross",
+              order: 15,
             },
           },
         ],
@@ -264,7 +385,7 @@ export const generatedRoutes: GeneratedRoute[] = [
     meta: {
       title: "log",
       i18nKey: "route.log",
-      icon: "mdi:file-document-outline",
+      icon: "mdi:clipboard-text-outline",
       order: 2,
     },
     children: [
@@ -275,6 +396,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "log_command",
           i18nKey: "route.log_command",
+          icon: "mdi:console",
           order: 1,
         },
       },
@@ -285,6 +407,7 @@ export const generatedRoutes: GeneratedRoute[] = [
         meta: {
           title: "log_real-time",
           i18nKey: "route.log_real-time",
+          icon: "mdi:timeline-text",
           order: 2,
         },
       },

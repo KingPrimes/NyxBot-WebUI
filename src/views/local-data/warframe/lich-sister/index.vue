@@ -4,9 +4,8 @@ import { NDataTable, NImage } from "naive-ui";
 import { $t } from "@/locales";
 import { useAppStore } from "@/store/modules/app";
 import { useTable, useTableOperate } from "@/hooks/common/table";
-import { fetchPostMarketList, fetchPostUpdateMarket } from "@/service/api/local-data";
+import { fetchLichSisterUpdate, fetchPostLichSisterList } from "@/service/api/local-data";
 import DataUpdateButton from "@/components/common/data-update-button.vue";
-import MarketSearch from "./modules/market-search.vue";
 
 const appStore = useAppStore();
 
@@ -15,26 +14,17 @@ const {
   columnChecks,
   data,
   getData,
-  getDataByPage,
+  getDataByPage: _getDataByPage,
   loading,
   mobilePagination,
-  searchParams,
-  resetSearchParams,
+  searchParams: _searchParams,
+  resetSearchParams: _resetSearchParams,
 } = useTable({
-  apiFn: fetchPostMarketList,
+  apiFn: fetchPostLichSisterList,
   showTotal: true,
   columns: () => [
-    {
-      type: "selection",
-      align: "center",
-      width: 48,
-    },
-    {
-      key: "index",
-      title: $t("common.index"),
-      width: 64,
-      align: "center",
-    },
+    { type: "selection", align: "center", width: 48 },
+    { key: "index", title: $t("common.index"), align: "center", width: 64 },
     {
       key: "thumb",
       title: $t("page.local-data.warframe.market.imageUrl"),
@@ -47,60 +37,30 @@ const {
           height: 36,
           objectFit: "cover",
           previewDisabled: false,
-          style: {
-            borderRadius: "4px",
-          },
+          style: { borderRadius: "4px" },
         });
       },
     },
+    { key: "name", title: $t("page.local-data.warframe.lich-sister.name"), align: "center" },
+    { key: "slug", title: $t("page.local-data.warframe.lich-sister.slug"), align: "center" },
     {
-      key: "name",
-      title: $t("page.local-data.warframe.market.itemName"),
-      align: "center",
-    },
-    {
-      key: "slug",
-      title: $t("page.local-data.warframe.market.slug"),
-      align: "center",
-    },
-    {
-      key: "ducats",
-      title: $t("page.local-data.warframe.market.ducats"),
+      key: "reqMasteryRank",
+      title: $t("page.local-data.warframe.lich-sister.reqMasteryRank"),
       align: "center",
 
-      render: (row) => {
-        return row.ducats != null ? row.ducats : "-";
-      },
+      render: (row) => row.reqMasteryRank ?? "-",
     },
-    {
-      key: "maxRank",
-      title: $t("page.local-data.warframe.market.maxRank"),
-      align: "center",
-
-      render: (row) => {
-        return row.maxRank != null ? row.maxRank : "-";
-      },
-    },
-    {
-      key: "vaulted",
-      title: $t("page.local-data.warframe.market.vaulted"),
-      align: "center",
-
-      render: (row) => {
-        return row.vaulted ? $t("common.yesOrNo.yes") : $t("common.yesOrNo.no");
-      },
-    },
+    { key: "gameRef", title: $t("page.local-data.warframe.lich-sister.gameRef"), align: "center" },
   ],
 });
 
-const { handleAdd, checkedRowKeys } = useTableOperate(data, getData);
+const { checkedRowKeys } = useTableOperate(data, getData);
 </script>
 
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
-    <MarketSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
     <NCard
-      :title="$t('page.local-data.warframe.market.title')"
+      :title="$t('page.local-data.warframe.lich-sister.title')"
       :bordered="false"
       size="small"
       class="sm:flex-1-hidden card-wrapper"
@@ -108,7 +68,7 @@ const { handleAdd, checkedRowKeys } = useTableOperate(data, getData);
       <template #header-extra>
         <div class="flex-y-center gap-8px">
           <DataUpdateButton
-            :api-fn="fetchPostUpdateMarket"
+            :api-fn="fetchLichSisterUpdate"
             :button-text="$t('common.update')"
             :success-message="$t('common.updateSuccess')"
             @completed="getData"
@@ -119,7 +79,6 @@ const { handleAdd, checkedRowKeys } = useTableOperate(data, getData);
             :loading="loading"
             :show-add="false"
             :show-delete="false"
-            @add="handleAdd"
             @refresh="getData"
           />
         </div>
@@ -139,5 +98,3 @@ const { handleAdd, checkedRowKeys } = useTableOperate(data, getData);
     </NCard>
   </div>
 </template>
-
-<style scoped></style>

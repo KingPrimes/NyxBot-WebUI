@@ -1,10 +1,11 @@
 <script lang="tsx" setup>
 import { ref } from 'vue';
-import { NCard, NDataTable } from 'naive-ui';
+import { NCard, NDataTable, NImage } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable } from '@/hooks/common/table';
-import { fetchPostPhantomList } from '@/service/api/local-data';
+import { fetchPostPhantomList, fetchPostUpdatePhantom } from '@/service/api/local-data';
+import DataUpdateButton from '@/components/common/data-update-button.vue';
 import PhantomSearch from './modules/phantom-search.vue';
 
 const appStore = useAppStore();
@@ -22,49 +23,46 @@ const {
 } = useTable({
   apiFn: fetchPostPhantomList,
   showTotal: true,
-  apiParams: {
-    current: 1,
-    size: 10
-  },
   columns: () => [
     {
       type: 'selection',
       align: 'center',
-      width: 48
-    },
-    {
-      key: 'index',
-      title: $t('common.index'),
-      align: 'center',
-      width: 64
+      width: 48,
+
     },
     {
       key: 'name',
       title: $t('page.local-data.warframe.phantom.itemName'),
       align: 'center',
-      minWidth: 120
+      ellipsis: { tooltip: true }
     },
     {
       key: 'slug',
       title: $t('page.local-data.warframe.phantom.urlName'),
       align: 'center',
-      width: 150
+      ellipsis: { tooltip: true }
+    },
+    {
+      key: 'thumb',
+      title: $t('page.local-data.warframe.phantom.imageThumb'),
+      align: 'center',
+      render: row => (
+        row.thumb ? <NImage src={`https://warframe.market/static/assets/${row.thumb}`} width={48} height={48} objectFit="cover" previewDisabled={false} style="border-radius: 4px" /> : null
+      )
     },
     {
       key: 'icon',
       title: $t('page.local-data.warframe.phantom.iconLink'),
       align: 'center',
-      width: 100,
       render: row => (
-        row.icon ? <img src={row.icon} alt={row.name} style="width: 48px; height: 48px" /> : null
+        row.icon ? <NImage src={`https://warframe.market/static/assets/${row.icon}`} width={48} height={48} objectFit="cover" previewDisabled={false} style="border-radius: 4px" /> : null
       )
     },
     {
       key: 'animation',
       title: $t('page.local-data.warframe.phantom.animation'),
       align: 'center',
-      width: 120,
-      render: row => row.animation ? <img src={row.animation} alt={row.name} style="width: 64px; height: 48px" /> : null
+      render: row => row.animation ? <NImage src={`https://warframe.market/static/assets/${row.animation}`} width={64} height={48} objectFit="cover" previewDisabled={false} style="border-radius: 4px" /> : null
     }
   ]
 });
@@ -86,14 +84,22 @@ const checkedRowKeys = ref<string[]>([]);
       size="small"
     >
       <template #header-extra>
-        <TableHeaderOperation
-          v-model:columns="columnChecks"
-          :disabled-delete="checkedRowKeys.length === 0"
-          :loading="loading"
-          :show-add="false"
-          :show-delete="false"
-          @refresh="getData"
-        />
+        <div class="flex-y-center gap-8px">
+          <DataUpdateButton
+            :api-fn="fetchPostUpdatePhantom"
+            :button-text="$t('common.update')"
+            :success-message="$t('common.updateSuccess')"
+            @completed="getData"
+          />
+          <TableHeaderOperation
+            v-model:columns="columnChecks"
+            :disabled-delete="checkedRowKeys.length === 0"
+            :loading="loading"
+            :show-add="false"
+            :show-delete="false"
+            @refresh="getData"
+          />
+        </div>
       </template>
       <NDataTable
         v-model:checked-row-keys="checkedRowKeys"
@@ -101,7 +107,6 @@ const checkedRowKeys = ref<string[]>([]);
         :data="data"
         size="small"
         :flex-height="!appStore.isMobile"
-        :scroll-x="962"
         :loading="loading"
         remote
         :row-key="(row) => row.id"

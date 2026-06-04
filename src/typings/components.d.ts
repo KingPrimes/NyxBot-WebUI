@@ -17,14 +17,19 @@ declare module 'vue' {
     ButtonIcon: typeof import('./../components/custom/button-icon.vue')['default']
     ChangeUsernameModal: typeof import('./../components/common/change-username-modal.vue')['default']
     CountTo: typeof import('./../components/custom/count-to.vue')['default']
+    CycleCard: typeof import('./../components/common/cycle-card.vue')['default']
     DarkModeContainer: typeof import('./../components/common/dark-mode-container.vue')['default']
+    DataUpdateButton: typeof import('./../components/common/data-update-button.vue')['default']
     ExceptionBase: typeof import('./../components/common/exception-base.vue')['default']
+    FissureCard: typeof import('./../components/common/fissure-card.vue')['default']
     FullScreen: typeof import('./../components/common/full-screen.vue')['default']
+    GameDataCard: typeof import('./../components/common/game-data-card.vue')['default']
     IconAntDesignEnterOutlined: typeof import('~icons/ant-design/enter-outlined')['default']
     IconAntDesignReloadOutlined: typeof import('~icons/ant-design/reload-outlined')['default']
     IconAntDesignSettingOutlined: typeof import('~icons/ant-design/setting-outlined')['default']
     IconGridiconsFullscreen: typeof import('~icons/gridicons/fullscreen')['default']
     IconGridiconsFullscreenExit: typeof import('~icons/gridicons/fullscreen-exit')['default']
+    IconIcRoundCloudDownload: typeof import('~icons/ic/round-cloud-download')['default']
     IconIcRoundDelete: typeof import('~icons/ic/round-delete')['default']
     IconIcRoundPlus: typeof import('~icons/ic/round-plus')['default']
     IconIcRoundRefresh: typeof import('~icons/ic/round-refresh')['default']
@@ -68,6 +73,7 @@ declare module 'vue' {
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NFormItemGi: typeof import('naive-ui')['NFormItemGi']
+    NGi: typeof import('naive-ui')['NGi']
     NGrid: typeof import('naive-ui')['NGrid']
     NInput: typeof import('naive-ui')['NInput']
     NInputGroup: typeof import('naive-ui')['NInputGroup']
@@ -111,14 +117,19 @@ declare global {
   const ButtonIcon: (typeof import("./../components/custom/button-icon.vue"))["default"];
   const ChangeUsernameModal: (typeof import("./../components/common/change-username-modal.vue"))["default"];
   const CountTo: (typeof import("./../components/custom/count-to.vue"))["default"];
+  const CycleCard: (typeof import("./../components/common/cycle-card.vue"))["default"];
   const DarkModeContainer: (typeof import("./../components/common/dark-mode-container.vue"))["default"];
+  const DataUpdateButton: (typeof import("./../components/common/data-update-button.vue"))["default"];
   const ExceptionBase: (typeof import("./../components/common/exception-base.vue"))["default"];
+  const FissureCard: (typeof import("./../components/common/fissure-card.vue"))["default"];
   const FullScreen: (typeof import("./../components/common/full-screen.vue"))["default"];
+  const GameDataCard: (typeof import("./../components/common/game-data-card.vue"))["default"];
   const IconAntDesignEnterOutlined: (typeof import("~icons/ant-design/enter-outlined"))["default"];
   const IconAntDesignReloadOutlined: (typeof import("~icons/ant-design/reload-outlined"))["default"];
   const IconAntDesignSettingOutlined: (typeof import("~icons/ant-design/setting-outlined"))["default"];
   const IconGridiconsFullscreen: (typeof import("~icons/gridicons/fullscreen"))["default"];
   const IconGridiconsFullscreenExit: (typeof import("~icons/gridicons/fullscreen-exit"))["default"];
+  const IconIcRoundCloudDownload: (typeof import("~icons/ic/round-cloud-download"))["default"];
   const IconIcRoundDelete: (typeof import("~icons/ic/round-delete"))["default"];
   const IconIcRoundPlus: (typeof import("~icons/ic/round-plus"))["default"];
   const IconIcRoundRefresh: (typeof import("~icons/ic/round-refresh"))["default"];
@@ -162,6 +173,7 @@ declare global {
   const NForm: (typeof import("naive-ui"))["NForm"];
   const NFormItem: (typeof import("naive-ui"))["NFormItem"];
   const NFormItemGi: (typeof import("naive-ui"))["NFormItemGi"];
+  const NGi: (typeof import("naive-ui"))["NGi"];
   const NGrid: (typeof import("naive-ui"))["NGrid"];
   const NInput: (typeof import("naive-ui"))["NInput"];
   const NInputGroup: (typeof import("naive-ui"))["NInputGroup"];

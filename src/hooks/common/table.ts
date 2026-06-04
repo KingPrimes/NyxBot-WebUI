@@ -95,10 +95,10 @@ export function useNaivePaginatedTable<ResponseData, ApiData>(
 
   const pagination = reactive({
     page: 1,
-    pageSize: 10,
+    pageSize: 15,
     itemCount: 0,
     showSizePicker: true,
-    pageSizes: [10, 15, 20, 25, 30],
+    pageSizes: [15, 20, 25, 30, 50],
     prefix: showTotal.value
       ? (page) => $t("datatable.itemCount", { total: page.itemCount })
       : undefined,
@@ -285,7 +285,7 @@ export function defaultTransform<ApiData>(
   return {
     data: [],
     pageNum: 1,
-    pageSize: 10,
+    pageSize: 15,
     total: 0,
   };
 }
@@ -374,7 +374,7 @@ export function useTable<ApiData>(options: CompatUseTableOptions<ApiData>) {
 
   const searchParams = reactive<{ current: number; size: number; [key: string]: any }>({
     current: 1,
-    size: 10,
+    size: 15,
     ...apiParams,
   });
 
@@ -388,14 +388,15 @@ export function useTable<ApiData>(options: CompatUseTableOptions<ApiData>) {
         return {
           data: data.records || [],
           pageNum: data.current || 1,
-          pageSize: data.size || 10,
+          pageSize: data.size || 15,
           total: data.total || 0,
         };
       }
-      return { data: [], pageNum: 1, pageSize: 10, total: 0 };
+      return { data: [], pageNum: 1, pageSize: 15, total: 0 };
     },
-    onPaginationParamsChange: async (_params: any) => {
-      // handled by watch in useNaivePaginatedTable
+    onPaginationParamsChange: async (params: any) => {
+      searchParams.current = params.page;
+      searchParams.size = params.pageSize;
     },
   });
 

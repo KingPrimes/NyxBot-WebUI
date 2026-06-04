@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import {
   fetchGetSubscribeEnums,
+  fetchGetSubscribeRewardEnums,
   fetchGetSubscribeTypeEnums,
   fetchPostMissionSubscribeUserList,
   fetchPostMissionSubscribeUserTypeList,
@@ -193,6 +194,20 @@ export const useSubscriptionStore = defineStore("subscription", {
             const typeValue = typeEnums[typeKey as keyof typeof typeEnums];
             if (typeValue) {
               d.missionTypeEnum = typeKey === "ERROR" ? "不限" : typeValue;
+            }
+          });
+        }
+
+        // 转换invasionReward枚举值为中文显示
+        const r = await fetchGetSubscribeRewardEnums();
+        if (r.data) {
+          const rewardEnums = r.data;
+          this.data.forEach((d) => {
+            if (!d.invasionReward || typeof d.invasionReward !== "string") return;
+            const rewardKey = d.invasionReward.trim().toUpperCase();
+            const rewardValue = rewardEnums[rewardKey as keyof typeof rewardEnums];
+            if (rewardValue) {
+              d.invasionReward = rewardValue;
             }
           });
         }
