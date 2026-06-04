@@ -22,46 +22,44 @@ const {
 } = useTable({
   apiFn: fetchPostAdminList,
   showTotal: true,
-  apiParams: {
-    current: 1,
-    size: 10
-  },
   columns: () => [
     {
       type: 'selection',
       align: 'center',
-      width: 48
+      width: 48,
+
     },
     {
       key: 'index',
       title: $t('common.index'),
+      width: 64,
       align: 'center',
-      width: 64
+
     },
     {
       key: 'botUid',
       title: $t('page.config.admin.botAccount'),
       align: 'center',
-      minWidth: 100
+
     },
     {
       key: 'adminUid',
       title: $t('page.config.admin.adminAccount'),
       align: 'center',
-      width: 100
+
     },
     {
       key: 'permissions',
       title: $t('page.config.admin.roles.roleName'),
       align: 'center',
-      width: 100
+
     },
 
     {
       key: 'operate',
       title: $t('common.operate'),
       align: 'center',
-      width: 130,
+
       render: (row: any) => (
         <div class="flex-center gap-8px">
           <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
@@ -134,7 +132,6 @@ function edit(id: number) {
         :data="data"
         size="small"
         :flex-height="!appStore.isMobile"
-        :scroll-x="962"
         :loading="loading"
         remote
         :row-key="(row) => row.id"

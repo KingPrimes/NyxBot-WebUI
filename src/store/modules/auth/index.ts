@@ -2,14 +2,20 @@ import { computed, reactive, ref } from "vue";
 import { useRoute } from "vue-router";
 import { defineStore } from "pinia";
 import { useLoading } from "@sa/hooks";
-import { changeUsername, fetchGetUserInfo, fetchLogin, restorePassword } from "@/service/api";
+import {
+  changeUsername,
+  fetchGetUserInfo,
+  fetchLogin,
+  fetchRefreshToken,
+  restorePassword,
+} from "@/service/api";
 import { useRouterPush } from "@/hooks/common/router";
 import { localStg } from "@/utils/storage";
 import { SetupStoreId } from "@/enum";
 import { $t } from "@/locales";
 import { useRouteStore } from "../route";
 import { useTabStore } from "../tab";
-import { clearAuthStorage, getToken } from "./shared";
+import { clearAuthStorage, getToken, getTokenExpTime } from "./shared";
 
 export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   const route = useRoute();
@@ -38,8 +44,56 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   /** Is login */
   const isLogin = computed(() => Boolean(token.value));
 
+  /** Timer for proactive token refresh */
+  let refreshTimer: ReturnType<typeof setTimeout> | null = null;
+
+  /** Proactively refresh token before it expires */
+  async function refreshToken() {
+    const { error, data } = await fetchRefreshToken();
+    if (!error) {
+      localStg.set("token", data.token);
+      localStg.set("refreshToken", data.refreshToken);
+      token.value = data.token;
+      scheduleTokenRefresh();
+      return true;
+    }
+    resetStore();
+    return false;
+  }
+
+  /** Schedule a timer to refresh token 60 seconds before expiry */
+  function scheduleTokenRefresh() {
+    clearTokenRefreshTimer();
+    const currentToken = localStg.get("token");
+    if (!currentToken) return;
+
+    const expTime = getTokenExpTime(currentToken);
+    if (!expTime) return;
+
+    const refreshAhead = 60_000;
+    const delay = expTime - Date.now() - refreshAhead;
+
+    if (delay <= 0) {
+      refreshToken();
+      return;
+    }
+
+    refreshTimer = setTimeout(() => {
+      refreshToken();
+    }, delay);
+  }
+
+  function clearTokenRefreshTimer() {
+    if (refreshTimer) {
+      clearTimeout(refreshTimer);
+      refreshTimer = null;
+    }
+  }
+
   /** Reset auth store */
   async function resetStore() {
+    clearTokenRefreshTimer();
+
     recordUserId();
 
     clearAuthStorage();
@@ -105,6 +159,8 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
       const pass = await loginByToken(loginToken);
 
       if (pass) {
+        scheduleTokenRefresh();
+
         // Check if the tab needs to be cleared
         const isClear = checkTabClear();
         let needRedirect = redirect;
@@ -167,6 +223,8 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
       if (!pass) {
         resetStore();
+      } else {
+        scheduleTokenRefresh();
       }
     }
   }
@@ -188,6 +246,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
         content: $t("common.restPassword.success"),
         duration: 4500,
       });
+      resetStore();
     } else {
       window.$notification?.error({
         title: $t("common.restPassword.error"),
@@ -210,13 +269,12 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     const { error } = await changeUsername(newUsername, password);
 
     if (!error) {
-      userInfo.userName = newUsername;
-
       window.$notification?.success({
         title: $t("common.changeUsername.success"),
         content: $t("common.changeUsername.success"),
         duration: 4500,
       });
+      resetStore();
     } else {
       window.$notification?.error({
         title: $t("common.changeUsername.error"),

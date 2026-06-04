@@ -1,0 +1,575 @@
+- generic [ref=e3]:
+  - generic [ref=e566]:
+    - generic [ref=e567]: 🎉 视频教程已推出，正在逐步更新中
+    - link "点击查看 →" [ref=e568] [cursor=pointer]:
+      - /url: https://www.bilibili.com/video/BV1YKdRYXELC
+  - link "Skip to content" [ref=e4] [cursor=pointer]:
+    - /url: "#VPContent"
+  - banner:
+    - generic:
+      - generic:
+        - generic:
+          - link "SoybeanAdmin" [ref=e6] [cursor=pointer]:
+            - /url: /zh/
+            - generic [ref=e7]: SoybeanAdmin
+          - generic [ref=e8]:
+            - button "Search" [ref=e11] [cursor=pointer]:
+              - generic [ref=e14]: Search
+              - generic [ref=e15]:
+                - generic [ref=e16]: Ctrl
+                - generic [ref=e17]: K
+            - navigation "Main Navigation" [ref=e18]:
+              - generic [ref=e19]: Main Navigation
+              - link "指引" [ref=e20] [cursor=pointer]:
+                - /url: /zh/guide/intro.html
+                - generic [ref=e21]: 指引
+              - link "常见问题" [ref=e22] [cursor=pointer]:
+                - /url: /zh/faq/
+                - generic [ref=e23]: 常见问题
+              - link "规范" [ref=e24] [cursor=pointer]:
+                - /url: /zh/standard/
+                - generic [ref=e25]: 规范
+              - link "教程" [ref=e26] [cursor=pointer]:
+                - /url: /zh/tutorial/
+                - generic [ref=e27]: 教程
+              - link "合作" [ref=e28] [cursor=pointer]:
+                - /url: /zh/cooperate/
+                - generic [ref=e29]: 合作
+              - link "生态" [ref=e30] [cursor=pointer]:
+                - /url: /zh/awesome/
+                - generic [ref=e31]: 生态
+              - link "技术推荐" [ref=e32] [cursor=pointer]:
+                - /url: /zh/recommend/
+                - generic [ref=e33]: 技术推荐
+              - link "捐赠" [ref=e34] [cursor=pointer]:
+                - /url: /zh/other/donate.html
+                - generic [ref=e35]: 捐赠
+              - button "链接" [ref=e37] [cursor=pointer]:
+                - generic [ref=e39]: 链接
+            - button "Change language" [ref=e42] [cursor=pointer]
+            - switch "Switch to dark theme" [ref=e569] [cursor=pointer]
+            - generic [ref=e52]:
+              - link "github" [ref=e53] [cursor=pointer]:
+                - /url: https://github.com/soybeanjs
+              - link "discord" [ref=e55] [cursor=pointer]:
+                - /url: https://discord.gg/mEFKh8xm9y
+              - link [ref=e57] [cursor=pointer]:
+                - /url: https://qm.qq.com/cgi-bin/qm/qr?k=-Seg4nmWwuNanbi78oOpnFDD0hFh-tWh&jump_from=webapi&authKey=NlFJbbh77/j+DcMcR/pAFTUsbhV2nYqWLYHW3BebdTKWpVrnJBjUXUm87udw694U
+                - img [ref=e58]
+  - complementary [ref=e68]:
+    - navigation "Sidebar Navigation" [ref=e70]:
+      - generic [ref=e71]: Sidebar Navigation
+      - generic [ref=e73]:
+        - button "开始" [ref=e74]:
+          - heading "开始" [level=2] [ref=e76]
+        - generic [ref=e77]:
+          - link "简介" [ref=e81] [cursor=pointer]:
+            - /url: /zh/guide/intro.html
+            - paragraph [ref=e82]: 简介
+          - link "快速上手" [ref=e86] [cursor=pointer]:
+            - /url: /zh/guide/quick-start.html
+            - paragraph [ref=e87]: 快速上手
+          - link "同步代码" [ref=e91] [cursor=pointer]:
+            - /url: /zh/guide/sync.html
+            - paragraph [ref=e92]: 同步代码
+      - generic [ref=e94]:
+        - button "主题" [ref=e95]:
+          - heading "主题" [level=2] [ref=e97]
+        - generic [ref=e98]:
+          - link "概述" [ref=e102] [cursor=pointer]:
+            - /url: /zh/guide/theme/intro.html
+            - paragraph [ref=e103]: 概述
+          - link "配置" [ref=e107] [cursor=pointer]:
+            - /url: /zh/guide/theme/config.html
+            - paragraph [ref=e108]: 配置
+          - link "主题 Tokens" [ref=e112] [cursor=pointer]:
+            - /url: /zh/guide/theme/tokens.html
+            - paragraph [ref=e113]: 主题 Tokens
+          - link "UnoCSS 主题" [ref=e117] [cursor=pointer]:
+            - /url: /zh/guide/theme/unocss.html
+            - paragraph [ref=e118]: UnoCSS 主题
+          - link "UI 主题" [ref=e122] [cursor=pointer]:
+            - /url: /zh/guide/theme/ui.html
+            - paragraph [ref=e123]: UI 主题
+          - link "加载" [ref=e127] [cursor=pointer]:
+            - /url: /zh/guide/theme/loading.html
+            - paragraph [ref=e128]: 加载
+          - link "Logo" [ref=e132] [cursor=pointer]:
+            - /url: /zh/guide/theme/logo.html
+            - paragraph [ref=e133]: Logo
+      - generic [ref=e135]:
+        - button "系统图标" [ref=e136]:
+          - heading "系统图标" [level=2] [ref=e138]
+        - generic [ref=e139]:
+          - link "概述" [ref=e143] [cursor=pointer]:
+            - /url: /zh/guide/icon/intro.html
+            - paragraph [ref=e144]: 概述
+          - link "使用" [ref=e148] [cursor=pointer]:
+            - /url: /zh/guide/icon/usage.html
+            - paragraph [ref=e149]: 使用
+      - generic [ref=e151]:
+        - button "路由" [ref=e152]:
+          - heading "路由" [level=2] [ref=e154]
+        - generic [ref=e155]:
+          - link "概述" [ref=e159] [cursor=pointer]:
+            - /url: /zh/guide/router/intro.html
+            - paragraph [ref=e160]: 概述
+          - link "路由创建" [ref=e164] [cursor=pointer]:
+            - /url: /zh/guide/router/create.html
+            - paragraph [ref=e165]: 路由创建
+          - link "路由结构" [ref=e169] [cursor=pointer]:
+            - /url: /zh/guide/router/structure.html
+            - paragraph [ref=e170]: 路由结构
+          - link "路由组件" [ref=e174] [cursor=pointer]:
+            - /url: /zh/guide/router/component.html
+            - paragraph [ref=e175]: 路由组件
+          - link "路由缓存" [ref=e179] [cursor=pointer]:
+            - /url: /zh/guide/router/cache.html
+            - paragraph [ref=e180]: 路由缓存
+          - link "路由守卫" [ref=e184] [cursor=pointer]:
+            - /url: /zh/guide/router/guard.html
+            - paragraph [ref=e185]: 路由守卫
+          - link "路由跳转" [ref=e189] [cursor=pointer]:
+            - /url: /zh/guide/router/push.html
+            - paragraph [ref=e190]: 路由跳转
+          - link "路由权限" [ref=e194] [cursor=pointer]:
+            - /url: /zh/guide/router/dynamic.html
+            - paragraph [ref=e195]: 路由权限
+      - generic [ref=e197]:
+        - button "请求" [ref=e198]:
+          - heading "请求" [level=2] [ref=e200]
+        - generic [ref=e201]:
+          - link "概述" [ref=e205] [cursor=pointer]:
+            - /url: /zh/guide/request/intro.html
+            - paragraph [ref=e206]: 概述
+          - link "使用" [ref=e210] [cursor=pointer]:
+            - /url: /zh/guide/request/usage.html
+            - paragraph [ref=e211]: 使用
+          - link "代理" [ref=e215] [cursor=pointer]:
+            - /url: /zh/guide/request/proxy.html
+            - paragraph [ref=e216]: 代理
+          - link "对接后端" [ref=e220] [cursor=pointer]:
+            - /url: /zh/guide/request/backend.html
+            - paragraph [ref=e221]: 对接后端
+      - generic [ref=e223]:
+        - button "命令行" [ref=e224]:
+          - heading "命令行" [level=2] [ref=e226]
+        - generic [ref=e227]:
+          - link "概述" [ref=e231] [cursor=pointer]:
+            - /url: /zh/guide/cli/intro.html
+            - paragraph [ref=e232]: 概述
+          - link "命令" [ref=e236] [cursor=pointer]:
+            - /url: /zh/guide/cli/command.html
+            - paragraph [ref=e237]: 命令
+          - link "Git Hooks" [ref=e241] [cursor=pointer]:
+            - /url: /zh/guide/cli/git-hooks.html
+            - paragraph [ref=e242]: Git Hooks
+      - generic [ref=e244]:
+        - button "Hooks 函数" [ref=e245]:
+          - heading "Hooks 函数" [level=2] [ref=e247]
+        - link "useTable" [ref=e252] [cursor=pointer]:
+          - /url: /zh/guide/hooks/use-table.html
+          - paragraph [ref=e253]: useTable
+  - generic [ref=e256]:
+    - navigation "On this page" [ref=e570]:
+      - generic [ref=e571]:
+        - heading "On this page" [level=2] [ref=e573]
+        - list [ref=e574]:
+          - listitem [ref=e575]:
+            - link "环境准备" [ref=e576] [cursor=pointer]:
+              - /url: "#环境准备"
+          - listitem [ref=e577]:
+            - link "VSCode插件" [ref=e578] [cursor=pointer]:
+              - /url: "#vscode插件"
+          - listitem [ref=e579]:
+            - link "代码获取" [ref=e580] [cursor=pointer]:
+              - /url: "#代码获取"
+          - listitem [ref=e581]:
+            - link "插件配置" [ref=e582] [cursor=pointer]:
+              - /url: "#插件配置"
+          - listitem [ref=e583]:
+            - link "npm scripts" [ref=e584] [cursor=pointer]:
+              - /url: "#npm-scripts"
+          - listitem [ref=e585]:
+            - link "目录说明" [ref=e586] [cursor=pointer]:
+              - /url: "#目录说明"
+    - generic [ref=e264]:
+      - main [ref=e265]:
+        - generic [ref=e267]:
+          - heading "快速开始 Permalink to \"快速开始\"" [level=1] [ref=e268]:
+            - text: 快速开始
+            - link "Permalink to \"快速开始\"" [ref=e269] [cursor=pointer]:
+              - /url: "#快速开始"
+              - text: "#"
+          - paragraph [ref=e270]: 本文会帮助你从头启动项目
+          - heading "环境准备 Permalink to \"环境准备\"" [level=2] [ref=e271]:
+            - text: 环境准备
+            - link "Permalink to \"环境准备\"" [ref=e272] [cursor=pointer]:
+              - /url: "#环境准备"
+              - text: "#"
+          - paragraph [ref=e273]: 确保你的环境满足以下要求：
+          - list [ref=e274]:
+            - listitem [ref=e275]:
+              - strong [ref=e276]: git
+              - text: ": 你需要git来克隆和管理项目版本。"
+              - link "安装教程" [ref=e277] [cursor=pointer]:
+                - /url: ./../tutorial/git.html
+            - listitem [ref=e278]:
+              - strong [ref=e279]: NodeJS
+              - text: ": >=18.12.0，推荐 18.19.0 或更高。"
+              - link "安装教程" [ref=e280] [cursor=pointer]:
+                - /url: ./../tutorial/nodejs.html
+            - listitem [ref=e281]:
+              - strong [ref=e282]: pnpm
+              - text: ": >= 8.7.0，推荐最新版本。"
+          - heading "Mock Permalink to \"Mock\"" [level=3] [ref=e283]:
+            - text: Mock
+            - link "Permalink to \"Mock\"" [ref=e284] [cursor=pointer]:
+              - /url: "#mock"
+              - text: "#"
+          - paragraph [ref=e285]:
+            - text: 本项目借助
+            - link "Apifox" [ref=e286] [cursor=pointer]:
+              - /url: https://apifox.com/
+            - text: 的云端mock功能实现mock请求，接口文档：
+            - link "soybean-admin-mock" [ref=e287] [cursor=pointer]:
+              - /url: https://apifox.com/apidoc/shared-35c8727a-d3ab-47e9-8863-ef8e37df6887?pwd=F6LN1ArU
+          - heading "VSCode插件 Permalink to \"VSCode插件\"" [level=2] [ref=e288]:
+            - text: VSCode插件
+            - link "Permalink to \"VSCode插件\"" [ref=e289] [cursor=pointer]:
+              - /url: "#vscode插件"
+              - text: "#"
+          - paragraph [ref=e290]: 本项目推荐使用 VSCode 进行开发，项目里面已内置 VSCode 配置，包含推荐的插件和设置。
+          - paragraph [ref=e291]: 以下为推荐的插件：
+          - list [ref=e292]:
+            - listitem [ref=e293]:
+              - link "Auto Close Tag" [ref=e294] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag
+              - text: "- 自动添加 HTML/XML 结束标签"
+            - listitem [ref=e295]:
+              - link "Auto Complete Tag" [ref=e296] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-complete-tag
+              - text: "- 为 HTML/XML 添加关闭标签和自动重命名成对的标签"
+            - listitem [ref=e297]:
+              - link "Auto Rename Tag" [ref=e298] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag
+              - text: "- 自动重命名成对的 HTML/XML 标签"
+            - listitem [ref=e299]:
+              - link "Color Highlight" [ref=e300] [cursor=pointer]:
+                - /url: https://github.com/naumovs/vscode-ext-color-highlight
+              - text: "- 颜色高亮插件"
+            - listitem [ref=e301]:
+              - link "DotENV" [ref=e302] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv
+              - text: "- 高亮.env 文件"
+            - listitem [ref=e303]:
+              - link "EditorConfig for VS Code" [ref=e304] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+              - text: "- 统一不同编辑器的一些配置"
+            - listitem [ref=e305]:
+              - link "ESLint" [ref=e306] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+              - text: "- 代码检查"
+            - listitem [ref=e307]:
+              - link "Git Graph" [ref=e308] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph
+              - text: "- Git 图形化操作工具"
+            - listitem [ref=e309]:
+              - link "GitLens — Git supercharged" [ref=e310] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
+              - text: "- 显示具体某行代码的 git 信息"
+            - listitem [ref=e311]:
+              - link "Icônes" [ref=e312] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=afzalsayed96.icones
+              - text: "- 搜索 iconify 图标的插件"
+            - listitem [ref=e313]:
+              - link "Iconify IntelliSense" [ref=e314] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=antfu.iconify
+              - text: "- Iconify 图标实时显示的插件"
+            - listitem [ref=e315]:
+              - link "i18n Ally" [ref=e316] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=Lokalise.i18n-ally
+              - text: "- i18n 国际化插件"
+            - listitem [ref=e317]:
+              - link "javascript console utils" [ref=e318] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=whtouche.vscode-js-console-utils
+              - text: "- 提供快捷键 ctrl+l 直接输入 console.log()"
+            - listitem [ref=e319]:
+              - link "Material Icon Theme" [ref=e320] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme
+              - text: "- 图标主题，显示文件和文件多种图标"
+            - listitem [ref=e321]:
+              - link "One Dark Pro" [ref=e322] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme
+              - text: "- 主题"
+            - listitem [ref=e323]:
+              - link "Prettier - Code formatter" [ref=e324] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+              - text: "- 代码格式化插件"
+            - listitem [ref=e325]:
+              - link "UnoCSS" [ref=e326] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=antfu.unocss
+              - text: "- unocss 写法提示插件"
+            - listitem [ref=e327]:
+              - link "Vue - Official" [ref=e328] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=Vue.volar
+              - text: "- Vue 服务插件"
+            - listitem [ref=e329]:
+              - link "Vue VSCode Snippets" [ref=e330] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets
+              - text: "- Vue2、Vue3 写法提示插件"
+          - heading "代码获取 Permalink to \"代码获取\"" [level=2] [ref=e331]:
+            - text: 代码获取
+            - link "Permalink to \"代码获取\"" [ref=e332] [cursor=pointer]:
+              - /url: "#代码获取"
+              - text: "#"
+          - heading "从 GitHub 获取代码 Permalink to \"从 GitHub 获取代码\"" [level=3] [ref=e333]:
+            - text: 从 GitHub 获取代码
+            - link "Permalink to \"从 GitHub 获取代码\"" [ref=e334] [cursor=pointer]:
+              - /url: "#从-github-获取代码"
+              - text: "#"
+          - generic [ref=e335]:
+            - button "Copy Code" [ref=e336] [cursor=pointer]
+            - generic [ref=e337]: bash
+            - code [ref=e339]:
+              - generic [ref=e340]: "# 克隆代码"
+              - generic [ref=e341]: git clone https://github.com/soybeanjs/soybean-admin.git
+          - heading "从 Gitee 获取代码 Permalink to \"从 Gitee 获取代码\"" [level=3] [ref=e342]:
+            - text: 从 Gitee 获取代码
+            - link "Permalink to \"从 Gitee 获取代码\"" [ref=e343] [cursor=pointer]:
+              - /url: "#从-gitee-获取代码"
+              - text: "#"
+          - generic [ref=e344]:
+            - button "Copy Code" [ref=e345] [cursor=pointer]
+            - generic [ref=e346]: bash
+            - code [ref=e348]:
+              - generic [ref=e349]: "# 克隆代码"
+              - generic [ref=e350]: git clone https://gitee.com/honghuangdc/soybean-admin.git
+          - generic [ref=e351]:
+            - paragraph [ref=e352]: 注意
+            - paragraph [ref=e353]: 最新版本的代码以 github 为准。
+          - heading "安装依赖 Permalink to \"安装依赖\"" [level=3] [ref=e354]:
+            - text: 安装依赖
+            - link "Permalink to \"安装依赖\"" [ref=e355] [cursor=pointer]:
+              - /url: "#安装依赖"
+              - text: "#"
+          - paragraph [ref=e356]: 安装项目依赖
+          - generic [ref=e357]:
+            - button "Copy Code" [ref=e358] [cursor=pointer]
+            - generic [ref=e359]: bash
+            - code [ref=e361]:
+              - generic [ref=e362]: pnpm i
+          - heading "插件配置 Permalink to \"插件配置\"" [level=2] [ref=e363]:
+            - text: 插件配置
+            - link "Permalink to \"插件配置\"" [ref=e364] [cursor=pointer]:
+              - /url: "#插件配置"
+              - text: "#"
+          - heading "安装 Vue - Official，禁用 Vetur Permalink to \"安装 Vue - Official，禁用 Vetur\"" [level=3] [ref=e365]:
+            - text: 安装 Vue - Official，禁用 Vetur
+            - link "Permalink to \"安装 Vue - Official，禁用 Vetur\"" [ref=e366] [cursor=pointer]:
+              - /url: "#安装-vue-official-禁用-vetur"
+              - text: "#"
+          - list [ref=e367]:
+            - listitem [ref=e368]:
+              - link "Vue - Official" [ref=e369] [cursor=pointer]:
+                - /url: https://marketplace.visualstudio.com/items?itemName=Vue.volar
+              - text: "- Vue 服务插件"
+          - heading "npm scripts Permalink to \"npm scripts\"" [level=2] [ref=e370]:
+            - text: npm scripts
+            - link "Permalink to \"npm scripts\"" [ref=e371] [cursor=pointer]:
+              - /url: "#npm-scripts"
+              - text: "#"
+          - generic [ref=e372]:
+            - button "Copy Code" [ref=e373] [cursor=pointer]
+            - generic [ref=e374]: json
+            - code [ref=e376]:
+              - generic [ref=e377]: "{"
+              - generic [ref=e378]: // 构建打包(prod环境)
+              - generic [ref=e379]: "\"build\": \"vite build --mode prod\","
+              - generic [ref=e380]: // 构建打包(test环境)
+              - generic [ref=e381]: "\"build:test\": \"vite build --mode test\","
+              - generic [ref=e382]: // 删除主项目及子项目的 node_modules, dist, pnpm-lock.yaml
+              - generic [ref=e383]: "\"cleanup\": \"sa cleanup\","
+              - generic [ref=e384]: // 提交代码 (生成符合 Conventional Commits standard 的提交信息)
+              - generic [ref=e385]: "\"commit\": \"sa git-commit\","
+              - generic [ref=e386]: // 本地运行(test环境)
+              - generic [ref=e387]: "\"dev\": \"vite --mode test\","
+              - generic [ref=e388]: // 本地运行(prod环境)
+              - generic [ref=e389]: "\"dev:prod\": \"vite --mode prod\","
+              - generic [ref=e390]: // 生成路由
+              - generic [ref=e391]: "\"gen-route\": \"sa gen-route\","
+              - generic [ref=e392]: // eslint检查并自动修复
+              - generic [ref=e393]: "\"lint\": \"eslint . --fix\","
+              - generic [ref=e394]: // 初始化 simple-git-hooks
+              - generic [ref=e395]: "\"prepare\": \"simple-git-hooks\","
+              - generic [ref=e396]: // 本地环境预览构建后的dist
+              - generic [ref=e397]: "\"preview\": \"vite preview\","
+              - generic [ref=e398]: // 发布
+              - generic [ref=e399]: "\"release\": \"sa release\","
+              - generic [ref=e400]: // vue文件的ts检查
+              - generic [ref=e401]: "\"typecheck\": \"vue-tsc --noEmit --skipLibCheck\","
+              - generic [ref=e402]: // 更新依赖包
+              - generic [ref=e403]: "\"update-pkg\": \"sa update-pkg\""
+              - generic [ref=e404]: "}"
+          - heading "目录说明 Permalink to \"目录说明\"" [level=2] [ref=e405]:
+            - text: 目录说明
+            - link "Permalink to \"目录说明\"" [ref=e406] [cursor=pointer]:
+              - /url: "#目录说明"
+              - text: "#"
+          - generic [ref=e407]:
+            - button "Copy Code" [ref=e408] [cursor=pointer]
+            - code [ref=e410]:
+              - generic [ref=e411]: soybean-admin
+              - generic [ref=e412]: ├── .vscode //vscode插件和设置
+              - generic [ref=e413]: │ ├── extensions.json //vscode推荐的插件
+              - generic [ref=e414]: │ ├── launch.json //debug配置文件(debug Vue 和 TS)
+              - generic [ref=e415]: │ └── settings.json //vscode配置(在该项目中生效，可以复制到用户配置文件中)
+              - generic [ref=e416]: ├── build //vite构建相关配置和插件
+              - generic [ref=e417]: │ ├── config //构建打包配置
+              - generic [ref=e418]: │ │ └── proxy.ts //网络请求代理
+              - generic [ref=e419]: │ └── plugins //构建插件
+              - generic [ref=e420]: │ ├── index.ts //插件汇总
+              - generic [ref=e421]: │ ├── router.ts //elegant-router插件
+              - generic [ref=e422]: │ ├── unocss.ts //unocss插件
+              - generic [ref=e423]: │ └── unplugin.ts //自动导入UI组件、自动解析iconify图标、自动解析本地svg作为图标
+              - generic [ref=e424]: ├── packages //子项目
+              - generic [ref=e425]: │ ├── axios //网络请求封装
+              - generic [ref=e426]: │ ├── color-palette //颜色调色板
+              - generic [ref=e427]: │ ├── hooks //组合式函数hooks
+              - generic [ref=e428]: │ ├── materials //组件物料
+              - generic [ref=e429]: │ ├── ofetch //网络请求封装
+              - generic [ref=e430]: │ ├── scripts //脚本
+              - generic [ref=e431]: │ ├── uno-preset //uno-preset配置
+              - generic [ref=e432]: │ └── utils //工具函数
+              - generic [ref=e433]: ├── public //公共目录(文件夹里面的资源打包后会在根目录下)
+              - generic [ref=e434]: │ └── favicon.svg //网站标签图标
+              - generic [ref=e435]: ├── src
+              - generic [ref=e436]: │ ├── assets //静态资源
+              - generic [ref=e437]: │ │ ├── imgs //图片
+              - generic [ref=e438]: │ │ └── svg-icon //本地svg图标
+              - generic [ref=e439]: │ ├── components //全局组件
+              - generic [ref=e440]: │ │ ├── advanced //高级组件
+              - generic [ref=e441]: │ │ ├── common //公共组件
+              - generic [ref=e442]: │ │ └── custom //自定义组件
+              - generic [ref=e443]: │ ├── constants //常量
+              - generic [ref=e444]: │ │ ├── app.ts //app常量
+              - generic [ref=e445]: │ │ ├── business.ts //业务常量
+              - generic [ref=e446]: │ │ ├── common.ts //通用常量
+              - generic [ref=e447]: │ │ └── reg.ts //正则常量
+              - generic [ref=e448]: │ ├── enums //枚举
+              - generic [ref=e449]: │ ├── hooks //组合式的函数hooks
+              - generic [ref=e450]: │ │ ├── business //业务hooks
+              - generic [ref=e451]: │ │ │ ├── auth //用户权限
+              - generic [ref=e452]: │ │ │ └── captcha //验证码
+              - generic [ref=e453]: │ │ └── common //通用hooks
+              - generic [ref=e454]: │ │ ├── echarts //echarts
+              - generic [ref=e455]: │ │ ├── form //表单
+              - generic [ref=e456]: │ │ ├── icon //图标
+              - generic [ref=e457]: │ │ ├── router //路由
+              - generic [ref=e458]: │ │ └── table //表格
+              - generic [ref=e459]: │ ├── layouts //布局组件
+              - generic [ref=e460]: │ │ ├── base-layout //基本布局(包含全局头部、多页签、侧边栏、底部等公共部分)
+              - generic [ref=e461]: │ │ ├── blank-layout //空白布局组件(单个页面)
+              - generic [ref=e462]: │ │ ├── context //布局组件的上下文状态
+              - generic [ref=e463]: │ │ ├── hooks //布局组件的hooks
+              - generic [ref=e464]: │ │ └── modules //布局组件模块
+              - generic [ref=e465]: │ │ ├── global-breadcrumb //全局面包屑
+              - generic [ref=e466]: │ │ ├── global-content //全局主体内容
+              - generic [ref=e467]: │ │ ├── global-footer //全局底部
+              - generic [ref=e468]: │ │ ├── global-header //全局头部
+              - generic [ref=e469]: │ │ ├── global-logo //全局Logo
+              - generic [ref=e470]: │ │ ├── global-menu //全局菜单
+              - generic [ref=e471]: │ │ ├── global-search //全局搜索
+              - generic [ref=e472]: │ │ ├── global-sider //全局侧边栏
+              - generic [ref=e473]: │ │ ├── global-tab //全局标签页
+              - generic [ref=e474]: │ │ └── theme-drawer //主题抽屉
+              - generic [ref=e475]: │ ├── locales //国际化配置
+              - generic [ref=e476]: │ │ ├── langs //语言文件
+              - generic [ref=e477]: │ │ ├── dayjs.ts //dayjs的国际化配置
+              - generic [ref=e478]: │ │ ├── locale.ts //语言文件汇总
+              - generic [ref=e479]: │ │ └── naive.ts //NaiveUI的国际化配置
+              - generic [ref=e480]: │ ├── plugins //插件
+              - generic [ref=e481]: │ │ ├── assets.ts //各种依赖的静态资源导入(css、scss等)
+              - generic [ref=e482]: │ │ ├── dayjs.ts //dayjs插件
+              - generic [ref=e483]: │ │ ├── iconify.ts //iconify插件
+              - generic [ref=e484]: │ │ ├── loading.ts //全局初始化时的加载插件
+              - generic [ref=e485]: │ │ └── nprogress.ts //顶部加载条nprogress插件
+              - generic [ref=e486]: │ ├── router //vue路由
+              - generic [ref=e487]: │ │ ├── elegant //elegant-router插件生成的路由声明、导入和转换等文件
+              - generic [ref=e488]: │ │ ├── guard //路由守卫
+              - generic [ref=e489]: │ │ ├── routes //路由声明入口
+              - generic [ref=e490]: │ │ │ ├── builtin //系统内置路由 根路由和未找到路由
+              - generic [ref=e491]: │ │ │ └── index //前端静态路由创建的入口
+              - generic [ref=e492]: │ │ └── index.ts //路由插件入口
+              - generic [ref=e493]: │ ├── service //网络请求
+              - generic [ref=e494]: │ │ ├── api //接口api
+              - generic [ref=e495]: │ │ └── request //封装的请求函数
+              - generic [ref=e496]: │ ├── store //pinia状态管理
+              - generic [ref=e497]: │ │ ├── modules //状态管理划分的模块
+              - generic [ref=e498]: │ │ │ ├── app //app状态(页面重载、菜单折叠、项目配置的抽屉)
+              - generic [ref=e499]: │ │ │ ├── auth //auth状态(用户信息、用户权益)
+              - generic [ref=e500]: │ │ │ ├── route //route状态(动态路由、菜单、路由缓存)
+              - generic [ref=e501]: │ │ │ ├── tab //tab状态(多页签、缓存页面的滚动位置)
+              - generic [ref=e502]: │ │ │ └── theme //theme状态(项目主题配置)
+              - generic [ref=e503]: │ │ └── plugins //状态管理插件
+              - generic [ref=e504]: │ ├── styles //全局样式
+              - generic [ref=e505]: │ │ ├── css //css
+              - generic [ref=e506]: │ │ └── scss //scss
+              - generic [ref=e507]: │ ├── theme //主题配置
+              - generic [ref=e508]: │ │ ├── settings.ts //主题默认配置及覆盖配置
+              - generic [ref=e509]: │ │ └── vars.ts //主题token对应的css变量
+              - generic [ref=e510]: │ ├── typings //TS类型声明文件(*.d.ts)
+              - generic [ref=e511]: │ │ ├── api.d.ts //请求接口返回的数据的类型声明
+              - generic [ref=e512]: │ │ ├── app.d.ts //应用相关的类型声明
+              - generic [ref=e513]: │ │ ├── common.d.ts //通用类型声明
+              - generic [ref=e514]: │ │ ├── components.d.ts //自动导入的组件的类型声明
+              - generic [ref=e515]: │ │ ├── elegant-router.d.ts//插件elegant-router生成的路由声明
+              - generic [ref=e516]: │ │ ├── env.d.ts //vue路由描述和请求环境相关的类型声明
+              - generic [ref=e517]: │ │ ├── global.d.ts //全局通用类型
+              - generic [ref=e518]: │ │ ├── naive-ui.d.ts //NaiveUI类型
+              - generic [ref=e519]: │ │ ├── router.d.ts //Vue的路由描述的类型声明
+              - generic [ref=e520]: │ │ ├── storage.d.ts //本地缓存的数据类型
+              - generic [ref=e521]: │ │ └── union-key.d.ts //联合类型
+              - generic [ref=e522]: │ ├── utils //全局工具函数(纯函数，不含状态)
+              - generic [ref=e523]: │ │ ├── common //通用工具函数
+              - generic [ref=e524]: │ │ ├── icon //图标相关工具函数
+              - generic [ref=e525]: │ │ ├── service //请求服务配置相关的工具函数
+              - generic [ref=e526]: │ │ └── storage //存储相关工具函数
+              - generic [ref=e527]: │ ├── views //页面
+              - generic [ref=e528]: │ │ ├── _builtin //系统内置页面：登录、异常页等
+              - generic [ref=e529]: │ │ ├── about //关于
+              - generic [ref=e530]: │ │ ├── function //功能
+              - generic [ref=e531]: │ │ ├── home //首页
+              - generic [ref=e532]: │ │ ├── manage //系统管理
+              - generic [ref=e533]: │ │ ├── multi-menu //多级菜单
+              - generic [ref=e534]: │ │ └── user-center //用户中心
+              - generic [ref=e535]: │ ├── App.vue //Vue文件入口
+              - generic [ref=e536]: │ └── main.ts //项目入口TS文件
+              - generic [ref=e537]: ├── .editorconfig //统一编辑器配置
+              - generic [ref=e538]: ├── .env //环境文件
+              - generic [ref=e539]: ├── .env.prod //生产环境的环境文件
+              - generic [ref=e540]: ├── .env.test //测试环境的环境文件
+              - generic [ref=e541]: ├── .gitattributes //git属性配置
+              - generic [ref=e542]: ├── .gitignore //忽略git提交的配置文件
+              - generic [ref=e543]: ├── .npmrc //npm配置
+              - generic [ref=e544]: ├── CHANGELOG.md //项目更新日志
+              - generic [ref=e545]: ├── eslint.config.js //eslint flat配置文件
+              - generic [ref=e546]: ├── index.html //html文件
+              - generic [ref=e547]: ├── package.json //npm依赖描述文件
+              - generic [ref=e548]: ├── pnpm-lock.yaml //npm包管理器pnpm依赖锁定文件
+              - generic [ref=e549]: ├── README.md //项目介绍文档
+              - generic [ref=e550]: ├── README.zh-CN.md //项目介绍文档(中文)
+              - generic [ref=e551]: ├── tsconfig.json //TS配置
+              - generic [ref=e552]: ├── uno.config.ts //原子css框架unocss配置
+              - generic [ref=e553]: └── vite.config.ts //vite配置
+      - contentinfo [ref=e554]:
+        - navigation "Pager" [ref=e555]:
+          - generic [ref=e556]: Pager
+          - link "Previous page 简介" [ref=e558] [cursor=pointer]:
+            - /url: /zh/guide/intro.html
+            - generic [ref=e559]: Previous page
+            - generic [ref=e560]: 简介
+          - link "Next page 同步代码" [ref=e562] [cursor=pointer]:
+            - /url: /zh/guide/sync.html
+            - generic [ref=e563]: Next page
+            - generic [ref=e564]: 同步代码

@@ -22,18 +22,11 @@ export function fetchGetUserInfo() {
   return request<Api.Auth.UserInfo>({ url: "/auth/info" });
 }
 
-/**
- * Refresh token
- *
- * @param refreshToken Refresh token
- */
-export function fetchRefreshToken(refreshToken: string) {
+/** Refresh token (authenticated via Authorization header) */
+export function fetchRefreshToken() {
   return request<Api.Auth.LoginToken>({
     url: "/auth/refreshToken",
     method: "post",
-    data: {
-      refreshToken,
-    },
   });
 }
 
@@ -56,7 +49,7 @@ export function fetchCustomBackendError(code: string, msg: string) {
  */
 export function restorePassword(oldPassword: string, newPassword: string, confirmPassword: string) {
   return request({
-    url: "/auth/restPassword",
+    url: "/auth/restorePassword",
     method: "post",
     data: {
       oldPassword,
@@ -72,12 +65,12 @@ export function restorePassword(oldPassword: string, newPassword: string, confir
  * @param username New username
  * @param password Current password
  */
-export function changeUsername(username: string, password: string) {
+export function changeUsername(newUsername: string, password: string) {
   return request({
     url: "/auth/changeUsername",
     method: "post",
     data: {
-      username,
+      newUsername,
       password,
     },
   });

@@ -3,7 +3,7 @@ import { BACKEND_ERROR_CODE, createFlatRequest, createRequest } from "@sa/axios"
 import { useAuthStore } from "@/store/modules/auth";
 import { localStg } from "@/utils/storage";
 import { getServiceBaseURL } from "@/utils/service";
-import { $t } from "@/locales";
+import { $t, getLocale } from "@/locales";
 import { getAuthorization, handleExpiredRequest, showErrorMsg } from "./shared";
 import type { RequestInstanceState } from "./type";
 
@@ -28,6 +28,9 @@ export const request = createFlatRequest(
     async onRequest(config) {
       const Authorization = getAuthorization();
       Object.assign(config.headers, { Authorization });
+
+      const lang = getLocale().replace("-", "_");
+      config.params = { ...config.params, lang };
 
       return config;
     },

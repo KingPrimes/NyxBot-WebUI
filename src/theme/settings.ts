@@ -67,15 +67,15 @@ export const themeSettings: App.Theme.ThemeSetting = {
   tokens: {
     light: {
       colors: {
-        container: "rgb(255, 255, 255)",
-        layout: "#fbf8f9",
-        inverted: "rgb(174, 154, 153)",
+        container: "rgb(248, 243, 233)",
+        layout: "#ece4d5",
+        inverted: "rgb(186, 172, 156)",
         "base-text": "rgb(254, 113, 152)",
       },
       boxShadow: {
-        header: "0 1px 2px rgba(241, 153, 182, 0.29)",
-        sider: "2px 0 8px 0 rgba(241, 153, 182, 0.29)",
-        tab: "0 1px 2px rgba(241, 153, 182, 0.29)",
+        header: "0 1px 2px rgba(180, 160, 130, 0.25)",
+        sider: "2px 0 8px 0 rgba(180, 160, 130, 0.25)",
+        tab: "0 1px 2px rgba(180, 160, 130, 0.25)",
       },
     },
     dark: {

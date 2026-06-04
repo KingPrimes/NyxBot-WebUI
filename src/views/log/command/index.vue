@@ -42,52 +42,48 @@ const {
 } = useTable({
   apiFn: fetchGetCommandLogList,
   showTotal: true,
-  apiParams: {
-    current: 1,
-    size: 10
-  },
   columns: () => [
     {
       key: 'id',
       title: $t('page.log.command.id'),
       align: 'center',
-      width: 80
+
     },
     {
       key: 'title',
       title: $t('page.log.command.moduleName'),
       align: 'center',
-      width: 120
+
     },
     {
       key: 'code',
       title: $t('page.log.command.command'),
       align: 'center',
-      minWidth: 150
+
     },
     {
       key: 'botUid',
       title: $t('page.log.command.botQQ'),
       align: 'center',
-      width: 120
+
     },
     {
       key: 'groupUid',
       title: $t('page.log.command.groupQQ'),
       align: 'center',
-      width: 120
+
     },
     {
       key: 'userUid',
       title: $t('page.log.command.triggerQQ'),
       align: 'center',
-      width: 120
+
     },
     {
       key: 'runTime',
       title: $t('page.log.command.operateTime'),
       align: 'center',
-      width: 180,
+
       render: row => {
         return `${row.runTime} ms`;
       }
@@ -96,7 +92,7 @@ const {
       key: 'operate',
       title: $t('common.operate'),
       align: 'center',
-      width: 130,
+
       render: row => (
         <div class="flex-center gap-8px">
           <NButton type="primary" ghost size="small" onClick={() => detail(row.id, codesOption.value)}>
@@ -143,7 +139,6 @@ function detail(id: number, options: CommonType.Option<string>[]) {
         :data="data"
         size="small"
         :flex-height="!appStore.isMobile"
-        :scroll-x="962"
         :loading="loading"
         remote
         :row-key="(row) => row.id"

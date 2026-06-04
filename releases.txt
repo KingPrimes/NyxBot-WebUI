@@ -1,0 +1,2756 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+              - generic [ref=e53]: Search or jump to...
+              - img [ref=e55]
+            - link "Sign in" [ref=e59] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fsoybeanjs%2Fsoybean-admin%2Freleases
+            - link "Sign up" [ref=e60] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Freleases%2Findex&source=header-repo&source_repo=soybeanjs%2Fsoybean-admin
+            - button "Appearance settings" [ref=e63] [cursor=pointer]:
+              - img
+  - main [ref=e67]:
+    - generic [ref=e68]:
+      - generic [ref=e69]:
+        - generic [ref=e71]:
+          - img [ref=e72]
+          - link "soybeanjs" [ref=e75] [cursor=pointer]:
+            - /url: /soybeanjs
+          - generic [ref=e76]: /
+          - strong [ref=e77]:
+            - link "soybean-admin" [ref=e78] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin
+          - generic [ref=e79]: Public
+        - generic [ref=e80]:
+          - list:
+            - listitem [ref=e81]:
+              - link "You must be signed in to change notification settings" [ref=e82] [cursor=pointer]:
+                - /url: /login?return_to=%2Fsoybeanjs%2Fsoybean-admin
+                - img [ref=e83]
+                - text: Notifications
+            - listitem [ref=e85]:
+              - link "Fork 2.5k" [ref=e86] [cursor=pointer]:
+                - /url: /login?return_to=%2Fsoybeanjs%2Fsoybean-admin
+                - img [ref=e87]
+                - text: Fork
+                - generic "2,458" [ref=e89]: 2.5k
+            - listitem [ref=e90]:
+              - link "You must be signed in to star a repository" [ref=e92] [cursor=pointer]:
+                - /url: /login?return_to=%2Fsoybeanjs%2Fsoybean-admin
+                - img [ref=e93]
+                - text: Star
+                - generic "14396 users starred this repository" [ref=e95]: 14.4k
+      - navigation "Repository" [ref=e96]:
+        - list [ref=e97]:
+          - listitem [ref=e98]:
+            - link "Code" [ref=e99] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin
+              - img [ref=e100]
+              - generic [ref=e102]: Code
+          - listitem [ref=e103]:
+            - link "Issues 4" [ref=e104] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/issues
+              - img [ref=e105]
+              - generic [ref=e108]: Issues
+              - generic "4" [ref=e109]
+          - listitem [ref=e110]:
+            - link "Pull requests" [ref=e111] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/pulls
+              - img [ref=e112]
+              - generic [ref=e114]: Pull requests
+          - listitem [ref=e115]:
+            - link "Discussions" [ref=e116] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/discussions
+              - img [ref=e117]
+              - generic [ref=e119]: Discussions
+          - listitem [ref=e120]:
+            - link "Actions" [ref=e121] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/actions
+              - img [ref=e122]
+              - generic [ref=e124]: Actions
+          - listitem [ref=e125]:
+            - link "Projects" [ref=e126] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/projects
+              - img [ref=e127]
+              - generic [ref=e129]: Projects
+          - listitem [ref=e130]:
+            - link "Security and quality" [ref=e131] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/security
+              - img [ref=e132]
+              - generic [ref=e134]: Security and quality
+          - listitem [ref=e135]:
+            - link "Insights" [ref=e136] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/pulse
+              - img [ref=e137]
+              - generic [ref=e139]: Insights
+    - generic [ref=e141]:
+      - 'heading "Releases: soybeanjs/soybean-admin" [level=1] [ref=e142]'
+      - generic [ref=e143]:
+        - generic [ref=e145]:
+          - navigation "Releases and Tags" [ref=e146]:
+            - link "Releases" [ref=e147] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/releases
+            - link "Tags" [ref=e148] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/tags
+          - generic [ref=e151]:
+            - searchbox "Find a release" [ref=e152]
+            - img
+        - generic [ref=e153]:
+          - region "v2.2.0" [ref=e154]:
+            - heading "v2.2.0" [level=2] [ref=e155]
+            - generic [ref=e156]:
+              - generic [ref=e157]:
+                - generic [ref=e158]: 13 May 12:24 2 weeks ago
+                - generic [ref=e159]:
+                  - img "@github-actions" [ref=e160]
+                  - link "github-actions" [ref=e161] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v2.2.0" [ref=e163] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v2.2.0
+                  - generic [ref=e164]:
+                    - img "Tag" [ref=e165]
+                    - text: v2.2.0
+                - link "Commit 12f1467" [ref=e168] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/12f14672c4406f7b9d73be26b863d0dfed1edacc
+                  - img "Commit" [ref=e169]
+                  - code [ref=e171]: 12f1467
+                - button "Compare" [ref=e175] [cursor=pointer]:
+                  - generic [ref=e176]:
+                    - generic [ref=e177]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e179]:
+                - generic [ref=e180]:
+                  - generic [ref=e183]:
+                    - link "v2.2.0" [ref=e185] [cursor=pointer]:
+                      - /url: /soybeanjs/soybean-admin/releases/tag/v2.2.0
+                    - link "Latest" [ref=e187] [cursor=pointer]:
+                      - /url: /soybeanjs/soybean-admin/releases/latest
+                      - generic [ref=e188]: Latest
+                  - generic [ref=e189]:
+                    - heading "🚨 Breaking Changes" [level=3] [ref=e190]
+                    - list [ref=e191]:
+                      - listitem [ref=e192]:
+                        - strong [ref=e193]: pnpm
+                        - text: ": update pnpm from v10 to v11 - by"
+                        - link "@soybeanjs" [ref=e194] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(1f8e4)" [ref=e195] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/1f8e4eca
+                    - heading "🏡 Chore" [level=3] [ref=e196]
+                    - list [ref=e197]:
+                      - listitem [ref=e198]:
+                        - strong [ref=e199]: .gitignore
+                        - text: ": add src-tauri/target to ignore list - by"
+                        - link "@soybeanjs" [ref=e200] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(f3975)" [ref=e201] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/f39753e1
+                      - listitem [ref=e202]:
+                        - strong [ref=e203]: deps
+                        - text: ": update deps - by"
+                        - link "@soybeanjs" [ref=e204] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(77299)" [ref=e205] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/77299691
+                    - heading "View changes on GitHub" [level=5] [ref=e206]:
+                      - link "View changes on GitHub" [ref=e207] [cursor=pointer]:
+                        - /url: https://github.com/soybeanjs/soybean-admin/compare/v2.1.1...v2.2.0
+                - generic [ref=e208]:
+                  - generic [ref=e209]:
+                    - heading "Contributors" [level=3] [ref=e210]
+                    - list [ref=e211]:
+                      - listitem [ref=e212]:
+                        - link "@soybeanjs" [ref=e213] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e214]
+                    - generic [ref=e215]: soybeanjs
+                  - group [ref=e218]:
+                    - button "Assets 2" [expanded] [ref=e219] [cursor=pointer]:
+                      - generic [ref=e220]:
+                        - generic [ref=e221]: Assets
+                        - generic "2" [ref=e222]
+                    - list [ref=e225]:
+                      - listitem [ref=e226]:
+                        - generic [ref=e227]:
+                          - img [ref=e228]
+                          - link "Source code (zip)" [ref=e230] [cursor=pointer]:
+                            - /url: /soybeanjs/soybean-admin/archive/refs/tags/v2.2.0.zip
+                            - generic [ref=e231]: Source code
+                            - generic [ref=e232]: (zip)
+                        - generic [ref=e234]: 2026-05-13T12:23:52Z2 weeks ago
+                      - listitem [ref=e235]:
+                        - generic [ref=e236]:
+                          - img [ref=e237]
+                          - link "Source code (tar.gz)" [ref=e239] [cursor=pointer]:
+                            - /url: /soybeanjs/soybean-admin/archive/refs/tags/v2.2.0.tar.gz
+                            - generic [ref=e240]: Source code
+                            - generic [ref=e241]: (tar.gz)
+                        - generic [ref=e243]: 2026-05-13T12:23:52Z2 weeks ago
+          - region "v2.1.1" [ref=e245]:
+            - heading "v2.1.1" [level=2] [ref=e246]
+            - generic [ref=e247]:
+              - generic [ref=e248]:
+                - generic [ref=e249]: 13 May 11:46 2 weeks ago
+                - generic [ref=e250]:
+                  - img "@github-actions" [ref=e251]
+                  - link "github-actions" [ref=e252] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v2.1.1" [ref=e254] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v2.1.1
+                  - generic [ref=e255]:
+                    - img "Tag" [ref=e256]
+                    - text: v2.1.1
+                - link "Commit d971318" [ref=e259] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/d9713187e8af4e6d95872b548acf5acc027125ea
+                  - img "Commit" [ref=e260]
+                  - code [ref=e262]: d971318
+                - button "Compare" [ref=e266] [cursor=pointer]:
+                  - generic [ref=e267]:
+                    - generic [ref=e268]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e270]:
+                - generic [ref=e271]:
+                  - link "v2.1.1" [ref=e276] [cursor=pointer]:
+                    - /url: /soybeanjs/soybean-admin/releases/tag/v2.1.1
+                  - generic [ref=e278]:
+                    - heading "🐞 Bug Fixes" [level=3] [ref=e279]
+                    - list [ref=e280]:
+                      - listitem [ref=e281]:
+                        - strong [ref=e282]: assets
+                        - text: ":"
+                        - list [ref=e283]:
+                          - listitem [ref=e284]:
+                            - text: add ts-expect-error comment for svg icons type error - by
+                            - link "@soybeanjs" [ref=e285] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(f8f0c)" [ref=e286] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/f8f0c6c4
+                      - listitem [ref=e287]:
+                        - strong [ref=e288]: bin
+                        - text: ":"
+                        - list [ref=e289]:
+                          - listitem [ref=e290]:
+                            - text: update import statement for index file - by
+                            - link "@soybeanjs" [ref=e291] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(4549d)" [ref=e292] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/4549ddda
+                      - listitem [ref=e293]:
+                        - strong [ref=e294]: components
+                        - text: ":"
+                        - list [ref=e295]:
+                          - listitem [ref=e296]:
+                            - text: correction of wrong label bar configuration explanation. - by
+                            - link "@Azir-11" [ref=e297] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(6887b)" [ref=e298] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/6887b016
+                      - listitem [ref=e299]:
+                        - strong [ref=e300]: i18n-ally
+                        - text: ":"
+                        - list [ref=e301]:
+                          - listitem [ref=e302]:
+                            - text: add missing TypeScript compiler options. fixed
+                            - link "#907" [ref=e303] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/907
+                            - text: "- by"
+                            - link "@soybeanjs" [ref=e304] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - text: in
+                            - link "#907" [ref=e305] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/907
+                            - link "(a5f85)" [ref=e306] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a5f85810
+                      - listitem [ref=e307]:
+                        - strong [ref=e308]: projects
+                        - text: ":"
+                        - list [ref=e309]:
+                          - listitem [ref=e310]:
+                            - text: resolve width abnormal issue of NColorPicker. - by
+                            - link "@Azir-11" [ref=e311] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(75ccd)" [ref=e312] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/75ccd008
+                          - listitem [ref=e313]:
+                            - text: fix wrong new tab opening for external link navigation. - by
+                            - link "@Azir-11" [ref=e314] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(af1b5)" [ref=e315] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/af1b5f1d
+                          - listitem [ref=e316]:
+                            - text: fix ts and lint error - by
+                            - link "@soybeanjs" [ref=e317] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(9afa2)" [ref=e318] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/9afa21e4
+                      - listitem [ref=e319]:
+                        - strong [ref=e320]: tsconfig
+                        - text: ":"
+                        - list [ref=e321]:
+                          - listitem [ref=e322]:
+                            - text: change moduleResolution to 'bundler' across multiple packages - by
+                            - link "@soybeanjs" [ref=e323] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(c0105)" [ref=e324] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/c0105c55
+                      - listitem [ref=e325]:
+                        - strong [ref=e326]: vscode
+                        - text: ":"
+                        - list [ref=e327]:
+                          - listitem [ref=e328]:
+                            - text: add oxc.vscode extension and update settings for formatting. fixed
+                            - link "#904" [ref=e329] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/904
+                            - text: "- by"
+                            - link "@soybeanjs" [ref=e330] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - text: in
+                            - link "#904" [ref=e331] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/904
+                            - link "(f8bd9)" [ref=e332] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/f8bd921a
+                      - listitem [ref=e333]:
+                        - strong [ref=e334]: workflows
+                        - text: ":"
+                        - list [ref=e335]:
+                          - listitem [ref=e336]:
+                            - text: update actions/checkout and actions/setup-node to v6 - by
+                            - link "@soybeanjs" [ref=e337] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(b5b50)" [ref=e338] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/b5b5087c
+                    - heading "🛠 Optimizations" [level=3] [ref=e339]
+                    - list [ref=e340]:
+                      - listitem [ref=e341]:
+                        - strong [ref=e342]: mix-menu
+                        - text: ": use stable Symbol.for as MixMenu context key. fixed"
+                        - link "#919" [ref=e343] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/issues/919
+                        - text: "- by"
+                        - link "@soybeanjs" [ref=e344] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - text: in
+                        - link "#919" [ref=e345] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/issues/919
+                        - link "(e1667)" [ref=e346] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/e1667669
+                    - heading "💅 Refactors" [level=3] [ref=e347]
+                    - list [ref=e348]:
+                      - listitem [ref=e349]:
+                        - strong [ref=e350]: hooks
+                        - text: ": simplify useContext implementation and improve type definitions - by"
+                        - link "@soybeanjs" [ref=e351] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(f292d)" [ref=e352] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/f292d32d
+                    - heading "📖 Documentation" [level=3] [ref=e353]
+                    - list [ref=e354]:
+                      - listitem [ref=e355]:
+                        - strong [ref=e356]: readme
+                        - text: ": add SoybeanUI section with description and badges - by"
+                        - link "@soybeanjs" [ref=e357] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(3a7a3)" [ref=e358] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/3a7a36b7
+                    - heading "🏡 Chore" [level=3] [ref=e359]
+                    - list [ref=e360]:
+                      - listitem [ref=e361]:
+                        - strong [ref=e362]: deps
+                        - text: ":"
+                        - list [ref=e363]:
+                          - listitem [ref=e364]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e365] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(a43a7)" [ref=e366] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a43a7b3b
+                          - listitem [ref=e367]:
+                            - text: update deps - by
+                            - link "@soybean-js" [ref=e368] [cursor=pointer]:
+                              - /url: https://github.com/soybean-js
+                            - link "(9afb3)" [ref=e369] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/9afb335e
+                          - listitem [ref=e370]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e371] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(e8fa9)" [ref=e372] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/e8fa90b4
+                    - heading "View changes on GitHub" [level=5] [ref=e373]:
+                      - link "View changes on GitHub" [ref=e374] [cursor=pointer]:
+                        - /url: https://github.com/soybeanjs/soybean-admin/compare/v2.1.0...v2.1.1
+                - generic [ref=e375]:
+                  - generic [ref=e376]:
+                    - heading "Contributors" [level=3] [ref=e377]
+                    - list [ref=e378]:
+                      - listitem [ref=e379]:
+                        - link "@Azir-11" [ref=e380] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                          - img "@Azir-11" [ref=e381]
+                      - listitem [ref=e382]:
+                        - link "@soybean-js" [ref=e383] [cursor=pointer]:
+                          - /url: https://github.com/soybean-js
+                          - img "@soybean-js" [ref=e384]
+                      - listitem [ref=e385]:
+                        - link "@soybeanjs" [ref=e386] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e387]
+                    - generic [ref=e388]: Azir-11, soybean-js, and soybeanjs
+                  - group [ref=e391]:
+                    - button "Assets 2" [ref=e392] [cursor=pointer]:
+                      - generic [ref=e393]:
+                        - generic [ref=e394]: Assets
+                        - generic "2" [ref=e395]
+          - region "v2.1.0" [ref=e397]:
+            - heading "v2.1.0" [level=2] [ref=e398]
+            - generic [ref=e399]:
+              - generic [ref=e400]:
+                - generic [ref=e401]: 09 Mar 04:55 Mar 9
+                - generic [ref=e402]:
+                  - img "@github-actions" [ref=e403]
+                  - link "github-actions" [ref=e404] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v2.1.0" [ref=e406] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v2.1.0
+                  - generic [ref=e407]:
+                    - img "Tag" [ref=e408]
+                    - text: v2.1.0
+                - link "Commit 85d5f13" [ref=e411] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/85d5f13630861c073e23374c4d1b3b28f194e426
+                  - img "Commit" [ref=e412]
+                  - code [ref=e414]: 85d5f13
+                - button "Compare" [ref=e418] [cursor=pointer]:
+                  - generic [ref=e419]:
+                    - generic [ref=e420]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e422]:
+                - generic [ref=e423]:
+                  - link "v2.1.0" [ref=e428] [cursor=pointer]:
+                    - /url: /soybeanjs/soybean-admin/releases/tag/v2.1.0
+                  - generic [ref=e430]:
+                    - heading "🚨 Breaking Changes" [level=3] [ref=e431]
+                    - list [ref=e432]:
+                      - listitem [ref=e433]:
+                        - strong [ref=e434]: projects
+                        - text: ": integrate oxlint and oxfmt - by"
+                        - link "@soybeanfe" [ref=e435] [cursor=pointer]:
+                          - /url: https://github.com/soybeanfe
+                        - link "(6ff74)" [ref=e436] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/6ff74c0c
+                    - heading "🚀 Features" [level=3] [ref=e437]
+                    - list [ref=e438]:
+                      - listitem [ref=e439]:
+                        - strong [ref=e440]: components
+                        - text: ":"
+                        - list [ref=e441]:
+                          - listitem [ref=e442]:
+                            - text: Column settings support fixed columns. - by
+                            - link "@m-xlsea" [ref=e443] [cursor=pointer]:
+                              - /url: https://github.com/m-xlsea
+                            - link "(70658)" [ref=e444] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/70658643
+                          - listitem [ref=e445]:
+                            - text: Add “Select All” to TableColumnSetting - by
+                            - link "@wenyuanw" [ref=e446] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(0081b)" [ref=e447] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/0081b9c0
+                      - listitem [ref=e448]:
+                        - strong [ref=e449]: logo
+                        - text: ":"
+                        - list [ref=e450]:
+                          - listitem [ref=e451]:
+                            - text: use new logo - by
+                            - link "@soybeanjs" [ref=e452] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(5aac5)" [ref=e453] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/5aac540a
+                      - listitem [ref=e454]:
+                        - strong [ref=e455]: projects
+                        - text: ":"
+                        - list [ref=e456]:
+                          - listitem [ref=e457]:
+                            - text: "add the plugin: vite-plugin-vue-transition-root-validator, to optimize the development experience. - by"
+                            - link "@Azir-11" [ref=e458] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(30e3c)" [ref=e459] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/30e3cdc7
+                      - listitem [ref=e460]:
+                        - strong [ref=e461]: types
+                        - text: ":"
+                        - list [ref=e462]:
+                          - listitem [ref=e463]:
+                            - text: Added type definition
+                            - code [ref=e464]: force
+                            - text: to router push options. - by
+                            - link "@m-xlsea" [ref=e465] [cursor=pointer]:
+                              - /url: https://github.com/m-xlsea
+                            - link "(a3794)" [ref=e466] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a37949f2
+                      - listitem [ref=e467]:
+                        - strong [ref=e468]: workflows
+                        - text: ":"
+                        - list [ref=e469]:
+                          - listitem [ref=e470]:
+                            - text: add opencode workflow for issue and PR comment triggers - by
+                            - link "@soybeanjs" [ref=e471] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(dacee)" [ref=e472] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/dacee143
+                    - heading "🐞 Bug Fixes" [level=3] [ref=e473]
+                    - list [ref=e474]:
+                      - listitem [ref=e475]:
+                        - strong [ref=e476]: projects
+                        - text: ":"
+                        - list [ref=e477]:
+                          - listitem [ref=e478]:
+                            - text: fix the long list TableColumnSetting component exceeds the viewport. - by
+                            - link "@skyfeiz" [ref=e479] [cursor=pointer]:
+                              - /url: https://github.com/skyfeiz
+                            - link "(cbfb9)" [ref=e480] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/cbfb932f
+                          - listitem [ref=e481]:
+                            - text: fix NButton props conflicts. - by
+                            - link "@skyfeiz" [ref=e482] [cursor=pointer]:
+                              - /url: https://github.com/skyfeiz
+                            - link "(54107)" [ref=e483] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/54107aca
+                          - listitem [ref=e484]:
+                            - text: ensure HTML lang attribute is updated when setting locale - by
+                            - link "@pan0xc" [ref=e485] [cursor=pointer]:
+                              - /url: https://github.com/pan0xc
+                            - link "(f96c3)" [ref=e486] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/f96c3c9e
+                          - listitem [ref=e487]:
+                            - text: correct HTML lang attribute to standard format - by
+                            - link "@pan0xc" [ref=e488] [cursor=pointer]:
+                              - /url: https://github.com/pan0xc
+                            - link "(b520d)" [ref=e489] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/b520db3e
+                      - listitem [ref=e490]:
+                        - strong [ref=e491]: router
+                        - text: ":"
+                        - list [ref=e492]:
+                          - listitem [ref=e493]:
+                            - text: simplify route guard logic and remove unnecessary next calls - by
+                            - link "@soybeanfe" [ref=e494] [cursor=pointer]:
+                              - /url: https://github.com/soybeanfe
+                            - link "(3c2cb)" [ref=e495] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3c2cbb74
+                    - heading "🛠 Optimizations" [level=3] [ref=e496]
+                    - list [ref=e497]:
+                      - listitem [ref=e498]:
+                        - strong [ref=e499]: projects
+                        - text: ":"
+                        - list [ref=e500]:
+                          - listitem [ref=e501]:
+                            - text: modify the injection location of the token. - by
+                            - link "@Azir-11" [ref=e502] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(9d48c)" [ref=e503] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/9d48ca5f
+                          - listitem [ref=e504]:
+                            - text: optimize unocss config - by
+                            - link "@soybeanfe" [ref=e505] [cursor=pointer]:
+                              - /url: https://github.com/soybeanfe
+                            - link "(6fc6f)" [ref=e506] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/6fc6f1c9
+                    - heading "📖 Documentation" [level=3] [ref=e507]
+                    - list [ref=e508]:
+                      - listitem [ref=e509]:
+                        - strong [ref=e510]: projects
+                        - text: ": V2 has been released. - by"
+                        - link "@skyfeiz" [ref=e511] [cursor=pointer]:
+                          - /url: https://github.com/skyfeiz
+                        - link "(d7394)" [ref=e512] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/d73947a5
+                    - heading "🏡 Chore" [level=3] [ref=e513]
+                    - list [ref=e514]:
+                      - listitem [ref=e515]:
+                        - strong [ref=e516]: deps
+                        - text: ":"
+                        - list [ref=e517]:
+                          - listitem [ref=e518]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e519] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(232e1)" [ref=e520] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/232e1ac4
+                          - listitem [ref=e521]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e522] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(2a023)" [ref=e523] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/2a0231da
+                          - listitem [ref=e524]:
+                            - text: update deps - by
+                            - link "@soybeanfe" [ref=e525] [cursor=pointer]:
+                              - /url: https://github.com/soybeanfe
+                            - link "(b867c)" [ref=e526] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/b867c290
+                    - heading "🎨 Styles" [level=3] [ref=e527]
+                    - list [ref=e528]:
+                      - listitem [ref=e529]:
+                        - strong [ref=e530]: projects
+                        - text: ": fix lint code and format code - by"
+                        - link "@soybeanfe" [ref=e531] [cursor=pointer]:
+                          - /url: https://github.com/soybeanfe
+                        - link "(781a1)" [ref=e532] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/781a18f4
+                    - heading "View changes on GitHub" [level=5] [ref=e533]:
+                      - link "View changes on GitHub" [ref=e534] [cursor=pointer]:
+                        - /url: https://github.com/soybeanjs/soybean-admin/compare/v2.0.2...v2.1.0
+                - generic [ref=e535]:
+                  - generic [ref=e536]:
+                    - heading "Contributors" [level=3] [ref=e537]
+                    - list [ref=e538]:
+                      - listitem [ref=e539]:
+                        - link "@skyfeiz" [ref=e540] [cursor=pointer]:
+                          - /url: https://github.com/skyfeiz
+                          - img "@skyfeiz" [ref=e541]
+                      - listitem [ref=e542]:
+                        - link "@wenyuanw" [ref=e543] [cursor=pointer]:
+                          - /url: https://github.com/wenyuanw
+                          - img "@wenyuanw" [ref=e544]
+                      - listitem [ref=e545]:
+                        - link "@m-xlsea" [ref=e546] [cursor=pointer]:
+                          - /url: https://github.com/m-xlsea
+                          - img "@m-xlsea" [ref=e547]
+                      - listitem [ref=e548]:
+                        - link "@pan0xc" [ref=e549] [cursor=pointer]:
+                          - /url: https://github.com/pan0xc
+                          - img "@pan0xc" [ref=e550]
+                      - listitem [ref=e551]:
+                        - link "@Azir-11" [ref=e552] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                          - img "@Azir-11" [ref=e553]
+                      - listitem [ref=e554]:
+                        - link "@soybeanfe" [ref=e555] [cursor=pointer]:
+                          - /url: https://github.com/soybeanfe
+                          - img "@soybeanfe" [ref=e556]
+                      - listitem [ref=e557]:
+                        - link "@soybeanjs" [ref=e558] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e559]
+                    - generic [ref=e560]: skyfeiz, wenyuanw, and 5 other contributors
+                  - group [ref=e563]:
+                    - button "Assets 2" [ref=e564] [cursor=pointer]:
+                      - generic [ref=e565]:
+                        - generic [ref=e566]: Assets
+                        - generic "2" [ref=e567]
+          - region "v2.0.2" [ref=e569]:
+            - heading "v2.0.2" [level=2] [ref=e570]
+            - generic [ref=e571]:
+              - generic [ref=e572]:
+                - generic [ref=e573]: 23 Dec 03:20 Dec 23, 2025
+                - generic [ref=e574]:
+                  - img "@github-actions" [ref=e575]
+                  - link "github-actions" [ref=e576] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v2.0.2" [ref=e578] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v2.0.2
+                  - generic [ref=e579]:
+                    - img "Tag" [ref=e580]
+                    - text: v2.0.2
+                - link "Commit 5e40b85" [ref=e583] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/5e40b850180804aa51573590eb2e058d1fd8eb06
+                  - img "Commit" [ref=e584]
+                  - code [ref=e586]: 5e40b85
+                - button "Compare" [ref=e590] [cursor=pointer]:
+                  - generic [ref=e591]:
+                    - generic [ref=e592]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e594]:
+                - generic [ref=e595]:
+                  - link "v2.0.2" [ref=e600] [cursor=pointer]:
+                    - /url: /soybeanjs/soybean-admin/releases/tag/v2.0.2
+                  - generic [ref=e602]:
+                    - heading "🐞 Bug Fixes" [level=3] [ref=e603]
+                    - list [ref=e604]:
+                      - listitem [ref=e605]:
+                        - strong [ref=e606]: hooks
+                        - text: ": update pagination pageSize after data fetch. - by"
+                        - link "@Azir-11" [ref=e607] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(64226)" [ref=e608] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/64226d9b
+                      - listitem [ref=e609]:
+                        - strong [ref=e610]: projects
+                        - text: ": fix the incorrect judgment of home by pin tab. - by"
+                        - link "@Azir-11" [ref=e611] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(62a43)" [ref=e612] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/62a43c39
+                    - heading "🏡 Chore" [level=3] [ref=e613]
+                    - list [ref=e614]:
+                      - listitem [ref=e615]:
+                        - strong [ref=e616]: deps
+                        - text: ": update deps - by"
+                        - link "@soybeanjs" [ref=e617] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(ec9f9)" [ref=e618] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/ec9f9af9
+                    - heading "View changes on GitHub" [level=5] [ref=e619]:
+                      - link "View changes on GitHub" [ref=e620] [cursor=pointer]:
+                        - /url: https://github.com/soybeanjs/soybean-admin/compare/v2.0.1...v2.0.2
+                - generic [ref=e621]:
+                  - generic [ref=e622]:
+                    - heading "Contributors" [level=3] [ref=e623]
+                    - list [ref=e624]:
+                      - listitem [ref=e625]:
+                        - link "@Azir-11" [ref=e626] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                          - img "@Azir-11" [ref=e627]
+                      - listitem [ref=e628]:
+                        - link "@soybeanjs" [ref=e629] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e630]
+                    - generic [ref=e631]: Azir-11 and soybeanjs
+                  - group [ref=e634]:
+                    - button "Assets 2" [ref=e635] [cursor=pointer]:
+                      - generic [ref=e636]:
+                        - generic [ref=e637]: Assets
+                        - generic "2" [ref=e638]
+          - region "v2.0.1" [ref=e640]:
+            - heading "v2.0.1" [level=2] [ref=e641]
+            - generic [ref=e642]:
+              - generic [ref=e643]:
+                - generic [ref=e644]: 04 Dec 06:08 Dec 4, 2025
+                - generic [ref=e645]:
+                  - img "@github-actions" [ref=e646]
+                  - link "github-actions" [ref=e647] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v2.0.1" [ref=e649] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v2.0.1
+                  - generic [ref=e650]:
+                    - img "Tag" [ref=e651]
+                    - text: v2.0.1
+                - link "Commit e675474" [ref=e654] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/e675474b4395dc5157a366217557584f6ef59061
+                  - img "Commit" [ref=e655]
+                  - code [ref=e657]: e675474
+                - button "Compare" [ref=e661] [cursor=pointer]:
+                  - generic [ref=e662]:
+                    - generic [ref=e663]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e665]:
+                - generic [ref=e666]:
+                  - link "v2.0.1" [ref=e671] [cursor=pointer]:
+                    - /url: /soybeanjs/soybean-admin/releases/tag/v2.0.1
+                  - generic [ref=e673]:
+                    - heading "🚀 Features" [level=3] [ref=e674]
+                    - list [ref=e675]:
+                      - listitem [ref=e676]:
+                        - strong [ref=e677]: docs
+                        - text: ":"
+                        - list [ref=e678]:
+                          - listitem [ref=e679]:
+                            - text: update QQ group image in README - by
+                            - link "@soybeanjs" [ref=e680] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(46081)" [ref=e681] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/46081c36
+                      - listitem [ref=e682]:
+                        - strong [ref=e683]: projects
+                        - text: ":"
+                        - list [ref=e684]:
+                          - listitem [ref=e685]:
+                            - text: support theme presets to only set partial content. - by
+                            - link "@Azir-11" [ref=e686] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(9da84)" [ref=e687] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/9da847fb
+                          - listitem [ref=e688]:
+                            - text: support theme perset to override component library presets. - by
+                            - link "@Azir-11" [ref=e689] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(60517)" [ref=e690] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/605173a1
+                          - listitem [ref=e691]:
+                            - text: support pinning and unpinning of tabs - by @hellohooke
+                            - link "(b8a76)" [ref=e692] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/b8a767d7
+                          - listitem [ref=e693]:
+                            - text: hybrid layout mode auto select first deepest child menu - by
+                            - link "@paynezhuang" [ref=e694] [cursor=pointer]:
+                              - /url: https://github.com/paynezhuang
+                            - link "(94019)" [ref=e695] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/9401925f
+                    - heading "🐞 Bug Fixes" [level=3] [ref=e696]
+                    - list [ref=e697]:
+                      - listitem [ref=e698]:
+                        - strong [ref=e699]: docs
+                        - text: ": update project name in ecosystem section of README - by"
+                        - link "@soybeanjs" [ref=e700] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(bb232)" [ref=e701] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/bb232bf8
+                      - listitem [ref=e702]:
+                        - strong [ref=e703]: types
+                        - text: ": add missing property in theme presets - by"
+                        - link "@taisha" [ref=e704] [cursor=pointer]:
+                          - /url: https://github.com/taisha
+                        - link "(4a9cf)" [ref=e705] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/4a9cf6c3
+                    - heading "🛠 Optimizations" [level=3] [ref=e706]
+                    - list [ref=e707]:
+                      - listitem [ref=e708]:
+                        - strong [ref=e709]: projects
+                        - text: ": simplify some theme preset configurations. - by"
+                        - link "@Azir-11" [ref=e710] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(c6d97)" [ref=e711] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/c6d97dba
+                    - heading "📖 Documentation" [level=3] [ref=e712]
+                    - list [ref=e713]:
+                      - listitem [ref=e714]:
+                        - strong [ref=e715]: projects
+                        - text: ": add link to ecosystem document. - by"
+                        - link "@Azir-11" [ref=e716] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(c472a)" [ref=e717] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/c472a943
+                    - heading "🏡 Chore" [level=3] [ref=e718]
+                    - list [ref=e719]:
+                      - listitem [ref=e720]:
+                        - strong [ref=e721]: deps
+                        - text: ":"
+                        - list [ref=e722]:
+                          - listitem [ref=e723]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e724] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(f8dc6)" [ref=e725] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/f8dc639e
+                          - listitem [ref=e726]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e727] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(7cf40)" [ref=e728] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/7cf4083b
+                      - listitem [ref=e729]:
+                        - strong [ref=e730]: other
+                        - text: ":"
+                        - list [ref=e731]:
+                          - listitem [ref=e732]:
+                            - text: remove Prettier's recommendation. - by
+                            - link "@Azir-11" [ref=e733] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(73e9a)" [ref=e734] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/73e9a0fe
+                      - listitem [ref=e735]:
+                        - strong [ref=e736]: styles
+                        - text: ":"
+                        - list [ref=e737]:
+                          - listitem [ref=e738]:
+                            - text: format code - by
+                            - link "@soybeanjs" [ref=e739] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(098cd)" [ref=e740] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/098cd50e
+                    - heading "🎨 Styles" [level=3] [ref=e741]
+                    - list [ref=e742]:
+                      - listitem [ref=e743]:
+                        - strong [ref=e744]: projects
+                        - text: ": modify homepage prompt title to tip. - by"
+                        - link "@Azir-11" [ref=e745] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(91a26)" [ref=e746] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/91a261c1
+                    - heading "View changes on GitHub" [level=5] [ref=e747]:
+                      - link "View changes on GitHub" [ref=e748] [cursor=pointer]:
+                        - /url: https://github.com/soybeanjs/soybean-admin/compare/v2.0.0...v2.0.1
+                - generic [ref=e749]:
+                  - generic [ref=e750]:
+                    - heading "Contributors" [level=3] [ref=e751]
+                    - list [ref=e752]:
+                      - listitem [ref=e753]:
+                        - link "@taisha" [ref=e754] [cursor=pointer]:
+                          - /url: https://github.com/taisha
+                          - img "@taisha" [ref=e755]
+                      - listitem [ref=e756]:
+                        - link "@paynezhuang" [ref=e757] [cursor=pointer]:
+                          - /url: https://github.com/paynezhuang
+                          - img "@paynezhuang" [ref=e758]
+                      - listitem [ref=e759]:
+                        - link "@pan0xc" [ref=e760] [cursor=pointer]:
+                          - /url: https://github.com/pan0xc
+                          - img "@pan0xc" [ref=e761]
+                      - listitem [ref=e762]:
+                        - link "@Azir-11" [ref=e763] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                          - img "@Azir-11" [ref=e764]
+                      - listitem [ref=e765]:
+                        - link "@soybeanjs" [ref=e766] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e767]
+                    - generic [ref=e768]: taisha, paynezhuang, and 3 other contributors
+                  - group [ref=e771]:
+                    - button "Assets 2" [ref=e772] [cursor=pointer]:
+                      - generic [ref=e773]:
+                        - generic [ref=e774]: Assets
+                        - generic "2" [ref=e775]
+          - region "v2.0.0" [ref=e777]:
+            - heading "v2.0.0" [level=2] [ref=e778]
+            - generic [ref=e779]:
+              - generic [ref=e780]:
+                - generic [ref=e781]: 02 Nov 05:36 Nov 2, 2025
+                - generic [ref=e782]:
+                  - img "@github-actions" [ref=e783]
+                  - link "github-actions" [ref=e784] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v2.0.0" [ref=e786] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v2.0.0
+                  - generic [ref=e787]:
+                    - img "Tag" [ref=e788]
+                    - text: v2.0.0
+                - link "Commit ec792fa" [ref=e791] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/ec792fa7493ef63f0a8795c00a52394657211776
+                  - img "Commit" [ref=e792]
+                  - code [ref=e794]: ec792fa
+                - button "Compare" [ref=e798] [cursor=pointer]:
+                  - generic [ref=e799]:
+                    - generic [ref=e800]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e802]:
+                - generic [ref=e803]:
+                  - link "v2.0.0" [ref=e808] [cursor=pointer]:
+                    - /url: /soybeanjs/soybean-admin/releases/tag/v2.0.0
+                  - generic [ref=e810]:
+                    - heading "🚨 Breaking Changes" [level=3] [ref=e811]
+                    - list [ref=e812]:
+                      - listitem [ref=e813]:
+                        - strong [ref=e814]: hooks
+                        - text: ": refactor useTable and enhance type definitions - by"
+                        - link "@soybeanjs" [ref=e815] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(8cc51)" [ref=e816] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/8cc5177c
+                      - listitem [ref=e817]:
+                        - strong [ref=e818]: projects
+                        - text: ": optimize layout mode, split horizontal mix component into two layouts, and rename the component. - by"
+                        - link "@Azir-11" [ref=e819] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(b6ac3)" [ref=e820] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/b6ac3106
+                      - listitem [ref=e821]:
+                        - strong [ref=e822]: request
+                        - text: ": remove cancelRequest method and related logic from request instances - by"
+                        - link "@soybeanjs" [ref=e823] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(b4e12)" [ref=e824] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/b4e12530
+                    - heading "🚀 Features" [level=3] [ref=e825]
+                    - list [ref=e826]:
+                      - listitem [ref=e827]:
+                        - strong [ref=e828]: components
+                        - text: ":"
+                        - list [ref=e829]:
+                          - listitem [ref=e830]:
+                            - text: add the IconTooltip component. - by
+                            - link "@Azir-11" [ref=e831] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(a55b4)" [ref=e832] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a55b4dc0
+                          - listitem [ref=e833]:
+                            - text: replace NTooltip with IconTooltip and optimize the layout of related components. - by
+                            - link "@Azir-11" [ref=e834] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(40057)" [ref=e835] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/4005763c
+                      - listitem [ref=e836]:
+                        - strong [ref=e837]: global-tab
+                        - text: ":"
+                        - list [ref=e838]:
+                          - listitem [ref=e839]:
+                            - text: add support for switching tabs with right mouse button click - by
+                            - link "@soybeanjs" [ref=e840] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(b2c91)" [ref=e841] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/b2c919b6
+                      - listitem [ref=e842]:
+                        - strong [ref=e843]: hooks
+                        - text: ":"
+                        - list [ref=e844]:
+                          - listitem [ref=e845]:
+                            - text: add scrollX computation for total table width in useNaiveTable - by
+                            - link "@Lruihao" [ref=e846] [cursor=pointer]:
+                              - /url: https://github.com/Lruihao
+                            - link "(358e1)" [ref=e847] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/358e1297
+                      - listitem [ref=e848]:
+                        - strong [ref=e849]: packages
+                        - text: ":"
+                        - list [ref=e850]:
+                          - listitem [ref=e851]:
+                            - text: materials support slider-tab. closed
+                            - link "#823" [ref=e852] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/823
+                            - text: "- by"
+                            - link "@CyberShen" [ref=e853] [cursor=pointer]:
+                              - /url: https://github.com/CyberShen
+                            - text: in
+                            - link "#823" [ref=e854] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/823
+                            - link "(61fa4)" [ref=e855] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/61fa4b7f
+                      - listitem [ref=e856]:
+                        - strong [ref=e857]: projects
+                        - text: ":"
+                        - list [ref=e858]:
+                          - listitem [ref=e859]:
+                            - text: refactor theme drawer with tabbed layout for better UX. - by
+                            - link "@Azir-11" [ref=e860] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(8ba71)" [ref=e861] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8ba71a08
+                          - listitem [ref=e862]:
+                            - text: Add current time display option for watermark - by
+                            - link "@wenyuanw" [ref=e863] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - text: in
+                            - link "#772" [ref=e864] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/772
+                            - link "(f238f)" [ref=e865] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/f238fcbd
+                          - listitem [ref=e866]:
+                            - text: add 'vertical-hybrid-header-first' layout mode - by
+                            - link "@wenyuanw" [ref=e867] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(b4e5c)" [ref=e868] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/b4e5c6d9
+                          - listitem [ref=e869]:
+                            - text: add prompt information for scrolling mode and tab bar caching. - by
+                            - link "@Azir-11" [ref=e870] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(29a2a)" [ref=e871] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/29a2a5c6
+                          - listitem [ref=e872]:
+                            - text: support theme preset function. - by
+                            - link "@Azir-11" [ref=e873] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(257f1)" [ref=e874] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/257f1183
+                          - listitem [ref=e875]:
+                            - text: modify the default value of the reset cache policy to 'refresh'. - by
+                            - link "@Azir-11" [ref=e876] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(3c0a5)" [ref=e877] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3c0a5282
+                          - listitem [ref=e878]:
+                            - text: optimize tabs cache cleaning strategy. close
+                            - link "#820" [ref=e879] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/820
+                            - text: . - by
+                            - link "@Azir-11" [ref=e880] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - text: in
+                            - link "#820" [ref=e881] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/820
+                            - link "(ef7ac)" [ref=e882] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/ef7acc62
+                          - listitem [ref=e883]:
+                            - text: support closing tabs with middle mouse button click - by
+                            - link "@wenyuanw" [ref=e884] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(a8d1e)" [ref=e885] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a8d1e5d2
+                          - listitem [ref=e886]:
+                            - text: support set global redius - by
+                            - link "@CyberShen" [ref=e887] [cursor=pointer]:
+                              - /url: https://github.com/CyberShen
+                            - link "(24c6d)" [ref=e888] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/24c6df52
+                          - listitem [ref=e889]:
+                            - text: support set global redius - by
+                            - link "@CyberShen" [ref=e890] [cursor=pointer]:
+                              - /url: https://github.com/CyberShen
+                            - link "(3549c)" [ref=e891] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3549c4db
+                          - listitem [ref=e892]:
+                            - text: compatible with the new Echarts API and optimized styles. - by
+                            - link "@Azir-11" [ref=e893] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(9755c)" [ref=e894] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/9755c313
+                      - listitem [ref=e895]:
+                        - strong [ref=e896]: styles
+                        - text: ":"
+                        - list [ref=e897]:
+                          - listitem [ref=e898]:
+                            - text: add text-autospace property to improve text layout - by
+                            - link "@wenyuanw" [ref=e899] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(345aa)" [ref=e900] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/345aa293
+                    - heading "🐞 Bug Fixes" [level=3] [ref=e901]
+                    - list [ref=e902]:
+                      - listitem [ref=e903]:
+                        - strong [ref=e904]: hooks
+                        - text: ":"
+                        - list [ref=e905]:
+                          - listitem [ref=e906]:
+                            - text: correct chart rendering logic in useEcharts - by
+                            - link "@soybeanjs" [ref=e907] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(8a7cd)" [ref=e908] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8a7cd593
+                      - listitem [ref=e909]:
+                        - strong [ref=e910]: layout
+                        - text: ":"
+                        - list [ref=e911]:
+                          - listitem [ref=e912]:
+                            - text: fix getSiderWidth - by
+                            - link "@soybeanjs" [ref=e913] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(e471e)" [ref=e914] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/e471e914
+                      - listitem [ref=e915]:
+                        - strong [ref=e916]: packages
+                        - text: ":"
+                        - list [ref=e917]:
+                          - listitem [ref=e918]:
+                            - text: fix the parsing logic for stored data to ensure correct return of boolean values - by
+                            - link "@Lruihao" [ref=e919] [cursor=pointer]:
+                              - /url: https://github.com/Lruihao
+                            - link "(9ea56)" [ref=e920] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/9ea56c9b
+                          - listitem [ref=e921]:
+                            - text: "axios: fix json response. fixed"
+                            - link "#815" [ref=e922] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/815
+                            - text: "- by"
+                            - link "@soybeanjs" [ref=e923] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - text: in
+                            - link "#815" [ref=e924] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/815
+                            - link "(fd087)" [ref=e925] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/fd087f59
+                          - listitem [ref=e926]:
+                            - text: "axios: fix json response. fixed"
+                            - link "#815" [ref=e927] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/815
+                            - text: "- by"
+                            - link "@soybeanjs" [ref=e928] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - text: in
+                            - link "#815" [ref=e929] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/815
+                            - link "(5be86)" [ref=e930] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/5be864a8
+                      - listitem [ref=e931]:
+                        - strong [ref=e932]: projects
+                        - text: ":"
+                        - list [ref=e933]:
+                          - listitem [ref=e934]:
+                            - text: Fix i18n-ally not working when setting moduleResolution to bundler. fixed
+                            - link "#780" [ref=e935] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/780
+                            - text: "- by"
+                            - link "@xiaobao0505" [ref=e936] [cursor=pointer]:
+                              - /url: https://github.com/xiaobao0505
+                            - text: in
+                            - link "#780" [ref=e937] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/780
+                            - link "(41191)" [ref=e938] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/41191d54
+                          - listitem [ref=e939]:
+                            - text: adjust legend position in line chart options. - by
+                            - link "@Azir-11" [ref=e940] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(0b998)" [ref=e941] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/0b9982bd
+                      - listitem [ref=e942]:
+                        - strong [ref=e943]: readme
+                        - text: ":"
+                        - list [ref=e944]:
+                          - listitem [ref=e945]:
+                            - text: update GitHub stars and forks links for gitee - by
+                            - link "@soybeanjs" [ref=e946] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(923eb)" [ref=e947] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/923eb98a
+                      - listitem [ref=e948]:
+                        - strong [ref=e949]: scripts
+                        - text: ":"
+                        - list [ref=e950]:
+                          - listitem [ref=e951]:
+                            - text: update command to use 'npm-check-updates' instead of 'ncu' - by
+                            - link "@soybeanjs" [ref=e952] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(8dc17)" [ref=e953] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8dc17e62
+                      - listitem [ref=e954]:
+                        - strong [ref=e955]: styles
+                        - text: ":"
+                        - list [ref=e956]:
+                          - listitem [ref=e957]:
+                            - text: show light color scrollbar while dark mode is on - by
+                            - link "@whyang9701" [ref=e958] [cursor=pointer]:
+                              - /url: https://github.com/whyang9701
+                            - link "(dac50)" [ref=e959] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/dac5075b
+                      - listitem [ref=e960]:
+                        - strong [ref=e961]: table
+                        - text: ":"
+                        - list [ref=e962]:
+                          - listitem [ref=e963]:
+                            - text: add type annotations for records in useTable hook - by
+                            - link "@soybeanjs" [ref=e964] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(32b8f)" [ref=e965] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/32b8f990
+                      - listitem [ref=e966]:
+                        - strong [ref=e967]: types
+                        - text: ":"
+                        - list [ref=e968]:
+                          - listitem [ref=e969]:
+                            - text: fix proxy types - by
+                            - link "@soybeanjs" [ref=e970] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(3d72f)" [ref=e971] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3d72f954
+                          - listitem [ref=e972]:
+                            - text: fix proxy types - by
+                            - link "@soybeanjs" [ref=e973] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(12b25)" [ref=e974] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/12b25e0d
+                          - listitem [ref=e975]:
+                            - text: fix ts type error - by
+                            - link "@soybeanjs" [ref=e976] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(d5a3a)" [ref=e977] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/d5a3a25d
+                    - heading "🛠 Optimizations" [level=3] [ref=e978]
+                    - list [ref=e979]:
+                      - listitem [ref=e980]:
+                        - strong [ref=e981]: hooks
+                        - text: ":"
+                        - list [ref=e982]:
+                          - listitem [ref=e983]:
+                            - text: optimize useEcharts - by
+                            - link "@soybeanjs" [ref=e984] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(936b8)" [ref=e985] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/936b834e
+                      - listitem [ref=e986]:
+                        - strong [ref=e987]: packages
+                        - text: ":"
+                        - list [ref=e988]:
+                          - listitem [ref=e989]:
+                            - text: remove ofetch package - by
+                            - link "@soybeanjs" [ref=e990] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(abaaa)" [ref=e991] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/abaaa4a0
+                      - listitem [ref=e992]:
+                        - strong [ref=e993]: projects
+                        - text: ":"
+                        - list [ref=e994]:
+                          - listitem [ref=e995]:
+                            - text: improve theme drawer responsive width for mobile devices - by
+                            - link "@wenyuanw" [ref=e996] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(8439a)" [ref=e997] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8439a600
+                          - listitem [ref=e998]:
+                            - text: improve robustness of second-level menu key logic - by
+                            - link "@wenyuanw" [ref=e999] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(8b8a2)" [ref=e1000] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8b8a2083
+                          - listitem [ref=e1001]:
+                            - text: optimize theme drawer width - by
+                            - link "@soybeanjs" [ref=e1002] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(81468)" [ref=e1003] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8146858b
+                          - listitem [ref=e1004]:
+                            - text: optimize api type file - by
+                            - link "@soybeanjs" [ref=e1005] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(3a343)" [ref=e1006] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3a343eea
+                          - listitem [ref=e1007]:
+                            - text: optimize radius settings - by
+                            - link "@soybeanjs" [ref=e1008] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(87a66)" [ref=e1009] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/87a66a42
+                      - listitem [ref=e1010]:
+                        - strong [ref=e1011]: request
+                        - text: ":"
+                        - list [ref=e1012]:
+                          - listitem [ref=e1013]:
+                            - text: enhance request options and response handling with generic types - by
+                            - link "@soybeanjs" [ref=e1014] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(50a5c)" [ref=e1015] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/50a5cba0
+                      - listitem [ref=e1016]:
+                        - strong [ref=e1017]: typings
+                        - text: ":"
+                        - list [ref=e1018]:
+                          - listitem [ref=e1019]:
+                            - text: update component typings - by
+                            - link "@soybeanjs" [ref=e1020] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(1d142)" [ref=e1021] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/1d142695
+                    - heading "💅 Refactors" [level=3] [ref=e1022]
+                    - list [ref=e1023]:
+                      - listitem [ref=e1024]:
+                        - strong [ref=e1025]: hooks
+                        - text: ":"
+                        - list [ref=e1026]:
+                          - listitem [ref=e1027]:
+                            - text: optimize useContext and update useMixMenuContext - by
+                            - link "@soybeanjs" [ref=e1028] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(c9651)" [ref=e1029] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/c965140b
+                          - listitem [ref=e1030]:
+                            - text: streamline column visibility handling in useTable and table components - by
+                            - link "@soybeanjs" [ref=e1031] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(ee434)" [ref=e1032] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/ee434145
+                          - listitem [ref=e1033]:
+                            - text: remove useSignal hook and update exports - by
+                            - link "@soybeanjs" [ref=e1034] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(87adc)" [ref=e1035] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/87adc35f
+                      - listitem [ref=e1036]:
+                        - strong [ref=e1037]: menu
+                        - text: ":"
+                        - list [ref=e1038]:
+                          - listitem [ref=e1039]:
+                            - text: optimize the margin on the menu - by
+                            - link "@NicholasLD" [ref=e1040] [cursor=pointer]:
+                              - /url: https://github.com/NicholasLD
+                            - link "(d7311)" [ref=e1041] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/d7311111
+                      - listitem [ref=e1042]:
+                        - strong [ref=e1043]: projects
+                        - text: ":"
+                        - list [ref=e1044]:
+                          - listitem [ref=e1045]:
+                            - text: remove unnecessary logic in onRouteSwitchWhenLoggedIn - by
+                            - link "@wenyuanw" [ref=e1046] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(d6c81)" [ref=e1047] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/d6c8142b
+                      - listitem [ref=e1048]:
+                        - strong [ref=e1049]: request
+                        - text: ":"
+                        - list [ref=e1050]:
+                          - listitem [ref=e1051]:
+                            - text: unify response transformation methods and deprecate transformBackendResponse - by
+                            - link "@soybeanjs" [ref=e1052] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(f83ee)" [ref=e1053] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/f83eefbc
+                      - listitem [ref=e1054]:
+                        - strong [ref=e1055]: types
+                        - text: ":"
+                        - list [ref=e1056]:
+                          - listitem [ref=e1057]:
+                            - text: move Auth and Route namespaces to separate files and clean up api.d.ts - by
+                            - link "@Azir-11" [ref=e1058] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(d37ce)" [ref=e1059] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/d37ce046
+                    - heading "📖 Documentation" [level=3] [ref=e1060]
+                    - list [ref=e1061]:
+                      - listitem [ref=e1062]:
+                        - strong [ref=e1063]: projects
+                        - text: ":"
+                        - list [ref=e1064]:
+                          - listitem [ref=e1065]:
+                            - text: add github trendshift info. - by
+                            - link "@Azir-11" [ref=e1066] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(e18d3)" [ref=e1067] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/e18d3972
+                          - listitem [ref=e1068]:
+                            - text: add github trendshift info. - by
+                            - link "@Azir-11" [ref=e1069] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(2a0c9)" [ref=e1070] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/2a0c9f1b
+                          - listitem [ref=e1071]:
+                            - text: add contribution leaderboard - by
+                            - link "@wenyuanw" [ref=e1072] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(01744)" [ref=e1073] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/017440c1
+                    - heading "🏡 Chore" [level=3] [ref=e1074]
+                    - list [ref=e1075]:
+                      - listitem [ref=e1076]:
+                        - strong [ref=e1077]: deps
+                        - text: ":"
+                        - list [ref=e1078]:
+                          - listitem [ref=e1079]:
+                            - text: update NodeJS and pnpm version requirements in package.json and documentation - by
+                            - strong [ref=e1080]: Junior25306
+                            - link "(a5c4b)" [ref=e1081] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a5c4b4e3
+                          - listitem [ref=e1082]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1083] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(5cb1c)" [ref=e1084] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/5cb1cebd
+                          - listitem [ref=e1085]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1086] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(aeb63)" [ref=e1087] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/aeb63690
+                            - text: ...
+                  - link "Read more" [ref=e1088] [cursor=pointer]:
+                    - /url: /soybeanjs/soybean-admin/releases/tag/v2.0.0
+                - generic [ref=e1089]:
+                  - generic [ref=e1090]:
+                    - heading "Contributors" [level=3] [ref=e1091]
+                    - list [ref=e1092]:
+                      - listitem [ref=e1093]:
+                        - link "@whyang9701" [ref=e1094] [cursor=pointer]:
+                          - /url: https://github.com/whyang9701
+                          - img "@whyang9701" [ref=e1095]
+                      - listitem [ref=e1096]:
+                        - link "@Lruihao" [ref=e1097] [cursor=pointer]:
+                          - /url: https://github.com/Lruihao
+                          - img "@Lruihao" [ref=e1098]
+                      - listitem [ref=e1099]:
+                        - link "@NicholasLD" [ref=e1100] [cursor=pointer]:
+                          - /url: https://github.com/NicholasLD
+                          - img "@NicholasLD" [ref=e1101]
+                      - listitem [ref=e1102]:
+                        - link "@wenyuanw" [ref=e1103] [cursor=pointer]:
+                          - /url: https://github.com/wenyuanw
+                          - img "@wenyuanw" [ref=e1104]
+                      - listitem [ref=e1105]:
+                        - link "@xiaobao0505" [ref=e1106] [cursor=pointer]:
+                          - /url: https://github.com/xiaobao0505
+                          - img "@xiaobao0505" [ref=e1107]
+                      - listitem [ref=e1108]:
+                        - link "@CyberShen" [ref=e1109] [cursor=pointer]:
+                          - /url: https://github.com/CyberShen
+                          - img "@CyberShen" [ref=e1110]
+                      - listitem [ref=e1111]:
+                        - link "@Azir-11" [ref=e1112] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                          - img "@Azir-11" [ref=e1113]
+                      - listitem [ref=e1114]:
+                        - link "@soybeanjs" [ref=e1115] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e1116]
+                    - generic [ref=e1117]: whyang9701, Lruihao, and 6 other contributors
+                  - group [ref=e1120]:
+                    - button "Assets 2" [ref=e1121] [cursor=pointer]:
+                      - generic [ref=e1122]:
+                        - generic [ref=e1123]: Assets
+                        - generic "2" [ref=e1124]
+                  - generic [ref=e1126]:
+                    - 'button "hooray (5): github-actions[bot], 05:35AM on November 02, 2025" [disabled] [ref=e1129]':
+                      - generic [ref=e1130]: 🎉
+                      - generic [ref=e1131]: "5"
+                    - generic [ref=e1132]: 5 people reacted
+          - region "v2.0.0-beta.2" [ref=e1133]:
+            - heading "v2.0.0-beta.2" [level=2] [ref=e1134]
+            - generic [ref=e1135]:
+              - generic [ref=e1136]:
+                - generic [ref=e1137]: 27 Oct 10:51 Oct 27, 2025
+                - generic [ref=e1138]:
+                  - img "@github-actions" [ref=e1139]
+                  - link "github-actions" [ref=e1140] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v2.0.0-beta.2" [ref=e1142] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v2.0.0-beta.2
+                  - generic [ref=e1143]:
+                    - img "Tag" [ref=e1144]
+                    - text: v2.0.0-beta.2
+                - link "Commit 5cfb606" [ref=e1147] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/5cfb6060425ce7f20777827d6fc12ffe11c53496
+                  - img "Commit" [ref=e1148]
+                  - code [ref=e1150]: 5cfb606
+                - button "Compare" [ref=e1154] [cursor=pointer]:
+                  - generic [ref=e1155]:
+                    - generic [ref=e1156]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e1158]:
+                - generic [ref=e1159]:
+                  - generic [ref=e1162]:
+                    - link "v2.0.0-beta.2" [ref=e1164] [cursor=pointer]:
+                      - /url: /soybeanjs/soybean-admin/releases/tag/v2.0.0-beta.2
+                    - generic [ref=e1166]: Pre-release
+                  - generic [ref=e1167]:
+                    - heading "🚀 Features" [level=3] [ref=e1168]
+                    - list [ref=e1169]:
+                      - listitem [ref=e1170]:
+                        - strong [ref=e1171]: global-tab
+                        - text: ": add support for switching tabs with right mouse button click - by"
+                        - link "@soybeanjs" [ref=e1172] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(b2c91)" [ref=e1173] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/b2c919b6
+                    - heading "🐞 Bug Fixes" [level=3] [ref=e1174]
+                    - list [ref=e1175]:
+                      - listitem [ref=e1176]:
+                        - strong [ref=e1177]: layout
+                        - text: ": fix getSiderWidth - by"
+                        - link "@soybeanjs" [ref=e1178] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(e471e)" [ref=e1179] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/e471e914
+                      - listitem [ref=e1180]:
+                        - strong [ref=e1181]: packages
+                        - text: ": axios: fix json response. fixed"
+                        - link "#815" [ref=e1182] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/issues/815
+                        - text: "- by"
+                        - link "@soybeanjs" [ref=e1183] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - text: in
+                        - link "#815" [ref=e1184] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/issues/815
+                        - link "(fd087)" [ref=e1185] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/fd087f59
+                      - listitem [ref=e1186]:
+                        - strong [ref=e1187]: readme
+                        - text: ": update GitHub stars and forks links for gitee - by"
+                        - link "@soybeanjs" [ref=e1188] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(923eb)" [ref=e1189] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/923eb98a
+                      - listitem [ref=e1190]:
+                        - strong [ref=e1191]: scripts
+                        - text: ": update command to use 'npm-check-updates' instead of 'ncu' - by"
+                        - link "@soybeanjs" [ref=e1192] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(8dc17)" [ref=e1193] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/8dc17e62
+                      - listitem [ref=e1194]:
+                        - strong [ref=e1195]: types
+                        - text: ": fix proxy types - by"
+                        - link "@soybeanjs" [ref=e1196] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(12b25)" [ref=e1197] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/12b25e0d
+                    - heading "📖 Documentation" [level=3] [ref=e1198]
+                    - list [ref=e1199]:
+                      - listitem [ref=e1200]:
+                        - strong [ref=e1201]: projects
+                        - text: ":"
+                        - list [ref=e1202]:
+                          - listitem [ref=e1203]:
+                            - text: add github trendshift info. - by
+                            - link "@Azir-11" [ref=e1204] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(e18d3)" [ref=e1205] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/e18d3972
+                          - listitem [ref=e1206]:
+                            - text: add contribution leaderboard - by
+                            - link "@wenyuanw" [ref=e1207] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(01744)" [ref=e1208] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/017440c1
+                    - heading "🏡 Chore" [level=3] [ref=e1209]
+                    - list [ref=e1210]:
+                      - listitem [ref=e1211]:
+                        - strong [ref=e1212]: deps
+                        - text: ":"
+                        - list [ref=e1213]:
+                          - listitem [ref=e1214]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1215] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(e33f9)" [ref=e1216] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/e33f944a
+                          - listitem [ref=e1217]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1218] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(9fa95)" [ref=e1219] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/9fa951aa
+                      - listitem [ref=e1220]:
+                        - strong [ref=e1221]: other
+                        - text: ":"
+                        - list [ref=e1222]:
+                          - listitem [ref=e1223]:
+                            - text: update the ESLint validation configuration to support more file types. - by
+                            - link "@Azir-11" [ref=e1224] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(8d7f9)" [ref=e1225] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8d7f91dc
+                      - listitem [ref=e1226]:
+                        - strong [ref=e1227]: readme
+                        - text: ":"
+                        - list [ref=e1228]:
+                          - listitem [ref=e1229]:
+                            - text: remove DartNode sponsorship badge from README files - by
+                            - link "@soybeanjs" [ref=e1230] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(33ade)" [ref=e1231] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/33ade539
+                    - heading "View changes on GitHub" [level=5] [ref=e1232]:
+                      - link "View changes on GitHub" [ref=e1233] [cursor=pointer]:
+                        - /url: https://github.com/soybeanjs/soybean-admin/compare/v2.0.0-beta.1...v2.0.0-beta.2
+                - generic [ref=e1234]:
+                  - generic [ref=e1235]:
+                    - heading "Contributors" [level=3] [ref=e1236]
+                    - list [ref=e1237]:
+                      - listitem [ref=e1238]:
+                        - link "@wenyuanw" [ref=e1239] [cursor=pointer]:
+                          - /url: https://github.com/wenyuanw
+                          - img "@wenyuanw" [ref=e1240]
+                      - listitem [ref=e1241]:
+                        - link "@Azir-11" [ref=e1242] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                          - img "@Azir-11" [ref=e1243]
+                      - listitem [ref=e1244]:
+                        - link "@soybeanjs" [ref=e1245] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e1246]
+                    - generic [ref=e1247]: wenyuanw, Azir-11, and soybeanjs
+                  - group [ref=e1250]:
+                    - button "Assets 2" [ref=e1251] [cursor=pointer]:
+                      - generic [ref=e1252]:
+                        - generic [ref=e1253]: Assets
+                        - generic "2" [ref=e1254]
+          - region "v2.0.0-beta.1" [ref=e1256]:
+            - heading "v2.0.0-beta.1" [level=2] [ref=e1257]
+            - generic [ref=e1258]:
+              - generic [ref=e1259]:
+                - generic [ref=e1260]: 25 Oct 07:08 Oct 25, 2025
+                - generic [ref=e1261]:
+                  - img "@github-actions" [ref=e1262]
+                  - link "github-actions" [ref=e1263] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v2.0.0-beta.1" [ref=e1265] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v2.0.0-beta.1
+                  - generic [ref=e1266]:
+                    - img "Tag" [ref=e1267]
+                    - text: v2.0.0-beta.1
+                - link "Commit 56ad0df" [ref=e1270] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/56ad0df974feb8c01bb3a3ad5c3851ae66ac8841
+                  - img "Commit" [ref=e1271]
+                  - code [ref=e1273]: 56ad0df
+                - button "Compare" [ref=e1277] [cursor=pointer]:
+                  - generic [ref=e1278]:
+                    - generic [ref=e1279]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e1281]:
+                - generic [ref=e1282]:
+                  - generic [ref=e1285]:
+                    - link "v2.0.0-beta.1" [ref=e1287] [cursor=pointer]:
+                      - /url: /soybeanjs/soybean-admin/releases/tag/v2.0.0-beta.1
+                    - generic [ref=e1289]: Pre-release
+                  - generic [ref=e1290]:
+                    - heading "🚨 Breaking Changes" [level=3] [ref=e1291]
+                    - list [ref=e1292]:
+                      - listitem [ref=e1293]:
+                        - strong [ref=e1294]: hooks
+                        - text: ": refactor useTable and enhance type definitions - by"
+                        - link "@soybeanjs" [ref=e1295] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(8cc51)" [ref=e1296] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/8cc5177c
+                      - listitem [ref=e1297]:
+                        - strong [ref=e1298]: projects
+                        - text: ": optimize layout mode, split horizontal mix component into two layouts, and rename the component. - by"
+                        - link "@Azir-11" [ref=e1299] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(b6ac3)" [ref=e1300] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/b6ac3106
+                      - listitem [ref=e1301]:
+                        - strong [ref=e1302]: request
+                        - text: ": remove cancelRequest method and related logic from request instances - by"
+                        - link "@soybeanjs" [ref=e1303] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(b4e12)" [ref=e1304] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/b4e12530
+                    - heading "🚀 Features" [level=3] [ref=e1305]
+                    - list [ref=e1306]:
+                      - listitem [ref=e1307]:
+                        - strong [ref=e1308]: components
+                        - text: ":"
+                        - list [ref=e1309]:
+                          - listitem [ref=e1310]:
+                            - text: add the IconTooltip component. - by
+                            - link "@Azir-11" [ref=e1311] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(a55b4)" [ref=e1312] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a55b4dc0
+                          - listitem [ref=e1313]:
+                            - text: replace NTooltip with IconTooltip and optimize the layout of related components. - by
+                            - link "@Azir-11" [ref=e1314] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(40057)" [ref=e1315] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/4005763c
+                      - listitem [ref=e1316]:
+                        - strong [ref=e1317]: hooks
+                        - text: ":"
+                        - list [ref=e1318]:
+                          - listitem [ref=e1319]:
+                            - text: add scrollX computation for total table width in useNaiveTable - by
+                            - link "@Lruihao" [ref=e1320] [cursor=pointer]:
+                              - /url: https://github.com/Lruihao
+                            - link "(358e1)" [ref=e1321] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/358e1297
+                      - listitem [ref=e1322]:
+                        - strong [ref=e1323]: packages
+                        - text: ":"
+                        - list [ref=e1324]:
+                          - listitem [ref=e1325]:
+                            - text: materials support slider-tab. closed
+                            - link "#823" [ref=e1326] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/823
+                            - text: "- by"
+                            - link "@CyberShen" [ref=e1327] [cursor=pointer]:
+                              - /url: https://github.com/CyberShen
+                            - text: in
+                            - link "#823" [ref=e1328] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/823
+                            - link "(61fa4)" [ref=e1329] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/61fa4b7f
+                      - listitem [ref=e1330]:
+                        - strong [ref=e1331]: projects
+                        - text: ":"
+                        - list [ref=e1332]:
+                          - listitem [ref=e1333]:
+                            - text: refactor theme drawer with tabbed layout for better UX. - by
+                            - link "@Azir-11" [ref=e1334] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(8ba71)" [ref=e1335] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8ba71a08
+                          - listitem [ref=e1336]:
+                            - text: Add current time display option for watermark - by
+                            - link "@wenyuanw" [ref=e1337] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - text: in
+                            - link "#772" [ref=e1338] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/772
+                            - link "(f238f)" [ref=e1339] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/f238fcbd
+                          - listitem [ref=e1340]:
+                            - text: add 'vertical-hybrid-header-first' layout mode - by
+                            - link "@wenyuanw" [ref=e1341] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(b4e5c)" [ref=e1342] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/b4e5c6d9
+                          - listitem [ref=e1343]:
+                            - text: add prompt information for scrolling mode and tab bar caching. - by
+                            - link "@Azir-11" [ref=e1344] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(29a2a)" [ref=e1345] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/29a2a5c6
+                          - listitem [ref=e1346]:
+                            - text: support theme preset function. - by
+                            - link "@Azir-11" [ref=e1347] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(257f1)" [ref=e1348] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/257f1183
+                          - listitem [ref=e1349]:
+                            - text: modify the default value of the reset cache policy to 'refresh'. - by
+                            - link "@Azir-11" [ref=e1350] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(3c0a5)" [ref=e1351] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3c0a5282
+                          - listitem [ref=e1352]:
+                            - text: optimize tabs cache cleaning strategy. close
+                            - link "#820" [ref=e1353] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/820
+                            - text: . - by
+                            - link "@Azir-11" [ref=e1354] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - text: in
+                            - link "#820" [ref=e1355] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/820
+                            - link "(ef7ac)" [ref=e1356] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/ef7acc62
+                          - listitem [ref=e1357]:
+                            - text: support closing tabs with middle mouse button click - by
+                            - link "@wenyuanw" [ref=e1358] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(a8d1e)" [ref=e1359] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a8d1e5d2
+                          - listitem [ref=e1360]:
+                            - text: support set global redius - by
+                            - link "@CyberShen" [ref=e1361] [cursor=pointer]:
+                              - /url: https://github.com/CyberShen
+                            - link "(24c6d)" [ref=e1362] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/24c6df52
+                          - listitem [ref=e1363]:
+                            - text: support set global redius - by
+                            - link "@CyberShen" [ref=e1364] [cursor=pointer]:
+                              - /url: https://github.com/CyberShen
+                            - link "(3549c)" [ref=e1365] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3549c4db
+                      - listitem [ref=e1366]:
+                        - strong [ref=e1367]: styles
+                        - text: ":"
+                        - list [ref=e1368]:
+                          - listitem [ref=e1369]:
+                            - text: add text-autospace property to improve text layout - by
+                            - link "@wenyuanw" [ref=e1370] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(345aa)" [ref=e1371] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/345aa293
+                    - heading "🐞 Bug Fixes" [level=3] [ref=e1372]
+                    - list [ref=e1373]:
+                      - listitem [ref=e1374]:
+                        - strong [ref=e1375]: hooks
+                        - text: ":"
+                        - list [ref=e1376]:
+                          - listitem [ref=e1377]:
+                            - text: correct chart rendering logic in useEcharts - by
+                            - link "@soybeanjs" [ref=e1378] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(8a7cd)" [ref=e1379] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8a7cd593
+                      - listitem [ref=e1380]:
+                        - strong [ref=e1381]: packages
+                        - text: ":"
+                        - list [ref=e1382]:
+                          - listitem [ref=e1383]:
+                            - text: fix the parsing logic for stored data to ensure correct return of boolean values - by
+                            - link "@Lruihao" [ref=e1384] [cursor=pointer]:
+                              - /url: https://github.com/Lruihao
+                            - link "(9ea56)" [ref=e1385] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/9ea56c9b
+                          - listitem [ref=e1386]:
+                            - text: "axios: fix json response. fixed"
+                            - link "#815" [ref=e1387] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/815
+                            - text: "- by"
+                            - link "@soybeanjs" [ref=e1388] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - text: in
+                            - link "#815" [ref=e1389] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/815
+                            - link "(5be86)" [ref=e1390] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/5be864a8
+                      - listitem [ref=e1391]:
+                        - strong [ref=e1392]: projects
+                        - text: ":"
+                        - list [ref=e1393]:
+                          - listitem [ref=e1394]:
+                            - text: Fix i18n-ally not working when setting moduleResolution to bundler. fixed
+                            - link "#780" [ref=e1395] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/780
+                            - text: "- by"
+                            - link "@xiaobao0505" [ref=e1396] [cursor=pointer]:
+                              - /url: https://github.com/xiaobao0505
+                            - text: in
+                            - link "#780" [ref=e1397] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/780
+                            - link "(41191)" [ref=e1398] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/41191d54
+                      - listitem [ref=e1399]:
+                        - strong [ref=e1400]: styles
+                        - text: ":"
+                        - list [ref=e1401]:
+                          - listitem [ref=e1402]:
+                            - text: show light color scrollbar while dark mode is on - by
+                            - link "@whyang9701" [ref=e1403] [cursor=pointer]:
+                              - /url: https://github.com/whyang9701
+                            - link "(dac50)" [ref=e1404] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/dac5075b
+                      - listitem [ref=e1405]:
+                        - strong [ref=e1406]: table
+                        - text: ":"
+                        - list [ref=e1407]:
+                          - listitem [ref=e1408]:
+                            - text: add type annotations for records in useTable hook - by
+                            - link "@soybeanjs" [ref=e1409] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(32b8f)" [ref=e1410] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/32b8f990
+                      - listitem [ref=e1411]:
+                        - strong [ref=e1412]: types
+                        - text: ":"
+                        - list [ref=e1413]:
+                          - listitem [ref=e1414]:
+                            - text: fix proxy types - by
+                            - link "@soybeanjs" [ref=e1415] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(3d72f)" [ref=e1416] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3d72f954
+                          - listitem [ref=e1417]:
+                            - text: fix ts type error - by
+                            - link "@soybeanjs" [ref=e1418] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(d5a3a)" [ref=e1419] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/d5a3a25d
+                    - heading "🛠 Optimizations" [level=3] [ref=e1420]
+                    - list [ref=e1421]:
+                      - listitem [ref=e1422]:
+                        - strong [ref=e1423]: hooks
+                        - text: ":"
+                        - list [ref=e1424]:
+                          - listitem [ref=e1425]:
+                            - text: optimize useEcharts - by
+                            - link "@soybeanjs" [ref=e1426] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(936b8)" [ref=e1427] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/936b834e
+                      - listitem [ref=e1428]:
+                        - strong [ref=e1429]: packages
+                        - text: ":"
+                        - list [ref=e1430]:
+                          - listitem [ref=e1431]:
+                            - text: remove ofetch package - by
+                            - link "@soybeanjs" [ref=e1432] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(abaaa)" [ref=e1433] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/abaaa4a0
+                      - listitem [ref=e1434]:
+                        - strong [ref=e1435]: projects
+                        - text: ":"
+                        - list [ref=e1436]:
+                          - listitem [ref=e1437]:
+                            - text: improve theme drawer responsive width for mobile devices - by
+                            - link "@wenyuanw" [ref=e1438] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(8439a)" [ref=e1439] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8439a600
+                          - listitem [ref=e1440]:
+                            - text: improve robustness of second-level menu key logic - by
+                            - link "@wenyuanw" [ref=e1441] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(8b8a2)" [ref=e1442] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8b8a2083
+                          - listitem [ref=e1443]:
+                            - text: optimize theme drawer width - by
+                            - link "@soybeanjs" [ref=e1444] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(81468)" [ref=e1445] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8146858b
+                          - listitem [ref=e1446]:
+                            - text: optimize api type file - by
+                            - link "@soybeanjs" [ref=e1447] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(3a343)" [ref=e1448] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3a343eea
+                          - listitem [ref=e1449]:
+                            - text: optimize radius settings - by
+                            - link "@soybeanjs" [ref=e1450] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(87a66)" [ref=e1451] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/87a66a42
+                      - listitem [ref=e1452]:
+                        - strong [ref=e1453]: request
+                        - text: ":"
+                        - list [ref=e1454]:
+                          - listitem [ref=e1455]:
+                            - text: enhance request options and response handling with generic types - by
+                            - link "@soybeanjs" [ref=e1456] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(50a5c)" [ref=e1457] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/50a5cba0
+                    - heading "💅 Refactors" [level=3] [ref=e1458]
+                    - list [ref=e1459]:
+                      - listitem [ref=e1460]:
+                        - strong [ref=e1461]: hooks
+                        - text: ":"
+                        - list [ref=e1462]:
+                          - listitem [ref=e1463]:
+                            - text: optimize useContext and update useMixMenuContext - by
+                            - link "@soybeanjs" [ref=e1464] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(c9651)" [ref=e1465] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/c965140b
+                          - listitem [ref=e1466]:
+                            - text: streamline column visibility handling in useTable and table components - by
+                            - link "@soybeanjs" [ref=e1467] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(ee434)" [ref=e1468] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/ee434145
+                          - listitem [ref=e1469]:
+                            - text: remove useSignal hook and update exports - by
+                            - link "@soybeanjs" [ref=e1470] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(87adc)" [ref=e1471] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/87adc35f
+                      - listitem [ref=e1472]:
+                        - strong [ref=e1473]: menu
+                        - text: ":"
+                        - list [ref=e1474]:
+                          - listitem [ref=e1475]:
+                            - text: optimize the margin on the menu - by
+                            - link "@NicholasLD" [ref=e1476] [cursor=pointer]:
+                              - /url: https://github.com/NicholasLD
+                            - link "(d7311)" [ref=e1477] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/d7311111
+                      - listitem [ref=e1478]:
+                        - strong [ref=e1479]: projects
+                        - text: ":"
+                        - list [ref=e1480]:
+                          - listitem [ref=e1481]:
+                            - text: remove unnecessary logic in onRouteSwitchWhenLoggedIn - by
+                            - link "@wenyuanw" [ref=e1482] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - link "(d6c81)" [ref=e1483] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/d6c8142b
+                      - listitem [ref=e1484]:
+                        - strong [ref=e1485]: request
+                        - text: ":"
+                        - list [ref=e1486]:
+                          - listitem [ref=e1487]:
+                            - text: unify response transformation methods and deprecate transformBackendResponse - by
+                            - link "@soybeanjs" [ref=e1488] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(f83ee)" [ref=e1489] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/f83eefbc
+                      - listitem [ref=e1490]:
+                        - strong [ref=e1491]: types
+                        - text: ":"
+                        - list [ref=e1492]:
+                          - listitem [ref=e1493]:
+                            - text: move Auth and Route namespaces to separate files and clean up api.d.ts - by
+                            - link "@Azir-11" [ref=e1494] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(d37ce)" [ref=e1495] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/d37ce046
+                    - heading "📖 Documentation" [level=3] [ref=e1496]
+                    - list [ref=e1497]:
+                      - listitem [ref=e1498]:
+                        - strong [ref=e1499]: projects
+                        - text: ": add github trendshift info. - by"
+                        - link "@Azir-11" [ref=e1500] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(2a0c9)" [ref=e1501] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/2a0c9f1b
+                    - heading "🏡 Chore" [level=3] [ref=e1502]
+                    - list [ref=e1503]:
+                      - listitem [ref=e1504]:
+                        - strong [ref=e1505]: deps
+                        - text: ":"
+                        - list [ref=e1506]:
+                          - listitem [ref=e1507]:
+                            - text: update NodeJS and pnpm version requirements in package.json and documentation - by
+                            - strong [ref=e1508]: Junior25306
+                            - link "(a5c4b)" [ref=e1509] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a5c4b4e3
+                          - listitem [ref=e1510]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1511] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(5cb1c)" [ref=e1512] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/5cb1cebd
+                          - listitem [ref=e1513]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1514] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(aeb63)" [ref=e1515] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/aeb63690
+                          - listitem [ref=e1516]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1517] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(e89b8)" [ref=e1518] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/e89b86ce
+                          - listitem [ref=e1519]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1520] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(c962f)" [ref=e1521] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/c962f7b2
+                          - listitem [ref=e1522]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1523] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(12135)" [ref=e1524] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/1213531b
+                          - listitem [ref=e1525]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1526] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(b041f)" [ref=e1527] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/b041fdd8
+                          - listitem [ref=e1528]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1529] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(d567c)" [ref=e1530] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/d567c057
+                          - listitem [ref=e1531]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1532] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(6cbf5)" [ref=e1533] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/6cbf5705
+                      - listitem [ref=e1534]:
+                        - strong [ref=e1535]: other
+                        - text: ":"
+                        - list [ref=e1536]:
+                          - listitem [ref=e1537]:
+                            - text: update the ESLint validation configuration to support more file types. - by
+                            - link "@Azir-11" [ref=e1538] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(be8f9)" [ref=e1539] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/be8f915a
+                      - listitem [ref=e1540]:
+                        - strong [ref=e1541]: packages
+                        - text: ":"
+                        - list [ref=e1542]:
+                          - listitem [ref=e1543]:
+                            - text: update Vite version to 7 in package.json and documentation. - by
+                            - link "@Azir-11" [ref=e1544] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(03dd6)" [ref=e1545] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/03dd64c5
+                          - listitem [ref=e1546]:
+                            - text: add picomatch to fix scripts - by
+                            - link "@soybeanjs" [ref=e1547] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(805c3)" [ref=e1548] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/805c3381
+                      - listitem [ref=e1549]:
+                        - strong [ref=e1550]: vscode
+                        - text: ":"
+                        - list [ref=e1551]:
+                          - listitem [ref=e1552]:
+                            - text: remove unused vue.server.hybridMode setting from .vscode/settings.json - by
+                            - link "@soybeanjs" [ref=e1553] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(13319)" [ref=e1554] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/133196f3
+                    - heading "🎨 Styles" [level=3] [ref=e1555]
+                    - list [ref=e1556]:
+                      - listitem [ref=e1557]:
+                        - strong [ref=e1558]: projects
+                        - text: ": format code. - by"
+                        - link "@Azir-11" [ref=e1559] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(100e0)" [ref=e1560] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/100e0ea5
+                    - heading "View changes on GitHub" [level=5] [ref=e1561]:
+                      - link "View changes on GitHub" [ref=e1562] [cursor=pointer]:
+                        - /url: https://github.com/soybeanjs/soybean-admin/compare/v1.3.15...v2.0.0-beta.1
+                - generic [ref=e1563]:
+                  - generic [ref=e1564]:
+                    - heading "Contributors" [level=3] [ref=e1565]
+                    - list [ref=e1566]:
+                      - listitem [ref=e1567]:
+                        - link "@whyang9701" [ref=e1568] [cursor=pointer]:
+                          - /url: https://github.com/whyang9701
+                          - img "@whyang9701" [ref=e1569]
+                      - listitem [ref=e1570]:
+                        - link "@Lruihao" [ref=e1571] [cursor=pointer]:
+                          - /url: https://github.com/Lruihao
+                          - img "@Lruihao" [ref=e1572]
+                      - listitem [ref=e1573]:
+                        - link "@NicholasLD" [ref=e1574] [cursor=pointer]:
+                          - /url: https://github.com/NicholasLD
+                          - img "@NicholasLD" [ref=e1575]
+                      - listitem [ref=e1576]:
+                        - link "@wenyuanw" [ref=e1577] [cursor=pointer]:
+                          - /url: https://github.com/wenyuanw
+                          - img "@wenyuanw" [ref=e1578]
+                      - listitem [ref=e1579]:
+                        - link "@xiaobao0505" [ref=e1580] [cursor=pointer]:
+                          - /url: https://github.com/xiaobao0505
+                          - img "@xiaobao0505" [ref=e1581]
+                      - listitem [ref=e1582]:
+                        - link "@CyberShen" [ref=e1583] [cursor=pointer]:
+                          - /url: https://github.com/CyberShen
+                          - img "@CyberShen" [ref=e1584]
+                      - listitem [ref=e1585]:
+                        - link "@Azir-11" [ref=e1586] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                          - img "@Azir-11" [ref=e1587]
+                      - listitem [ref=e1588]:
+                        - link "@soybeanjs" [ref=e1589] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e1590]
+                    - generic [ref=e1591]: whyang9701, Lruihao, and 6 other contributors
+                  - group [ref=e1594]:
+                    - button "Assets 2" [ref=e1595] [cursor=pointer]:
+                      - generic [ref=e1596]:
+                        - generic [ref=e1597]: Assets
+                        - generic "2" [ref=e1598]
+          - region "v1.3.15" [ref=e1600]:
+            - heading "v1.3.15" [level=2] [ref=e1601]
+            - generic [ref=e1602]:
+              - generic [ref=e1603]:
+                - generic [ref=e1604]: 24 Jun 13:41 Jun 24, 2025
+                - generic [ref=e1605]:
+                  - img "@github-actions" [ref=e1606]
+                  - link "github-actions" [ref=e1607] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v1.3.15" [ref=e1609] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v1.3.15
+                  - generic [ref=e1610]:
+                    - img "Tag" [ref=e1611]
+                    - text: v1.3.15
+                - link "Commit 87a675b" [ref=e1614] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/87a675bf6212a4a036fdd8d1da6d8f669bd69623
+                  - img "Commit" [ref=e1615]
+                  - code [ref=e1617]: 87a675b
+                - button "Compare" [ref=e1621] [cursor=pointer]:
+                  - generic [ref=e1622]:
+                    - generic [ref=e1623]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e1625]:
+                - generic [ref=e1626]:
+                  - link "v1.3.15" [ref=e1631] [cursor=pointer]:
+                    - /url: /soybeanjs/soybean-admin/releases/tag/v1.3.15
+                  - generic [ref=e1633]:
+                    - heading "🚀 Features" [level=3] [ref=e1634]
+                    - list [ref=e1635]:
+                      - listitem [ref=e1636]:
+                        - strong [ref=e1637]: projects
+                        - text: ": add configurable user name watermark option - by"
+                        - link "@wenyuanw" [ref=e1638] [cursor=pointer]:
+                          - /url: https://github.com/wenyuanw
+                        - link "(7c3da)" [ref=e1639] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/7c3dac42
+                    - heading "🐞 Bug Fixes" [level=3] [ref=e1640]
+                    - list [ref=e1641]:
+                      - listitem [ref=e1642]:
+                        - strong [ref=e1643]: app
+                        - text: ": replace console.error with window.console.error for consistency - by"
+                        - link "@soybeanjs" [ref=e1644] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(7d840)" [ref=e1645] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/7d84062e
+                      - listitem [ref=e1646]:
+                        - strong [ref=e1647]: projects
+                        - text: ": ensure proper text color when themes are inverted - by"
+                        - link "@wenyuanw" [ref=e1648] [cursor=pointer]:
+                          - /url: https://github.com/wenyuanw
+                        - link "(afd60)" [ref=e1649] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/afd60421
+                      - listitem [ref=e1650]:
+                        - strong [ref=e1651]: types
+                        - text: ": The environment variable VITE_ICON_LOCAL_PREFIX has the wrong type. - by"
+                        - link "@chen-ziwen" [ref=e1652] [cursor=pointer]:
+                          - /url: https://github.com/chen-ziwen
+                        - link "(da149)" [ref=e1653] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/da149e5b
+                    - heading "🛠 Optimizations" [level=3] [ref=e1654]
+                    - list [ref=e1655]:
+                      - listitem [ref=e1656]:
+                        - strong [ref=e1657]: components
+                        - text: ": optimize spacing for lang-switch dropdown options - by"
+                        - link "@wenyuanw" [ref=e1658] [cursor=pointer]:
+                          - /url: https://github.com/wenyuanw
+                        - link "(fcb89)" [ref=e1659] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/fcb89883
+                    - heading "💅 Refactors" [level=3] [ref=e1660]
+                    - list [ref=e1661]:
+                      - listitem [ref=e1662]:
+                        - strong [ref=e1663]: iframe-page
+                        - text: ": remove unused lifecycle hooks and clean up script setup - by"
+                        - link "@soybeanjs" [ref=e1664] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(276d8)" [ref=e1665] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/276d836c
+                    - heading "📖 Documentation" [level=3] [ref=e1666]
+                    - list [ref=e1667]:
+                      - listitem [ref=e1668]:
+                        - strong [ref=e1669]: other
+                        - text: ": update docs with video tutorial link. - by"
+                        - link "@Azir-11" [ref=e1670] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - link "(7b2e5)" [ref=e1671] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/7b2e510a
+                      - listitem [ref=e1672]:
+                        - strong [ref=e1673]: readme
+                        - text: ": add warning about upcoming"
+                        - code [ref=e1674]: V2
+                        - text: version and link to plan list - by
+                        - link "@soybeanjs" [ref=e1675] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(4d42d)" [ref=e1676] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/4d42dcbe
+                    - heading "🏡 Chore" [level=3] [ref=e1677]
+                    - list [ref=e1678]:
+                      - listitem [ref=e1679]:
+                        - strong [ref=e1680]: deps
+                        - text: ": update deps - by"
+                        - link "@soybeanjs" [ref=e1681] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(dc674)" [ref=e1682] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/dc674ce8
+                      - listitem [ref=e1683]:
+                        - strong [ref=e1684]: projects
+                        - text: ": update deps & fix"
+                        - code [ref=e1685]: moduleResolution
+                        - text: "- by"
+                        - link "@soybeanjs" [ref=e1686] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                        - link "(dbd99)" [ref=e1687] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/dbd995c1
+                    - heading "View changes on GitHub" [level=5] [ref=e1688]:
+                      - link "View changes on GitHub" [ref=e1689] [cursor=pointer]:
+                        - /url: https://github.com/soybeanjs/soybean-admin/compare/v1.3.14...v1.3.15
+                - generic [ref=e1690]:
+                  - generic [ref=e1691]:
+                    - heading "Contributors" [level=3] [ref=e1692]
+                    - list [ref=e1693]:
+                      - listitem [ref=e1694]:
+                        - link "@wenyuanw" [ref=e1695] [cursor=pointer]:
+                          - /url: https://github.com/wenyuanw
+                          - img "@wenyuanw" [ref=e1696]
+                      - listitem [ref=e1697]:
+                        - link "@Azir-11" [ref=e1698] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                          - img "@Azir-11" [ref=e1699]
+                      - listitem [ref=e1700]:
+                        - link "@chen-ziwen" [ref=e1701] [cursor=pointer]:
+                          - /url: https://github.com/chen-ziwen
+                          - img "@chen-ziwen" [ref=e1702]
+                      - listitem [ref=e1703]:
+                        - link "@soybeanjs" [ref=e1704] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e1705]
+                    - generic [ref=e1706]: wenyuanw, Azir-11, and 2 other contributors
+                  - group [ref=e1709]:
+                    - button "Assets 2" [ref=e1710] [cursor=pointer]:
+                      - generic [ref=e1711]:
+                        - generic [ref=e1712]: Assets
+                        - generic "2" [ref=e1713]
+          - region "v1.3.14" [ref=e1715]:
+            - heading "v1.3.14" [level=2] [ref=e1716]
+            - generic [ref=e1717]:
+              - generic [ref=e1718]:
+                - generic [ref=e1719]: 09 Jun 14:41 Jun 9, 2025
+                - generic [ref=e1720]:
+                  - img "@github-actions" [ref=e1721]
+                  - link "github-actions" [ref=e1722] [cursor=pointer]:
+                    - /url: /apps/github-actions
+                - link "Tag v1.3.14" [ref=e1724] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/tree/v1.3.14
+                  - generic [ref=e1725]:
+                    - img "Tag" [ref=e1726]
+                    - text: v1.3.14
+                - link "Commit 39b89a1" [ref=e1729] [cursor=pointer]:
+                  - /url: /soybeanjs/soybean-admin/commit/39b89a12348c1ad927a88abb0b88d4380531e158
+                  - img "Commit" [ref=e1730]
+                  - code [ref=e1732]: 39b89a1
+                - button "Compare" [ref=e1736] [cursor=pointer]:
+                  - generic [ref=e1737]:
+                    - generic [ref=e1738]: Compare
+                    - generic:
+                      - img
+              - generic [ref=e1740]:
+                - generic [ref=e1741]:
+                  - link "v1.3.14" [ref=e1746] [cursor=pointer]:
+                    - /url: /soybeanjs/soybean-admin/releases/tag/v1.3.14
+                  - generic [ref=e1748]:
+                    - heading "🚀 Features" [level=3] [ref=e1749]
+                    - list [ref=e1750]:
+                      - listitem [ref=e1751]:
+                        - strong [ref=e1752]: docs
+                        - text: ":"
+                        - list [ref=e1753]:
+                          - listitem [ref=e1754]:
+                            - text: add GitCode star badge to README files - by
+                            - link "@soybeanjs" [ref=e1755] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(05dc1)" [ref=e1756] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/05dc11e2
+                          - listitem [ref=e1757]:
+                            - text: add DartNode sponsorship badge to README files - by
+                            - link "@soybeanjs" [ref=e1758] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(2ed0b)" [ref=e1759] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/2ed0b648
+                      - listitem [ref=e1760]:
+                        - strong [ref=e1761]: projects
+                        - text: ":"
+                        - list [ref=e1762]:
+                          - listitem [ref=e1763]:
+                            - text: support vite devtools specify the editor by launchEditor option. - by
+                            - link "@Azir-11" [ref=e1764] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - text: in
+                            - link "#730" [ref=e1765] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/730
+                            - link "(29698)" [ref=e1766] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/29698bef
+                          - listitem [ref=e1767]:
+                            - text: clear tabs cache when switching users. - by
+                            - link "@Azir-11" [ref=e1768] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - text: in
+                            - link "#744" [ref=e1769] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/744
+                            - link "(1ff4d)" [ref=e1770] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/1ff4d82d
+                      - listitem [ref=e1771]:
+                        - strong [ref=e1772]: theme
+                        - text: ":"
+                        - list [ref=e1773]:
+                          - listitem [ref=e1774]:
+                            - text: global search button toggle - by
+                            - link "@t8y2" [ref=e1775] [cursor=pointer]:
+                              - /url: https://github.com/t8y2
+                            - link "(75455)" [ref=e1776] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/75455b00
+                      - listitem [ref=e1777]:
+                        - strong [ref=e1778]: types
+                        - text: ":"
+                        - list [ref=e1779]:
+                          - listitem [ref=e1780]:
+                            - text: enhance Option type to support customizable label types - by
+                            - link "@WgoW" [ref=e1781] [cursor=pointer]:
+                              - /url: https://github.com/WgoW
+                            - text: and
+                            - link "@testbrate" [ref=e1782] [cursor=pointer]:
+                              - /url: https://github.com/testbrate
+                            - text: in
+                            - link "#735" [ref=e1783] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/735
+                            - link "(123d2)" [ref=e1784] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/123d2c90
+                      - listitem [ref=e1785]:
+                        - strong [ref=e1786]: utils
+                        - text: ":"
+                        - list [ref=e1787]:
+                          - listitem [ref=e1788]:
+                            - text: support quick generation of code templates. - by
+                            - link "@Azir-11" [ref=e1789] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - text: in
+                            - link "#733" [ref=e1790] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/733
+                            - link "(8527a)" [ref=e1791] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/8527aa80
+                    - heading "🐞 Bug Fixes" [level=3] [ref=e1792]
+                    - list [ref=e1793]:
+                      - listitem [ref=e1794]:
+                        - strong [ref=e1795]: auth
+                        - text: ":"
+                        - list [ref=e1796]:
+                          - listitem [ref=e1797]:
+                            - text: remove redundant authStore declaration in resetStore function - by
+                            - link "@soybeanjs" [ref=e1798] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(c57f8)" [ref=e1799] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/c57f88aa
+                      - listitem [ref=e1800]:
+                        - strong [ref=e1801]: hooks
+                        - text: ":"
+                        - list [ref=e1802]:
+                          - listitem [ref=e1803]:
+                            - text: fixed the issue where loading was not properly closed in some cases. - by
+                            - link "@Azir-11" [ref=e1804] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - text: in
+                            - link "#737" [ref=e1805] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/737
+                            - link "(85e40)" [ref=e1806] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/85e40b19
+                          - listitem [ref=e1807]:
+                            - text: refactor useCountDown hook for improved countdown logic and clarity. - by
+                            - link "@Azir-11" [ref=e1808] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(dfb64)" [ref=e1809] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/dfb647a8
+                      - listitem [ref=e1810]:
+                        - strong [ref=e1811]: projects
+                        - text: ":"
+                        - list [ref=e1812]:
+                          - listitem [ref=e1813]:
+                            - text: tab closure did not remove cache correctly. - by
+                            - link "@Azir-11" [ref=e1814] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(7fb5c)" [ref=e1815] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/7fb5c72f
+                    - heading "🛠 Optimizations" [level=3] [ref=e1816]
+                    - list [ref=e1817]:
+                      - listitem [ref=e1818]:
+                        - strong [ref=e1819]: hooks
+                        - text: ":"
+                        - list [ref=e1820]:
+                          - listitem [ref=e1821]:
+                            - text: remove obsolete disabling cache. - by
+                            - link "@Azir-11" [ref=e1822] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - text: in
+                            - link "#729" [ref=e1823] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/729
+                            - link "(4e1b6)" [ref=e1824] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/4e1b65b6
+                          - listitem [ref=e1825]:
+                            - text: update detection function to cover the exceptions that occur when the request fails. - by
+                            - link "@Azir-11" [ref=e1826] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - link "(22218)" [ref=e1827] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/222187d3
+                      - listitem [ref=e1828]:
+                        - strong [ref=e1829]: projects
+                        - text: ":"
+                        - list [ref=e1830]:
+                          - listitem [ref=e1831]:
+                            - text: optimize tab deletion logic. closed
+                            - link "#755" [ref=e1832] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/755
+                            - text: "- by"
+                            - link "@wenyuanw" [ref=e1833] [cursor=pointer]:
+                              - /url: https://github.com/wenyuanw
+                            - text: in
+                            - link "#755" [ref=e1834] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/755
+                            - link "(e6044)" [ref=e1835] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/e6044d0f
+                    - heading "📖 Documentation" [level=3] [ref=e1836]
+                    - list [ref=e1837]:
+                      - listitem [ref=e1838]:
+                        - strong [ref=e1839]: README
+                        - text: ":"
+                        - list [ref=e1840]:
+                          - listitem [ref=e1841]:
+                            - text: Add supporting ecosystem tools to the open-source repository - by
+                            - link "@WgoW" [ref=e1842] [cursor=pointer]:
+                              - /url: https://github.com/WgoW
+                            - text: and
+                            - link "@testbrate" [ref=e1843] [cursor=pointer]:
+                              - /url: https://github.com/testbrate
+                            - text: in
+                            - link "#740" [ref=e1844] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/740
+                            - link "(a013e)" [ref=e1845] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/a013ea2c
+                      - listitem [ref=e1846]:
+                        - strong [ref=e1847]: deps
+                        - text: ":"
+                        - list [ref=e1848]:
+                          - listitem [ref=e1849]:
+                            - text: update the Vite version of the project description. - by
+                            - link "@Azir-11" [ref=e1850] [cursor=pointer]:
+                              - /url: https://github.com/Azir-11
+                            - text: in
+                            - link "#732" [ref=e1851] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/732
+                            - link "(80486)" [ref=e1852] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/80486099
+                      - listitem [ref=e1853]:
+                        - strong [ref=e1854]: projects
+                        - text: ":"
+                        - list [ref=e1855]:
+                          - listitem [ref=e1856]:
+                            - text: update README - by
+                            - link "@xiatianYa" [ref=e1857] [cursor=pointer]:
+                              - /url: https://github.com/xiatianYa
+                            - text: in
+                            - link "#726" [ref=e1858] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/726
+                            - link "(3cbaf)" [ref=e1859] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3cbaf4f4
+                          - listitem [ref=e1860]:
+                            - text: add gitcode link - by
+                            - link "@soybeanjs" [ref=e1861] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(f35c2)" [ref=e1862] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/f35c250a
+                    - heading "🏡 Chore" [level=3] [ref=e1863]
+                    - list [ref=e1864]:
+                      - listitem [ref=e1865]:
+                        - strong [ref=e1866]: deps
+                        - text: ":"
+                        - list [ref=e1867]:
+                          - listitem [ref=e1868]:
+                            - text: add vscode recommend plugin close
+                            - link "#738" [ref=e1869] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/738
+                            - text: "- by"
+                            - link "@tu6ge" [ref=e1870] [cursor=pointer]:
+                              - /url: https://github.com/tu6ge
+                            - text: in
+                            - link "#739" [ref=e1871] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/pull/739
+                            - text: and
+                            - link "#738" [ref=e1872] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/issues/738
+                            - link "(61244)" [ref=e1873] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/61244f0f
+                          - listitem [ref=e1874]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1875] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(41b5f)" [ref=e1876] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/41b5f493
+                          - listitem [ref=e1877]:
+                            - text: update deps - by
+                            - link "@soybeanjs" [ref=e1878] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs
+                            - link "(3e4e1)" [ref=e1879] [cursor=pointer]:
+                              - /url: https://github.com/soybeanjs/soybean-admin/commit/3e4e17ab
+                    - heading "🤖 CI" [level=3] [ref=e1880]
+                    - list [ref=e1881]:
+                      - listitem [ref=e1882]:
+                        - strong [ref=e1883]: hooks
+                        - text: ": remove lint-staged in git hook. close"
+                        - link "#724" [ref=e1884] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/pull/724
+                        - text: "- by"
+                        - link "@Azir-11" [ref=e1885] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                        - text: in
+                        - link "#743" [ref=e1886] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/pull/743
+                        - text: and
+                        - link "#724" [ref=e1887] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/pull/724
+                        - link "(c3abc)" [ref=e1888] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs/soybean-admin/commit/c3abc3df
+                    - heading "View changes on GitHub" [level=5] [ref=e1889]:
+                      - link "View changes on GitHub" [ref=e1890] [cursor=pointer]:
+                        - /url: https://github.com/soybeanjs/soybean-admin/compare/v1.3.13...v1.3.14
+                - generic [ref=e1891]:
+                  - generic [ref=e1892]:
+                    - heading "Contributors" [level=3] [ref=e1893]
+                    - list [ref=e1894]:
+                      - listitem [ref=e1895]:
+                        - link "@tu6ge" [ref=e1896] [cursor=pointer]:
+                          - /url: https://github.com/tu6ge
+                          - img "@tu6ge" [ref=e1897]
+                      - listitem [ref=e1898]:
+                        - link "@wenyuanw" [ref=e1899] [cursor=pointer]:
+                          - /url: https://github.com/wenyuanw
+                          - img "@wenyuanw" [ref=e1900]
+                      - listitem [ref=e1901]:
+                        - link "@testbrate" [ref=e1902] [cursor=pointer]:
+                          - /url: https://github.com/testbrate
+                          - img "@testbrate" [ref=e1903]
+                      - listitem [ref=e1904]:
+                        - link "@t8y2" [ref=e1905] [cursor=pointer]:
+                          - /url: https://github.com/t8y2
+                          - img "@t8y2" [ref=e1906]
+                      - listitem [ref=e1907]:
+                        - link "@Azir-11" [ref=e1908] [cursor=pointer]:
+                          - /url: https://github.com/Azir-11
+                          - img "@Azir-11" [ref=e1909]
+                      - listitem [ref=e1910]:
+                        - link "@xiatianYa" [ref=e1911] [cursor=pointer]:
+                          - /url: https://github.com/xiatianYa
+                          - img "@xiatianYa" [ref=e1912]
+                      - listitem [ref=e1913]:
+                        - link "@soybeanjs" [ref=e1914] [cursor=pointer]:
+                          - /url: https://github.com/soybeanjs
+                          - img "@soybeanjs" [ref=e1915]
+                      - listitem [ref=e1916]:
+                        - link "@WgoW" [ref=e1917] [cursor=pointer]:
+                          - /url: https://github.com/WgoW
+                          - img "@WgoW" [ref=e1918]
+                    - generic [ref=e1919]: tu6ge, wenyuanw, and 6 other contributors
+                  - group [ref=e1922]:
+                    - button "Assets 2" [ref=e1923] [cursor=pointer]:
+                      - generic [ref=e1924]:
+                        - generic [ref=e1925]: Assets
+                        - generic "2" [ref=e1926]
+          - navigation "Pagination" [ref=e1929]:
+            - link "Previous page" [disabled] [ref=e1930]: Previous
+            - emphasis [ref=e1931] [cursor=pointer]: "1"
+            - link "Page 2" [ref=e1932] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/releases?page=2
+              - text: "2"
+            - link "Page 3" [ref=e1933] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/releases?page=3
+              - text: "3"
+            - link "Page 4" [ref=e1934] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/releases?page=4
+              - text: "4"
+            - link "Page 5" [ref=e1935] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/releases?page=5
+              - text: "5"
+            - link "Page 6" [ref=e1936] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/releases?page=6
+              - text: "6"
+            - link "Page 7" [ref=e1937] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/releases?page=7
+              - text: "7"
+            - link "Next page" [ref=e1938] [cursor=pointer]:
+              - /url: /soybeanjs/soybean-admin/releases?page=2
+              - text: Next
+  - contentinfo [ref=e1939]:
+    - heading "Footer" [level=2] [ref=e1940]
+    - generic [ref=e1941]:
+      - generic [ref=e1942]:
+        - link "GitHub Homepage" [ref=e1943] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e1944]
+        - generic [ref=e1946]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e1947]:
+        - heading "Footer navigation" [level=3] [ref=e1948]
+        - list "Footer navigation" [ref=e1949]:
+          - listitem [ref=e1950]:
+            - link "Terms" [ref=e1951] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e1952]:
+            - link "Privacy" [ref=e1953] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e1954]:
+            - link "Security" [ref=e1955] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e1956]:
+            - link "Status" [ref=e1957] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e1958]:
+            - link "Community" [ref=e1959] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e1960]:
+            - link "Docs" [ref=e1961] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e1962]:
+            - link "Contact" [ref=e1963] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e1964]:
+            - button "Manage cookies" [ref=e1966] [cursor=pointer]
+          - listitem [ref=e1967]:
+            - button "Do not share my personal information" [ref=e1969] [cursor=pointer]
