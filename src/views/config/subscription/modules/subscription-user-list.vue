@@ -130,21 +130,16 @@ watch(
       size="small"
       :loading="loading"
       remote
-      :row-key="(row) => row.id"
+      :row-key="row => row.id"
       :pagination="{
         ...mobilePagination,
         page: subscriptionStore.pagination.page,
         pageSize: subscriptionStore.pagination.pageSize,
-        itemCount: subscriptionStore.pagination.total,
+        itemCount: subscriptionStore.pagination.total
       }"
       class="sm:h-full"
-      @update:page="
-        (page) =>
-          subscriptionStore.handlePaginationChange(page, subscriptionStore.pagination.pageSize)
-      "
-      @update:page-size="
-        (size) => subscriptionStore.handlePaginationChange(subscriptionStore.pagination.page, size)
-      "
+      @update:page="page => subscriptionStore.handlePaginationChange(page, subscriptionStore.pagination.pageSize)"
+      @update:page-size="size => subscriptionStore.handlePaginationChange(subscriptionStore.pagination.page, size)"
     />
   </NModal>
   <!-- 引入类型详情模态框组件 -->

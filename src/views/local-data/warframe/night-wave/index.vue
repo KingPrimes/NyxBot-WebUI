@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
-import { NDataTable } from "naive-ui";
-import { $t } from "@/locales";
-import { useAppStore } from "@/store/modules/app";
-import { useTable } from "@/hooks/common/table";
-import { fetchNightWaveUpdate, fetchPostNightWaveList } from "@/service/api/local-data";
-import DataUpdateButton from "@/components/common/data-update-button.vue";
+import { NDataTable } from 'naive-ui';
+import { $t } from '@/locales';
+import { useAppStore } from '@/store/modules/app';
+import { useTable } from '@/hooks/common/table';
+import { fetchNightWaveUpdate, fetchPostNightWaveList } from '@/service/api/local-data';
+import DataUpdateButton from '@/components/common/data-update-button.vue';
 
 const appStore = useAppStore();
 
@@ -16,27 +16,27 @@ const {
   loading,
   mobilePagination,
   searchParams: _searchParams,
-  resetSearchParams: _resetSearchParams,
+  resetSearchParams: _resetSearchParams
 } = useTable({
   apiFn: fetchPostNightWaveList,
   showTotal: true,
   columns: () => [
-    { type: "selection", align: "center", width: 48 },
-    { key: "index", title: $t("common.index"), align: "center", width: 64 },
+    { type: 'selection', align: 'center', width: 48 },
+    { key: 'index', title: $t('common.index'), align: 'center', width: 64 },
     {
-      key: "uniqueName",
-      title: $t("page.local-data.warframe.night-wave.uniqueName"),
-      align: "center",
+      key: 'uniqueName',
+      title: $t('page.local-data.warframe.night-wave.uniqueName'),
+      align: 'center'
     },
-    { key: "name", title: $t("page.local-data.warframe.night-wave.name"), align: "center" },
+    { key: 'name', title: $t('page.local-data.warframe.night-wave.name'), align: 'center' },
     {
-      key: "description",
-      title: $t("page.local-data.warframe.night-wave.description"),
-      align: "center",
+      key: 'description',
+      title: $t('page.local-data.warframe.night-wave.description'),
+      align: 'center'
     },
-    { key: "standing", title: $t("page.local-data.warframe.night-wave.standing"), align: "center" },
-    { key: "required", title: $t("page.local-data.warframe.night-wave.required"), align: "center" },
-  ],
+    { key: 'standing', title: $t('page.local-data.warframe.night-wave.standing'), align: 'center' },
+    { key: 'required', title: $t('page.local-data.warframe.night-wave.required'), align: 'center' }
+  ]
 });
 </script>
 

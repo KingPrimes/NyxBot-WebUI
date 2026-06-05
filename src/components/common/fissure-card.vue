@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, ref } from "vue";
-import { NButton, NCard, NEmpty, NSpin, NTag } from "naive-ui";
-import { $t } from "@/locales";
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { NButton, NCard, NEmpty, NSpin, NTag } from 'naive-ui';
+import { $t } from '@/locales';
 
 const props = defineProps<{
   title: string;
@@ -10,7 +10,7 @@ const props = defineProps<{
 }>();
 
 const loading = ref(false);
-const error = ref("");
+const error = ref('');
 const missions = ref<any[]>([]);
 const now = ref(Date.now());
 
@@ -22,7 +22,7 @@ function parseTime(v: any): number | null {
 }
 
 function fmtDur(ms: number): string {
-  if (ms <= 0) return "已过期";
+  if (ms <= 0) return '已过期';
   const s = Math.floor(ms / 1000);
   const m = Math.floor(s / 60);
   const h = Math.floor(m / 60);
@@ -37,17 +37,17 @@ function t(key: string): string {
 
 async function fetchData(silent = false) {
   if (!silent) loading.value = true;
-  error.value = "";
+  error.value = '';
   try {
     const result = await props.apiFn();
     if (!result.error && Array.isArray(result.data)) {
       missions.value = result.data;
     } else {
-      if (!silent) error.value = "请求失败";
+      if (!silent) error.value = '请求失败';
       missions.value = [];
     }
   } catch {
-    if (!silent) error.value = "网络错误";
+    if (!silent) error.value = '网络错误';
   }
   if (!silent) loading.value = false;
 }
@@ -64,7 +64,7 @@ const minExpiry = computed(() => {
 });
 
 const countdown = computed(() => {
-  if (!minExpiry.value) return "";
+  if (!minExpiry.value) return '';
   return fmtDur(minExpiry.value - now.value);
 });
 
@@ -92,7 +92,7 @@ onMounted(() => {
   }, 1000);
 });
 
-import { watch } from "vue";
+import { watch } from 'vue';
 watch([minExpiry], () => scheduleRefresh(), { immediate: true });
 
 defineExpose({ fetchData });
@@ -109,7 +109,7 @@ onUnmounted(() => {
       <div class="flex-y-center gap-8px">
         <NTag v-if="expired" type="error" size="small">已过期</NTag>
         <NTag v-else-if="countdown" type="info" size="small">{{ countdown }}</NTag>
-        <NButton size="tiny" @click="fetchData()">{{ $t("common.refresh") }}</NButton>
+        <NButton size="tiny" @click="fetchData()">{{ $t('common.refresh') }}</NButton>
       </div>
     </template>
     <NSpin :show="loading">
@@ -121,14 +121,14 @@ onUnmounted(() => {
           :key="i"
           class="p-10px rounded-6px bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700"
         >
-          <div class="text-12px text-gray-400 mb-4px">{{ m.Node || "-" }}</div>
+          <div class="text-12px text-gray-400 mb-4px">{{ m.Node || '-' }}</div>
           <div class="text-13px font-medium mb-2px">{{ t(m.MissionType) }}</div>
           <div class="flex-y-center gap-8px text-11px text-gray-500 mb-2px">
             <span>{{ t(m.Faction) }}</span>
             <NTag size="tiny" :bordered="false">{{ t(m.Modifier) }}</NTag>
           </div>
           <div class="text-11px text-blue font-medium">
-            ⏱ {{ parseTime(m.Expiry) ? fmtDur(parseTime(m.Expiry)! - now) : "-" }}
+            ⏱ {{ parseTime(m.Expiry) ? fmtDur(parseTime(m.Expiry)! - now) : '-' }}
           </div>
         </div>
       </div>

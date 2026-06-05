@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
-import { useFormRules, useNaiveForm } from "@/hooks/common/form";
-import { $t } from "@/locales";
-import { fetchSaveRewardPool } from "@/service/api/local-data";
+import { computed, ref, watch } from 'vue';
+import { useFormRules, useNaiveForm } from '@/hooks/common/form';
+import { $t } from '@/locales';
+import { fetchSaveRewardPool } from '@/service/api/local-data';
 
-defineOptions({ name: "RewardPoolOperateDrawer" });
+defineOptions({ name: 'RewardPoolOperateDrawer' });
 
 interface Props {
   operateType: NaiveUI.TableOperateType;
@@ -14,21 +14,21 @@ interface Props {
 const props = defineProps<Props>();
 
 interface Emits {
-  (e: "submitted"): void;
+  (e: 'submitted'): void;
 }
 
 const emit = defineEmits<Emits>();
 
-const visible = defineModel<boolean>("visible", { default: false });
+const visible = defineModel<boolean>('visible', { default: false });
 
 const { formRef, validate, restoreValidation } = useNaiveForm();
 const { defaultRequiredRule } = useFormRules();
 
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
-    add: $t("page.local-data.warframe.reward-pool.addRewardPool"),
-    edit: $t("page.local-data.warframe.reward-pool.editRewardPool"),
-    push: $t("common.push"),
+    add: $t('page.local-data.warframe.reward-pool.addRewardPool'),
+    edit: $t('page.local-data.warframe.reward-pool.editRewardPool'),
+    push: $t('common.push')
   };
   return titles[props.operateType];
 });
@@ -47,27 +47,27 @@ interface Model {
 const model = ref<Model>(createDefaultModel());
 
 function createDefaultModel(): Model {
-  return { uniqueName: "", rewards: [] };
+  return { uniqueName: '', rewards: [] };
 }
 
 const rules: Record<string, App.Global.FormRule> = {
-  uniqueName: defaultRequiredRule,
+  uniqueName: defaultRequiredRule
 };
 
 function handleInitModel() {
   model.value = createDefaultModel();
-  if (props.operateType === "edit" && props.rowData) {
+  if (props.operateType === 'edit' && props.rowData) {
     model.value.uniqueName = props.rowData.uniqueName;
-    model.value.rewards = (props.rowData.rewards || []).map((r) => ({
+    model.value.rewards = (props.rowData.rewards || []).map(r => ({
       item: r.item,
       rarity: r.rarity,
-      itemCount: r.itemCount,
+      itemCount: r.itemCount
     }));
   }
 }
 
 function addReward() {
-  model.value.rewards.push({ item: "", rarity: "", itemCount: 0 });
+  model.value.rewards.push({ item: '', rarity: '', itemCount: 0 });
 }
 
 function removeReward(index: number) {
@@ -82,8 +82,8 @@ async function handleSubmit() {
   await validate();
   const { error } = await fetchSaveRewardPool(model.value as any);
   if (!error) {
-    window.$message?.success($t("common.modifySuccess"));
-    emit("submitted");
+    window.$message?.success($t('common.modifySuccess'));
+    emit('submitted');
     closeDrawer();
   }
 }
@@ -109,11 +109,7 @@ watch(visible, () => {
             <div v-for="(reward, i) in model.rewards" :key="i" class="flex-y-center gap-8px">
               <NInput v-model:value="reward.item" placeholder="物品" style="flex: 1" />
               <NInput v-model:value="reward.rarity" placeholder="稀有度" style="width: 100px" />
-              <NInputNumber
-                v-model:value="reward.itemCount"
-                placeholder="数量"
-                style="width: 80px"
-              />
+              <NInputNumber v-model:value="reward.itemCount" placeholder="数量" style="width: 80px" />
               <NButton size="tiny" type="error" ghost @click="removeReward(i)">-</NButton>
             </div>
           </div>
@@ -121,8 +117,8 @@ watch(visible, () => {
       </NForm>
       <template #footer>
         <NSpace :size="16">
-          <NButton @click="closeDrawer">{{ $t("common.cancel") }}</NButton>
-          <NButton type="primary" @click="handleSubmit">{{ $t("common.confirm") }}</NButton>
+          <NButton @click="closeDrawer">{{ $t('common.cancel') }}</NButton>
+          <NButton type="primary" @click="handleSubmit">{{ $t('common.confirm') }}</NButton>
         </NSpace>
       </template>
     </NDrawerContent>

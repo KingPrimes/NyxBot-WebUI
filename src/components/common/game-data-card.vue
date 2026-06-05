@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, ref } from "vue";
-import { NButton, NCard, NEmpty, NSpin, NTag } from "naive-ui";
-import { $t } from "@/locales";
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { NButton, NCard, NEmpty, NSpin, NTag } from 'naive-ui';
+import { $t } from '@/locales';
 
 const props = defineProps<{
   title: string;
@@ -10,7 +10,7 @@ const props = defineProps<{
 }>();
 
 const loading = ref(false);
-const error = ref("");
+const error = ref('');
 const rawData = ref<any>(null);
 const now = ref(Date.now());
 
@@ -30,22 +30,22 @@ interface Countdown {
 
 const countdowns = computed<Countdown[]>(() => {
   if (!rawData.value) return [];
-  return findTimeFields(rawData.value, "");
+  return findTimeFields(rawData.value, '');
 });
 
 function findTimeFields(obj: any, prefix: string): Countdown[] {
-  if (!obj || typeof obj !== "object") return [];
+  if (!obj || typeof obj !== 'object') return [];
   const results: Countdown[] = [];
   for (const key of Object.keys(obj)) {
     const fullKey = prefix ? `${prefix}.${key}` : key;
     const val = obj[key];
-    if (typeof val === "number" && TIME_KEYS.test(key)) {
+    if (typeof val === 'number' && TIME_KEYS.test(key)) {
       results.push({ label: fullKey, msRemaining: toMs(val) - now.value });
     } else if (Array.isArray(val)) {
       val.forEach((item, i) => {
         results.push(...findTimeFields(item, `${fullKey}[${i}]`));
       });
-    } else if (val && typeof val === "object") {
+    } else if (val && typeof val === 'object') {
       results.push(...findTimeFields(val, fullKey));
     }
   }
@@ -53,13 +53,13 @@ function findTimeFields(obj: any, prefix: string): Countdown[] {
 }
 
 const minCountdown = computed(() => {
-  const cds = countdowns.value.filter((c) => c.msRemaining > 0);
+  const cds = countdowns.value.filter(c => c.msRemaining > 0);
   if (cds.length === 0) return null;
   return cds.reduce((a, b) => (a.msRemaining < b.msRemaining ? a : b));
 });
 
 const minExpired = computed(() => {
-  const cds = countdowns.value.filter((c) => c.msRemaining <= 0);
+  const cds = countdowns.value.filter(c => c.msRemaining <= 0);
   return cds.length > 0 ? cds[0] : null;
 });
 
@@ -73,34 +73,34 @@ interface FlatEntry {
 
 const flatData = computed<FlatEntry[]>(() => {
   if (!rawData.value) return [];
-  return flatten(rawData.value, "");
+  return flatten(rawData.value, '');
 });
 
 function flatten(obj: any, prefix: string): FlatEntry[] {
-  if (obj === null || obj === undefined) return [{ key: prefix, value: "-", isTime: false }];
-  if (typeof obj !== "object") {
+  if (obj === null || obj === undefined) return [{ key: prefix, value: '-', isTime: false }];
+  if (typeof obj !== 'object') {
     return [{ key: prefix, value: String(obj), isTime: false }];
   }
   if (Array.isArray(obj)) {
-    if (obj.length === 0) return [{ key: prefix, value: "[]", isTime: false }];
+    if (obj.length === 0) return [{ key: prefix, value: '[]', isTime: false }];
     return obj.flatMap((item, i) => flatten(item, `${prefix}[${i}]`));
   }
-  return Object.keys(obj).flatMap((key) => {
+  return Object.keys(obj).flatMap(key => {
     const fullKey = prefix ? `${prefix}.${key}` : key;
     const val = obj[key];
-    if (val === null || val === undefined) return [{ key: fullKey, value: "-", isTime: false }];
-    if (typeof val === "number" && TIME_KEYS.test(key)) {
+    if (val === null || val === undefined) return [{ key: fullKey, value: '-', isTime: false }];
+    if (typeof val === 'number' && TIME_KEYS.test(key)) {
       const ms = toMs(val);
       return [{ key: fullKey, value: formatDuration(ms - now.value), isTime: true }];
     }
-    if (typeof val === "object") return flatten(val, fullKey);
+    if (typeof val === 'object') return flatten(val, fullKey);
     const display = props.translateMap?.[String(val)] ?? String(val);
     return [{ key: fullKey, value: display, isTime: false }];
   });
 }
 
 function formatDuration(ms: number): string {
-  if (ms <= 0) return "已过期";
+  if (ms <= 0) return '已过期';
   const s = Math.floor(ms / 1000);
   const m = Math.floor(s / 60);
   const h = Math.floor(m / 60);
@@ -115,17 +115,17 @@ function formatDuration(ms: number): string {
 
 async function fetchData() {
   loading.value = true;
-  error.value = "";
+  error.value = '';
   try {
     const result = await props.apiFn();
     if (!result.error && result.data) {
       rawData.value = result.data;
     } else {
-      error.value = "请求失败";
+      error.value = '请求失败';
       rawData.value = null;
     }
   } catch {
-    error.value = "网络错误";
+    error.value = '网络错误';
   }
   loading.value = false;
 }
@@ -159,7 +159,7 @@ onUnmounted(() => {
   if (refreshTimeout) clearTimeout(refreshTimeout);
 });
 
-import { watch } from "vue";
+import { watch } from 'vue';
 watch([minCountdown, minExpired], () => scheduleRefresh(), { immediate: true });
 </script>
 
@@ -171,7 +171,7 @@ watch([minCountdown, minExpired], () => scheduleRefresh(), { immediate: true });
           {{ formatDuration(minCountdown.msRemaining) }}
         </NTag>
         <NTag v-else-if="minExpired" type="error" size="small">已过期</NTag>
-        <NButton size="tiny" @click="fetchData">{{ $t("common.refresh") }}</NButton>
+        <NButton size="tiny" @click="fetchData">{{ $t('common.refresh') }}</NButton>
       </div>
     </template>
     <NSpin :show="loading">

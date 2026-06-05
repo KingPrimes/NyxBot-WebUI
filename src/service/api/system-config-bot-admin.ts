@@ -1,13 +1,13 @@
-import { request } from "../request";
+import { request } from '../request';
 
-const baseUrl = "/config/bot";
+const baseUrl = '/config/bot';
 
 /** 获取管理员列表 */
 export function fetchPostAdminList(params?: Api.SystemConfig.AdminSearchParams) {
   return request<Api.SystemConfig.AdminList>({
     url: `${baseUrl}/admin/list`,
-    method: "post",
-    data: params,
+    method: 'post',
+    data: params
   });
 }
 
@@ -15,8 +15,8 @@ export function fetchPostAdminList(params?: Api.SystemConfig.AdminSearchParams) 
 export function fetchAddAndEditAdmin(params: Api.SystemConfig.AdminModel) {
   return request<Api.Result>({
     url: `${baseUrl}/admin/save`,
-    method: "post",
-    data: params,
+    method: 'post',
+    data: params
   });
 }
 
@@ -24,8 +24,8 @@ export function fetchAddAndEditAdmin(params: Api.SystemConfig.AdminModel) {
 export function fetchPostBotAdmin(params?: Api.SystemConfig.AdminModel) {
   return request<Api.Result>({
     url: `${baseUrl}/admin/save`,
-    method: "post",
-    data: params,
+    method: 'post',
+    data: params
   });
 }
 
@@ -33,6 +33,6 @@ export function fetchPostBotAdmin(params?: Api.SystemConfig.AdminModel) {
 export function fetchDeleteBotAdmin(id?: number) {
   return request<Api.Result>({
     url: `${baseUrl}/admin/remove/${id}`,
-    method: "delete",
+    method: 'delete'
   });
 }

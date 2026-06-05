@@ -137,7 +137,7 @@ function edit(id: number) {
         :flex-height="!appStore.isMobile"
         :loading="loading"
         remote
-        :row-key="(row) => row.id"
+        :row-key="row => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
       />

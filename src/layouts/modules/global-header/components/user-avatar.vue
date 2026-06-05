@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { computed, ref } from "vue";
-import type { VNode } from "vue";
-import { useAuthStore } from "@/store/modules/auth";
-import { useRouterPush } from "@/hooks/common/router";
-import { useSvgIcon } from "@/hooks/common/icon";
-import { $t } from "@/locales";
+import { computed, ref } from 'vue';
+import type { VNode } from 'vue';
+import { useAuthStore } from '@/store/modules/auth';
+import { useRouterPush } from '@/hooks/common/router';
+import { useSvgIcon } from '@/hooks/common/icon';
+import { $t } from '@/locales';
 
 defineOptions({
-  name: "UserAvatar",
+  name: 'UserAvatar'
 });
 
 const authStore = useAuthStore();
@@ -21,7 +21,7 @@ function loginOrRegister() {
   toLogin();
 }
 
-type DropdownKey = "logout" | "changeUsername" | "resetPassword";
+type DropdownKey = 'logout' | 'changeUsername' | 'resetPassword';
 
 type DropdownOption =
   | {
@@ -30,31 +30,31 @@ type DropdownOption =
       icon?: () => VNode;
     }
   | {
-      type: "divider";
+      type: 'divider';
       key: string;
     };
 
 const options = computed(() => {
   const opts: DropdownOption[] = [
     {
-      label: $t("common.changeUsername.title"),
-      key: "changeUsername",
-      icon: SvgIconVNode({ icon: "ph:user-gear", fontSize: 18 }),
+      label: $t('common.changeUsername.title'),
+      key: 'changeUsername',
+      icon: SvgIconVNode({ icon: 'ph:user-gear', fontSize: 18 })
     },
     {
-      label: $t("common.editPassword"),
-      key: "resetPassword",
-      icon: SvgIconVNode({ icon: "ph:lock-key", fontSize: 18 }),
+      label: $t('common.editPassword'),
+      key: 'resetPassword',
+      icon: SvgIconVNode({ icon: 'ph:lock-key', fontSize: 18 })
     },
     {
-      type: "divider",
-      key: "d1",
+      type: 'divider',
+      key: 'd1'
     },
     {
-      label: $t("common.logout"),
-      key: "logout",
-      icon: SvgIconVNode({ icon: "ph:sign-out", fontSize: 18 }),
-    },
+      label: $t('common.logout'),
+      key: 'logout',
+      icon: SvgIconVNode({ icon: 'ph:sign-out', fontSize: 18 })
+    }
   ];
 
   return opts;
@@ -62,22 +62,22 @@ const options = computed(() => {
 
 function logout() {
   window.$dialog?.info({
-    title: $t("common.tip"),
-    content: $t("common.logoutConfirm"),
-    positiveText: $t("common.confirm"),
-    negativeText: $t("common.cancel"),
+    title: $t('common.tip'),
+    content: $t('common.logoutConfirm'),
+    positiveText: $t('common.confirm'),
+    negativeText: $t('common.cancel'),
     onPositiveClick: () => {
       authStore.resetStore();
-    },
+    }
   });
 }
 
 function handleDropdown(key: DropdownKey) {
-  if (key === "logout") {
+  if (key === 'logout') {
     logout();
-  } else if (key === "changeUsername") {
+  } else if (key === 'changeUsername') {
     showChangeUsername.value = true;
-  } else if (key === "resetPassword") {
+  } else if (key === 'resetPassword') {
     showResetPassword.value = true;
   }
 }
@@ -85,7 +85,7 @@ function handleDropdown(key: DropdownKey) {
 
 <template>
   <NButton v-if="!authStore.isLogin" quaternary @click="loginOrRegister">
-    {{ $t("page.login.common.loginOrRegister") }}
+    {{ $t('page.login.common.loginOrRegister') }}
   </NButton>
   <NDropdown v-else placement="bottom" trigger="click" :options="options" @select="handleDropdown">
     <div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const url = "https://kingprimes.top/reward/";
+const url = 'https://kingprimes.top/reward/';
 </script>
 
 <template>

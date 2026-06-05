@@ -1,21 +1,15 @@
-import { computed, reactive, ref } from "vue";
-import { useRoute } from "vue-router";
-import { defineStore } from "pinia";
-import { useLoading } from "@sa/hooks";
-import {
-  changeUsername,
-  fetchGetUserInfo,
-  fetchLogin,
-  fetchRefreshToken,
-  restorePassword,
-} from "@/service/api";
-import { useRouterPush } from "@/hooks/common/router";
-import { localStg } from "@/utils/storage";
-import { SetupStoreId } from "@/enum";
-import { $t } from "@/locales";
-import { useRouteStore } from "../route";
-import { useTabStore } from "../tab";
-import { clearAuthStorage, getToken, getTokenExpTime } from "./shared";
+import { computed, reactive, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { defineStore } from 'pinia';
+import { useLoading } from '@sa/hooks';
+import { changeUsername, fetchGetUserInfo, fetchLogin, fetchRefreshToken, restorePassword } from '@/service/api';
+import { useRouterPush } from '@/hooks/common/router';
+import { localStg } from '@/utils/storage';
+import { SetupStoreId } from '@/enum';
+import { $t } from '@/locales';
+import { useRouteStore } from '../route';
+import { useTabStore } from '../tab';
+import { clearAuthStorage, getToken, getTokenExpTime } from './shared';
 
 export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   const route = useRoute();
@@ -25,20 +19,20 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   const { toLogin, redirectFromLogin } = useRouterPush(false);
   const { loading: loginLoading, startLoading, endLoading } = useLoading();
 
-  const token = ref("");
+  const token = ref('');
 
   const userInfo: Api.Auth.UserInfo = reactive({
-    userId: "",
-    userName: "",
+    userId: '',
+    userName: '',
     roles: [],
-    buttons: [],
+    buttons: []
   });
 
   /** is super role in static route */
   const isStaticSuper = computed(() => {
     const { VITE_AUTH_ROUTE_MODE, VITE_STATIC_SUPER_ROLE } = import.meta.env;
 
-    return VITE_AUTH_ROUTE_MODE === "static" && userInfo.roles.includes(VITE_STATIC_SUPER_ROLE);
+    return VITE_AUTH_ROUTE_MODE === 'static' && userInfo.roles.includes(VITE_STATIC_SUPER_ROLE);
   });
 
   /** Is login */
@@ -51,8 +45,8 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   async function refreshToken() {
     const { error, data } = await fetchRefreshToken();
     if (!error) {
-      localStg.set("token", data.token);
-      localStg.set("refreshToken", data.refreshToken);
+      localStg.set('token', data.token);
+      localStg.set('refreshToken', data.refreshToken);
       token.value = data.token;
       scheduleTokenRefresh();
       return true;
@@ -64,7 +58,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
   /** Schedule a timer to refresh token 60 seconds before expiry */
   function scheduleTokenRefresh() {
     clearTokenRefreshTimer();
-    const currentToken = localStg.get("token");
+    const currentToken = localStg.get('token');
     if (!currentToken) return;
 
     const expTime = getTokenExpTime(currentToken);
@@ -115,7 +109,7 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     }
 
     // Store current user ID locally for next login comparison
-    localStg.set("lastLoginUserId", userInfo.userId);
+    localStg.set('lastLoginUserId', userInfo.userId);
   }
 
   /**
@@ -128,18 +122,18 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
       return false;
     }
 
-    const lastLoginUserId = localStg.get("lastLoginUserId");
+    const lastLoginUserId = localStg.get('lastLoginUserId');
 
     // Clear all tabs if current user is different from previous user
     if (!lastLoginUserId || lastLoginUserId !== userInfo.userId) {
-      localStg.remove("globalTabs");
+      localStg.remove('globalTabs');
       tabStore.clearTabs();
 
-      localStg.remove("lastLoginUserId");
+      localStg.remove('lastLoginUserId');
       return true;
     }
 
-    localStg.remove("lastLoginUserId");
+    localStg.remove('lastLoginUserId');
     return false;
   }
 
@@ -172,9 +166,9 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
         await redirectFromLogin(needRedirect);
 
         window.$notification?.success({
-          title: $t("page.login.common.loginSuccess"),
-          content: $t("page.login.common.welcomeBack", { userName: userInfo.userName }),
-          duration: 4500,
+          title: $t('page.login.common.loginSuccess'),
+          content: $t('page.login.common.welcomeBack', { userName: userInfo.userName }),
+          duration: 4500
         });
       }
     } else {
@@ -186,8 +180,8 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
   async function loginByToken(loginToken: Api.Auth.LoginToken) {
     // 1. stored in the localStorage, the later requests need it in headers
-    localStg.set("token", loginToken.token);
-    localStg.set("refreshToken", loginToken.refreshToken);
+    localStg.set('token', loginToken.token);
+    localStg.set('refreshToken', loginToken.refreshToken);
 
     // 2. get user info
     const pass = await getUserInfo();
@@ -242,16 +236,16 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
     if (!error) {
       window.$notification?.success({
-        title: $t("common.restPassword.success"),
-        content: $t("common.restPassword.success"),
-        duration: 4500,
+        title: $t('common.restPassword.success'),
+        content: $t('common.restPassword.success'),
+        duration: 4500
       });
       resetStore();
     } else {
       window.$notification?.error({
-        title: $t("common.restPassword.error"),
-        content: $t("common.restPassword.error"),
-        duration: 4500,
+        title: $t('common.restPassword.error'),
+        content: $t('common.restPassword.error'),
+        duration: 4500
       });
     }
 
@@ -270,16 +264,16 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
 
     if (!error) {
       window.$notification?.success({
-        title: $t("common.changeUsername.success"),
-        content: $t("common.changeUsername.success"),
-        duration: 4500,
+        title: $t('common.changeUsername.success'),
+        content: $t('common.changeUsername.success'),
+        duration: 4500
       });
       resetStore();
     } else {
       window.$notification?.error({
-        title: $t("common.changeUsername.error"),
-        content: $t("common.changeUsername.error"),
-        duration: 4500,
+        title: $t('common.changeUsername.error'),
+        content: $t('common.changeUsername.error'),
+        duration: 4500
       });
     }
 
@@ -296,6 +290,6 @@ export const useAuthStore = defineStore(SetupStoreId.Auth, () => {
     login,
     initUserInfo,
     restPassword,
-    updateUsername,
+    updateUsername
   };
 });

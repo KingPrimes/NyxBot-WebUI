@@ -1,13 +1,11 @@
-import { onUnmounted, ref } from "vue";
-import type { Ref } from "vue";
-import { localStg } from "@/utils/storage";
+import { onUnmounted, ref } from 'vue';
+import type { Ref } from 'vue';
+import { localStg } from '@/utils/storage';
 
 export function useLogSSE() {
-  const connectionStatus = ref<"disconnected" | "connecting" | "connected" | "error">(
-    "disconnected",
-  );
+  const connectionStatus = ref<'disconnected' | 'connecting' | 'connected' | 'error'>('disconnected');
   const activeConnections = ref(0);
-  const sessionId = ref("");
+  const sessionId = ref('');
 
   let eventSource: EventSource | null = null;
   let reconnectTimer: ReturnType<typeof setTimeout> | null = null;
@@ -15,12 +13,12 @@ export function useLogSSE() {
   const maxReconnectAttempts = 10;
 
   function getToken(): string {
-    return localStg.get("token") || "";
+    return localStg.get('token') || '';
   }
 
   function getBasePath(): string {
-    const isDev = import.meta.env.DEV && import.meta.env.VITE_HTTP_PROXY === "Y";
-    return isDev ? "/proxy-default" : "";
+    const isDev = import.meta.env.DEV && import.meta.env.VITE_HTTP_PROXY === 'Y';
+    return isDev ? '/proxy-default' : '';
   }
 
   function stopReconnect() {
@@ -48,16 +46,16 @@ export function useLogSSE() {
   function connect(
     onMessage: (logs: Api.Log.Data[]) => void,
     onSystemLog?: (message: string) => void,
-    level: Api.Log.Level = "INFO",
+    level: Api.Log.Level = 'INFO'
   ) {
     if (eventSource && eventSource.readyState !== EventSource.CLOSED) {
-      onSystemLog?.("⚠️ SSE 已连接");
+      onSystemLog?.('⚠️ SSE 已连接');
       return;
     }
 
     disconnect(true);
-    connectionStatus.value = "connecting";
-    onSystemLog?.("🔌 正在连接 SSE...");
+    connectionStatus.value = 'connecting';
+    onSystemLog?.('🔌 正在连接 SSE...');
     reconnectAttempts = 0;
 
     const token = getToken();
@@ -65,14 +63,14 @@ export function useLogSSE() {
 
     eventSource = new EventSource(url);
 
-    eventSource.onopen = () => {
-      connectionStatus.value = "connected";
+    eventSource.addEventListener('open', () => {
+      connectionStatus.value = 'connected';
       reconnectAttempts = 0;
-      onSystemLog?.("✅ SSE 连接成功");
+      onSystemLog?.('✅ SSE 连接成功');
       fetchStats();
-    };
+    });
 
-    eventSource.addEventListener("history", (event: MessageEvent) => {
+    eventSource.addEventListener('history', (event: MessageEvent) => {
       try {
         const data = JSON.parse(event.data) as Api.Log.Data[];
         if (Array.isArray(data)) {
@@ -83,7 +81,7 @@ export function useLogSSE() {
       }
     });
 
-    eventSource.addEventListener("session", (event: MessageEvent) => {
+    eventSource.addEventListener('session', (event: MessageEvent) => {
       try {
         const data = JSON.parse(event.data);
         if (data.sessionId) {
@@ -94,7 +92,7 @@ export function useLogSSE() {
       }
     });
 
-    eventSource.onmessage = (event: MessageEvent) => {
+    eventSource.addEventListener('message', (event: MessageEvent) => {
       try {
         const data = JSON.parse(event.data) as Api.Log.Data[];
         if (Array.isArray(data)) {
@@ -105,11 +103,11 @@ export function useLogSSE() {
           onSystemLog?.(event.data);
         }
       }
-    };
+    });
 
-    eventSource.onerror = () => {
-      connectionStatus.value = "error";
-      onSystemLog?.("❌ SSE 连接错误");
+    eventSource.addEventListener('error', () => {
+      connectionStatus.value = 'error';
+      onSystemLog?.('❌ SSE 连接错误');
 
       if (eventSource) {
         eventSource.close();
@@ -122,15 +120,15 @@ export function useLogSSE() {
         onSystemLog?.(`🔄 正在重连 (${reconnectAttempts}/${maxReconnectAttempts})...`);
 
         reconnectTimer = setTimeout(() => {
-          if (connectionStatus.value !== "connected") {
+          if (connectionStatus.value !== 'connected') {
             connect(onMessage, onSystemLog, level);
           }
         }, delay);
       } else {
-        connectionStatus.value = "disconnected";
-        onSystemLog?.("❌ 已达到最大重连次数，请手动重连");
+        connectionStatus.value = 'disconnected';
+        onSystemLog?.('❌ 已达到最大重连次数，请手动重连');
       }
-    };
+    });
   }
 
   /** 断开连接 */
@@ -140,9 +138,9 @@ export function useLogSSE() {
       eventSource.close();
       eventSource = null;
     }
-    sessionId.value = "";
+    sessionId.value = '';
     if (!silent) {
-      connectionStatus.value = "disconnected";
+      connectionStatus.value = 'disconnected';
     }
   }
 
@@ -164,9 +162,9 @@ export function useLogSSE() {
     const token = getToken();
     const sid = sessionId.value;
     const res = await fetch(`${getBasePath()}/sse/filter/update?token=${token}&sessionId=${sid}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(config),
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(config)
     });
     await checkBusinessResponse(res);
   }
@@ -176,7 +174,7 @@ export function useLogSSE() {
     const token = getToken();
     const sid = sessionId.value;
     const res = await fetch(`${getBasePath()}/sse/filter/reset?token=${token}&sessionId=${sid}`, {
-      method: "POST",
+      method: 'POST'
     });
     await checkBusinessResponse(res);
   }
@@ -192,6 +190,6 @@ export function useLogSSE() {
     disconnect,
     sendFilterConfig,
     sendFilterReset,
-    fetchStats,
+    fetchStats
   };
 }

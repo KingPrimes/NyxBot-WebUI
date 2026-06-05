@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from "vue";
-import { useAuthStore } from "@/store/modules/auth";
-import { $t } from "@/locales";
-import { useFormRules, useNaiveForm } from "@/hooks/common/form";
+import { computed, reactive, ref } from 'vue';
+import { useAuthStore } from '@/store/modules/auth';
+import { $t } from '@/locales';
+import { useFormRules, useNaiveForm } from '@/hooks/common/form';
 
 defineOptions({
-  name: "ChangeUsernameModal",
+  name: 'ChangeUsernameModal'
 });
 
 /** 修改用户名表单模型接口定义 */
@@ -23,12 +23,12 @@ const authStore = useAuthStore();
 const { formRef, validate } = useNaiveForm();
 
 // 控制弹窗显示/隐藏
-const visible = defineModel<boolean>("visible", { default: false });
+const visible = defineModel<boolean>('visible', { default: false });
 
 // 创建响应式表单模型，初始化所有字段为空字符串
 const model: FormModel = reactive({
-  newUsername: "",
-  password: "",
+  newUsername: '',
+  password: ''
 });
 
 // 加载状态
@@ -42,7 +42,7 @@ const rules = computed<Record<keyof FormModel, App.Global.FormRule[]>>(() => {
 
   return {
     newUsername: formRules.userName, // 新用户名验证规则
-    password: formRules.pwd, // 当前密码验证规则
+    password: formRules.pwd // 当前密码验证规则
   };
 });
 
@@ -69,8 +69,8 @@ async function handleSubmit() {
 
 /** 重置表单 */
 function resetForm() {
-  model.newUsername = "";
-  model.password = "";
+  model.newUsername = '';
+  model.password = '';
 }
 
 /** 关闭弹窗时重置表单 */
@@ -108,9 +108,9 @@ function handleClose() {
     <!-- 弹窗底部按钮 -->
     <template #footer>
       <div class="flex justify-end gap-12px">
-        <NButton @click="handleClose">{{ $t("common.cancel") }}</NButton>
+        <NButton @click="handleClose">{{ $t('common.cancel') }}</NButton>
         <NButton type="primary" :loading="loading" @click="handleSubmit">
-          {{ $t("common.confirm") }}
+          {{ $t('common.confirm') }}
         </NButton>
       </div>
     </template>

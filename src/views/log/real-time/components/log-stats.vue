@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { $t } from "@/locales";
+import { computed } from 'vue';
+import { $t } from '@/locales';
 
 interface Props {
   stats: Api.Log.Stats;
@@ -10,57 +10,51 @@ const props = defineProps<Props>();
 
 const statsItems = computed(() => [
   {
-    label: $t("page.log.realtime.total"),
+    label: $t('page.log.realtime.total'),
     value: props.stats.total,
-    color: "#18a058",
+    color: '#18a058'
   },
   {
-    label: "TRACE",
+    label: 'TRACE',
     value: props.stats.trace,
-    color: "#858585",
+    color: '#858585'
   },
   {
-    label: "DEBUG",
+    label: 'DEBUG',
     value: props.stats.debug,
-    color: "#4ec9b0",
+    color: '#4ec9b0'
   },
   {
-    label: "INFO",
+    label: 'INFO',
     value: props.stats.info,
-    color: "#4fc1ff",
+    color: '#4fc1ff'
   },
   {
-    label: "WARN",
+    label: 'WARN',
     value: props.stats.warn,
-    color: "#dcdcaa",
+    color: '#dcdcaa'
   },
   {
-    label: "ERROR",
+    label: 'ERROR',
     value: props.stats.error,
-    color: "#f48771",
+    color: '#f48771'
   },
   {
-    label: $t("page.log.realtime.displayed"),
+    label: $t('page.log.realtime.displayed'),
     value: props.stats.displayed,
-    color: "#2080f0",
+    color: '#2080f0'
   },
   {
-    label: $t("page.log.realtime.cacheSize"),
+    label: $t('page.log.realtime.cacheSize'),
     value: props.stats.cacheSize,
-    color: "#909399",
-  },
+    color: '#909399'
+  }
 ]);
 </script>
 
 <template>
   <div class="flex flex-wrap gap-4">
-    <NCard
-      v-for="item in statsItems"
-      :key="item.label"
-      size="small"
-      :bordered="false"
-      class="min-w-100px flex-1"
-    >
+    <NCard v-for="item in statsItems" :key="item.label" size="small" :bordered="false" class="min-w-100px flex-1">
       <div class="flex flex-col items-center">
         <div class="mb-2 text-sm text-gray-500">{{ item.label }}</div>
         <div class="text-2xl font-bold" :style="{ color: item.color }">

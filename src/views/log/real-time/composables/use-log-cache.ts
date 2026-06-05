@@ -1,4 +1,4 @@
-import { computed, ref } from "vue";
+import { computed, ref } from 'vue';
 
 const MAX_CACHE_SIZE = 5000;
 
@@ -18,7 +18,7 @@ export function useLogCache() {
 
   /** 添加系统日志 */
   function addSystemLog(message: string) {
-    const timestamp = new Date().toLocaleTimeString("zh-CN");
+    const timestamp = new Date().toLocaleTimeString('zh-CN');
     systemLogs.value.push(`[${timestamp}] ${message}`);
 
     // 限制系统日志最多 100 条
@@ -51,11 +51,11 @@ export function useLogCache() {
   /** 获取统计信息 */
   const stats = computed<Api.Log.Stats>(() => {
     const total = logCache.value.length;
-    const trace = logCache.value.filter((log) => log.live === "TRACE").length;
-    const debug = logCache.value.filter((log) => log.live === "DEBUG").length;
-    const info = logCache.value.filter((log) => log.live === "INFO").length;
-    const warn = logCache.value.filter((log) => log.live === "WARN").length;
-    const error = logCache.value.filter((log) => log.live === "ERROR").length;
+    const trace = logCache.value.filter(log => log.live === 'TRACE').length;
+    const debug = logCache.value.filter(log => log.live === 'DEBUG').length;
+    const info = logCache.value.filter(log => log.live === 'INFO').length;
+    const warn = logCache.value.filter(log => log.live === 'WARN').length;
+    const error = logCache.value.filter(log => log.live === 'ERROR').length;
 
     return {
       total,
@@ -65,7 +65,7 @@ export function useLogCache() {
       warn,
       error,
       displayed: total, // 将在过滤后更新
-      cacheSize: cacheSize.value,
+      cacheSize: cacheSize.value
     };
   });
 
@@ -77,38 +77,34 @@ export function useLogCache() {
 
     try {
       if (useRegex) {
-        const regex = new RegExp(keyword, "i");
-        return logCache.value.filter(
-          (log) => regex.test(log.log) || regex.test(log.pack) || regex.test(log.thread),
-        );
+        const regex = new RegExp(keyword, 'i');
+        return logCache.value.filter(log => regex.test(log.log) || regex.test(log.pack) || regex.test(log.thread));
       }
       const lowerKeyword = keyword.toLowerCase();
       return logCache.value.filter(
-        (log) =>
+        log =>
           log.log.toLowerCase().includes(lowerKeyword) ||
           log.pack.toLowerCase().includes(lowerKeyword) ||
-          log.thread.toLowerCase().includes(lowerKeyword),
+          log.thread.toLowerCase().includes(lowerKeyword)
       );
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.error("搜索日志失败:", error);
+      console.error('搜索日志失败:', error);
       return logCache.value;
     }
   }
 
   /** 导出日志为文本 */
   function exportLogsAsText(logs: Api.Log.Data[]): string {
-    return logs
-      .map((log) => `[${log.live}] ${log.time} [${log.thread}] ${log.pack}\n${log.log}`)
-      .join("\n\n");
+    return logs.map(log => `[${log.live}] ${log.time} [${log.thread}] ${log.pack}\n${log.log}`).join('\n\n');
   }
 
   /** 下载日志文件 */
-  function downloadLogs(logs: Api.Log.Data[], filename: string = "logs.txt") {
+  function downloadLogs(logs: Api.Log.Data[], filename: string = 'logs.txt') {
     const text = exportLogsAsText(logs);
-    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
     const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
+    const link = document.createElement('a');
     link.href = url;
     link.download = filename;
     document.body.appendChild(link);
@@ -127,6 +123,6 @@ export function useLogCache() {
     clearSystemLogs,
     searchLogs,
     exportLogsAsText,
-    downloadLogs,
+    downloadLogs
   };
 }

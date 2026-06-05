@@ -1,6 +1,6 @@
-import { request } from "../request";
+import { request } from '../request';
 
-const baseUrl = "/api/warframe";
+const baseUrl = '/api/warframe';
 
 /** 平原时间 */
 export function fetchCycle() {
@@ -14,7 +14,7 @@ export function fetchInvasions() {
 
 /** 裂隙信息 */
 export function fetchFissures(type?: string) {
-  return request<any>({ url: `${baseUrl}/fissures`, params: { type: type || "ACTIVE_MISSION" } });
+  return request<any>({ url: `${baseUrl}/fissures`, params: { type: type || 'ACTIVE_MISSION' } });
 }
 
 /** 电波信息 */

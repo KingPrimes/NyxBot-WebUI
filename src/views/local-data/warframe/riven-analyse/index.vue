@@ -1,10 +1,10 @@
 <script lang="tsx" setup>
-import { NCard, NDataTable } from "naive-ui";
-import { $t } from "@/locales";
-import { useAppStore } from "@/store/modules/app";
-import { useTable } from "@/hooks/common/table";
-import { fetchPostRivenAnalyseList, fetchRivenAnalyseUpdate } from "@/service/api/local-data";
-import DataUpdateButton from "@/components/common/data-update-button.vue";
+import { NCard, NDataTable } from 'naive-ui';
+import { $t } from '@/locales';
+import { useAppStore } from '@/store/modules/app';
+import { useTable } from '@/hooks/common/table';
+import { fetchPostRivenAnalyseList, fetchRivenAnalyseUpdate } from '@/service/api/local-data';
+import DataUpdateButton from '@/components/common/data-update-button.vue';
 
 const appStore = useAppStore();
 
@@ -12,25 +12,25 @@ const { columns, columnChecks, data, getData, loading, mobilePagination } = useT
   apiFn: fetchPostRivenAnalyseList,
   showTotal: true,
   columns: () => [
-    { type: "selection", align: "center", width: 48 },
-    { key: "index", title: $t("common.index"), align: "center", width: 64 },
-    { key: "name", title: $t("page.local-data.warframe.riven-analyse.name"), align: "center" },
-    { key: "prefix", title: $t("page.local-data.warframe.riven-analyse.prefix"), align: "center" },
-    { key: "suffix", title: $t("page.local-data.warframe.riven-analyse.suffix"), align: "center" },
-    { key: "rifle", title: $t("page.local-data.warframe.riven-analyse.rifle"), align: "center" },
+    { type: 'selection', align: 'center', width: 48 },
+    { key: 'index', title: $t('common.index'), align: 'center', width: 64 },
+    { key: 'name', title: $t('page.local-data.warframe.riven-analyse.name'), align: 'center' },
+    { key: 'prefix', title: $t('page.local-data.warframe.riven-analyse.prefix'), align: 'center' },
+    { key: 'suffix', title: $t('page.local-data.warframe.riven-analyse.suffix'), align: 'center' },
+    { key: 'rifle', title: $t('page.local-data.warframe.riven-analyse.rifle'), align: 'center' },
     {
-      key: "shotgun",
-      title: $t("page.local-data.warframe.riven-analyse.shotgun"),
-      align: "center",
+      key: 'shotgun',
+      title: $t('page.local-data.warframe.riven-analyse.shotgun'),
+      align: 'center'
     },
-    { key: "pistol", title: $t("page.local-data.warframe.riven-analyse.pistol"), align: "center" },
-    { key: "melle", title: $t("page.local-data.warframe.riven-analyse.melle"), align: "center" },
+    { key: 'pistol', title: $t('page.local-data.warframe.riven-analyse.pistol'), align: 'center' },
+    { key: 'melle', title: $t('page.local-data.warframe.riven-analyse.melle'), align: 'center' },
     {
-      key: "archwing",
-      title: $t("page.local-data.warframe.riven-analyse.archwing"),
-      align: "center",
-    },
-  ],
+      key: 'archwing',
+      title: $t('page.local-data.warframe.riven-analyse.archwing'),
+      align: 'center'
+    }
+  ]
 });
 </script>
 
