@@ -211,7 +211,7 @@ async function removeType(typeId: number | null) {
         :flex-height="!appStore.isMobile"
         :loading="loading"
         remote
-        :row-key="(row) => row.id"
+        :row-key="row => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
         @update:expanded-row-keys="handleExpandedChange"

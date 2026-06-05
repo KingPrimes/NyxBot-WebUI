@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { computed, onMounted, onUnmounted, ref } from "vue";
-import { NButton, NCard, NEmpty, NSpin } from "naive-ui";
-import { $t } from "@/locales";
+import { computed, onMounted, onUnmounted, ref } from 'vue';
+import { NButton, NCard, NEmpty, NSpin } from 'naive-ui';
+import { $t } from '@/locales';
 
 const props = defineProps<{
   title: string;
@@ -9,30 +9,24 @@ const props = defineProps<{
 }>();
 
 const loading = ref(false);
-const error = ref("");
+const error = ref('');
 const rawData = ref<any>(null);
 const now = ref(Date.now());
 
 function parseTime(v: any): number | null {
   if (!v) return null;
-  const d = typeof v === "string" ? new Date(v) : new Date(v?.$date?.$numberLong || v);
+  const d = typeof v === 'string' ? new Date(v) : new Date(v?.$date?.$numberLong || v);
   return isNaN(d.getTime()) ? null : d.getTime();
 }
 
 function fmtDur(ms: number): string {
-  if (ms <= 0) return "已过期";
+  if (ms <= 0) return '已过期';
   const s = Math.floor(ms / 1000);
   const m = Math.floor(s / 60);
   const h = Math.floor(m / 60);
   if (h > 0) return `${h}h ${m % 60}m ${s % 60}s`;
   if (m > 0) return `${m}m ${s % 60}s`;
   return `${s}s`;
-}
-
-function _fmtTime(v: any): string {
-  const t = parseTime(v);
-  if (!t) return "-";
-  return new Date(t).toLocaleTimeString("zh-CN", { hour: "2-digit", minute: "2-digit" });
 }
 
 interface CycleItem {
@@ -45,18 +39,18 @@ const cycles = computed<CycleItem[]>(() => {
   if (!rawData.value) return [];
   const list: CycleItem[] = [];
   const keys: Record<string, string> = {
-    cetusCycle: "希图斯(地球)",
-    vallisCycle: "福尔图娜(金星)",
-    cambionCycle: "殁世幽都(火卫二)",
-    zarimanCycle: "扎里曼号",
+    cetusCycle: '希图斯(地球)',
+    vallisCycle: '福尔图娜(金星)',
+    cambionCycle: '殁世幽都(火卫二)',
+    zarimanCycle: '扎里曼号'
   };
   for (const [key, label] of Object.entries(keys)) {
     const c = rawData.value[key];
     if (c) {
       list.push({
         label,
-        state: c.state || c.active || c.shortId || "-",
-        expiry: parseTime(c.expiry),
+        state: c.state || c.active || c.shortId || '-',
+        expiry: parseTime(c.expiry)
       });
     }
   }
@@ -65,17 +59,17 @@ const cycles = computed<CycleItem[]>(() => {
 
 async function fetchData(silent = false) {
   if (!silent) loading.value = true;
-  error.value = "";
+  error.value = '';
   try {
     const result = await props.apiFn();
     if (!result.error && result.data) {
       rawData.value = result.data;
     } else {
-      if (!silent) error.value = "请求失败";
+      if (!silent) error.value = '请求失败';
       rawData.value = null;
     }
   } catch {
-    if (!silent) error.value = "网络错误";
+    if (!silent) error.value = '网络错误';
   }
   if (!silent) loading.value = false;
 }
@@ -90,7 +84,7 @@ const minExpiry = computed(() => {
 
 let refreshTimeout: ReturnType<typeof setTimeout> | null = null;
 
-import { watch } from "vue";
+import { watch } from 'vue';
 watch(
   minExpiry,
   () => {
@@ -100,7 +94,7 @@ watch(
       refreshTimeout = setTimeout(() => fetchData(true), delay);
     }
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 onMounted(() => fetchData());
@@ -120,7 +114,7 @@ onUnmounted(() => {
 <template>
   <NCard :title="title" :bordered="false" size="small" content-style="padding:8px">
     <template #header-extra>
-      <NButton size="tiny" @click="fetchData()">{{ $t("common.refresh") }}</NButton>
+      <NButton size="tiny" @click="fetchData()">{{ $t('common.refresh') }}</NButton>
     </template>
     <NSpin :show="loading">
       <div v-if="error" class="text-red py-16px text-center">{{ error }}</div>
@@ -133,9 +127,7 @@ onUnmounted(() => {
         >
           <div class="text-12px text-gray-400 mb-4px">{{ item.label }}</div>
           <div class="text-15px font-bold mb-2px">{{ item.state }}</div>
-          <div class="text-12px text-blue font-medium">
-            ⏱ {{ item.expiry ? fmtDur(item.expiry - now) : "-" }}
-          </div>
+          <div class="text-12px text-blue font-medium">⏱ {{ item.expiry ? fmtDur(item.expiry - now) : '-' }}</div>
         </div>
       </div>
     </NSpin>

@@ -1,0 +1,94 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate Release Notes
+        id: release_notes
+        run: |
+          CURRENT_TAG="${{ github.ref_name }}"
+          PREVIOUS_TAG=$(git tag --sort=-creatordate | grep -xA1 "^${CURRENT_TAG}$" | tail -1)
+
+          if [ -z "$PREVIOUS_TAG" ]; then
+            RANGE="$CURRENT_TAG"
+            COMPARE_URL="https://github.com/${{ github.repository }}/commits/${CURRENT_TAG}"
+          else
+            RANGE="${PREVIOUS_TAG}..${CURRENT_TAG}"
+            COMPARE_URL="https://github.com/${{ github.repository }}/compare/${PREVIOUS_TAG}...${CURRENT_TAG}"
+          fi
+
+          echo "变更范围: ${RANGE}"
+
+          clean_prefix() {
+            sed 's/^[a-z]\+\(([^)]*)\)\?:\s*//'
+          }
+
+          gen_section() {
+            local title="$1" pattern="$2"
+            local commits
+            commits=$(git log "$RANGE" --no-merges --pretty=format:"%s" | grep -iE "$pattern" | clean_prefix | sed 's/^/- /' || true)
+            if [ -n "$commits" ]; then
+              echo "### $title"
+              echo ""
+              echo "$commits"
+              echo ""
+            fi
+          }
+
+          {
+            echo "## 🚀 ${CURRENT_TAG} 发布说明"
+            echo ""
+
+            gen_section "✨ 新功能" "^(feat|feat\()"
+
+            gen_section "🐛 问题修复" "^(fix|fix\()"
+
+            gen_section "♻️ 代码重构" "^(refactor|refactor\()"
+
+            gen_section "📝 文档更新" "^(docs|docs\()"
+
+            gen_section "🎨 样式调整" "^(style|style\()"
+
+            gen_section "⚡ 性能优化" "^(perf|perf\()"
+
+            OTHERS=$(git log "$RANGE" --no-merges --pretty=format:"- %h %s (%an)" | grep -vE "^- [0-9a-f]+ (feat|fix|refactor|docs|style|perf)(\(|:)" || true)
+            if [ -n "$OTHERS" ]; then
+              echo "### 📦 其他变更"
+              echo ""
+              echo "$OTHERS"
+              echo ""
+            fi
+
+            echo "---"
+            echo ""
+            echo "**完整 Changelog**: ${COMPARE_URL}"
+          } > /tmp/release_body.md
+
+          {
+            echo 'body<<RELEASEOF'
+            cat /tmp/release_body.md
+            echo RELEASEOF
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          body: ${{ steps.release_notes.outputs.body }}
+          draft: true
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

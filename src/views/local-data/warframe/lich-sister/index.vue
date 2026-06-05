@@ -1,11 +1,11 @@
 <script lang="tsx" setup>
-import { h } from "vue";
-import { NDataTable, NImage } from "naive-ui";
-import { $t } from "@/locales";
-import { useAppStore } from "@/store/modules/app";
-import { useTable, useTableOperate } from "@/hooks/common/table";
-import { fetchLichSisterUpdate, fetchPostLichSisterList } from "@/service/api/local-data";
-import DataUpdateButton from "@/components/common/data-update-button.vue";
+import { h } from 'vue';
+import { NDataTable, NImage } from 'naive-ui';
+import { $t } from '@/locales';
+import { useAppStore } from '@/store/modules/app';
+import { useTable, useTableOperate } from '@/hooks/common/table';
+import { fetchLichSisterUpdate, fetchPostLichSisterList } from '@/service/api/local-data';
+import DataUpdateButton from '@/components/common/data-update-button.vue';
 
 const appStore = useAppStore();
 
@@ -18,40 +18,40 @@ const {
   loading,
   mobilePagination,
   searchParams: _searchParams,
-  resetSearchParams: _resetSearchParams,
+  resetSearchParams: _resetSearchParams
 } = useTable({
   apiFn: fetchPostLichSisterList,
   showTotal: true,
   columns: () => [
-    { type: "selection", align: "center", width: 48 },
-    { key: "index", title: $t("common.index"), align: "center", width: 64 },
+    { type: 'selection', align: 'center', width: 48 },
+    { key: 'index', title: $t('common.index'), align: 'center', width: 64 },
     {
-      key: "thumb",
-      title: $t("page.local-data.warframe.market.imageUrl"),
-      align: "center",
+      key: 'thumb',
+      title: $t('page.local-data.warframe.market.imageUrl'),
+      align: 'center',
 
       render: (row: any) => {
         return h(NImage, {
           src: `https://warframe.market/static/assets/${row.icon}`,
 
           height: 36,
-          objectFit: "cover",
+          objectFit: 'cover',
           previewDisabled: false,
-          style: { borderRadius: "4px" },
+          style: { borderRadius: '4px' }
         });
-      },
+      }
     },
-    { key: "name", title: $t("page.local-data.warframe.lich-sister.name"), align: "center" },
-    { key: "slug", title: $t("page.local-data.warframe.lich-sister.slug"), align: "center" },
+    { key: 'name', title: $t('page.local-data.warframe.lich-sister.name'), align: 'center' },
+    { key: 'slug', title: $t('page.local-data.warframe.lich-sister.slug'), align: 'center' },
     {
-      key: "reqMasteryRank",
-      title: $t("page.local-data.warframe.lich-sister.reqMasteryRank"),
-      align: "center",
+      key: 'reqMasteryRank',
+      title: $t('page.local-data.warframe.lich-sister.reqMasteryRank'),
+      align: 'center',
 
-      render: (row) => row.reqMasteryRank ?? "-",
+      render: row => row.reqMasteryRank ?? '-'
     },
-    { key: "gameRef", title: $t("page.local-data.warframe.lich-sister.gameRef"), align: "center" },
-  ],
+    { key: 'gameRef', title: $t('page.local-data.warframe.lich-sister.gameRef'), align: 'center' }
+  ]
 });
 
 const { checkedRowKeys } = useTableOperate(data, getData);
@@ -91,7 +91,7 @@ const { checkedRowKeys } = useTableOperate(data, getData);
         :flex-height="!appStore.isMobile"
         :loading="loading"
         remote
-        :row-key="(row) => row.id"
+        :row-key="row => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
       />

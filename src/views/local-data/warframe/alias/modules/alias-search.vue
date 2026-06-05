@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { useNaiveForm } from "@/hooks/common/form";
+import { useNaiveForm } from '@/hooks/common/form';
 
 defineOptions({
-  name: "AliasSearch",
+  name: 'AliasSearch'
 });
 
 interface Emits {
-  (e: "reset"): void;
-  (e: "search"): void;
+  (e: 'reset'): void;
+  (e: 'search'): void;
 }
 
 const emit = defineEmits<Emits>();
 
 const { formRef, validate, restoreValidation } = useNaiveForm();
 
-const model = defineModel<Api.LocalData.AliasSearchParams>("model", { required: true });
+const model = defineModel<Api.LocalData.AliasSearchParams>('model', { required: true });
 
 async function reset() {
   await restoreValidation();
-  emit("reset");
+  emit('reset');
 }
 
 async function search() {
   await validate();
-  emit("search");
+  emit('search');
 }
 </script>
 
@@ -50,13 +50,13 @@ async function search() {
                   <template #icon>
                     <icon-ic-round-refresh class="text-icon" />
                   </template>
-                  {{ $t("common.reset") }}
+                  {{ $t('common.reset') }}
                 </NButton>
                 <NButton type="primary" ghost @click="search">
                   <template #icon>
                     <icon-ic-round-search class="text-icon" />
                   </template>
-                  {{ $t("common.search") }}
+                  {{ $t('common.search') }}
                 </NButton>
               </NSpace>
             </NFormItemGi>

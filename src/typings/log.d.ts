@@ -1,7 +1,7 @@
 declare namespace Api {
   namespace Log {
     /** 日志级别 */
-    type Level = "TRACE" | "DEBUG" | "INFO" | "WARN" | "ERROR";
+    type Level = 'TRACE' | 'DEBUG' | 'INFO' | 'WARN' | 'ERROR';
 
     /** 日志数据 */
     interface Data {

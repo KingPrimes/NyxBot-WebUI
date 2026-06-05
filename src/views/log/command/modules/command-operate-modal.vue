@@ -1,15 +1,15 @@
 <script setup lang="tsx">
-import { computed, ref, watch } from "vue";
-import dayjs from "dayjs";
-import { useNaiveForm } from "@/hooks/common/form";
-import { $t } from "@/locales";
-import { fetchGetLogInfoDetail } from "@/service/api/system-log";
+import { computed, ref, watch } from 'vue';
+import dayjs from 'dayjs';
+import { useNaiveForm } from '@/hooks/common/form';
+import { $t } from '@/locales';
+import { fetchGetLogInfoDetail } from '@/service/api/system-log';
 
 defineOptions({
-  name: "DetailOperateModal",
+  name: 'DetailOperateModal'
 });
 
-export type OperateType = NaiveUI.TableOperateType | "detail";
+export type OperateType = NaiveUI.TableOperateType | 'detail';
 
 interface Props {
   /** the type of operation */
@@ -21,47 +21,47 @@ interface Props {
 const props = defineProps<Props>();
 
 interface Emits {
-  (e: "submitted"): void;
+  (e: 'submitted'): void;
 }
 
 const emit = defineEmits<Emits>();
 
-const visible = defineModel<boolean>("visible", {
-  default: false,
+const visible = defineModel<boolean>('visible', {
+  default: false
 });
 
 const { validate, restoreValidation } = useNaiveForm();
 
 const title = computed(() => {
   const titles: Record<OperateType, string> = {
-    add: $t("common.add"),
-    edit: $t("common.edit"),
-    push: $t("common.push"),
-    detail: $t("common.detail"),
+    add: $t('common.add'),
+    edit: $t('common.edit'),
+    push: $t('common.push'),
+    detail: $t('common.detail')
   };
   return titles[props.operateType];
 });
 
 type Model = Pick<
   Api.SystemLog.LogInfo,
-  | "id"
-  | "title"
-  | "code"
-  | "permissions"
-  | "businessType"
-  | "botUid"
-  | "groupUid"
-  | "userUid"
-  | "rawMsg"
-  | "url"
-  | "method"
-  | "requestMethod"
-  | "runTime"
-  | "param"
-  | "result"
-  | "status"
-  | "errorMsg"
-  | "logTime"
+  | 'id'
+  | 'title'
+  | 'code'
+  | 'permissions'
+  | 'businessType'
+  | 'botUid'
+  | 'groupUid'
+  | 'userUid'
+  | 'rawMsg'
+  | 'url'
+  | 'method'
+  | 'requestMethod'
+  | 'runTime'
+  | 'param'
+  | 'result'
+  | 'status'
+  | 'errorMsg'
+  | 'logTime'
 >;
 
 const model = ref(createDefaultModel());
@@ -69,30 +69,30 @@ const model = ref(createDefaultModel());
 function createDefaultModel(): Model {
   return {
     id: 0,
-    title: "",
-    code: "",
-    permissions: "",
-    businessType: "",
+    title: '',
+    code: '',
+    permissions: '',
+    businessType: '',
     botUid: 0,
     groupUid: 0,
     userUid: 0,
-    rawMsg: "",
-    url: "",
-    method: "",
-    requestMethod: "",
+    rawMsg: '',
+    url: '',
+    method: '',
+    requestMethod: '',
     runTime: 0,
-    param: "",
-    result: "",
+    param: '',
+    result: '',
     status: 0,
-    errorMsg: "",
-    logTime: "",
+    errorMsg: '',
+    logTime: ''
   };
 }
 
 function handleInitModel() {
   model.value = createDefaultModel();
-  if (props.operateType === "detail" && props.rowData) {
-    fetchGetLogInfoDetail(props.rowData.id).then((res) => {
+  if (props.operateType === 'detail' && props.rowData) {
+    fetchGetLogInfoDetail(props.rowData.id).then(res => {
       if (res.data) {
         model.value = res.data;
       } else {
@@ -109,10 +109,10 @@ function closeDrawer() {
 async function handleSubmit() {
   await validate();
   closeDrawer();
-  emit("submitted");
+  emit('submitted');
 }
 const formattedLogTime = computed(() => {
-  return model.value ? dayjs(model.value.logTime).format("YYYY-MM-DD HH:mm:ss") : "";
+  return model.value ? dayjs(model.value.logTime).format('YYYY-MM-DD HH:mm:ss') : '';
 });
 
 const formattedParam = computed(() => {
@@ -124,15 +124,15 @@ const formattedParam = computed(() => {
       return model.value.param;
     }
   }
-  return "";
+  return '';
 });
 
 const runtime = computed(() => {
-  return model.value ? `${model.value.runTime} ms` : "";
+  return model.value ? `${model.value.runTime} ms` : '';
 });
 
 const errorMsg = computed(() => {
-  return model.value && model.value.errorMsg ? model.value.errorMsg : "null";
+  return model.value && model.value.errorMsg ? model.value.errorMsg : 'null';
 });
 
 watch(visible, () => {
@@ -205,8 +205,8 @@ watch(visible, () => {
     </NScrollbar>
     <template #footer>
       <NSpace justify="end" :size="16">
-        <NButton @click="closeDrawer">{{ $t("common.cancel") }}</NButton>
-        <NButton type="primary" @click="handleSubmit">{{ $t("common.confirm") }}</NButton>
+        <NButton @click="closeDrawer">{{ $t('common.cancel') }}</NButton>
+        <NButton type="primary" @click="handleSubmit">{{ $t('common.confirm') }}</NButton>
       </NSpace>
     </template>
   </NModal>

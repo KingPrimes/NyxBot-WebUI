@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import { computed, ref, onMounted, watch } from "vue";
-import { getPaletteColorByNumber, addColorAlpha } from "@sa/color";
-import { useThemeStore } from "@/store/modules/theme";
+import { computed, ref, onMounted, watch } from 'vue';
+import { getPaletteColorByNumber, addColorAlpha } from '@sa/color';
+import { useThemeStore } from '@/store/modules/theme';
 
-defineOptions({ name: "WaveBg" });
+defineOptions({ name: 'WaveBg' });
 
 interface Props {
   /** Theme color */
@@ -13,14 +13,14 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  themeColor: "#fe7199",
-  count: 30,
+  themeColor: '#fe7199',
+  count: 30
 });
 
 const themeStore = useThemeStore();
 const isDark = computed(() => themeStore.darkMode);
 
-type ShapeType = "star" | "heart" | "circle" | "triangle" | "diamond";
+type ShapeType = 'star' | 'heart' | 'circle' | 'triangle' | 'diamond';
 
 interface ShapeItem {
   id: number;
@@ -57,7 +57,7 @@ function generateShapes(): ShapeItem[] {
         getPaletteColorByNumber(primary, 700),
         addColorAlpha(primary, 0.05),
         addColorAlpha(primary, 0.18),
-        addColorAlpha(primary, 0.25),
+        addColorAlpha(primary, 0.25)
       ]
     : [
         addColorAlpha(primary, 0.1),
@@ -69,10 +69,10 @@ function generateShapes(): ShapeItem[] {
         addColorAlpha(primary, 0.12),
         addColorAlpha(primary, 0.04),
         addColorAlpha(primary, 0.18),
-        addColorAlpha(primary, 0.2),
+        addColorAlpha(primary, 0.2)
       ];
 
-  const types: ShapeType[] = ["star", "heart", "circle", "triangle", "diamond"];
+  const types: ShapeType[] = ['star', 'heart', 'circle', 'triangle', 'diamond'];
   const shapes: ShapeItem[] = [];
   const s = seed.value;
 
@@ -89,7 +89,7 @@ function generateShapes(): ShapeItem[] {
       duration: 8 + seededRandom(s + i * 31) * 16,
       delay: seededRandom(s + i * 37) * -20,
       floatX: (seededRandom(s + i * 41) - 0.5) * 80,
-      floatY: (seededRandom(s + i * 43) - 0.5) * 80,
+      floatY: (seededRandom(s + i * 43) - 0.5) * 80
     });
   }
 
@@ -130,14 +130,12 @@ watch(isDark, () => {
         '--float-x': `${shape.floatX}px`,
         '--float-y': `${shape.floatY}px`,
         '--start-rotate': `${shape.rotate}deg`,
-        '--end-rotate': `${shape.rotate + shape.rotateSpeed}deg`,
+        '--end-rotate': `${shape.rotate + shape.rotateSpeed}deg`
       }"
     >
       <!-- Star -->
       <svg v-if="shape.type === 'star'" viewBox="0 0 24 24" fill="currentColor" class="size-full">
-        <path
-          d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-        />
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
       </svg>
 
       <!-- Heart -->
@@ -148,29 +146,15 @@ watch(isDark, () => {
       </svg>
 
       <!-- Circle -->
-      <div
-        v-if="shape.type === 'circle'"
-        class="size-full rounded-full"
-        :style="{ backgroundColor: shape.color }"
-      />
+      <div v-if="shape.type === 'circle'" class="size-full rounded-full" :style="{ backgroundColor: shape.color }" />
 
       <!-- Triangle -->
-      <svg
-        v-if="shape.type === 'triangle'"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="size-full"
-      >
+      <svg v-if="shape.type === 'triangle'" viewBox="0 0 24 24" fill="currentColor" class="size-full">
         <path d="M12 2L2 22h20L12 2z" />
       </svg>
 
       <!-- Diamond -->
-      <svg
-        v-if="shape.type === 'diamond'"
-        viewBox="0 0 24 24"
-        fill="currentColor"
-        class="size-full"
-      >
+      <svg v-if="shape.type === 'diamond'" viewBox="0 0 24 24" fill="currentColor" class="size-full">
         <path d="M12 2l10 10-10 10L2 12 12 2z" />
       </svg>
     </div>

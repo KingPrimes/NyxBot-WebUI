@@ -1,14 +1,14 @@
-import { localStg } from "@/utils/storage";
+import { localStg } from '@/utils/storage';
 
 /** Get token */
 export function getToken() {
-  return localStg.get("token") || "";
+  return localStg.get('token') || '';
 }
 
 /** Clear auth storage */
 export function clearAuthStorage() {
-  localStg.remove("token");
-  localStg.remove("refreshToken");
+  localStg.remove('token');
+  localStg.remove('refreshToken');
 }
 
 /**
@@ -18,7 +18,7 @@ export function clearAuthStorage() {
  */
 export function getTokenExpTime(token: string): number | null {
   try {
-    const payload = JSON.parse(atob(token.split(".")[1]));
+    const payload = JSON.parse(atob(token.split('.')[1]));
     return payload.exp ? payload.exp * 1000 : null;
   } catch {
     return null;

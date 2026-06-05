@@ -1,18 +1,18 @@
-import { request } from "../request";
+import { request } from '../request';
 
 /** 获取指令列表 */
 export function fetchGetCodesOption() {
   return request<Api.SystemLog.Option[]>({
-    url: "/log/codes",
-    method: "get",
+    url: '/log/codes',
+    method: 'get'
   });
 }
 
 /** 获取日志标题列表 */
 export function fetchGetTitleOption() {
   return request<Api.SystemLog.Option[]>({
-    url: "/log/titles",
-    method: "get",
+    url: '/log/titles',
+    method: 'get'
   });
 }
 
@@ -20,15 +20,15 @@ export function fetchGetTitleOption() {
 export function fetchGetLogInfoDetail(id: number) {
   return request<Api.SystemLog.LogInfo>({
     url: `/log/detail/${id}`,
-    method: "get",
+    method: 'get'
   });
 }
 
 /** 获取日志列表 */
 export function fetchGetCommandLogList(params?: Api.SystemLog.LogSearchParams) {
   return request<Api.SystemLog.LogList>({
-    url: "/log/list",
-    method: "post",
-    data: params,
+    url: '/log/list',
+    method: 'post',
+    data: params
   });
 }

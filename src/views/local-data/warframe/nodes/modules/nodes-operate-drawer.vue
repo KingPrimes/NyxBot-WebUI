@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { computed, ref, watch } from "vue";
-import { useFormRules, useNaiveForm } from "@/hooks/common/form";
-import { $t } from "@/locales";
-import { fetchSaveNodes } from "@/service/api/local-data";
+import { computed, ref, watch } from 'vue';
+import { useFormRules, useNaiveForm } from '@/hooks/common/form';
+import { $t } from '@/locales';
+import { fetchSaveNodes } from '@/service/api/local-data';
 
-defineOptions({ name: "NodesOperateDrawer" });
+defineOptions({ name: 'NodesOperateDrawer' });
 
 interface Props {
   operateType: NaiveUI.TableOperateType;
@@ -14,21 +14,21 @@ interface Props {
 const props = defineProps<Props>();
 
 interface Emits {
-  (e: "submitted"): void;
+  (e: 'submitted'): void;
 }
 
 const emit = defineEmits<Emits>();
 
-const visible = defineModel<boolean>("visible", { default: false });
+const visible = defineModel<boolean>('visible', { default: false });
 
 const { formRef, validate, restoreValidation } = useNaiveForm();
 const { defaultRequiredRule } = useFormRules();
 
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
-    add: $t("page.local-data.warframe.nodes.addNodes"),
-    edit: $t("page.local-data.warframe.nodes.editNodes"),
-    push: $t("common.push"),
+    add: $t('page.local-data.warframe.nodes.addNodes'),
+    edit: $t('page.local-data.warframe.nodes.editNodes'),
+    push: $t('common.push')
   };
   return titles[props.operateType];
 });
@@ -38,28 +38,28 @@ const model = ref<Model>(createDefaultModel());
 
 function createDefaultModel(): Model {
   return {
-    uniqueName: "",
-    name: "",
-    systemName: "",
+    uniqueName: '',
+    name: '',
+    systemName: '',
     systemIndex: 0,
     nodeType: 0,
     masteryReq: 0,
     missionIndex: 0,
     factionIndex: 0,
     minEnemyLevel: 0,
-    maxEnemyLevel: 0,
+    maxEnemyLevel: 0
   };
 }
 
 const rules: Record<string, App.Global.FormRule> = {
   uniqueName: defaultRequiredRule,
   name: defaultRequiredRule,
-  systemName: defaultRequiredRule,
+  systemName: defaultRequiredRule
 };
 
 function handleInitModel() {
   model.value = createDefaultModel();
-  if (props.operateType === "edit" && props.rowData) {
+  if (props.operateType === 'edit' && props.rowData) {
     Object.assign(model.value, props.rowData);
   }
 }
@@ -72,8 +72,8 @@ async function handleSubmit() {
   await validate();
   const { error } = await fetchSaveNodes(model.value);
   if (!error) {
-    window.$message?.success($t("common.modifySuccess"));
-    emit("submitted");
+    window.$message?.success($t('common.modifySuccess'));
+    emit('submitted');
     closeDrawer();
   }
 }
@@ -123,8 +123,8 @@ watch(visible, () => {
       </NForm>
       <template #footer>
         <NSpace :size="16">
-          <NButton @click="closeDrawer">{{ $t("common.cancel") }}</NButton>
-          <NButton type="primary" @click="handleSubmit">{{ $t("common.confirm") }}</NButton>
+          <NButton @click="closeDrawer">{{ $t('common.cancel') }}</NButton>
+          <NButton type="primary" @click="handleSubmit">{{ $t('common.confirm') }}</NButton>
         </NSpace>
       </template>
     </NDrawerContent>

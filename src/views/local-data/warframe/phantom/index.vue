@@ -72,11 +72,7 @@ const checkedRowKeys = ref<string[]>([]);
 
 <template>
   <div class="min-h-500px flex-col-stretch gap-16px overflow-hidden lt-sm:overflow-auto">
-    <PhantomSearch
-      v-model:model="searchParams"
-      @reset="resetSearchParams"
-      @search="getDataByPage"
-    />
+    <PhantomSearch v-model:model="searchParams" @reset="resetSearchParams" @search="getDataByPage" />
     <NCard
       :bordered="false"
       :title="$t('page.local-data.warframe.phantom.title')"
@@ -109,7 +105,7 @@ const checkedRowKeys = ref<string[]>([]);
         :flex-height="!appStore.isMobile"
         :loading="loading"
         remote
-        :row-key="(row) => row.id"
+        :row-key="row => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
       />

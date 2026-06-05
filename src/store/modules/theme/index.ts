@@ -1,19 +1,19 @@
-import { computed, effectScope, onScopeDispose, ref, toRefs, watch } from "vue";
-import type { Ref } from "vue";
-import { useDateFormat, useEventListener, useNow, usePreferredColorScheme } from "@vueuse/core";
-import { defineStore } from "pinia";
-import { getPaletteColorByNumber } from "@sa/color";
-import { localStg } from "@/utils/storage";
-import { SetupStoreId } from "@/enum";
-import { useAuthStore } from "../auth";
+import { computed, effectScope, onScopeDispose, ref, toRefs, watch } from 'vue';
+import type { Ref } from 'vue';
+import { useDateFormat, useEventListener, useNow, usePreferredColorScheme } from '@vueuse/core';
+import { defineStore } from 'pinia';
+import { getPaletteColorByNumber } from '@sa/color';
+import { localStg } from '@/utils/storage';
+import { SetupStoreId } from '@/enum';
+import { useAuthStore } from '../auth';
 import {
   addThemeVarsToGlobal,
   createThemeToken,
   getNaiveTheme,
   initThemeSettings,
   toggleAuxiliaryColorModes,
-  toggleCssDarkMode,
-} from "./shared";
+  toggleCssDarkMode
+} from './shared';
 
 /** Theme store */
 export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
@@ -28,18 +28,14 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
   const naiveThemeOverrides: Ref<App.Theme.NaiveUIThemeOverride | undefined> = ref(undefined);
 
   /** Watermark time instance with controls */
-  const {
-    now: watermarkTime,
-    pause: pauseWatermarkTime,
-    resume: resumeWatermarkTime,
-  } = useNow({ controls: true });
+  const { now: watermarkTime, pause: pauseWatermarkTime, resume: resumeWatermarkTime } = useNow({ controls: true });
 
   /** Dark mode */
   const darkMode = computed(() => {
-    if (settings.value.themeScheme === "auto") {
-      return osTheme.value === "dark";
+    if (settings.value.themeScheme === 'auto') {
+      return osTheme.value === 'dark';
     }
-    return settings.value.themeScheme === "dark";
+    return settings.value.themeScheme === 'dark';
   });
 
   /** grayscale mode */
@@ -54,15 +50,13 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
     const colors: App.Theme.ThemeColor = {
       primary: themeColor,
       ...otherColor,
-      info: isInfoFollowPrimary ? themeColor : otherColor.info,
+      info: isInfoFollowPrimary ? themeColor : otherColor.info
     };
     return colors;
   });
 
   /** Naive theme */
-  const naiveTheme = computed(() =>
-    getNaiveTheme(themeColors.value, settings.value, naiveThemeOverrides.value),
-  );
+  const naiveTheme = computed(() => getNaiveTheme(themeColors.value, settings.value, naiveThemeOverrides.value));
 
   /**
    * Settings json
@@ -129,9 +123,9 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
 
   /** Toggle theme scheme */
   function toggleThemeScheme() {
-    const themeSchemes: UnionKey.ThemeScheme[] = ["light", "dark", "auto"];
+    const themeSchemes: UnionKey.ThemeScheme[] = ['light', 'dark', 'auto'];
 
-    const index = themeSchemes.findIndex((item) => item === settings.value.themeScheme);
+    const index = themeSchemes.findIndex(item => item === settings.value.themeScheme);
 
     const nextIndex = index === themeSchemes.length - 1 ? 0 : index + 1;
 
@@ -155,7 +149,7 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
       colorValue = getPaletteColorByNumber(color, 500, true);
     }
 
-    if (key === "primary") {
+    if (key === 'primary') {
       settings.value.themeColor = colorValue;
     } else {
       settings.value.otherColor[key] = colorValue;
@@ -176,7 +170,7 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
     const { themeTokens, darkThemeTokens } = createThemeToken(
       themeColors.value,
       settings.value.tokens,
-      settings.value.recommendColor,
+      settings.value.recommendColor
     );
     addThemeVarsToGlobal(themeTokens, darkThemeTokens);
   }
@@ -230,7 +224,7 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
 
   /** Cache theme settings */
   function cacheThemeSettings() {
-    localStg.set("themeSettings", settings.value);
+    localStg.set('themeSettings', settings.value);
   }
 
   // cache theme settings when changed
@@ -239,11 +233,11 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
     () => {
       cacheThemeSettings();
     },
-    { deep: true },
+    { deep: true }
   );
 
   // also cache when page is closed or refreshed (belt and suspenders)
-  useEventListener(window, "beforeunload", () => {
+  useEventListener(window, 'beforeunload', () => {
     cacheThemeSettings();
   });
 
@@ -252,29 +246,29 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
     // watch dark mode
     watch(
       darkMode,
-      (val) => {
+      val => {
         toggleCssDarkMode(val);
-        localStg.set("darkMode", val);
+        localStg.set('darkMode', val);
       },
-      { immediate: true },
+      { immediate: true }
     );
 
     watch(
       [grayscaleMode, colourWeaknessMode],
-      (val) => {
+      val => {
         toggleAuxiliaryColorModes(val[0], val[1]);
       },
-      { immediate: true },
+      { immediate: true }
     );
 
     // themeColors change, update css vars and storage theme color
     watch(
       themeColors,
-      (val) => {
+      val => {
         setupThemeVarsToGlobal();
-        localStg.set("themeColor", val.primary);
+        localStg.set('themeColor', val.primary);
       },
-      { immediate: true },
+      { immediate: true }
     );
 
     // watch watermark settings to control timer
@@ -283,7 +277,7 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
       () => {
         updateWatermarkTimer();
       },
-      { immediate: true },
+      { immediate: true }
     );
   });
 
@@ -308,6 +302,6 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
     setThemeLayout,
     setWatermarkEnableUserName,
     setWatermarkEnableTime,
-    setNaiveThemeOverrides,
+    setNaiveThemeOverrides
   };
 });
