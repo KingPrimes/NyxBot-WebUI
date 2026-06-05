@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue';
-import type { SelectOption } from 'naive-ui';
-import { $t } from '@/locales';
+import { ref, watch } from "vue";
+import type { SelectOption } from "naive-ui";
+import { $t } from "@/locales";
 
 interface Props {
   filterConfig: Api.Log.FilterConfig;
 }
 
 interface Emits {
-  (e: 'update:filterConfig', value: Api.Log.FilterConfig): void;
-  (e: 'apply'): void;
-  (e: 'reset'): void;
+  (e: "update:filterConfig", value: Api.Log.FilterConfig): void;
+  (e: "apply"): void;
+  (e: "reset"): void;
 }
 
 const props = defineProps<Props>();
@@ -21,35 +21,35 @@ const localConfig = ref<Api.Log.FilterConfig>({ ...props.filterConfig });
 // 监听外部配置变化
 watch(
   () => props.filterConfig,
-  newConfig => {
+  (newConfig) => {
     localConfig.value = { ...newConfig };
   },
-  { deep: true }
+  { deep: true },
 );
 
 // 日志级别选项
 const levelOptions: SelectOption[] = [
-  { label: 'TRACE', value: 'TRACE' },
-  { label: 'DEBUG', value: 'DEBUG' },
-  { label: 'INFO', value: 'INFO' },
-  { label: 'WARN', value: 'WARN' },
-  { label: 'ERROR', value: 'ERROR' }
+  { label: "TRACE", value: "TRACE" },
+  { label: "DEBUG", value: "DEBUG" },
+  { label: "INFO", value: "INFO" },
+  { label: "WARN", value: "WARN" },
+  { label: "ERROR", value: "ERROR" },
 ];
 
 // 更新配置
 function updateConfig() {
-  emit('update:filterConfig', { ...localConfig.value });
+  emit("update:filterConfig", { ...localConfig.value });
 }
 
 // 应用过滤
 function handleApply() {
   updateConfig();
-  emit('apply');
+  emit("apply");
 }
 
 // 重置过滤
 function handleReset() {
-  emit('reset');
+  emit("reset");
 }
 </script>
 
@@ -58,7 +58,7 @@ function handleReset() {
     <NSpace vertical :size="16">
       <!-- 启用过滤 -->
       <NSpace align="center">
-        <span>{{ $t('page.log.realtime.filterPanel.enable') }}:</span>
+        <span>{{ $t("page.log.realtime.filterPanel.enable") }}:</span>
         <NSwitch v-model:value="localConfig.enabled" @update:value="updateConfig" />
       </NSpace>
 
@@ -81,7 +81,7 @@ function handleReset() {
         />
         <template #feedback>
           <div class="mt-1 text-xs text-gray-500">
-            {{ $t('page.log.realtime.filterPanel.keywordPlaceholder') }}
+            {{ $t("page.log.realtime.filterPanel.keywordPlaceholder") }}
           </div>
         </template>
       </NFormItem>
@@ -95,7 +95,7 @@ function handleReset() {
         />
         <template #feedback>
           <div class="mt-1 text-xs text-gray-500">
-            {{ $t('page.log.realtime.filterPanel.keywordPlaceholder') }}
+            {{ $t("page.log.realtime.filterPanel.keywordPlaceholder") }}
           </div>
         </template>
       </NFormItem>
@@ -109,7 +109,7 @@ function handleReset() {
         />
         <template #feedback>
           <div class="mt-1 text-xs text-gray-500">
-            {{ $t('page.log.realtime.filterPanel.packagePlaceholder') }}
+            {{ $t("page.log.realtime.filterPanel.packagePlaceholder") }}
           </div>
         </template>
       </NFormItem>
@@ -123,7 +123,7 @@ function handleReset() {
         />
         <template #feedback>
           <div class="mt-1 text-xs text-gray-500">
-            {{ $t('page.log.realtime.filterPanel.packagePlaceholder') }}
+            {{ $t("page.log.realtime.filterPanel.packagePlaceholder") }}
           </div>
         </template>
       </NFormItem>
@@ -137,24 +137,28 @@ function handleReset() {
         />
         <template #feedback>
           <div class="mt-1 text-xs text-gray-500">
-            {{ $t('page.log.realtime.filterPanel.threadPlaceholder') }}
+            {{ $t("page.log.realtime.filterPanel.threadPlaceholder") }}
           </div>
         </template>
       </NFormItem>
 
       <!-- 使用正则表达式 -->
       <NSpace align="center">
-        <span>{{ $t('page.log.realtime.filterPanel.useRegex') }}:</span>
-        <NSwitch v-model:value="localConfig.useRegex" :disabled="!localConfig.enabled" @update:value="updateConfig" />
+        <span>{{ $t("page.log.realtime.filterPanel.useRegex") }}:</span>
+        <NSwitch
+          v-model:value="localConfig.useRegex"
+          :disabled="!localConfig.enabled"
+          @update:value="updateConfig"
+        />
       </NSpace>
 
       <!-- 操作按钮 -->
       <NSpace justify="end">
         <NButton @click="handleReset">
-          {{ $t('page.log.realtime.filterPanel.reset') }}
+          {{ $t("page.log.realtime.filterPanel.reset") }}
         </NButton>
         <NButton type="primary" @click="handleApply">
-          {{ $t('page.log.realtime.filterPanel.apply') }}
+          {{ $t("page.log.realtime.filterPanel.apply") }}
         </NButton>
       </NSpace>
     </NSpace>

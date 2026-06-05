@@ -1,10 +1,10 @@
-import { useAuthStore } from '@/store/modules/auth';
-import { localStg } from '@/utils/storage';
-import { fetchRefreshToken } from '../api';
-import type { RequestInstanceState } from './type';
+import { useAuthStore } from "@/store/modules/auth";
+import { localStg } from "@/utils/storage";
+import { fetchRefreshToken } from "../api";
+import type { RequestInstanceState } from "./type";
 
 export function getAuthorization() {
-  const token = localStg.get('token');
+  const token = localStg.get("token");
   const Authorization = token ? `Bearer ${token}` : null;
 
   return Authorization;
@@ -14,11 +14,10 @@ export function getAuthorization() {
 async function handleRefreshToken() {
   const { resetStore } = useAuthStore();
 
-  const rToken = localStg.get('refreshToken') || '';
-  const { error, data } = await fetchRefreshToken(rToken);
+  const { error, data } = await fetchRefreshToken();
   if (!error) {
-    localStg.set('token', data.token);
-    localStg.set('refreshToken', data.refreshToken);
+    localStg.set("token", data.token);
+    localStg.set("refreshToken", data.refreshToken);
     return true;
   }
 
@@ -28,14 +27,14 @@ async function handleRefreshToken() {
 }
 
 export async function handleExpiredRequest(state: RequestInstanceState) {
-  if (!state.refreshTokenFn) {
-    state.refreshTokenFn = handleRefreshToken();
+  if (!state.refreshTokenPromise) {
+    state.refreshTokenPromise = handleRefreshToken();
   }
 
-  const success = await state.refreshTokenFn;
+  const success = await state.refreshTokenPromise;
 
   setTimeout(() => {
-    state.refreshTokenFn = null;
+    state.refreshTokenPromise = null;
   }, 1000);
 
   return success;
@@ -53,12 +52,12 @@ export function showErrorMsg(state: RequestInstanceState, message: string) {
 
     window.$message?.error(message, {
       onLeave: () => {
-        state.errMsgStack = state.errMsgStack.filter(msg => msg !== message);
+        state.errMsgStack = state.errMsgStack.filter((msg) => msg !== message);
 
         setTimeout(() => {
           state.errMsgStack = [];
         }, 5000);
-      }
+      },
     });
   }
 }

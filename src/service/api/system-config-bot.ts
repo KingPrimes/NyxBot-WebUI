@@ -1,12 +1,12 @@
-import { request } from '../request';
+import { request } from "../request";
 
-const baseUrl = '/config/bot';
+const baseUrl = "/config/bot";
 
 /** 获取机器人的好友列表 */
 export function fetchGetAllAdminOptionList(botUid: number) {
   return request<Api.SystemConfig.FriendInfoResp[]>({
     url: `${baseUrl}/friend/${botUid}`,
-    method: 'get'
+    method: "get",
   });
 }
 
@@ -14,7 +14,7 @@ export function fetchGetAllAdminOptionList(botUid: number) {
 export function fetchGetAllPermissionOptionList() {
   return request<Api.SystemConfig.Option[]>({
     url: `${baseUrl}/admin/permissions`,
-    method: 'get'
+    method: "get",
   });
 }
 
@@ -22,7 +22,7 @@ export function fetchGetAllPermissionOptionList() {
 export function fetchGetAllBotsOptionList() {
   return request<Api.SystemConfig.Option[]>({
     url: `${baseUrl}/bots`,
-    method: 'get'
+    method: "get",
   });
 }
 
@@ -30,7 +30,7 @@ export function fetchGetAllBotsOptionList() {
 export function fetchGetAllBotsFriendsOptionList(botUid: string) {
   return request<Api.SystemConfig.Option[]>({
     url: `${baseUrl}/friend/${botUid}`,
-    method: 'get'
+    method: "get",
   });
 }
 
@@ -38,6 +38,6 @@ export function fetchGetAllBotsFriendsOptionList(botUid: string) {
 export function fetchGetAllGroupOptionList(botUid: string) {
   return request<Api.SystemConfig.Option[]>({
     url: `${baseUrl}/group/${botUid}`,
-    method: 'get'
+    method: "get",
   });
 }

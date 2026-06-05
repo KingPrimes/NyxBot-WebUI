@@ -1,127 +1,161 @@
-import { computed, effectScope, onScopeDispose, ref, toRefs, watch } from 'vue';
-import type { Ref } from 'vue';
-import { defineStore } from 'pinia';
-import { useEventListener } from '@vueuse/core';
-import { getPaletteColorByNumber } from '@sa/color';
-import { SetupStoreId } from '@/enum';
-import { localStg } from '@/utils/storage';
+import { computed, effectScope, onScopeDispose, ref, toRefs, watch } from "vue";
+import type { Ref } from "vue";
+import { useDateFormat, useEventListener, useNow, usePreferredColorScheme } from "@vueuse/core";
+import { defineStore } from "pinia";
+import { getPaletteColorByNumber } from "@sa/color";
+import { localStg } from "@/utils/storage";
+import { SetupStoreId } from "@/enum";
+import { useAuthStore } from "../auth";
 import {
   addThemeVarsToGlobal,
   createThemeToken,
   getNaiveTheme,
   initThemeSettings,
   toggleAuxiliaryColorModes,
-  toggleCssDarkMode
-} from './shared';
+  toggleCssDarkMode,
+} from "./shared";
 
-/** Theme store - 主题状态管理模块 */
+/** Theme store */
 export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
-  // 创建响应式作用域
   const scope = effectScope();
+  const osTheme = usePreferredColorScheme();
+  const authStore = useAuthStore();
 
-  /** Theme settings - 主题设置对象 */
+  /** Theme settings */
   const settings: Ref<App.Theme.ThemeSetting> = ref(initThemeSettings());
 
-  /** Dark mode - 计算当前是否为暗色模式 */
+  /** Optional NaiveUI theme overrides from preset */
+  const naiveThemeOverrides: Ref<App.Theme.NaiveUIThemeOverride | undefined> = ref(undefined);
+
+  /** Watermark time instance with controls */
+  const {
+    now: watermarkTime,
+    pause: pauseWatermarkTime,
+    resume: resumeWatermarkTime,
+  } = useNow({ controls: true });
+
+  /** Dark mode */
   const darkMode = computed(() => {
-    // 否则根据设置的主题方案判断
-    return settings.value.themeScheme === 'dark';
+    if (settings.value.themeScheme === "auto") {
+      return osTheme.value === "dark";
+    }
+    return settings.value.themeScheme === "dark";
   });
 
-  /** grayscale mode - 灰度模式状态 */
+  /** grayscale mode */
   const grayscaleMode = computed(() => settings.value.grayscale);
 
-  /** colourWeakness mode - 色盲模式状态 */
+  /** colourWeakness mode */
   const colourWeaknessMode = computed(() => settings.value.colourWeakness);
 
-  /** Theme colors - 计算当前主题颜色对象 */
+  /** Theme colors */
   const themeColors = computed(() => {
     const { themeColor, otherColor, isInfoFollowPrimary } = settings.value;
     const colors: App.Theme.ThemeColor = {
-      primary: themeColor, // 主色调
-      ...otherColor, // 其他颜色
-      // 信息色是否跟随主色调
-      info: isInfoFollowPrimary ? themeColor : otherColor.info
+      primary: themeColor,
+      ...otherColor,
+      info: isInfoFollowPrimary ? themeColor : otherColor.info,
     };
     return colors;
   });
 
-  /** Naive theme - Naive UI 组件库的主题配置 */
-  const naiveTheme = computed(() => getNaiveTheme(themeColors.value, settings.value.recommendColor));
+  /** Naive theme */
+  const naiveTheme = computed(() =>
+    getNaiveTheme(themeColors.value, settings.value, naiveThemeOverrides.value),
+  );
 
   /**
    * Settings json
    *
-   * 用于复制设置的 JSON 字符串
+   * It is for copy settings
    */
   const settingsJson = computed(() => JSON.stringify(settings.value));
 
-  /** Reset store - 重置主题设置 */
+  /** Watermark time date formatter */
+  const formattedWatermarkTime = computed(() => {
+    const { watermark } = settings.value;
+    const date = useDateFormat(watermarkTime, watermark.timeFormat);
+    return date.value;
+  });
+
+  /** Watermark content */
+  const watermarkContent = computed(() => {
+    const { watermark } = settings.value;
+
+    if (watermark.enableUserName && authStore.userInfo.userName) {
+      return authStore.userInfo.userName;
+    }
+
+    if (watermark.enableTime) {
+      return formattedWatermarkTime.value;
+    }
+
+    return watermark.text;
+  });
+
+  /** Reset store */
   function resetStore() {
     const themeStore = useThemeStore();
+
     themeStore.$reset();
   }
 
   /**
-   * Set theme scheme - 设置主题方案
+   * Set theme scheme
    *
-   * @param themeScheme 主题方案 ('light' | 'dark' | 'auto')
+   * @param themeScheme
    */
   function setThemeScheme(themeScheme: UnionKey.ThemeScheme) {
     settings.value.themeScheme = themeScheme;
   }
 
   /**
-   * Set grayscale value - 设置灰度模式
+   * Set grayscale value
    *
-   * @param isGrayscale 是否启用灰度模式
+   * @param isGrayscale
    */
   function setGrayscale(isGrayscale: boolean) {
     settings.value.grayscale = isGrayscale;
   }
 
   /**
-   * Set colourWeakness value - 设置色盲模式
+   * Set colourWeakness value
    *
-   * @param isColourWeakness 是否启用色盲模式
+   * @param isColourWeakness
    */
   function setColourWeakness(isColourWeakness: boolean) {
     settings.value.colourWeakness = isColourWeakness;
   }
 
-  /** Toggle theme scheme - 切换主题方案（亮色/暗色） */
+  /** Toggle theme scheme */
   function toggleThemeScheme() {
-    const themeSchemes: UnionKey.ThemeScheme[] = ['light', 'dark'];
+    const themeSchemes: UnionKey.ThemeScheme[] = ["light", "dark", "auto"];
 
-    // 查找当前主题方案的索引
-    const index = themeSchemes.findIndex(item => item === settings.value.themeScheme);
+    const index = themeSchemes.findIndex((item) => item === settings.value.themeScheme);
 
-    // 计算下一个主题方案的索引
     const nextIndex = index === themeSchemes.length - 1 ? 0 : index + 1;
 
-    // 获取下一个主题方案
     const nextThemeScheme = themeSchemes[nextIndex];
 
-    // 设置新的主题方案
     setThemeScheme(nextThemeScheme);
   }
 
   /**
-   * Update theme colors - 更新主题颜色
+   * Update theme colors
    *
-   * @param key 主题颜色键名
-   * @param color 主题颜色值
+   * @param key Theme color key
+   * @param color Theme color
    */
   function updateThemeColors(key: App.Theme.ThemeColorKey, color: string) {
     let colorValue = color;
 
     if (settings.value.recommendColor) {
-      // 如果启用了推荐颜色，则获取该颜色的调色板并使用合适的颜色
+      // get a color palette by provided color and color name, and use the suitable color
+
       colorValue = getPaletteColorByNumber(color, 500, true);
     }
 
-    // 根据颜色类型更新相应的设置
-    if (key === 'primary') {
+    if (key === "primary") {
       settings.value.themeColor = colorValue;
     } else {
       settings.value.otherColor[key] = colorValue;
@@ -129,101 +163,151 @@ export const useThemeStore = defineStore(SetupStoreId.Theme, () => {
   }
 
   /**
-   * Set theme layout - 设置主题布局模式
+   * Set theme layout
    *
-   * @param mode 主题布局模式
+   * @param mode Theme layout mode
    */
   function setThemeLayout(mode: UnionKey.ThemeLayoutMode) {
     settings.value.layout.mode = mode;
   }
 
-  /** Setup theme vars to global - 设置全局主题变量 */
+  /** Setup theme vars to global */
   function setupThemeVarsToGlobal() {
-    // 创建主题令牌对象
     const { themeTokens, darkThemeTokens } = createThemeToken(
-      themeColors.value, // 当前主题颜色
-      settings.value.tokens, // 当前主题令牌
-      settings.value.recommendColor // 是否使用推荐颜色
+      themeColors.value,
+      settings.value.tokens,
+      settings.value.recommendColor,
     );
-    // 将主题变量添加到全局样式中
     addThemeVarsToGlobal(themeTokens, darkThemeTokens);
   }
 
   /**
-   * Set layout reverse horizontal mix - 设置布局水平混合反转
+   * Set watermark enable user name
    *
-   * @param reverse 是否反转水平混合
+   * @param enable Whether to enable user name watermark
    */
-  function setLayoutReverseHorizontalMix(reverse: boolean) {
-    settings.value.layout.reverseHorizontalMix = reverse;
+  function setWatermarkEnableUserName(enable: boolean) {
+    settings.value.watermark.enableUserName = enable;
+
+    if (enable) {
+      settings.value.watermark.enableTime = false;
+    }
   }
 
-  /** Cache theme settings - 缓存主题设置 */
+  /**
+   * Set watermark enable time
+   *
+   * @param enable Whether to enable time watermark
+   */
+  function setWatermarkEnableTime(enable: boolean) {
+    settings.value.watermark.enableTime = enable;
+
+    if (enable) {
+      settings.value.watermark.enableUserName = false;
+    }
+  }
+
+  /**
+   * Set NaiveUI theme overrides
+   *
+   * @param overrides NaiveUI theme overrides or undefined to clear
+   */
+  function setNaiveThemeOverrides(overrides?: App.Theme.NaiveUIThemeOverride) {
+    naiveThemeOverrides.value = overrides;
+  }
+
+  /** Only run timer when watermark is visible and time display is enabled */
+  function updateWatermarkTimer() {
+    const { watermark } = settings.value;
+    const shouldRunTimer = watermark.visible && watermark.enableTime;
+
+    if (shouldRunTimer) {
+      resumeWatermarkTime();
+    } else {
+      pauseWatermarkTime();
+    }
+  }
+
+  /** Cache theme settings */
   function cacheThemeSettings() {
-    const isProd = import.meta.env.PROD;
-
-    // 仅在生产环境缓存
-    if (!isProd) return;
-
-    // 将主题设置存储到本地存储
-    localStg.set('themeSettings', settings.value);
+    localStg.set("themeSettings", settings.value);
   }
 
-  // 监听页面关闭或刷新事件，缓存主题设置
-  useEventListener(window, 'beforeunload', () => {
+  // cache theme settings when changed
+  watch(
+    settings,
+    () => {
+      cacheThemeSettings();
+    },
+    { deep: true },
+  );
+
+  // also cache when page is closed or refreshed (belt and suspenders)
+  useEventListener(window, "beforeunload", () => {
     cacheThemeSettings();
   });
 
-  // 在作用域内运行监听器
+  // watch store
   scope.run(() => {
-    // 监听暗色模式变化
+    // watch dark mode
     watch(
       darkMode,
-      val => {
+      (val) => {
         toggleCssDarkMode(val);
+        localStg.set("darkMode", val);
       },
-      { immediate: true } // 立即执行一次
+      { immediate: true },
     );
 
-    // 监听灰度模式和色盲模式变化
     watch(
       [grayscaleMode, colourWeaknessMode],
-      val => {
+      (val) => {
         toggleAuxiliaryColorModes(val[0], val[1]);
       },
-      { immediate: true } // 立即执行一次
+      { immediate: true },
     );
 
-    // 监听主题颜色变化，更新CSS变量并存储主题色
+    // themeColors change, update css vars and storage theme color
     watch(
       themeColors,
-      val => {
+      (val) => {
         setupThemeVarsToGlobal();
-        localStg.set('themeColor', val.primary);
+        localStg.set("themeColor", val.primary);
       },
-      { immediate: true } // 立即执行一次
+      { immediate: true },
+    );
+
+    // watch watermark settings to control timer
+    watch(
+      () => [settings.value.watermark.visible, settings.value.watermark.enableTime],
+      () => {
+        updateWatermarkTimer();
+      },
+      { immediate: true },
     );
   });
 
-  /** On scope dispose - 作用域销毁时清理资源 */
+  /** On scope dispose */
   onScopeDispose(() => {
     scope.stop();
   });
 
-  // 暴露store的状态和方法
   return {
-    ...toRefs(settings.value), // 解构主题设置的所有属性为响应式引用
-    darkMode, // 暗色模式状态
-    themeColors, // 主题颜色对象
-    naiveTheme, // Naive UI主题配置
-    settingsJson, // 主题设置的JSON字符串
-    setGrayscale, // 设置灰度模式的方法
-    setColourWeakness, // 设置色盲模式的方法
-    resetStore, // 重置store的方法
-    setThemeScheme, // 设置主题方案的方法
-    toggleThemeScheme, // 切换主题方案的方法
-    updateThemeColors, // 更新主题颜色的方法
-    setThemeLayout, // 设置主题布局的方法
-    setLayoutReverseHorizontalMix // 设置布局水平混合反转的方法
+    ...toRefs(settings.value),
+    darkMode,
+    themeColors,
+    naiveTheme,
+    settingsJson,
+    watermarkContent,
+    setGrayscale,
+    setColourWeakness,
+    resetStore,
+    setThemeScheme,
+    toggleThemeScheme,
+    updateThemeColors,
+    setThemeLayout,
+    setWatermarkEnableUserName,
+    setWatermarkEnableTime,
+    setNaiveThemeOverrides,
   };
 });

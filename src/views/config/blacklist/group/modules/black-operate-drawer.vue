@@ -1,20 +1,23 @@
 <script setup lang="ts">
 // 导入Vue相关工具函数
-import { computed, ref, watch } from 'vue';
+import { computed, ref, watch } from "vue";
 // 导入Naive UI组件
-import { NSelect } from 'naive-ui';
+import { NSelect } from "naive-ui";
 // 导入表单相关hooks
-import { useFormRules, useNaiveForm } from '@/hooks/common/form';
+import { useFormRules, useNaiveForm } from "@/hooks/common/form";
 // 导入国际化翻译函数
-import { $t } from '@/locales';
+import { $t } from "@/locales";
 // 导入获取机器人和群组选项列表的API
-import { fetchGetAllBotsOptionList, fetchGetAllGroupOptionList } from '@/service/api/system-config-bot';
+import {
+  fetchGetAllBotsOptionList,
+  fetchGetAllGroupOptionList,
+} from "@/service/api/system-config-bot";
 // 导入保存黑名单群组的API
-import { fetchSaveBlackGroup } from '@/service/api/system-config-bot-black';
+import { fetchSaveBlackGroup } from "@/service/api/system-config-bot-black";
 
 // 定义组件名称
 defineOptions({
-  name: 'BlackOperateDrawer'
+  name: "BlackOperateDrawer",
 });
 
 // 定义组件Props接口
@@ -30,15 +33,15 @@ const props = defineProps<Props>();
 
 // 定义组件Emits接口
 interface Emits {
-  (e: 'submitted'): void;
+  (e: "submitted"): void;
 }
 
 // 定义组件Emits
 const emit = defineEmits<Emits>();
 
 // 定义双向绑定的可见性状态
-const visible = defineModel<boolean>('visible', {
-  default: false
+const visible = defineModel<boolean>("visible", {
+  default: false,
 });
 
 // 使用表单hooks获取表单引用和验证方法
@@ -48,16 +51,16 @@ const { defaultRequiredRule } = useFormRules();
 // 计算组件标题，根据操作类型动态显示
 const title = computed(() => {
   const titles: Record<NaiveUI.TableOperateType, string> = {
-    add: $t('page.config.blacklist.group.addBlacklistGroup'), // 添加黑名单群组
-    edit: $t('page.config.blacklist.group.editBlacklistGroup'), // 编辑黑名单群组
-    push: $t('common.push') // 推送
+    add: $t("page.config.blacklist.group.addBlacklistGroup"), // 添加黑名单群组
+    edit: $t("page.config.blacklist.group.editBlacklistGroup"), // 编辑黑名单群组
+    push: $t("common.push"), // 推送
   };
   return titles[props.operateType];
 });
 
 // 定义表单数据模型类型
 // 从Api.SystemConfig.BlacklistGroup中提取需要的字段
-type Model = Pick<Api.SystemConfig.BlacklistGroup, 'groupUid' | 'botUid'>;
+type Model = Pick<Api.SystemConfig.BlacklistGroup, "groupUid" | "botUid">;
 
 // 初始化表单数据
 const model = ref(createDefaultModel());
@@ -69,18 +72,18 @@ const model = ref(createDefaultModel());
  */
 function createDefaultModel(): Model {
   return {
-    botUid: '', // 机器人UID
-    groupUid: '' // 群组UID
+    botUid: "", // 机器人UID
+    groupUid: "", // 群组UID
   };
 }
 
 // 定义表单验证规则键类型
-type RuleKey = Extract<keyof Model, 'groupUid' | 'botUid'>;
+type RuleKey = Extract<keyof Model, "groupUid" | "botUid">;
 
 // 定义表单验证规则
 const rules: Record<RuleKey, App.Global.FormRule> = {
   botUid: defaultRequiredRule, // 机器人账号为必填项
-  groupUid: defaultRequiredRule
+  groupUid: defaultRequiredRule,
 };
 
 // 群组UID下拉选项
@@ -94,9 +97,9 @@ async function getBotOptions() {
   const { error, data } = await fetchGetAllBotsOptionList();
 
   if (!error) {
-    botOptions.value = data.map(item => ({
+    botOptions.value = data.map((item) => ({
       label: item.label, // 显示文本
-      value: item.value // 实际值
+      value: item.value, // 实际值
     }));
   }
 }
@@ -109,9 +112,9 @@ async function getBotOptions() {
 async function getGroupUidOptions(bot: string) {
   const { error, data } = await fetchGetAllGroupOptionList(bot);
   if (!error) {
-    groupUidOptions.value = data.map(item => ({
+    groupUidOptions.value = data.map((item) => ({
       label: item.label, // 显示文本
-      value: item.value // 实际值
+      value: item.value, // 实际值
     }));
   }
 }
@@ -119,7 +122,7 @@ async function getGroupUidOptions(bot: string) {
 /** 初始化表单模型数据 如果是编辑操作，则填充现有数据 */
 function handleInitModel() {
   model.value = createDefaultModel();
-  if (props.operateType === 'edit' && props.rowData) {
+  if (props.operateType === "edit" && props.rowData) {
     Object.assign(model.value, props.rowData);
   }
 }
@@ -138,10 +141,10 @@ function closeDrawer() {
  */
 async function handleSubmit() {
   await validate();
-  await fetchSaveBlackGroup(model.value).then(res => {
+  await fetchSaveBlackGroup(model.value).then((res) => {
     if (Number(res.response.data.code) === 200) {
       window.$message?.success(res.response.data.msg);
-      emit('submitted'); // 触发提交成功事件
+      emit("submitted"); // 触发提交成功事件
       closeDrawer(); // 关闭抽屉
     } else {
       window.$message?.error(res.response.data.msg);
@@ -152,11 +155,11 @@ async function handleSubmit() {
 // 监听机器人UID变化，动态加载对应机器人的群组列表
 watch(
   () => model.value.botUid,
-  async newVal => {
+  async (newVal) => {
     if (newVal && visible.value) {
       await getGroupUidOptions(newVal);
     }
-  }
+  },
 );
 
 // 监听抽屉可见性变化
@@ -193,8 +196,8 @@ watch(visible, () => {
       <!-- 抽屉底部操作按钮 -->
       <template #footer>
         <NSpace :size="16">
-          <NButton @click="closeDrawer">{{ $t('common.cancel') }}</NButton>
-          <NButton type="primary" @click="handleSubmit">{{ $t('common.confirm') }}</NButton>
+          <NButton @click="closeDrawer">{{ $t("common.cancel") }}</NButton>
+          <NButton type="primary" @click="handleSubmit">{{ $t("common.confirm") }}</NButton>
         </NSpace>
       </template>
     </NDrawerContent>

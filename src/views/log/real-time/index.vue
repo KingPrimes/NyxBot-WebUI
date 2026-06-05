@@ -1,68 +1,77 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
-import type { SelectOption } from 'naive-ui';
-import { useVirtualList } from '@vueuse/core';
-import { $t } from '@/locales';
-import { useLogWebSocket } from './composables/use-log-websocket';
-import { useLogCache } from './composables/use-log-cache';
-import { useLogFilter } from './composables/use-log-filter';
-import LogStats from './components/log-stats.vue';
-import LogFilterPanel from './components/log-filter-panel.vue';
+import { computed, onBeforeUnmount, onMounted, ref } from "vue";
+import type { SelectOption } from "naive-ui";
+import { useVirtualList } from "@vueuse/core";
+import { $t } from "@/locales";
+import { useLogSSE } from "./composables/use-log-sse";
+import { useLogCache } from "./composables/use-log-cache";
+import { useLogFilter } from "./composables/use-log-filter";
+import LogStats from "./components/log-stats.vue";
+import LogFilterPanel from "./components/log-filter-panel.vue";
 
 defineOptions({
-  name: 'LogRealTime'
+  name: "LogRealTime",
 });
 
-// WebSocket 管理
-const { connectionStatus, connect, disconnect } = useLogWebSocket();
+// SSE 管理
+const { connectionStatus, connect, disconnect, sendFilterConfig, sendFilterReset } = useLogSSE();
 
 // 缓存管理
-const { logCache, stats, addLogs, addSystemLog, clearCache, clearSystemLogs, searchLogs, downloadLogs } = useLogCache();
+const {
+  logCache,
+  stats,
+  addLogs,
+  addSystemLog,
+  clearCache,
+  clearSystemLogs,
+  searchLogs,
+  downloadLogs,
+} = useLogCache();
 
 // 过滤管理
 const { filterConfig, hasActiveFilters, applyFilter, resetFilter, setMinLevel } = useLogFilter();
 
 // UI 状态
-const currentLevel = ref<Api.Log.Level>('INFO');
-const searchKeyword = ref('');
+const currentLevel = ref<Api.Log.Level>("INFO");
+const searchKeyword = ref("");
 const showFilterPanel = ref(false);
 const showStats = ref(true);
 
 // 日志级别选项
 const levelOptions: SelectOption[] = [
-  { label: 'TRACE', value: 'TRACE' },
-  { label: 'DEBUG', value: 'DEBUG' },
-  { label: 'INFO', value: 'INFO' },
-  { label: 'WARN', value: 'WARN' },
-  { label: 'ERROR', value: 'ERROR' }
+  { label: "TRACE", value: "TRACE" },
+  { label: "DEBUG", value: "DEBUG" },
+  { label: "INFO", value: "INFO" },
+  { label: "WARN", value: "WARN" },
+  { label: "ERROR", value: "ERROR" },
 ];
 
 // 连接状态显示
 const connectionStatusText = computed(() => {
   switch (connectionStatus.value) {
-    case 'connected':
-      return $t('page.log.realtime.connected');
-    case 'connecting':
-      return $t('page.log.realtime.connecting');
-    case 'disconnected':
-      return $t('page.log.realtime.disconnected');
-    case 'error':
-      return $t('page.log.realtime.connectionError');
+    case "connected":
+      return $t("page.log.realtime.connected");
+    case "connecting":
+      return $t("page.log.realtime.connecting");
+    case "disconnected":
+      return $t("page.log.realtime.disconnected");
+    case "error":
+      return $t("page.log.realtime.connectionError");
     default:
-      return $t('page.log.realtime.disconnected');
+      return $t("page.log.realtime.disconnected");
   }
 });
 
 const connectionStatusType = computed(() => {
   switch (connectionStatus.value) {
-    case 'connected':
-      return 'success';
-    case 'connecting':
-      return 'warning';
-    case 'error':
-      return 'error';
+    case "connected":
+      return "success";
+    case "connecting":
+      return "warning";
+    case "error":
+      return "error";
     default:
-      return 'default';
+      return "default";
   }
 });
 
@@ -86,35 +95,35 @@ const filteredLogs = computed(() => {
 // 更新统计信息中的显示数量
 const displayStats = computed(() => ({
   ...stats.value,
-  displayed: filteredLogs.value.length
+  displayed: filteredLogs.value.length,
 }));
 
 // 虚拟滚动
 const {
   list: virtualList,
   containerProps,
-  wrapperProps
+  wrapperProps,
 } = useVirtualList(filteredLogs, {
   itemHeight: 80,
-  overscan: 10
+  overscan: 10,
 });
 
 // 日志颜色配置
 const logColors = {
   light: {
-    TRACE: '#858585',
-    DEBUG: '#4ec9b0',
-    INFO: '#4fc1ff',
-    WARN: '#dcdcaa',
-    ERROR: '#f48771'
+    TRACE: "#858585",
+    DEBUG: "#4ec9b0",
+    INFO: "#4fc1ff",
+    WARN: "#dcdcaa",
+    ERROR: "#f48771",
   },
   dark: {
-    TRACE: '#6b6b6b',
-    DEBUG: '#3ea88f',
-    INFO: '#3a9fd9',
-    WARN: '#c9b96f',
-    ERROR: '#d45e4a'
-  }
+    TRACE: "#6b6b6b",
+    DEBUG: "#3ea88f",
+    INFO: "#3a9fd9",
+    WARN: "#c9b96f",
+    ERROR: "#d45e4a",
+  },
 };
 
 // 获取日志颜色
@@ -143,34 +152,44 @@ function handleLevelChange(level: Api.Log.Level) {
 // 清空日志
 function handleClearLogs() {
   window.$dialog?.warning({
-    title: $t('common.warning'),
-    content: $t('page.log.realtime.clearConfirm'),
-    positiveText: $t('common.confirm'),
-    negativeText: $t('common.cancel'),
+    title: $t("common.warning"),
+    content: $t("page.log.realtime.clearConfirm"),
+    positiveText: $t("common.confirm"),
+    negativeText: $t("common.cancel"),
     onPositiveClick: () => {
       clearCache();
       clearSystemLogs();
-      window.$message?.success($t('common.deleteSuccess'));
-    }
+      window.$message?.success($t("common.deleteSuccess"));
+    },
   });
 }
 
 // 导出日志
 function handleExportLogs() {
-  const filename = `logs_${new Date().toISOString().replace(/[:.]/g, '-')}.txt`;
+  const filename = `logs_${new Date().toISOString().replace(/[:.]/g, "-")}.txt`;
   downloadLogs(filteredLogs.value, filename);
-  window.$message?.success($t('page.log.realtime.exportSuccess'));
+  window.$message?.success($t("page.log.realtime.exportSuccess"));
 }
 
 // 应用过滤
-function handleApplyFilter() {
-  window.$message?.success($t('common.updateSuccess'));
+async function handleApplyFilter() {
+  try {
+    await sendFilterConfig(filterConfig.value);
+    window.$message?.success($t("common.updateSuccess"));
+  } catch {
+    window.$message?.error($t("common.error"));
+  }
 }
 
 // 重置过滤
-function handleResetFilter() {
-  resetFilter();
-  window.$message?.success($t('common.updateSuccess'));
+async function handleResetFilter() {
+  try {
+    await sendFilterReset();
+    resetFilter();
+    window.$message?.success($t("common.updateSuccess"));
+  } catch {
+    window.$message?.error($t("common.error"));
+  }
 }
 
 // 组件挂载时连接
@@ -192,7 +211,7 @@ onBeforeUnmount(() => {
         <!-- 左侧：标题和状态 -->
         <div class="flex items-center gap-4">
           <h3 class="text-lg font-semibold">
-            {{ $t('page.log.realtime.title') }}
+            {{ $t("page.log.realtime.title") }}
           </h3>
           <NBadge :type="connectionStatusType" dot>
             <NTag :type="connectionStatusType" size="small">
@@ -221,41 +240,41 @@ onBeforeUnmount(() => {
             size="small"
           >
             <template #prefix>
-              <icon-mdi:magnify />
+              <icon-mdi-magnify />
             </template>
           </NInput>
 
           <!-- 过滤按钮 -->
           <NButton size="small" @click="showFilterPanel = !showFilterPanel">
             <template #icon>
-              <icon-mdi:filter-variant />
+              <icon-mdi-filter-variant />
             </template>
-            {{ $t('page.log.realtime.filterBtn') }}
+            {{ $t("page.log.realtime.filterBtn") }}
             <NBadge v-if="hasActiveFilters" :value="1" dot />
           </NButton>
 
           <!-- 统计按钮 -->
           <NButton size="small" @click="showStats = !showStats">
             <template #icon>
-              <icon-mdi:chart-bar />
+              <icon-mdi-chart-bar />
             </template>
-            {{ $t('page.log.realtime.stats') }}
+            {{ $t("page.log.realtime.stats") }}
           </NButton>
 
           <!-- 导出按钮 -->
           <NButton size="small" @click="handleExportLogs">
             <template #icon>
-              <icon-mdi:download />
+              <icon-mdi-download />
             </template>
-            {{ $t('page.log.realtime.export') }}
+            {{ $t("page.log.realtime.export") }}
           </NButton>
 
           <!-- 清空按钮 -->
           <NButton size="small" type="error" @click="handleClearLogs">
             <template #icon>
-              <icon-mdi:delete-outline />
+              <icon-mdi-delete-outline />
             </template>
-            {{ $t('page.log.realtime.clear') }}
+            {{ $t("page.log.realtime.clear") }}
           </NButton>
         </NSpace>
       </div>
@@ -269,16 +288,23 @@ onBeforeUnmount(() => {
       <!-- 过滤面板 -->
       <Transition name="slide-fade">
         <div v-if="showFilterPanel" class="w-350px">
-          <LogFilterPanel v-model:filter-config="filterConfig" @apply="handleApplyFilter" @reset="handleResetFilter" />
+          <LogFilterPanel
+            v-model:filter-config="filterConfig"
+            @apply="handleApplyFilter"
+            @reset="handleResetFilter"
+          />
         </div>
       </Transition>
 
       <!-- 日志显示区域 -->
       <NCard :bordered="false" class="flex-1" content-style="padding: 0; height: 100%;">
-        <div v-if="filteredLogs.length === 0" class="h-full flex items-center justify-center text-gray-400">
+        <div
+          v-if="filteredLogs.length === 0"
+          class="h-full flex items-center justify-center text-gray-400"
+        >
           <div class="text-center">
-            <icon-mdi:file-document-outline class="mb-4 text-6xl" />
-            <div>{{ $t('page.log.realtime.noLogs') }}</div>
+            <icon-mdi-file-document-outline class="mb-4 text-6xl" />
+            <div>{{ $t("page.log.realtime.noLogs") }}</div>
           </div>
         </div>
 
@@ -293,7 +319,9 @@ onBeforeUnmount(() => {
               <div class="flex items-start gap-3">
                 <!-- 日志级别 -->
                 <NTag
-                  :type="data.live === 'ERROR' ? 'error' : data.live === 'WARN' ? 'warning' : 'default'"
+                  :type="
+                    data.live === 'ERROR' ? 'error' : data.live === 'WARN' ? 'warning' : 'default'
+                  "
                   size="small"
                   :style="{ backgroundColor: getLogColor(data.live), color: 'white' }"
                   class="flex-shrink-0"

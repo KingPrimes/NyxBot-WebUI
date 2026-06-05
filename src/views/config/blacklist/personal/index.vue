@@ -22,40 +22,38 @@ const {
 } = useTable({
   apiFn: fetchGetBlacklistProveList,
   showTotal: true,
-  apiParams: {
-    current: 1,
-    size: 10
-  },
   columns: () => [
     {
       type: 'selection',
       align: 'center',
-      width: 48
+      width: 48,
+
     },
     {
       key: 'index',
       title: $t('common.index'),
+      width: 64,
       align: 'center',
-      width: 64
+
     },
     {
       key: 'botUid',
       title: $t('page.config.admin.botAccount'),
       align: 'center',
-      minWidth: 100
+
     },
     {
       key: 'proveUid',
       title: $t('page.config.blacklist.personal.personalAccount'),
       align: 'center',
-      minWidth: 100
+
     },
     {
       key: 'operate',
       title: $t('common.operate'),
       align: 'center',
-      width: 130,
-      render: row => (
+
+      render: (row: any) => (
         <div class="flex-center gap-8px">
           <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
             {$t('common.edit')}
@@ -127,10 +125,9 @@ function edit(id: number) {
         :data="data"
         size="small"
         :flex-height="!appStore.isMobile"
-        :scroll-x="962"
         :loading="loading"
         remote
-        :row-key="row => row.id"
+        :row-key="(row) => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
       />

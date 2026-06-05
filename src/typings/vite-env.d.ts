@@ -5,9 +5,10 @@
  */
 declare namespace Env {
   /** The router history mode */
-  type RouterHistoryMode = 'hash' | 'history' | 'memory';
+  type RouterHistoryMode = "hash" | "history" | "memory";
 
   /** Interface for import.meta */
+  // eslint-disable-next-line @typescript-eslint/no-shadow
   interface ImportMeta extends ImportMetaEnv {
     /** The base url of the application */
     readonly VITE_BASE_URL: string;
@@ -18,13 +19,13 @@ declare namespace Env {
     /** The router history mode */
     readonly VITE_ROUTER_HISTORY_MODE?: RouterHistoryMode;
     /** The prefix of the iconify icon */
-    readonly VITE_ICON_PREFIX: 'icon';
+    readonly VITE_ICON_PREFIX: "icon";
     /**
      * The prefix of the local icon
      *
      * This prefix is start with the icon prefix
      */
-    readonly VITE_ICON_LOCAL_PREFIX: 'local-icon';
+    readonly VITE_ICON_LOCAL_PREFIX: "icon-local";
     /** backend service base url */
     readonly VITE_SERVICE_BASE_URL: string;
     /**
@@ -77,14 +78,14 @@ declare namespace Env {
      * - Static: the auth routes is generated in front-end
      * - Dynamic: the auth routes is generated in back-end
      */
-    readonly VITE_AUTH_ROUTE_MODE: 'static' | 'dynamic';
+    readonly VITE_AUTH_ROUTE_MODE: "static" | "dynamic";
     /**
      * The home route key
      *
      * It only has effect when the auth route mode is static, if the route mode is dynamic, the home route key is
      * defined in the back-end
      */
-    readonly VITE_ROUTE_HOME: import('@elegant-router/types').LastLevelRouteKey;
+    readonly VITE_ROUTE_HOME: import("@elegant-router/types").LastLevelRouteKey;
     /**
      * Default menu icon if menu icon is not set
      *
@@ -105,6 +106,10 @@ declare namespace Env {
     readonly VITE_STORAGE_PREFIX?: string;
     /** Whether to automatically detect updates after configuring application packaging */
     readonly VITE_AUTOMATICALLY_DETECT_UPDATE?: CommonType.YesOrNo;
+    /** show proxy url log in terminal */
+    readonly VITE_PROXY_LOG?: CommonType.YesOrNo;
+    /** The launch editor */
+    readonly VITE_DEVTOOLS_LAUNCH_EDITOR?: import("vite-plugin-vue-devtools").VitePluginVueDevToolsOptions["launchEditor"];
   }
 }
 

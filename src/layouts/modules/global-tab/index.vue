@@ -1,24 +1,22 @@
 <script setup lang="ts">
-import { nextTick, reactive, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import { useElementBounding } from '@vueuse/core';
-import { PageTab } from '@sa/materials';
-import BetterScroll from '@/components/custom/better-scroll.vue';
-import { useAppStore } from '@/store/modules/app';
-import { useThemeStore } from '@/store/modules/theme';
-import { useRouteStore } from '@/store/modules/route';
-import { useTabStore } from '@/store/modules/tab';
-import { isPC } from '@/utils/agent';
-import ContextMenu from './context-menu.vue';
+import { nextTick, reactive, ref, watch } from "vue";
+import { useRoute } from "vue-router";
+import { useElementBounding } from "@vueuse/core";
+import { PageTab } from "@sa/materials";
+import { useAppStore } from "@/store/modules/app";
+import { useThemeStore } from "@/store/modules/theme";
+import { useTabStore } from "@/store/modules/tab";
+import { isPC } from "@/utils/agent";
+import BetterScroll from "@/components/custom/better-scroll.vue";
+import ContextMenu from "./context-menu.vue";
 
 defineOptions({
-  name: 'GlobalTab'
+  name: "GlobalTab",
 });
 
 const route = useRoute();
 const appStore = useAppStore();
 const themeStore = useThemeStore();
-const routeStore = useRouteStore();
 const tabStore = useTabStore();
 
 const bsWrapper = ref<HTMLElement>();
@@ -27,7 +25,9 @@ const bsScroll = ref<InstanceType<typeof BetterScroll>>();
 const tabRef = ref<HTMLElement>();
 const isPCFlag = isPC();
 
-const TAB_DATA_ID = 'data-tab-id';
+const TAB_DATA_ID = "data-tab-id";
+const MIDDLE_MOUSE_BUTTON = 1;
+const RIGHT_MOUSE_BUTTON = 2;
 
 type TabNamedNodeMap = NamedNodeMap & {
   [TAB_DATA_ID]: Attr;
@@ -75,19 +75,35 @@ function getContextMenuDisabledKeys(tabId: string) {
   const disabledKeys: App.Global.DropdownKey[] = [];
 
   if (tabStore.isTabRetain(tabId)) {
-    const homeDisable: App.Global.DropdownKey[] = ['closeCurrent', 'closeLeft'];
+    const homeDisable: App.Global.DropdownKey[] = ["closeCurrent", "closeLeft"];
     disabledKeys.push(...homeDisable);
   }
 
   return disabledKeys;
 }
 
-async function handleCloseTab(tab: App.Global.Tab) {
-  await tabStore.removeTab(tab.id);
+function handleCloseTab(tab: App.Global.Tab) {
+  tabStore.removeTab(tab.id);
+}
 
-  if (themeStore.resetCacheStrategy === 'close') {
-    routeStore.resetRouteCache(tab.routeKey);
+function handleMousedown(e: MouseEvent, tab: App.Global.Tab) {
+  const isMiddleClick = e.button === MIDDLE_MOUSE_BUTTON;
+  if (!isMiddleClick || !themeStore.tab.closeTabByMiddleClick) {
+    return;
   }
+
+  if (tabStore.isTabRetain(tab.id)) {
+    return;
+  }
+
+  e.preventDefault();
+  handleCloseTab(tab);
+}
+
+function switchTab(e: MouseEvent, tab: App.Global.Tab) {
+  if ([MIDDLE_MOUSE_BUTTON, RIGHT_MOUSE_BUTTON].includes(e.button)) return;
+
+  tabStore.switchRouteByTab(tab);
 }
 
 async function refresh() {
@@ -105,7 +121,7 @@ const dropdown: DropdownConfig = reactive({
   visible: false,
   x: 0,
   y: 0,
-  tabId: ''
+  tabId: "",
 });
 
 function setDropdown(config: Partial<DropdownConfig>) {
@@ -114,7 +130,7 @@ function setDropdown(config: Partial<DropdownConfig>) {
 
 let isClickContextMenu = false;
 
-function handleDropdownVisible(visible: boolean) {
+function handleDropdownVisible(visible: boolean | undefined) {
   if (!isClickContextMenu) {
     setDropdown({ visible });
   }
@@ -136,7 +152,7 @@ async function handleContextMenu(e: MouseEvent, tabId: string) {
       visible: true,
       x: clientX,
       y: clientY,
-      tabId
+      tabId,
     });
     isClickContextMenu = false;
   }, DURATION);
@@ -155,13 +171,13 @@ watch(
   () => route.fullPath,
   () => {
     tabStore.addTab(route);
-  }
+  },
 );
 watch(
   () => tabStore.activeTabId,
   () => {
     scrollToActiveTab();
-  }
+  },
 );
 
 // init
@@ -171,11 +187,19 @@ init();
 <template>
   <DarkModeContainer class="size-full flex-y-center px-16px shadow-tab">
     <div ref="bsWrapper" class="h-full flex-1-hidden">
-      <BetterScroll ref="bsScroll" :options="{ scrollX: true, scrollY: false, click: !isPCFlag }" @click="removeFocus">
+      <BetterScroll
+        ref="bsScroll"
+        :options="{ scrollX: true, scrollY: false, click: !isPCFlag }"
+        @click="removeFocus"
+      >
         <div
           ref="tabRef"
           class="h-full flex pr-18px"
-          :class="[themeStore.tab.mode === 'chrome' ? 'items-end' : 'items-center gap-12px']"
+          :class="[
+            themeStore.tab.mode === 'chrome' || themeStore.tab.mode === 'slider'
+              ? 'items-end'
+              : 'items-center gap-12px',
+          ]"
         >
           <PageTab
             v-for="tab in tabStore.tabs"
@@ -186,12 +210,17 @@ init();
             :active="tab.id === tabStore.activeTabId"
             :active-color="themeStore.themeColor"
             :closable="!tabStore.isTabRetain(tab.id)"
-            @click="tabStore.switchRouteByTab(tab)"
+            @pointerdown="switchTab($event, tab)"
+            @mousedown="handleMousedown($event, tab)"
             @close="handleCloseTab(tab)"
             @contextmenu="handleContextMenu($event, tab.id)"
           >
             <template #prefix>
-              <SvgIcon :icon="tab.icon" :local-icon="tab.localIcon" class="inline-block align-text-bottom text-16px" />
+              <SvgIcon
+                :icon="tab.icon"
+                :local-icon="tab.localIcon"
+                class="inline-block align-text-bottom text-16px"
+              />
             </template>
             <div class="max-w-240px ellipsis-text">{{ tab.label }}</div>
           </PageTab>

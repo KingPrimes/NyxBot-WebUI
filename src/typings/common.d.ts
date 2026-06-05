@@ -14,9 +14,9 @@ declare namespace CommonType {
    * @property value: The option value
    * @property label: The option label
    */
-  type Option<K = string> = { value: K; label: string };
+  type Option<K = string, M = string> = { value: K; label: M };
 
-  type YesOrNo = 'Y' | 'N';
+  type YesOrNo = "Y" | "N";
 
   /** add null to all properties */
   type RecordNullable<T> = {

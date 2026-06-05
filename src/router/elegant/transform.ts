@@ -4,8 +4,8 @@
 // Read more: https://github.com/soybeanjs/elegant-router
 
 import type { RouteRecordRaw, RouteComponent } from 'vue-router';
-import type { ElegantConstRoute } from '@elegant-router/vue';
-import type { RouteMap, RouteKey, RoutePath } from '@elegant-router/types';
+import type { ElegantConstRoute } from "@elegant-router/vue";
+import type { RouteMap, RouteKey, RoutePath } from "@elegant-router/types";
 
 /**
  * transform elegant const routes to vue routes
@@ -16,9 +16,9 @@ import type { RouteMap, RouteKey, RoutePath } from '@elegant-router/types';
 export function transformElegantRoutesToVueRoutes(
   routes: ElegantConstRoute[],
   layouts: Record<string, RouteComponent | (() => Promise<RouteComponent>)>,
-  views: Record<string, RouteComponent | (() => Promise<RouteComponent>)>
+  views: Record<string, RouteComponent | (() => Promise<RouteComponent>)>,
 ) {
-  return routes.flatMap(route => transformElegantRouteToVueRoute(route, layouts, views));
+  return routes.flatMap((route) => transformElegantRouteToVueRoute(route, layouts, views));
 }
 
 /**
@@ -30,21 +30,21 @@ export function transformElegantRoutesToVueRoutes(
 function transformElegantRouteToVueRoute(
   route: ElegantConstRoute,
   layouts: Record<string, RouteComponent | (() => Promise<RouteComponent>)>,
-  views: Record<string, RouteComponent | (() => Promise<RouteComponent>)>
+  views: Record<string, RouteComponent | (() => Promise<RouteComponent>)>,
 ) {
-  const LAYOUT_PREFIX = 'layout.';
-  const VIEW_PREFIX = 'view.';
-  const ROUTE_DEGREE_SPLITTER = '_';
-  const FIRST_LEVEL_ROUTE_COMPONENT_SPLIT = '$';
+  const LAYOUT_PREFIX = "layout.";
+  const VIEW_PREFIX = "view.";
+  const ROUTE_DEGREE_SPLITTER = "_";
+  const FIRST_LEVEL_ROUTE_COMPONENT_SPLIT = "$";
 
   function isLayout(component: string) {
     return component.startsWith(LAYOUT_PREFIX);
   }
 
   function getLayoutName(component: string) {
-    const layout = component.replace(LAYOUT_PREFIX, '');
+    const layout = component.replace(LAYOUT_PREFIX, "");
 
-    if(!layouts[layout]) {
+    if (!layouts[layout]) {
       throw new Error(`Layout component "${layout}" not found`);
     }
 
@@ -56,9 +56,9 @@ function transformElegantRouteToVueRoute(
   }
 
   function getViewName(component: string) {
-    const view = component.replace(VIEW_PREFIX, '');
+    const view = component.replace(VIEW_PREFIX, "");
 
-    if(!views[view]) {
+    if (!views[view]) {
       throw new Error(`View component "${view}" not found`);
     }
 
@@ -78,14 +78,14 @@ function transformElegantRouteToVueRoute(
 
     return {
       layout: getLayoutName(layout),
-      view: getViewName(view)
+      view: getViewName(view),
     };
   }
 
   const vueRoutes: RouteRecordRaw[] = [];
 
   // add props: true to route
-  if (route.path.includes(':') && !route.props) {
+  if (route.path.includes(":") && !route.props) {
     route.props = true;
   }
 
@@ -102,16 +102,16 @@ function transformElegantRouteToVueRoute(
           path,
           component: layouts[layout],
           meta: {
-            title: route.meta?.title || ''
+            title: route.meta?.title || "",
           },
           children: [
             {
               name,
-              path: '',
+              path: "",
               component: views[view],
-              ...rest
-            } as RouteRecordRaw
-          ]
+              ...rest,
+            } as RouteRecordRaw,
+          ],
         };
 
         return [singleLevelRoute];
@@ -128,7 +128,6 @@ function transformElegantRouteToVueRoute(
 
         vueRoute.component = views[viewName];
       }
-
     }
   } catch (error: any) {
     console.error(`Error transforming route "${route.name}": ${error.toString()}`);
@@ -138,14 +137,16 @@ function transformElegantRouteToVueRoute(
   // add redirect to child
   if (children?.length && !vueRoute.redirect) {
     vueRoute.redirect = {
-      name: children[0].name
+      name: children[0].name,
     };
   }
 
   if (children?.length) {
-    const childRoutes = children.flatMap(child => transformElegantRouteToVueRoute(child, layouts, views));
+    const childRoutes = children.flatMap((child) =>
+      transformElegantRouteToVueRoute(child, layouts, views),
+    );
 
-    if(isFirstLevelRoute(route)) {
+    if (isFirstLevelRoute(route)) {
       vueRoute.children = childRoutes;
     } else {
       vueRoutes.push(...childRoutes);
@@ -161,34 +162,46 @@ function transformElegantRouteToVueRoute(
  * map of route name and route path
  */
 const routeMap: RouteMap = {
-  "root": "/",
+  root: "/",
   "not-found": "/:pathMatch(.*)*",
-  "document": "/document",
-  "reward": "/reward",
   "403": "/403",
   "404": "/404",
   "500": "/500",
-  "config": "/config",
-  "config_admin": "/config/admin",
-  "config_blacklist": "/config/blacklist",
-  "config_blacklist_group": "/config/blacklist/group",
-  "config_blacklist_personal": "/config/blacklist/personal",
-  "config_service": "/config/service",
-  "config_whitelist": "/config/whitelist",
-  "config_whitelist_group": "/config/whitelist/group",
-  "config_whitelist_personal": "/config/whitelist/personal",
-  "home": "/home",
+  config: "/config",
+  config_admin: "/config/admin",
+  config_blacklist: "/config/blacklist",
+  config_blacklist_group: "/config/blacklist/group",
+  config_blacklist_personal: "/config/blacklist/personal",
+  config_service: "/config/service",
+  config_subscription: "/config/subscription",
+  config_whitelist: "/config/whitelist",
+  config_whitelist_group: "/config/whitelist/group",
+  config_whitelist_personal: "/config/whitelist/personal",
+  document: "/document",
+  home: "/home",
   "iframe-page": "/iframe-page/:url",
   "local-data": "/local-data",
   "local-data_warframe": "/local-data/warframe",
   "local-data_warframe_alias": "/local-data/warframe/alias",
+  "local-data_warframe_lich-sister": "/local-data/warframe/lich-sister",
   "local-data_warframe_market": "/local-data/warframe/market",
   "local-data_warframe_market-riven": "/local-data/warframe/market-riven",
-  "local-data_warframe_subscription": "/local-data/warframe/subscription",
-  "log": "/log",
-  "log_command": "/log/command",
+  "local-data_warframe_night-wave": "/local-data/warframe/night-wave",
+  "local-data_warframe_nodes": "/local-data/warframe/nodes",
+  "local-data_warframe_phantom": "/local-data/warframe/phantom",
+  "local-data_warframe_relics": "/local-data/warframe/relics",
+  "local-data_warframe_reward-pool": "/local-data/warframe/reward-pool",
+  "local-data_warframe_riven-analyse": "/local-data/warframe/riven-analyse",
+  "local-data_warframe_riven-tion": "/local-data/warframe/riven-tion",
+  "local-data_warframe_riven-tion-alias": "/local-data/warframe/riven-tion-alias",
+  "local-data_warframe_state-translation": "/local-data/warframe/state-translation",
+  "local-data_warframe_warframes": "/local-data/warframe/warframes",
+  "local-data_warframe_weapons": "/local-data/warframe/weapons",
+  log: "/log",
+  log_command: "/log/command",
   "log_real-time": "/log/real-time",
-  "login": "/login/:module(pwd-login)?"
+  login: "/login",
+  reward: "/reward",
 };
 
 /**
@@ -206,7 +219,8 @@ export function getRoutePath<T extends RouteKey>(name: T) {
 export function getRouteName(path: RoutePath) {
   const routeEntries = Object.entries(routeMap) as [RouteKey, RoutePath][];
 
-  const routeName: RouteKey | null = routeEntries.find(([, routePath]) => routePath === path)?.[0] || null;
+  const routeName: RouteKey | null =
+    routeEntries.find(([, routePath]) => routePath === path)?.[0] || null;
 
   return routeName;
 }

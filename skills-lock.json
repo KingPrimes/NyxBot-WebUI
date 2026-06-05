@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "soybean-headless": {
+      "source": "soybeanjs/soybean-ui",
+      "sourceType": "github",
+      "skillPath": "ui-skills/skills/soybean-headless/SKILL.md",
+      "computedHash": "ea8cc02f74da20926cbddb83996d7a9d36bb75b730c9a9abcb50d4dcc1f2d223"
+    },
+    "soybean-ui": {
+      "source": "soybeanjs/soybean-ui",
+      "sourceType": "github",
+      "skillPath": "ui-skills/skills/soybean-ui/SKILL.md",
+      "computedHash": "a4f01f8e4c366da635a55323c9f33a29b3222369ae663ee01cee5c3693c2d7d9"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { computed, ref } from 'vue';
+import { computed, ref } from "vue";
 
 // 日志级别优先级
 const LEVEL_PRIORITY: Record<Api.Log.Level, number> = {
@@ -6,19 +6,19 @@ const LEVEL_PRIORITY: Record<Api.Log.Level, number> = {
   DEBUG: 1,
   INFO: 2,
   WARN: 3,
-  ERROR: 4
+  ERROR: 4,
 };
 
 export function useLogFilter() {
   const filterConfig = ref<Api.Log.FilterConfig>({
     enabled: false,
-    minLevel: 'TRACE',
+    minLevel: "TRACE",
     includeKeywords: [],
     excludeKeywords: [],
     includePackages: [],
     excludePackages: [],
     includeThreads: [],
-    useRegex: false
+    useRegex: false,
   });
 
   /** 检查日志级别是否符合最小级别要求 */
@@ -33,12 +33,12 @@ export function useLogFilter() {
 
     // 排除关键词检查
     if (excludeKeywords.length > 0) {
-      const hasExcluded = excludeKeywords.some(keyword => {
+      const hasExcluded = excludeKeywords.some((keyword) => {
         if (!keyword.trim()) return false;
 
         try {
           if (useRegex) {
-            const regex = new RegExp(keyword, 'i');
+            const regex = new RegExp(keyword, "i");
             return regex.test(text);
           }
           return text.toLowerCase().includes(keyword.toLowerCase());
@@ -53,12 +53,12 @@ export function useLogFilter() {
 
     // 包含关键词检查
     if (includeKeywords.length > 0) {
-      return includeKeywords.some(keyword => {
+      return includeKeywords.some((keyword) => {
         if (!keyword.trim()) return false;
 
         try {
           if (useRegex) {
-            const regex = new RegExp(keyword, 'i');
+            const regex = new RegExp(keyword, "i");
             return regex.test(text);
           }
           return text.toLowerCase().includes(keyword.toLowerCase());
@@ -79,12 +79,12 @@ export function useLogFilter() {
 
     // 排除包名检查
     if (excludePackages.length > 0) {
-      const hasExcluded = excludePackages.some(pkg => {
+      const hasExcluded = excludePackages.some((pkg) => {
         if (!pkg.trim()) return false;
 
         try {
           if (useRegex) {
-            const regex = new RegExp(pkg, 'i');
+            const regex = new RegExp(pkg, "i");
             return regex.test(packageName);
           }
           return packageName.toLowerCase().includes(pkg.toLowerCase());
@@ -99,12 +99,12 @@ export function useLogFilter() {
 
     // 包含包名检查
     if (includePackages.length > 0) {
-      return includePackages.some(pkg => {
+      return includePackages.some((pkg) => {
         if (!pkg.trim()) return false;
 
         try {
           if (useRegex) {
-            const regex = new RegExp(pkg, 'i');
+            const regex = new RegExp(pkg, "i");
             return regex.test(packageName);
           }
           return packageName.toLowerCase().includes(pkg.toLowerCase());
@@ -129,7 +129,7 @@ export function useLogFilter() {
     }
 
     // 检查是否匹配任一线程
-    return includeThreads.some(thread => {
+    return includeThreads.some((thread) => {
       if (!thread.trim()) return false;
       return threadName.toLowerCase().includes(thread.toLowerCase());
     });
@@ -141,7 +141,7 @@ export function useLogFilter() {
       return logs;
     }
 
-    return logs.filter(log => {
+    return logs.filter((log) => {
       // 级别检查
       if (!checkLevel(log.live)) return false;
 
@@ -162,7 +162,7 @@ export function useLogFilter() {
   function updateFilter(config: Partial<Api.Log.FilterConfig>) {
     filterConfig.value = {
       ...filterConfig.value,
-      ...config
+      ...config,
     };
   }
 
@@ -170,13 +170,13 @@ export function useLogFilter() {
   function resetFilter() {
     filterConfig.value = {
       enabled: false,
-      minLevel: 'TRACE',
+      minLevel: "TRACE",
       includeKeywords: [],
       excludeKeywords: [],
       includePackages: [],
       excludePackages: [],
       includeThreads: [],
-      useRegex: false
+      useRegex: false,
     };
   }
 
@@ -195,7 +195,7 @@ export function useLogFilter() {
     const config = filterConfig.value;
     return (
       config.enabled &&
-      (config.minLevel !== 'TRACE' ||
+      (config.minLevel !== "TRACE" ||
         config.includeKeywords.length > 0 ||
         config.excludeKeywords.length > 0 ||
         config.includePackages.length > 0 ||
@@ -211,6 +211,6 @@ export function useLogFilter() {
     updateFilter,
     resetFilter,
     toggleFilter,
-    setMinLevel
+    setMinLevel,
   };
 }

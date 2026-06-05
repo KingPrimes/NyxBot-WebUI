@@ -1,119 +1,135 @@
 /** The global namespace for the app */
 declare namespace App {
-  interface PageData<T> extends Api.Common.PaginatingQueryRecord<Api.Common.CommonRecord<T>> {
-    data: T;
-  }
+  /** Page data type for paginated API responses */
+  interface PageData<T> extends Api.Common.PaginatingQueryRecord<Api.Common.CommonRecord<T>> {}
+
   /** Theme namespace */
   namespace Theme {
-    type ColorPaletteNumber = import('@sa/color').ColorPaletteNumber;
+    type ColorPaletteNumber = import("@sa/color").ColorPaletteNumber;
+
+    /** NaiveUI theme overrides that can be specified in preset */
+    type NaiveUIThemeOverride = import("naive-ui").GlobalThemeOverrides;
 
     /** Theme setting */
-    /** 主题设置接口定义 该接口包含应用程序中所有与主题相关的配置选项 */
     interface ThemeSetting {
-      /** 主题方案 (亮色/暗色/跟随系统) */
+      /** Theme scheme */
       themeScheme: UnionKey.ThemeScheme;
-      /** 灰度模式开关 */
+      /** grayscale mode */
       grayscale: boolean;
-      /** 色弱模式开关 */
+      /** colour weakness mode */
       colourWeakness: boolean;
-      /** 是否使用推荐颜色 */
+      /** Whether to recommend color */
       recommendColor: boolean;
-      /** 主题主色 */
+      /** Theme color */
       themeColor: string;
-      /** 其他辅助颜色配置 */
+      /** Theme radius */
+      themeRadius: number;
+      /** Other color */
       otherColor: OtherColor;
-      /** 信息颜色是否跟随主色 */
+      /** Whether info color is followed by the primary color */
       isInfoFollowPrimary: boolean;
-      /** 重置缓存策略 */
-      resetCacheStrategy: UnionKey.ResetCacheStrategy;
-      /** 布局相关配置 */
+      /** Layout */
       layout: {
-        /** 布局模式 */
+        /** Layout mode */
         mode: UnionKey.ThemeLayoutMode;
-        /** 滚动模式 */
+        /** Scroll mode */
         scrollMode: UnionKey.ThemeScrollMode;
-        /**
-         * 是否反转水平混合布局
-         *
-         * 如果为true，则左侧显示垂直子级菜单，顶部显示水平一级菜单
-         */
-        reverseHorizontalMix: boolean;
       };
-      /** 页面相关配置 */
+      /** Page */
       page: {
-        /** 是否显示页面过渡动画 */
+        /** Whether to show the page transition */
         animate: boolean;
-        /** 页面动画模式 */
+        /** Page animate mode */
         animateMode: UnionKey.ThemePageAnimateMode;
       };
-      /** 头部相关配置 */
+      /** Header */
       header: {
-        /** 头部高度 */
+        /** Header height */
         height: number;
-        /** 头部面包屑配置 */
+        /** Header breadcrumb */
         breadcrumb: {
-          /** 是否显示面包屑 */
+          /** Whether to show the breadcrumb */
           visible: boolean;
-          /** 是否显示面包屑图标 */
+          /** Whether to show the breadcrumb icon */
           showIcon: boolean;
         };
-        /** 多语言配置 */
+        /** Multilingual */
         multilingual: {
-          /** 是否显示多语言切换 */
+          /** Whether to show the multilingual */
+          visible: boolean;
+        };
+        globalSearch: {
+          /** Whether to show the GlobalSearch */
           visible: boolean;
         };
       };
-      /** 标签页相关配置 */
+      /** Tab */
       tab: {
-        /** 是否显示标签页 */
+        /** Whether to show the tab */
         visible: boolean;
         /**
-         * 是否缓存标签页
+         * Whether to cache the tab
          *
-         * 如果缓存，页面刷新时会从本地存储中恢复标签页状态
+         * If cache, the tabs will get from the local storage when the page is refreshed
          */
         cache: boolean;
-        /** 标签页高度 */
+        /** Tab height */
         height: number;
-        /** 标签页模式 */
+        /** Tab mode */
         mode: UnionKey.ThemeTabMode;
+        /** Whether to close tab by middle click */
+        closeTabByMiddleClick: boolean;
       };
-      /** 是否固定头部和标签页 */
+      /** Fixed header and tab */
       fixedHeaderAndTab: boolean;
-      /** 侧边栏相关配置 */
+      /** Sider */
       sider: {
-        /** 反转侧边栏样式 */
+        /** Inverted sider */
         inverted: boolean;
-        /** 侧边栏宽度 */
+        /** Sider width */
         width: number;
-        /** 折叠后的侧边栏宽度 */
+        /** Collapsed sider width */
         collapsedWidth: number;
-        /** 当布局为 'vertical-mix' 或 'horizontal-mix' 时的侧边栏宽度 */
+        /** Sider width when the layout is 'vertical-mix', 'top-hybrid-sidebar-first', or 'top-hybrid-header-first' */
         mixWidth: number;
-        /** 当布局为 'vertical-mix' 或 'horizontal-mix' 时折叠后的侧边栏宽度 */
+        /**
+         * Collapsed sider width when the layout is 'vertical-mix', 'top-hybrid-sidebar-first', or
+         * 'top-hybrid-header-first'
+         */
         mixCollapsedWidth: number;
-        /** 当布局为 'vertical-mix' 或 'horizontal-mix' 时的子菜单宽度 */
+        /** Child menu width when the layout is 'vertical-mix', 'top-hybrid-sidebar-first', or 'top-hybrid-header-first' */
         mixChildMenuWidth: number;
+        /** Whether to auto select the first submenu */
+        autoSelectFirstMenu: boolean;
       };
-      /** 页脚相关配置 */
+      /** Footer */
       footer: {
-        /** 是否显示页脚 */
+        /** Whether to show the footer */
         visible: boolean;
-        /** 是否固定页脚 */
+        /** Whether fixed the footer */
         fixed: boolean;
-        /** 页脚高度 */
+        /** Footer height */
         height: number;
-        /** 当布局为 'horizontal-mix' 时是否将页脚右浮动 */
+        /**
+         * Whether float the footer to the right when the layout is 'top-hybrid-sidebar-first' or
+         * 'top-hybrid-header-first'
+         */
         right: boolean;
       };
-      /** 水印相关配置 */
+      /** Watermark */
       watermark: {
-        /** 是否显示水印 */
+        /** Whether to show the watermark */
         visible: boolean;
-        /** 水印文本 */
+        /** Watermark text */
         text: string;
+        /** Whether to use user name as watermark text */
+        enableUserName: boolean;
+        /** Whether to use current time as watermark text */
+        enableTime: boolean;
+        /** Time format for watermark text */
+        timeFormat: string;
       };
-      /** 主题设置令牌定义，将转换为CSS变量 */
+      /** define some theme settings tokens, will transform to css variables */
       tokens: {
         light: ThemeSettingToken;
         dark?: {
@@ -147,8 +163,7 @@ declare namespace App {
       container: string;
       layout: string;
       inverted: string;
-      card: string;
-      'base-text': string;
+      "base-text": string;
     }
 
     interface ThemeSettingTokenBoxShadow {
@@ -173,12 +188,19 @@ declare namespace App {
 
   /** Global namespace */
   namespace Global {
-    type VNode = import('vue').VNode;
-    type RouteLocationNormalizedLoaded = import('vue-router').RouteLocationNormalizedLoaded;
-    type RouteKey = import('@elegant-router/types').RouteKey;
-    type RouteMap = import('@elegant-router/types').RouteMap;
-    type RoutePath = import('@elegant-router/types').RoutePath;
-    type LastLevelRouteKey = import('@elegant-router/types').LastLevelRouteKey;
+    type VNode = import("vue").VNode;
+    type RouteLocationNormalizedLoaded = import("vue-router").RouteLocationNormalizedLoaded;
+    type RouteKey = import("@elegant-router/types").RouteKey;
+    type RouteMap = import("@elegant-router/types").RouteMap;
+    type RoutePath = import("@elegant-router/types").RoutePath;
+    type LastLevelRouteKey = import("@elegant-router/types").LastLevelRouteKey;
+
+    /** The router push options */
+    type RouterPushOptions = {
+      query?: Record<string, string>;
+      params?: Record<string, string>;
+      force?: boolean;
+    };
 
     /** The global header props */
     interface HeaderProps {
@@ -212,13 +234,13 @@ declare namespace App {
       children?: Menu[];
     };
 
-    type Breadcrumb = Omit<Menu, 'children'> & {
+    type Breadcrumb = Omit<Menu, "children"> & {
       options?: Breadcrumb[];
     };
 
     /** Tab route */
-    type TabRoute = Pick<RouteLocationNormalizedLoaded, 'name' | 'path' | 'meta'> &
-      Partial<Pick<RouteLocationNormalizedLoaded, 'fullPath' | 'query' | 'matched'>>;
+    type TabRoute = Pick<RouteLocationNormalizedLoaded, "name" | "path" | "meta"> &
+      Partial<Pick<RouteLocationNormalizedLoaded, "fullPath" | "query" | "matched">>;
 
     /** The global tab */
     type Tab = {
@@ -263,10 +285,17 @@ declare namespace App {
     };
 
     /** Form rule */
-    type FormRule = import('naive-ui').FormItemRule;
+    type FormRule = import("naive-ui").FormItemRule;
 
     /** The global dropdown key */
-    type DropdownKey = 'closeCurrent' | 'closeOther' | 'closeLeft' | 'closeRight' | 'closeAll';
+    type DropdownKey =
+      | "closeCurrent"
+      | "closeOther"
+      | "closeLeft"
+      | "closeRight"
+      | "closeAll"
+      | "pin"
+      | "unpin";
   }
 
   /**
@@ -275,16 +304,16 @@ declare namespace App {
    * Locales type
    */
   namespace I18n {
-    type RouteKey = import('@elegant-router/types').RouteKey;
+    type RouteKey = import("@elegant-router/types").RouteKey;
 
-    type LangType = 'en-US' | 'zh-CN';
+    type LangType = "en-US" | "zh-CN";
 
     type LangOption = {
       label: string;
       key: LangType;
     };
 
-    type I18nRouteKey = Exclude<RouteKey, 'root' | 'not-found'>;
+    type I18nRouteKey = Exclude<RouteKey, "root" | "not-found">;
 
     type FormMsg = {
       required: string;
@@ -302,13 +331,13 @@ declare namespace App {
       common: {
         action: string;
         add: string;
-        detail: string;
         addSuccess: string;
         backToHome: string;
         batchDelete: string;
         cancel: string;
         close: string;
         check: string;
+        selectAll: string;
         expandColumn: string;
         columnSetting: string;
         config: string;
@@ -316,8 +345,6 @@ declare namespace App {
         delete: string;
         deleteSuccess: string;
         confirmDelete: string;
-        editPassword: string;
-        editUsername: string;
         edit: string;
         warning: string;
         error: string;
@@ -340,13 +367,13 @@ declare namespace App {
         update: string;
         updateSuccess: string;
         userCenter: string;
+        editPassword: string;
+        editUsername: string;
+        from: string;
         push: string;
-        commits: string;
         pushSuccess: string;
-        yesOrNo: {
-          yes: string;
-          no: string;
-        };
+        commits: string;
+        detail: string;
         restPassword: {
           success: string;
           successTip: string;
@@ -363,8 +390,14 @@ declare namespace App {
           success: string;
           error: string;
         };
-        from: {
-          urlError: string;
+        yesOrNo: {
+          yes: string;
+          no: string;
+        };
+        dataUpdate: {
+          connecting: string;
+          sseError: string;
+          requestError: string;
         };
       };
       request: {
@@ -376,59 +409,107 @@ declare namespace App {
         tokenExpired: string;
       };
       theme: {
-        themeSchema: { title: string } & Record<UnionKey.ThemeScheme, string>;
-        grayscale: string;
-        colourWeakness: string;
-        layoutMode: { title: string; reverseHorizontalMix: string } & Record<UnionKey.ThemeLayoutMode, string>;
-        recommendColor: string;
-        recommendColorDesc: string;
-        themeColor: {
-          title: string;
-          followPrimary: string;
-        } & Theme.ThemeColor;
-        scrollMode: { title: string } & Record<UnionKey.ThemeScrollMode, string>;
-        page: {
-          animate: string;
-          mode: { title: string } & Record<UnionKey.ThemePageAnimateMode, string>;
+        themeDrawerTitle: string;
+        tabs: {
+          appearance: string;
+          layout: string;
+          general: string;
+          preset: string;
         };
-        fixedHeaderAndTab: string;
-        header: {
-          height: string;
-          breadcrumb: {
+        appearance: {
+          themeSchema: { title: string } & Record<UnionKey.ThemeScheme, string>;
+          grayscale: string;
+          colourWeakness: string;
+          themeColor: {
+            title: string;
+            followPrimary: string;
+          } & Record<Theme.ThemeColorKey, string>;
+          recommendColor: string;
+          recommendColorDesc: string;
+          themeRadius: {
+            title: string;
+          };
+          preset: {
+            title: string;
+            apply: string;
+            applySuccess: string;
+            [key: string]:
+              | {
+                  name: string;
+                  desc: string;
+                }
+              | string;
+          };
+        };
+        layout: {
+          layoutMode: { title: string } & Record<UnionKey.ThemeLayoutMode, string> & {
+              [K in `${UnionKey.ThemeLayoutMode}_detail`]: string;
+            };
+          tab: {
+            title: string;
             visible: string;
-            showIcon: string;
+            cache: string;
+            cacheTip: string;
+            height: string;
+            mode: { title: string } & Record<UnionKey.ThemeTabMode, string>;
+            closeByMiddleClick: string;
+            closeByMiddleClickTip: string;
+          };
+          header: {
+            title: string;
+            height: string;
+            breadcrumb: {
+              visible: string;
+              showIcon: string;
+            };
+          };
+          sider: {
+            title: string;
+            inverted: string;
+            width: string;
+            collapsedWidth: string;
+            mixWidth: string;
+            mixCollapsedWidth: string;
+            mixChildMenuWidth: string;
+            autoSelectFirstMenu: string;
+            autoSelectFirstMenuTip: string;
+          };
+          footer: {
+            title: string;
+            visible: string;
+            fixed: string;
+            height: string;
+            right: string;
+          };
+          content: {
+            title: string;
+            scrollMode: { title: string; tip: string } & Record<UnionKey.ThemeScrollMode, string>;
+            page: {
+              animate: string;
+              mode: { title: string } & Record<UnionKey.ThemePageAnimateMode, string>;
+            };
+            fixedHeaderAndTab: string;
+          };
+        };
+        general: {
+          title: string;
+          watermark: {
+            title: string;
+            visible: string;
+            text: string;
+            enableUserName: string;
+            enableTime: string;
+            timeFormat: string;
           };
           multilingual: {
+            title: string;
+            visible: string;
+          };
+          globalSearch: {
+            title: string;
             visible: string;
           };
         };
-        tab: {
-          visible: string;
-          cache: string;
-          height: string;
-          mode: { title: string } & Record<UnionKey.ThemeTabMode, string>;
-        };
-        sider: {
-          inverted: string;
-          width: string;
-          collapsedWidth: string;
-          mixWidth: string;
-          mixCollapsedWidth: string;
-          mixChildMenuWidth: string;
-        };
-        footer: {
-          visible: string;
-          fixed: string;
-          height: string;
-          right: string;
-        };
-        watermark: {
-          visible: string;
-          text: string;
-        };
-        themeDrawerTitle: string;
-        pageFunTitle: string;
-        resetCacheStrategy: { title: string } & Record<UnionKey.ResetCacheStrategy, string>;
         configOperation: {
           copyConfig: string;
           copySuccessMsg: string;
@@ -436,7 +517,7 @@ declare namespace App {
           resetSuccessMsg: string;
         };
       };
-      route: Record<I18nRouteKey, string>;
+      route: Record<I18nRouteKey | string, string>;
       page: {
         login: {
           common: {
@@ -513,55 +594,51 @@ declare namespace App {
           creativity: string;
         };
         log: {
+          title: string;
           command: {
             title: string;
             id: string;
             moduleName: string;
-            titles: string;
-            titlesPlaceholder: string;
             command: string;
-            commandPlaceholder: string;
             botQQ: string;
             groupQQ: string;
-            groupQQPlaceholder: string;
             triggerQQ: string;
             operateTime: string;
+            titles: string;
+            titlesPlaceholder: string;
+            commandPlaceholder: string;
+            groupQQPlaceholder: string;
           };
           realtime: {
             title: string;
             connected: string;
-            disconnected: string;
             connecting: string;
+            disconnected: string;
             connectionError: string;
-            level: string;
-            search: string;
+            clearConfirm: string;
+            exportSuccess: string;
             searchPlaceholder: string;
             filterBtn: string;
-            shareBtn: string;
+            stats: string;
             export: string;
             clear: string;
-            stats: string;
+            noLogs: string;
             total: string;
             displayed: string;
             cacheSize: string;
-            noLogs: string;
-            copySuccess: string;
-            copyFailed: string;
-            exportSuccess: string;
-            clearConfirm: string;
             filterPanel: {
               title: string;
               enable: string;
               minLevel: string;
               includeKeywords: string;
               excludeKeywords: string;
+              keywordPlaceholder: string;
               includePackages: string;
               excludePackages: string;
-              includeThreads: string;
-              useRegex: string;
-              keywordPlaceholder: string;
               packagePlaceholder: string;
+              includeThreads: string;
               threadPlaceholder: string;
+              useRegex: string;
               reset: string;
               apply: string;
             };
@@ -588,60 +665,29 @@ declare namespace App {
         };
         config: {
           title: string;
-          git: {
-            title: string;
-            form: {
-              account: string;
-              accountPlaceholder: string;
-              token: string;
-              tokenPlaceholder: string;
-              url: string;
-              urlPlaceholder: string;
-            };
-          };
-          service: {
-            title: string;
-            restartTip: string;
-            form: {
-              port: string;
-              portPlaceholder: string;
-              portError: string;
-              client: string;
-              server: string;
-              switchTo: string;
-              urlPlaceholder: string;
-              pluginPrefix: string;
-            };
-          };
           admin: {
             title: string;
-            botAccount: string;
-            adminAccount: string;
-            status: string;
-            role: string;
+            botUid: string;
+            userUid: string;
+            userPermission: string;
+            groupId: string;
             addAdmin: string;
             editAdmin: string;
-            inputAdminQQ: string;
-            optionsOrinput: string;
-            form: {
-              botAccount: string;
-              adminAccount: string;
-              status: string;
-              role: string;
-            };
+            searchNamePlaceholder: string;
+            botAccount: string;
+            adminAccount: string;
             roles: {
-              superAdmin: string;
-              admin: string;
-              commonUser: string;
-              backendUser: string;
-              other: string;
-              placeholder: string;
               roleName: string;
             };
+            inputAdminQQ: string;
+            optionsOrinput: string;
           };
           blacklist: {
+            title: string;
             group: {
               title: string;
+              groupId: string;
+              groupName: string;
               groupAccount: string;
               addBlacklistGroup: string;
               editBlacklistGroup: string;
@@ -655,13 +701,12 @@ declare namespace App {
               placeholder: string;
             };
           };
-          group: {
-            inputGroupId: string;
-            optionsOrinput: string;
-          };
           whitelist: {
+            title: string;
             group: {
               title: string;
+              groupId: string;
+              groupName: string;
               groupAccount: string;
               addWhitelistGroup: string;
               editWhitelistGroup: string;
@@ -675,8 +720,25 @@ declare namespace App {
               placeholder: string;
             };
           };
+          group: {
+            inputGroupId: string;
+            optionsOrinput: string;
+          };
+          service: {
+            title: string;
+            restartTip: string;
+            form: {
+              pluginPrefix: string;
+              port: string;
+              portPlaceholder: string;
+              switchTo: string;
+              urlPlaceholder: string;
+              client: string;
+              server: string;
+            };
+          };
         };
-        'local-data': {
+        "local-data": {
           warframe: {
             alias: {
               title: string;
@@ -687,16 +749,48 @@ declare namespace App {
               englishNamePlaceholder: string;
               chineseNamePlaceholder: string;
             };
+            "lich-sister": {
+              title: string;
+              name: string;
+              slug: string;
+              reqMasteryRank: string;
+              gameRef: string;
+            };
+            "night-wave": {
+              title: string;
+              uniqueName: string;
+              name: string;
+              description: string;
+              standing: string;
+              required: string;
+            };
+            nodes: {
+              title: string;
+              uniqueName: string;
+              name: string;
+              systemName: string;
+              masteryReq: string;
+              missionIndex: string;
+              factionIndex: string;
+              minEnemyLevel: string;
+              maxEnemyLevel: string;
+              addNodes: string;
+              editNodes: string;
+            };
             market: {
               title: string;
               itemName: string;
+              slug: string;
+              ducats: string;
+              maxRank: string;
+              vaulted: string;
               addMarket: string;
               editMarket: string;
               itemNamePlaceholder: string;
               imageUrl: string;
               imageUrlPlaceholder: string;
             };
-            'market-riven': {
+            "market-riven": {
               title: string;
               itemName: string;
               itemNamePlaceholder: string;
@@ -719,6 +813,7 @@ declare namespace App {
               urlNamePlaceholder: string;
               iconLink: string;
               iconLinkPlaceholder: string;
+              imageThumb: string;
               imageSource: string;
               imageSourcePlaceholder: string;
               animation: string;
@@ -726,43 +821,89 @@ declare namespace App {
               addPhantom: string;
               editPhantom: string;
             };
-            'riven-trend': {
+            "riven-analyse": {
               title: string;
-              itemName: string;
-              itemNamePlaceholder: string;
-              itemEnName: string;
-              itemEnNamePlaceholder: string;
-              newDisposition: string;
-              newDispositionPlaceholder: string;
-              oldDisposition: string;
-              oldDispositionPlaceholder: string;
-              weaponType: string;
-              weaponTypePlaceholder: string;
-              addRiven: string;
-              editRiven: string;
-              updateTime: string;
+              name: string;
+              prefix: string;
+              suffix: string;
+              rifle: string;
+              shotgun: string;
+              pistol: string;
+              melle: string;
+              archwing: string;
             };
-            translation: {
+            "riven-tion": {
               title: string;
-              english: string;
-              englishPlaceholder: string;
-              chinese: string;
-              chinesePlaceholder: string;
-              addTranslation: string;
-              editTranslation: string;
-              isPrime: string;
-              isSet: string;
+              effect: string;
+              group: string;
+              prefix: string;
+              suffix: string;
+              units: string;
+              urlName: string;
+              exclusiveTo: string;
+              addRivenTion: string;
+              editRivenTion: string;
             };
-            untranslated: {
+            "riven-tion-alias": {
               title: string;
-              text: string;
-              textPlaceholder: string;
-              english: string;
-              englishPlaceholder: string;
-              addUntranslated: string;
-              editUntranslated: string;
+              en: string;
+              cn: string;
+              addRivenTionAlias: string;
+              editRivenTionAlias: string;
+            };
+            "state-translation": {
+              title: string;
+              uniqueName: string;
+              name: string;
+              description: string;
+              type: string;
+              parentName: string;
+              addStateTranslation: string;
+              editStateTranslation: string;
+            };
+            relics: {
+              title: string;
+              uniqueName: string;
+              name: string;
+              rewards: string;
+            };
+            warframes: {
+              title: string;
+              uniqueName: string;
+              name: string;
+              health: string;
+              shield: string;
+              armor: string;
+              power: string;
+              masteryReq: string;
+              sprintSpeed: string;
+              description: string;
+              abilityName: string;
+              abilityDesc: string;
+            };
+            weapons: {
+              title: string;
+              name: string;
+              uniqueName: string;
+              totalDamage: string;
+              criticalChance: string;
+              procChance: string;
+              fireRate: string;
+              masteryReq: string;
+              productCategory: string;
+            };
+            "reward-pool": {
+              title: string;
+              uniqueName: string;
+              rewards: string;
+              addRewardPool: string;
+              editRewardPool: string;
             };
             subscription: {
+              title: string;
+              groupName: string;
+              userList: string;
+              typeList: string;
               id: string;
               subGroup: string;
               subBotUid: string;
@@ -773,10 +914,7 @@ declare namespace App {
               subscribe: string;
               missionTypeEnum: string;
               tierNum: string;
-              title: string;
-              groupName: string;
-              userList: string;
-              typeList: string;
+              invasionReward: string;
             };
           };
         };
@@ -803,6 +941,13 @@ declare namespace App {
         qq: FormMsg;
         groupUid: FormMsg;
       };
+      config: {
+        service: {
+          form: {
+            portError: string;
+          };
+        };
+      };
       dropdown: Record<Global.DropdownKey, string>;
       icon: {
         themeConfig: string;
@@ -818,17 +963,18 @@ declare namespace App {
       };
       datatable: {
         itemCount: string;
-      };
-      config: {
-        service: {
-          form: {
-            portError: string;
-          };
+        fixed: {
+          left: string;
+          right: string;
+          unFixed: string;
         };
       };
     };
 
-    type GetI18nKey<T extends Record<string, unknown>, K extends keyof T = keyof T> = K extends string
+    type GetI18nKey<
+      T extends Record<string, unknown>,
+      K extends keyof T = keyof T,
+    > = K extends string
       ? T[K] extends Record<string, unknown>
         ? `${K}.${GetI18nKey<T[K]>}`
         : K
@@ -836,7 +982,7 @@ declare namespace App {
 
     type I18nKey = GetI18nKey<Schema>;
 
-    type TranslateOptions<Locales extends string> = import('vue-i18n').TranslateOptions<Locales>;
+    type TranslateOptions<Locales extends string> = import("vue-i18n").TranslateOptions<Locales>;
 
     interface $T {
       (key: I18nKey): string;
@@ -854,7 +1000,7 @@ declare namespace App {
   /** Service namespace */
   namespace Service {
     /** Other baseURL key */
-    type OtherBaseURLKey = 'demo';
+    type OtherBaseURLKey = "demo";
 
     interface ServiceConfigItem {
       /** The backend service base url */
@@ -873,7 +1019,7 @@ declare namespace App {
       other: OtherServiceConfigItem[];
     }
 
-    interface SimpleServiceConfig extends Pick<ServiceConfigItem, 'baseURL'> {
+    interface SimpleServiceConfig extends Pick<ServiceConfigItem, "baseURL"> {
       other: Record<OtherBaseURLKey, string>;
     }
 

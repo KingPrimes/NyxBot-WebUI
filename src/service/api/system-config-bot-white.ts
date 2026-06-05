@@ -1,14 +1,14 @@
-import { request } from '../request';
+import { request } from "../request";
 
-const baseUrl = '/config/bot';
+const baseUrl = "/config/bot";
 const group = `${baseUrl}/white/group`;
 const prove = `${baseUrl}/white/prove`;
 /** 获取白名单群组列表 */
 export function fetchGetWhitelistGroupList(params?: Api.SystemConfig.WhitelistGroupSearchParams) {
   return request<Api.SystemConfig.WhitelistGroupList>({
     url: `${group}/list`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
@@ -16,8 +16,8 @@ export function fetchGetWhitelistGroupList(params?: Api.SystemConfig.WhitelistGr
 export function fetchSaveWhiteGroup(params?: Api.SystemConfig.WhitelistGroup) {
   return request<Api.Result>({
     url: `${group}/save`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
@@ -25,7 +25,7 @@ export function fetchSaveWhiteGroup(params?: Api.SystemConfig.WhitelistGroup) {
 export function fetchRemoveWhiteGroup(id: number) {
   return request<Api.Result>({
     url: `${group}/remove/${id}`,
-    method: 'delete'
+    method: "delete",
   });
 }
 
@@ -33,8 +33,8 @@ export function fetchRemoveWhiteGroup(id: number) {
 export function fetchGetWhitelistProvelList(params?: Api.SystemConfig.WhitelistProveSearchParams) {
   return request<Api.SystemConfig.WhitelistProveList>({
     url: `${prove}/list`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
@@ -42,8 +42,8 @@ export function fetchGetWhitelistProvelList(params?: Api.SystemConfig.WhitelistP
 export function fetchSaveWhiteProve(params?: Api.SystemConfig.WhitelistProve) {
   return request<Api.Result>({
     url: `${prove}/save`,
-    method: 'post',
-    data: params
+    method: "post",
+    data: params,
   });
 }
 
@@ -51,6 +51,6 @@ export function fetchSaveWhiteProve(params?: Api.SystemConfig.WhitelistProve) {
 export function fetchRemoveWhiteProve(id: number) {
   return request<Api.Result>({
     url: `${prove}/remove/${id}`,
-    method: 'delete'
+    method: "delete",
   });
 }

@@ -3,7 +3,8 @@ import { NButton, NDataTable } from 'naive-ui';
 import { $t } from '@/locales';
 import { useAppStore } from '@/store/modules/app';
 import { useTable, useTableOperate } from '@/hooks/common/table';
-import { fetchPostAliasList } from '@/service/api/local-data';
+import { fetchAliasUpdate, fetchDeleteAlias, fetchPostAliasList } from '@/service/api/local-data';
+import DataUpdateButton from '@/components/common/data-update-button.vue';
 import AliasSearch from './modules/alias-search.vue';
 import AliasOperateDrawer from './modules/alias-operate-drawer.vue';
 
@@ -22,43 +23,44 @@ const {
 } = useTable({
   apiFn: fetchPostAliasList,
   showTotal: true,
-  apiParams: {
-    current: 1,
-    size: 10
-  },
   columns: () => [
     {
       type: 'selection',
       align: 'center',
-      width: 48
+      width: 48,
+
     },
     {
       key: 'index',
       title: $t('common.index'),
+      width: 64,
       align: 'center',
-      width: 64
+
     },
     {
       key: 'en',
       title: $t('page.local-data.warframe.alias.englishName'),
       align: 'center',
-      minWidth: 100
+
     },
     {
       key: 'cn',
       title: $t('page.local-data.warframe.alias.chineseName'),
       align: 'center',
-      width: 100
+
     },
     {
       key: 'operate',
       title: $t('common.operate'),
       align: 'center',
-      width: 130,
-      render: row => (
+
+      render: (row: any) => (
         <div class="flex-center gap-8px">
           <NButton type="primary" ghost size="small" onClick={() => edit(row.id)}>
             {$t('common.edit')}
+          </NButton>
+          <NButton type="error" ghost size="small" onClick={() => handleRowDelete(row.id)}>
+            {$t('common.delete')}
           </NButton>
         </div>
       )
@@ -77,10 +79,18 @@ const {
 } = useTableOperate(data, getData);
 
 async function handleBatchDelete() {
-  // request
-  console.log(checkedRowKeys.value);
-
+  for (const id of checkedRowKeys.value) {
+    await fetchDeleteAlias(Number(id));
+  }
   onBatchDeleted();
+}
+
+async function handleRowDelete(id: number) {
+  const { error } = await fetchDeleteAlias(id);
+  if (!error) {
+    window.$message?.success($t("common.deleteSuccess"));
+    getData();
+  }
 }
 
 function edit(id: number) {
@@ -98,14 +108,22 @@ function edit(id: number) {
       size="small"
     >
       <template #header-extra>
-        <TableHeaderOperation
-          v-model:columns="columnChecks"
-          :disabled-delete="checkedRowKeys.length === 0"
-          :loading="loading"
-          @add="handleAdd"
-          @delete="handleBatchDelete"
-          @refresh="getData"
-        />
+        <div class="flex-y-center gap-8px">
+          <DataUpdateButton
+            :api-fn="fetchAliasUpdate"
+            :button-text="$t('common.update')"
+            :success-message="$t('common.updateSuccess')"
+            @completed="getData"
+          />
+          <TableHeaderOperation
+            v-model:columns="columnChecks"
+            :disabled-delete="checkedRowKeys.length === 0"
+            :loading="loading"
+            @add="handleAdd"
+            @delete="handleBatchDelete"
+            @refresh="getData"
+          />
+        </div>
       </template>
       <NDataTable
         v-model:checked-row-keys="checkedRowKeys"
@@ -113,10 +131,9 @@ function edit(id: number) {
         :data="data"
         size="small"
         :flex-height="!appStore.isMobile"
-        :scroll-x="962"
         :loading="loading"
         remote
-        :row-key="row => row.id"
+        :row-key="(row) => row.id"
         :pagination="mobilePagination"
         class="sm:h-full"
       />
