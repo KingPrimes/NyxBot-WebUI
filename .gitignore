@@ -39,3 +39,4 @@ yarn.lock
 .playwright
 .playwright-cli
 CLAUDE.md
+.workflow

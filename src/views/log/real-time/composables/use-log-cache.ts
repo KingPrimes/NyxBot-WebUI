@@ -1,19 +1,82 @@
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 
 const MAX_CACHE_SIZE = 5000;
+
+const EMPTY_STATS: Api.Log.Stats = {
+  total: 0,
+  trace: 0,
+  debug: 0,
+  info: 0,
+  warn: 0,
+  error: 0,
+  displayed: 0,
+  cacheSize: '2 B'
+};
 
 export function useLogCache() {
   const logCache = ref<Api.Log.Data[]>([]);
   const systemLogs = ref<string[]>([]);
+  const cachePayloadSize = ref(0);
+  const stats = ref<Api.Log.Stats>({ ...EMPTY_STATS });
+
+  function formatCacheSize(sizeInBytes: number) {
+    if (sizeInBytes < 1024) {
+      return `${sizeInBytes} B`;
+    } else if (sizeInBytes < 1024 * 1024) {
+      return `${(sizeInBytes / 1024).toFixed(2)} KB`;
+    }
+    return `${(sizeInBytes / (1024 * 1024)).toFixed(2)} MB`;
+  }
+
+  function getLogSize(log: Api.Log.Data) {
+    return JSON.stringify(log).length;
+  }
+
+  function updateStats(logs: Api.Log.Data[], direction: 1 | -1) {
+    if (!logs.length) return;
+
+    const nextStats = { ...stats.value };
+
+    logs.forEach(log => {
+      nextStats.total += direction;
+      cachePayloadSize.value += direction * getLogSize(log);
+
+      switch (log.live) {
+        case 'TRACE':
+          nextStats.trace += direction;
+          break;
+        case 'DEBUG':
+          nextStats.debug += direction;
+          break;
+        case 'INFO':
+          nextStats.info += direction;
+          break;
+        case 'WARN':
+          nextStats.warn += direction;
+          break;
+        case 'ERROR':
+          nextStats.error += direction;
+          break;
+      }
+    });
+
+    cachePayloadSize.value = Math.max(cachePayloadSize.value, 0);
+    nextStats.displayed = nextStats.total;
+    nextStats.cacheSize = formatCacheSize(nextStats.total ? cachePayloadSize.value + nextStats.total + 1 : 2);
+    stats.value = nextStats;
+  }
 
   /** 添加日志到缓存 */
   function addLogs(logs: Api.Log.Data[]) {
-    logCache.value.push(...logs);
+    if (!logs.length) return;
 
-    // 限制最大 5000 条，使用循环覆盖
-    if (logCache.value.length > MAX_CACHE_SIZE) {
-      logCache.value = logCache.value.slice(-MAX_CACHE_SIZE);
-    }
+    const nextLogs = [...logCache.value, ...logs];
+    const removedCount = Math.max(0, nextLogs.length - MAX_CACHE_SIZE);
+    const removedLogs = removedCount ? nextLogs.slice(0, removedCount) : [];
+
+    logCache.value = removedCount ? nextLogs.slice(removedCount) : nextLogs;
+    updateStats(logs, 1);
+    updateStats(removedLogs, -1);
   }
 
   /** 添加系统日志 */
@@ -30,6 +93,8 @@ export function useLogCache() {
   /** 清空日志缓存 */
   function clearCache() {
     logCache.value = [];
+    cachePayloadSize.value = 0;
+    stats.value = { ...EMPTY_STATS };
   }
 
   /** 清空系统日志 */
@@ -37,51 +102,19 @@ export function useLogCache() {
     systemLogs.value = [];
   }
 
-  /** 获取缓存大小（格式化字符串） */
-  const cacheSize = computed(() => {
-    const sizeInBytes = JSON.stringify(logCache.value).length;
-    if (sizeInBytes < 1024) {
-      return `${sizeInBytes} B`;
-    } else if (sizeInBytes < 1024 * 1024) {
-      return `${(sizeInBytes / 1024).toFixed(2)} KB`;
-    }
-    return `${(sizeInBytes / (1024 * 1024)).toFixed(2)} MB`;
-  });
-
-  /** 获取统计信息 */
-  const stats = computed<Api.Log.Stats>(() => {
-    const total = logCache.value.length;
-    const trace = logCache.value.filter(log => log.live === 'TRACE').length;
-    const debug = logCache.value.filter(log => log.live === 'DEBUG').length;
-    const info = logCache.value.filter(log => log.live === 'INFO').length;
-    const warn = logCache.value.filter(log => log.live === 'WARN').length;
-    const error = logCache.value.filter(log => log.live === 'ERROR').length;
-
-    return {
-      total,
-      trace,
-      debug,
-      info,
-      warn,
-      error,
-      displayed: total, // 将在过滤后更新
-      cacheSize: cacheSize.value
-    };
-  });
-
   /** 搜索日志 */
-  function searchLogs(keyword: string, useRegex: boolean = false): Api.Log.Data[] {
+  function searchLogs(sourceLogs: Api.Log.Data[], keyword: string, useRegex: boolean = false): Api.Log.Data[] {
     if (!keyword.trim()) {
-      return logCache.value;
+      return sourceLogs;
     }
 
     try {
       if (useRegex) {
         const regex = new RegExp(keyword, 'i');
-        return logCache.value.filter(log => regex.test(log.log) || regex.test(log.pack) || regex.test(log.thread));
+        return sourceLogs.filter(log => regex.test(log.log) || regex.test(log.pack) || regex.test(log.thread));
       }
       const lowerKeyword = keyword.toLowerCase();
-      return logCache.value.filter(
+      return sourceLogs.filter(
         log =>
           log.log.toLowerCase().includes(lowerKeyword) ||
           log.pack.toLowerCase().includes(lowerKeyword) ||
@@ -90,7 +123,7 @@ export function useLogCache() {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('搜索日志失败:', error);
-      return logCache.value;
+      return sourceLogs;
     }
   }
 

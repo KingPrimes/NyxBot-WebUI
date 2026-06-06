@@ -384,7 +384,9 @@ export function useTable<ApiData>(options: CompatUseTableOptions<ApiData>) {
   });
 
   function resetSearchParams() {
-    Object.assign(searchParams, { ...apiParams });
+    Object.assign(searchParams, { current: 1, size: 15, ...apiParams });
+    result.pagination.page = searchParams.current;
+    result.pagination.pageSize = searchParams.size;
   }
 
   return {

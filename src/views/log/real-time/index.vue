@@ -77,7 +77,7 @@ const filteredLogs = computed(() => {
 
   // 应用搜索
   if (searchKeyword.value.trim()) {
-    logs = searchLogs(searchKeyword.value, filterConfig.value.useRegex);
+    logs = searchLogs(logs, searchKeyword.value, filterConfig.value.useRegex);
   }
 
   return logs;
